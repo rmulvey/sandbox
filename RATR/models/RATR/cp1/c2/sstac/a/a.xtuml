@@ -1,0 +1,52 @@
+-- BP 7.1 content: ModelClass syschar: 3 persistence-version: 7.1.5
+
+INSERT INTO O_OBJ
+	VALUES ("52e804a1-1d5f-499e-a985-cd2190c92357",
+	'a',
+	1,
+	'TAC_A',
+	'',
+	"7e4a3148-bd5d-42d3-ae31-3f6ae697df1c");
+INSERT INTO O_NBATTR
+	VALUES ("3ddfd5d7-3013-44ad-b08c-0c0447bd5948",
+	"52e804a1-1d5f-499e-a985-cd2190c92357");
+INSERT INTO O_BATTR
+	VALUES ("3ddfd5d7-3013-44ad-b08c-0c0447bd5948",
+	"52e804a1-1d5f-499e-a985-cd2190c92357");
+INSERT INTO O_ATTR
+	VALUES ("3ddfd5d7-3013-44ad-b08c-0c0447bd5948",
+	"52e804a1-1d5f-499e-a985-cd2190c92357",
+	"00000000-0000-0000-0000-000000000000",
+	'count',
+	'',
+	'',
+	'count',
+	0,
+	"283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_ID
+	VALUES (0,
+	"52e804a1-1d5f-499e-a985-cd2190c92357");
+INSERT INTO O_ID
+	VALUES (1,
+	"52e804a1-1d5f-499e-a985-cd2190c92357");
+INSERT INTO O_ID
+	VALUES (2,
+	"52e804a1-1d5f-499e-a985-cd2190c92357");
+INSERT INTO S_SS_PROXY
+	VALUES ("7e4a3148-bd5d-42d3-ae31-3f6ae697df1c",
+	'sstac',
+	'',
+	'',
+	0,
+	"daadf11d-eafe-4ea3-b051-e277fcfac841",
+	"00000000-0000-0000-0000-000000000000",
+	'../sstac.xtuml');

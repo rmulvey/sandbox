@@ -1,0 +1,27 @@
+-- BP 7.1 content: ModelClass syschar: 3 persistence-version: 7.1.5
+
+INSERT INTO O_OBJ
+	VALUES ("8144fbb6-a801-448d-bc55-6efc91d79ae1",
+	'a',
+	1,
+	'TOE_A',
+	'',
+	"37265e44-f608-4f7f-8a26-90d260bcd045");
+INSERT INTO O_ID
+	VALUES (0,
+	"8144fbb6-a801-448d-bc55-6efc91d79ae1");
+INSERT INTO O_ID
+	VALUES (1,
+	"8144fbb6-a801-448d-bc55-6efc91d79ae1");
+INSERT INTO O_ID
+	VALUES (2,
+	"8144fbb6-a801-448d-bc55-6efc91d79ae1");
+INSERT INTO S_SS_PROXY
+	VALUES ("37265e44-f608-4f7f-8a26-90d260bcd045",
+	'sstoe',
+	'',
+	'',
+	0,
+	"9c8d6d21-75b2-4554-94d3-235518bd8fbb",
+	"00000000-0000-0000-0000-000000000000",
+	'../sstoe.xtuml');

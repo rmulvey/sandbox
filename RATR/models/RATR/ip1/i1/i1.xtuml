@@ -1,0 +1,53 @@
+-- BP 7.1 content: Interface syschar: 3 persistence-version: 7.1.5
+
+INSERT INTO C_I
+	VALUES ("0f7c289e-69d9-4ad0-9671-562961719b30",
+	"f0b4c6e9-6b63-448c-8ec0-35259bf1c228",
+	'i1',
+	'');
+INSERT INTO C_EP
+	VALUES ("0c1aff9f-58e9-4cc2-b1ba-0140067a9ba1",
+	"0f7c289e-69d9-4ad0-9671-562961719b30",
+	-1);
+INSERT INTO C_AS
+	VALUES ("0c1aff9f-58e9-4cc2-b1ba-0140067a9ba1",
+	's1',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("3615195f-5d3f-4bf3-a307-02d291183d41",
+	"0c1aff9f-58e9-4cc2-b1ba-0140067a9ba1",
+	"283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	'sp1',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO C_EP
+	VALUES ("2d1b7dc5-8c2f-44a7-93ba-d160a8727d81",
+	"0f7c289e-69d9-4ad0-9671-562961719b30",
+	-1);
+INSERT INTO C_AS
+	VALUES ("2d1b7dc5-8c2f-44a7-93ba-d160a8727d81",
+	's2',
+	'',
+	0,
+	"0c1aff9f-58e9-4cc2-b1ba-0140067a9ba1");
+INSERT INTO IP_IP_PROXY
+	VALUES ("f0b4c6e9-6b63-448c-8ec0-35259bf1c228",
+	"00000000-0000-0000-0000-000000000000",
+	"a058d9bd-4bb2-4e30-bf27-889c130dfaaf",
+	"a058d9bd-4bb2-4e30-bf27-889c130dfaaf",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'ip1',
+	'',
+	'../ip1.xtuml');

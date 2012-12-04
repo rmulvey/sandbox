@@ -1,0 +1,76 @@
+-- BP 7.1 content: Interface syschar: 3 persistence-version: 7.1.5
+
+INSERT INTO C_I
+	VALUES ("17a37195-8f44-4f1a-b14d-bf542cb871da",
+	"f0b4c6e9-6b63-448c-8ec0-35259bf1c228",
+	'i2',
+	'');
+INSERT INTO C_EP
+	VALUES ("2e10b5b6-d08f-4ba9-baec-4c2babb42ce6",
+	"17a37195-8f44-4f1a-b14d-bf542cb871da",
+	-1);
+INSERT INTO C_IO
+	VALUES ("2e10b5b6-d08f-4ba9-baec-4c2babb42ce6",
+	"283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	'o2',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO C_PP
+	VALUES ("20368e96-d379-4178-bfd6-d213fcdc80b4",
+	"2e10b5b6-d08f-4ba9-baec-4c2babb42ce6",
+	"283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	'op2',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("8412f6cf-1eb8-445a-8e46-2bc35f1a5ace",
+	"17a37195-8f44-4f1a-b14d-bf542cb871da",
+	-1);
+INSERT INTO C_IO
+	VALUES ("8412f6cf-1eb8-445a-8e46-2bc35f1a5ace",
+	"44344fab-d38c-4f9a-b026-813149908987",
+	'o3',
+	'',
+	0,
+	'',
+	"2e10b5b6-d08f-4ba9-baec-4c2babb42ce6");
+INSERT INTO S_DT_PROXY
+	VALUES ("44344fab-d38c-4f9a-b026-813149908987",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO C_EP
+	VALUES ("6187ebca-7296-4485-949a-7f2712228b7d",
+	"17a37195-8f44-4f1a-b14d-bf542cb871da",
+	-1);
+INSERT INTO C_IO
+	VALUES ("6187ebca-7296-4485-949a-7f2712228b7d",
+	"283f0faf-7f66-45a3-9ea3-9bd00aa81c65",
+	'o4',
+	'',
+	0,
+	'',
+	"8412f6cf-1eb8-445a-8e46-2bc35f1a5ace");
+INSERT INTO IP_IP_PROXY
+	VALUES ("f0b4c6e9-6b63-448c-8ec0-35259bf1c228",
+	"00000000-0000-0000-0000-000000000000",
+	"a058d9bd-4bb2-4e30-bf27-889c130dfaaf",
+	"a058d9bd-4bb2-4e30-bf27-889c130dfaaf",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'ip1',
+	'',
+	'../ip1.xtuml');
