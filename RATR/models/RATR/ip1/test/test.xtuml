@@ -5,6 +5,27 @@ INSERT INTO C_I
 	"f0b4c6e9-6b63-448c-8ec0-35259bf1c228",
 	'test',
 	'');
+INSERT INTO C_EP
+	VALUES ("50d5c6fc-9394-42d9-b685-f59e96f11af6",
+	"1addaa9c-d5f3-49bc-b36d-4bc8a295daeb",
+	-1,
+	'testop1',
+	'');
+INSERT INTO C_IO
+	VALUES ("50d5c6fc-9394-42d9-b685-f59e96f11af6",
+	"44344fab-d38c-4f9a-b026-813149908987",
+	'testop1',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("44344fab-d38c-4f9a-b026-813149908987",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
 INSERT INTO IP_IP_PROXY
 	VALUES ("f0b4c6e9-6b63-448c-8ec0-35259bf1c228",
 	"00000000-0000-0000-0000-000000000000",
