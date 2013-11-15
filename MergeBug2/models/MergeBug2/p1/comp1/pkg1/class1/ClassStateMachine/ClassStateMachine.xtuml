@@ -13,7 +13,7 @@ INSERT INTO SM_STATE
 	VALUES ("5c0063fe-c3ea-4e7e-a104-3e80752e7513",
 	"051476b9-bae5-406b-8ecb-22552303ec9c",
 	"00000000-0000-0000-0000-000000000000",
-	'state1',
+	'statey',
 	1,
 	0);
 INSERT INTO SM_STATE
@@ -27,7 +27,7 @@ INSERT INTO SM_STATE
 	VALUES ("dc2f59fb-80c6-45ba-948e-9531719cee28",
 	"051476b9-bae5-406b-8ecb-22552303ec9c",
 	"00000000-0000-0000-0000-000000000000",
-	'state3',
+	'statex',
 	3,
 	0);
 INSERT INTO SM_MOAH
@@ -94,7 +94,7 @@ INSERT INTO GD_GE
 	"5c0063fe-c3ea-4e7e-a104-3e80752e7513",
 	41,
 	0,
-	'MergeBug2::p1::comp1::pkg1::class1::Class State Machine::state1');
+	'MergeBug2::p1::comp1::pkg1::class1::Class State Machine::statey');
 INSERT INTO GD_SHP
 	VALUES ("3ac85fde-a31c-4a3a-b949-79046495f0d2");
 INSERT INTO GD_NCS
@@ -142,7 +142,7 @@ INSERT INTO GD_GE
 	"dc2f59fb-80c6-45ba-948e-9531719cee28",
 	41,
 	0,
-	'MergeBug2::p1::comp1::pkg1::class1::Class State Machine::state3');
+	'MergeBug2::p1::comp1::pkg1::class1::Class State Machine::statex');
 INSERT INTO GD_SHP
 	VALUES ("40228e45-9e36-47b0-ade2-31cdb53fa077");
 INSERT INTO GD_NCS
