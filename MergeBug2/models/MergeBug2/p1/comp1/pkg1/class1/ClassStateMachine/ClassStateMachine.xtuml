@@ -13,7 +13,7 @@ INSERT INTO SM_STATE
 	VALUES ("5c0063fe-c3ea-4e7e-a104-3e80752e7513",
 	"051476b9-bae5-406b-8ecb-22552303ec9c",
 	"00000000-0000-0000-0000-000000000000",
-	'state1',
+	'statez',
 	1,
 	0);
 INSERT INTO SM_STATE
@@ -94,7 +94,7 @@ INSERT INTO GD_GE
 	"5c0063fe-c3ea-4e7e-a104-3e80752e7513",
 	41,
 	0,
-	'MergeBug2::p1::comp1::pkg1::class1::Class State Machine::state1');
+	'MergeBug2::p1::comp1::pkg1::class1::Class State Machine::statez');
 INSERT INTO GD_SHP
 	VALUES ("3ac85fde-a31c-4a3a-b949-79046495f0d2");
 INSERT INTO GD_NCS
