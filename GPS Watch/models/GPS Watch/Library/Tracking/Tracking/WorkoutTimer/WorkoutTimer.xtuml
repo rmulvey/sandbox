@@ -1,4 +1,4 @@
--- BP 7.1 content: ModelClass syschar: 3 persistence-version: 7.1.6
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
 	VALUES ("8d4b82cf-ec16-4fd9-925b-0e51eb64a2f7",
@@ -40,6 +40,17 @@ INSERT INTO O_TFR
 send LocationProvider::unregisterListener();
 send HeartRateProvider::unregisterListener();',
 	1,
+	'',
+	"1771a32f-5d3d-42c1-bf44-55f5e70c52f5");
+INSERT INTO O_TFR
+	VALUES ("1771a32f-5d3d-42c1-bf44-55f5e70c52f5",
+	"8d4b82cf-ec16-4fd9-925b-0e51eb64a2f7",
+	's_middle',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	3,
 	'',
 	"1363f0df-e630-4deb-a831-ed6cbcc9a974");
 INSERT INTO O_NBATTR

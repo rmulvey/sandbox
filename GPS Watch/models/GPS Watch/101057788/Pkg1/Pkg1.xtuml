@@ -6,57 +6,71 @@ INSERT INTO C_I
 	'Pkg1',
 	'');
 INSERT INTO C_EP
-	VALUES ("d3ed2193-ea39-4b8c-9cb4-4aeab0a8ee47",
+	VALUES ("a3fba005-f38c-43da-a38e-aee86d7a611c",
 	"478aad51-b2dc-4cad-a723-db16adaadf90",
 	-1,
-	'm_op1',
+	's_op1',
 	'');
 INSERT INTO C_IO
-	VALUES ("d3ed2193-ea39-4b8c-9cb4-4aeab0a8ee47",
+	VALUES ("a3fba005-f38c-43da-a38e-aee86d7a611c",
 	"ba5eda7a-def5-0000-0000-000000000000",
-	'm_op1',
+	's_op1',
 	'',
 	0,
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_EP
-	VALUES ("fed05ffa-86b9-44aa-a273-5e2115ac8ff5",
+	VALUES ("daf78a2e-701e-4821-a8ea-af65851da586",
 	"478aad51-b2dc-4cad-a723-db16adaadf90",
 	-1,
-	'm_op2',
+	's_op2',
 	'');
 INSERT INTO C_IO
-	VALUES ("fed05ffa-86b9-44aa-a273-5e2115ac8ff5",
+	VALUES ("daf78a2e-701e-4821-a8ea-af65851da586",
 	"ba5eda7a-def5-0000-0000-000000000000",
-	'm_op2',
+	's_op2',
 	'',
 	0,
 	'',
-	"d3ed2193-ea39-4b8c-9cb4-4aeab0a8ee47");
+	"a3fba005-f38c-43da-a38e-aee86d7a611c");
 INSERT INTO C_EP
-	VALUES ("8858a4f8-e03f-461a-b5ec-0ba77ce1ab09",
+	VALUES ("40102976-36e6-46c0-a260-05e11d550033",
 	"478aad51-b2dc-4cad-a723-db16adaadf90",
 	-1,
-	'm_sig1',
+	's_sig1',
 	'');
 INSERT INTO C_AS
-	VALUES ("8858a4f8-e03f-461a-b5ec-0ba77ce1ab09",
-	'm_sig1',
+	VALUES ("40102976-36e6-46c0-a260-05e11d550033",
+	's_sig1',
 	'',
 	0,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO C_EP
-	VALUES ("ba080c43-d7ed-4900-8f60-43fdd8c8f056",
+	VALUES ("ec1a63f9-20f9-4aff-99ba-073ec7dbaebe",
 	"478aad51-b2dc-4cad-a723-db16adaadf90",
 	-1,
-	'm_sig2',
+	's_sig2',
 	'');
 INSERT INTO C_AS
-	VALUES ("ba080c43-d7ed-4900-8f60-43fdd8c8f056",
-	'm_sig2',
+	VALUES ("ec1a63f9-20f9-4aff-99ba-073ec7dbaebe",
+	's_sig2',
 	'',
 	0,
-	"8858a4f8-e03f-461a-b5ec-0ba77ce1ab09");
+	"40102976-36e6-46c0-a260-05e11d550033");
+INSERT INTO C_EP
+	VALUES ("b3c1cffd-f83d-4fc4-a5d0-1a94e255e545",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'sameName',
+	'');
+INSERT INTO C_IO
+	VALUES ("b3c1cffd-f83d-4fc4-a5d0-1a94e255e545",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'sameName',
+	'',
+	0,
+	'',
+	"daf78a2e-701e-4821-a8ea-af65851da586");
 INSERT INTO PE_PE
 	VALUES ("478aad51-b2dc-4cad-a723-db16adaadf90",
 	1,

@@ -1,4 +1,4 @@
--- BP 7.1 content: ModelClass syschar: 3 persistence-version: 7.1.6
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
 	VALUES ("0679851b-cc52-42de-bb1e-f7d26a404f38",
@@ -7,6 +7,28 @@ INSERT INTO O_OBJ
 	'GPS',
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d64be2f7-d227-4455-b480-88f1c476317e",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38",
+	's_o1',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	3,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("189a5dbd-57b5-4104-aff1-30c44e051cab",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38",
+	's_o2',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'',
+	3,
+	'',
+	"d64be2f7-d227-4455-b480-88f1c476317e");
 INSERT INTO O_NBATTR
 	VALUES ("b8a35c1f-5da4-4e0e-82ac-885099b524f6",
 	"0679851b-cc52-42de-bb1e-f7d26a404f38");
@@ -48,6 +70,42 @@ INSERT INTO O_ATTR
 	'timer',
 	0,
 	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a53a13f3-fc70-4e6e-8318-37b2d04b8361",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38");
+INSERT INTO O_BATTR
+	VALUES ("a53a13f3-fc70-4e6e-8318-37b2d04b8361",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38");
+INSERT INTO O_ATTR
+	VALUES ("a53a13f3-fc70-4e6e-8318-37b2d04b8361",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38",
+	"a7624bef-089d-40e2-9e32-c7762a24111c",
+	's_a1',
+	'',
+	'',
+	's_a1',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("54c01759-b988-4dfd-876f-54b8f52d9463",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38");
+INSERT INTO O_BATTR
+	VALUES ("54c01759-b988-4dfd-876f-54b8f52d9463",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38");
+INSERT INTO O_ATTR
+	VALUES ("54c01759-b988-4dfd-876f-54b8f52d9463",
+	"0679851b-cc52-42de-bb1e-f7d26a404f38",
+	"a53a13f3-fc70-4e6e-8318-37b2d04b8361",
+	's_a2',
+	'',
+	'',
+	's_a2',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
 	'',
 	'');
 INSERT INTO O_ID

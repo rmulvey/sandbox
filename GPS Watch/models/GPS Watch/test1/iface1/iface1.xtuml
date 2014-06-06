@@ -6,15 +6,15 @@ INSERT INTO C_I
 	'iface1',
 	'');
 INSERT INTO C_EP
-	VALUES ("21a3bcef-2291-4192-93cb-639860a953e3",
+	VALUES ("849fedb5-c6d6-4bf1-9345-779c936b630d",
 	"889dbc51-c59e-435e-9d05-8667b7c3216b",
 	-1,
-	'm_op1',
+	's_op1',
 	'');
 INSERT INTO C_IO
-	VALUES ("21a3bcef-2291-4192-93cb-639860a953e3",
+	VALUES ("849fedb5-c6d6-4bf1-9345-779c936b630d",
 	"ba5eda7a-def5-0000-0000-000000000000",
-	'm_op1',
+	's_op1',
 	'',
 	0,
 	'',
