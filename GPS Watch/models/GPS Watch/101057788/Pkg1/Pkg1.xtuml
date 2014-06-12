@@ -5,6 +5,84 @@ INSERT INTO C_I
 	"00000000-0000-0000-0000-000000000000",
 	'Pkg1',
 	'');
+INSERT INTO C_EP
+	VALUES ("060599a0-100e-42d5-a2c5-5fffcffd2c23",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'm_op1',
+	'');
+INSERT INTO C_IO
+	VALUES ("060599a0-100e-42d5-a2c5-5fffcffd2c23",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'm_op1',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("4fa27bb5-12ea-45ab-a4d0-9ceb10f3989b",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'm_op2',
+	'');
+INSERT INTO C_IO
+	VALUES ("4fa27bb5-12ea-45ab-a4d0-9ceb10f3989b",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'm_op2',
+	'',
+	0,
+	'',
+	"060599a0-100e-42d5-a2c5-5fffcffd2c23");
+INSERT INTO C_EP
+	VALUES ("9b305932-a2ff-4674-bc87-2973feb2a91f",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'm_sig1',
+	'');
+INSERT INTO C_AS
+	VALUES ("9b305932-a2ff-4674-bc87-2973feb2a91f",
+	'm_sig1',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("1687fbfc-fa38-4ca4-9cf5-f1377fc76b59",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'm_sig2',
+	'');
+INSERT INTO C_AS
+	VALUES ("1687fbfc-fa38-4ca4-9cf5-f1377fc76b59",
+	'm_sig2',
+	'',
+	0,
+	"9b305932-a2ff-4674-bc87-2973feb2a91f");
+INSERT INTO C_EP
+	VALUES ("95fe05d1-0c5a-4b4b-be42-5d7863939775",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'sameName',
+	'');
+INSERT INTO C_IO
+	VALUES ("95fe05d1-0c5a-4b4b-be42-5d7863939775",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'sameName',
+	'',
+	0,
+	'',
+	"4fa27bb5-12ea-45ab-a4d0-9ceb10f3989b");
+INSERT INTO C_EP
+	VALUES ("db992b34-2931-41fd-8117-802ee441ab7d",
+	"478aad51-b2dc-4cad-a723-db16adaadf90",
+	-1,
+	'sameName',
+	'');
+INSERT INTO C_AS
+	VALUES ("db992b34-2931-41fd-8117-802ee441ab7d",
+	'sameName',
+	'',
+	0,
+	"1687fbfc-fa38-4ca4-9cf5-f1377fc76b59");
 INSERT INTO PE_PE
 	VALUES ("478aad51-b2dc-4cad-a723-db16adaadf90",
 	1,
