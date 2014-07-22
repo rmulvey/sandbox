@@ -70,3 +70,5 @@ If you want to rebuild the project after modifying the model or a marking file:
 * Right-click on the project and choose 'Build Project' in the context menu
 
 Have fun!
+
+Added a line to demonstrate Git pull.
