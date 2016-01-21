@@ -1,0 +1,90 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("1cc3345c-74e6-4b4b-a25b-5ef4c150c138",
+	'TrackPoint',
+	3,
+	'TrackPoint',
+	'Each instance represents a single location through which the device
+passed during a workout session.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("8824470c-effa-463a-bd57-73c0ce0e6aa5",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_BATTR
+	VALUES ("8824470c-effa-463a-bd57-73c0ce0e6aa5",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_ATTR
+	VALUES ("8824470c-effa-463a-bd57-73c0ce0e6aa5",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138",
+	"00000000-0000-0000-0000-000000000000",
+	'time',
+	'Number of seconds between start time for the associated workout and recording of this location.
+',
+	'',
+	'time',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("548ab7d8-fc44-406d-bf9e-6b838f0b7f46",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_BATTR
+	VALUES ("548ab7d8-fc44-406d-bf9e-6b838f0b7f46",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_ATTR
+	VALUES ("548ab7d8-fc44-406d-bf9e-6b838f0b7f46",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138",
+	"8824470c-effa-463a-bd57-73c0ce0e6aa5",
+	'longitude',
+	'Longitude, expressed in decimal degrees where eastern figures are positve
+and western ones are negative.',
+	'',
+	'longitude',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("b80642d6-bbe4-4839-9908-2ab1680f428b",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_BATTR
+	VALUES ("b80642d6-bbe4-4839-9908-2ab1680f428b",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_ATTR
+	VALUES ("b80642d6-bbe4-4839-9908-2ab1680f428b",
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138",
+	"548ab7d8-fc44-406d-bf9e-6b838f0b7f46",
+	'latitude',
+	'Latitude, expressed in decimal degrees, where northern figures are positive
+and southern ones are negative.',
+	'',
+	'latitude',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_ID
+	VALUES (1,
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO O_ID
+	VALUES (2,
+	"1cc3345c-74e6-4b4b-a25b-5ef4c150c138");
+INSERT INTO PE_PE
+	VALUES ("1cc3345c-74e6-4b4b-a25b-5ef4c150c138",
+	1,
+	"e37aa241-e286-4df5-959f-871a2eb09015",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("e37aa241-e286-4df5-959f-871a2eb09015",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'Tracking',
+	'',
+	0,
+	'../Tracking.xtuml');

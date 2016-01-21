@@ -1,0 +1,479 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'Start Stop Reset Formalized',
+	'',
+	0);
+INSERT INTO SQ_P
+	VALUES ("871b2ec6-138b-4d76-8b28-399b4378179a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_AP
+	VALUES ("871b2ec6-138b-4d76-8b28-399b4378179a",
+	'User',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("871b2ec6-138b-4d76-8b28-399b4378179a",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("2c79e356-5014-4ad0-8781-2a714d686598",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("2c79e356-5014-4ad0-8781-2a714d686598",
+	"0904c6e9-c370-49d8-bf27-782a1e59a175",
+	'GPSWatch-NoGraphics::Library::UI',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("0904c6e9-c370-49d8-bf27-782a1e59a175",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/UI/UI.xtuml');
+INSERT INTO PE_PE
+	VALUES ("2c79e356-5014-4ad0-8781-2a714d686598",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("8f890b73-2de6-407c-8585-be2e3284c301",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("8f890b73-2de6-407c-8585-be2e3284c301",
+	"308da00e-a7b7-4924-b832-34bd605b3534",
+	'GPSWatch-NoGraphics::Library::Tracking',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("308da00e-a7b7-4924-b832-34bd605b3534",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'The Tracking component encapsulates the entire application software. This is the 
+only component in the system from which code will be generated for the final 
+product.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/Tracking/Tracking.xtuml');
+INSERT INTO PE_PE
+	VALUES ("8f890b73-2de6-407c-8585-be2e3284c301",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("cbda3f72-3e78-4182-9b6f-a71d4689c138",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("cbda3f72-3e78-4182-9b6f-a71d4689c138",
+	"015e1a05-ff08-4bc5-b163-93ce99e08ca0",
+	'GPSWatch-NoGraphics::Library::Location',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("015e1a05-ff08-4bc5-b163-93ce99e08ca0",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Location',
+	'Simulates a the GPS hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/Location/Location.xtuml');
+INSERT INTO PE_PE
+	VALUES ("cbda3f72-3e78-4182-9b6f-a71d4689c138",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("44e3f694-f8c9-4ae4-aeb5-d0b4fa80ac02",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("44e3f694-f8c9-4ae4-aeb5-d0b4fa80ac02",
+	"22eb9a2c-7c47-4cd9-a6d5-7f570d5af4af",
+	'GPSWatch-NoGraphics::Library::HeartRateMonitor',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("22eb9a2c-7c47-4cd9-a6d5-7f570d5af4af",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateMonitor',
+	'Simulates a pulse monitor hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/HeartRateMonitor/HeartRateMonitor.xtuml');
+INSERT INTO PE_PE
+	VALUES ("44e3f694-f8c9-4ae4-aeb5-d0b4fa80ac02",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("0bf251f2-779f-495a-a3c2-16362f046bc8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("0bf251f2-779f-495a-a3c2-16362f046bc8",
+	"871b2ec6-138b-4d76-8b28-399b4378179a",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("0bf251f2-779f-495a-a3c2-16362f046bc8",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("8c39e6c8-6f5b-46dc-9192-82f94d091e45",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("8c39e6c8-6f5b-46dc-9192-82f94d091e45",
+	"2c79e356-5014-4ad0-8781-2a714d686598",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("8c39e6c8-6f5b-46dc-9192-82f94d091e45",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	"8f890b73-2de6-407c-8585-be2e3284c301",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("25110283-d154-406d-a9de-ec1ee2bd2cce",
+	'Clear track and reset all cached values',
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	'');
+INSERT INTO PE_PE
+	VALUES ("0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("c2e47935-83e8-4af2-9014-6a16094317e4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("c2e47935-83e8-4af2-9014-6a16094317e4",
+	"cbda3f72-3e78-4182-9b6f-a71d4689c138",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("3cfb4d44-6f47-4a44-8af8-c6528274d46b",
+	'',
+	"c2e47935-83e8-4af2-9014-6a16094317e4",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("6f3ffccc-3750-4021-8255-fa33ac22f99e",
+	"748e706b-180e-48d9-abe5-83a5e0f98b1f",
+	"3cfb4d44-6f47-4a44-8af8-c6528274d46b",
+	'Provide updates to client every 2 seconds',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("748e706b-180e-48d9-abe5-83a5e0f98b1f",
+	'',
+	"c2e47935-83e8-4af2-9014-6a16094317e4",
+	'');
+INSERT INTO PE_PE
+	VALUES ("c2e47935-83e8-4af2-9014-6a16094317e4",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	"44e3f694-f8c9-4ae4-aeb5-d0b4fa80ac02",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("61071665-ba80-45fc-923f-8ea6287228b1",
+	'',
+	"8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("91fb5dd2-d066-482b-bc8b-036c930b9191",
+	"c31630d3-462b-4128-a1e3-0801db0f6ea4",
+	"61071665-ba80-45fc-923f-8ea6287228b1",
+	'Provide updates to clients every 3 seconds',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("c31630d3-462b-4128-a1e3-0801db0f6ea4",
+	'',
+	"8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	'');
+INSERT INTO PE_PE
+	VALUES ("8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO MSG_M
+	VALUES ("f37c1565-814d-4c2b-b886-7ac9fe54f0d6",
+	"8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("f37c1565-814d-4c2b-b886-7ac9fe54f0d6",
+	'Informal Message',
+	'',
+	'',
+	'',
+	'',
+	1,
+	'heartRateChanged',
+	'');
+INSERT INTO MSG_SIG
+	VALUES ("f37c1565-814d-4c2b-b886-7ac9fe54f0d6",
+	"aa8b4e07-0f8c-431f-90f7-fda756454bc2");
+INSERT INTO C_AS_PROXY
+	VALUES ("aa8b4e07-0f8c-431f-90f7-fda756454bc2",
+	'heartRateChanged',
+	'',
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO MSG_A
+	VALUES ("6c07a596-73b8-48a0-8593-ad2535558d4a",
+	"00000000-0000-0000-0000-000000000000",
+	"f37c1565-814d-4c2b-b886-7ac9fe54f0d6",
+	'heartRate',
+	'',
+	'',
+	'',
+	1);
+INSERT INTO MSG_EPA
+	VALUES ("6c07a596-73b8-48a0-8593-ad2535558d4a",
+	"34de5824-851a-4a0a-9f14-a272bde02b9a");
+INSERT INTO C_PP_PROXY
+	VALUES ("34de5824-851a-4a0a-9f14-a272bde02b9a",
+	"aa8b4e07-0f8c-431f-90f7-fda756454bc2",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'heartRate',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO PE_PE
+	VALUES ("f37c1565-814d-4c2b-b886-7ac9fe54f0d6",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("16e01d61-b0dd-49d7-a443-c294a440f945",
+	"8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("16e01d61-b0dd-49d7-a443-c294a440f945",
+	'Informal Message',
+	'',
+	'',
+	'',
+	'',
+	1,
+	'heartRateChanged',
+	'');
+INSERT INTO MSG_SIG
+	VALUES ("16e01d61-b0dd-49d7-a443-c294a440f945",
+	"aa8b4e07-0f8c-431f-90f7-fda756454bc2");
+INSERT INTO MSG_A
+	VALUES ("b235a043-954e-4ce9-8d95-e63c2b337664",
+	"00000000-0000-0000-0000-000000000000",
+	"16e01d61-b0dd-49d7-a443-c294a440f945",
+	'heartRate',
+	'',
+	'',
+	'',
+	1);
+INSERT INTO MSG_EPA
+	VALUES ("b235a043-954e-4ce9-8d95-e63c2b337664",
+	"34de5824-851a-4a0a-9f14-a272bde02b9a");
+INSERT INTO PE_PE
+	VALUES ("16e01d61-b0dd-49d7-a443-c294a440f945",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("be182f4a-7478-49a6-bdc7-bad7bddcff0a",
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	"c2e47935-83e8-4af2-9014-6a16094317e4",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("be182f4a-7478-49a6-bdc7-bad7bddcff0a",
+	'Informal Message',
+	'',
+	'',
+	'',
+	'',
+	1,
+	'registerListener',
+	'');
+INSERT INTO MSG_SIG
+	VALUES ("be182f4a-7478-49a6-bdc7-bad7bddcff0a",
+	"64885dbf-a415-4273-97f7-feb32fbf475d");
+INSERT INTO C_AS_PROXY
+	VALUES ("64885dbf-a415-4273-97f7-feb32fbf475d",
+	'registerListener',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO PE_PE
+	VALUES ("be182f4a-7478-49a6-bdc7-bad7bddcff0a",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("82088b5e-e069-4af7-82b6-68ada9178960",
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	"c2e47935-83e8-4af2-9014-6a16094317e4",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("82088b5e-e069-4af7-82b6-68ada9178960",
+	'Informal Message',
+	'',
+	'',
+	'',
+	'',
+	1,
+	'unregisterListener',
+	'');
+INSERT INTO MSG_SIG
+	VALUES ("82088b5e-e069-4af7-82b6-68ada9178960",
+	"a4ecc9e5-75f0-4300-993f-4106e7efa9be");
+INSERT INTO C_AS_PROXY
+	VALUES ("a4ecc9e5-75f0-4300-993f-4106e7efa9be",
+	'unregisterListener',
+	'',
+	0,
+	"64885dbf-a415-4273-97f7-feb32fbf475d",
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO PE_PE
+	VALUES ("82088b5e-e069-4af7-82b6-68ada9178960",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("06107084-f5a3-4a7f-904b-71b716911ea1",
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	"8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("06107084-f5a3-4a7f-904b-71b716911ea1",
+	'Informal Message',
+	'',
+	'',
+	'',
+	'',
+	1,
+	'registerListener',
+	'');
+INSERT INTO MSG_SIG
+	VALUES ("06107084-f5a3-4a7f-904b-71b716911ea1",
+	"9d6b897f-52d7-41a7-808e-09426d405f32");
+INSERT INTO C_AS_PROXY
+	VALUES ("9d6b897f-52d7-41a7-808e-09426d405f32",
+	'registerListener',
+	'',
+	0,
+	"aa8b4e07-0f8c-431f-90f7-fda756454bc2",
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO PE_PE
+	VALUES ("06107084-f5a3-4a7f-904b-71b716911ea1",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("9802ca93-d4a6-4d84-81f7-2cb0bac10cd1",
+	"0ac6b55d-ef4d-4af5-89fe-16f02f04e622",
+	"8ef73973-bd1d-449e-8a60-961f04c1f67a",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("9802ca93-d4a6-4d84-81f7-2cb0bac10cd1",
+	'Informal Message',
+	'',
+	'',
+	'',
+	'',
+	1,
+	'unregisterListener',
+	'');
+INSERT INTO MSG_SIG
+	VALUES ("9802ca93-d4a6-4d84-81f7-2cb0bac10cd1",
+	"29bedeef-7696-4fd3-8d24-b99dd9e06510");
+INSERT INTO C_AS_PROXY
+	VALUES ("29bedeef-7696-4fd3-8d24-b99dd9e06510",
+	'unregisterListener',
+	'',
+	0,
+	"9d6b897f-52d7-41a7-808e-09426d405f32",
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO PE_PE
+	VALUES ("9802ca93-d4a6-4d84-81f7-2cb0bac10cd1",
+	1,
+	"a52b54af-850f-4660-9dae-87d2d5c821e5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO PE_PE
+	VALUES ("a52b54af-850f-4660-9dae-87d2d5c821e5",
+	1,
+	"78762faf-58b0-4f88-8a98-c60968b5fa1c",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("78762faf-58b0-4f88-8a98-c60968b5fa1c",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'Sequences',
+	'',
+	0,
+	'../Sequences.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../../GPSWatch-NoGraphics.xtuml');

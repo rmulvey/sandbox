@@ -1,0 +1,71 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("0411c378-8da3-4ce4-9975-e35bc82fcee0",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'UC03 - MultiLapWorkout',
+	'',
+	0);
+INSERT INTO SQ_P
+	VALUES ("5ccf556f-3937-40f7-8d7d-95c470743672",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO IA_UCP
+	VALUES ("5ccf556f-3937-40f7-8d7d-95c470743672",
+	'UC03 - MultiLapWorkout',
+	'Pre-conditions
+	No track logs exist on the device.
+	Timer is stopped.
+	Elapsed time is zero.
+	Accumulated distance is zero.
+	Display shows elapsed time and accumulated distance.
+
+Post-conditions
+	A track log exists on the device.
+	A lap marker exists on the device.
+	Timer is stopped.
+	Display shows lap count of one.
+	
+Scenario
+	1.	User pushes the start/stop button and begins moving (walking, running, flying, cycling, etc.).
+	2.	The timer starts.
+	3.	The display shows:
+		a.	Accumulated distance
+		b.	Elapsed time
+	4.	Periodically throughout the workout the device stores, in the active track log, 
+	    the current location of the device.
+	5.  User pushes mode button
+	6.	Display shows lap count is zero.
+	5.  User pushes Lap button
+	6	A lap marker indicating the current location and time, is stored.
+	7.	Display shows lap count is one.
+	7.  User pushes the start/stop button.
+	8.	The elapsed time and distance stop accumulating.
+	9.	Display shows lap count is one.
+	
+	');
+INSERT INTO PE_PE
+	VALUES ("5ccf556f-3937-40f7-8d7d-95c470743672",
+	1,
+	"0411c378-8da3-4ce4-9975-e35bc82fcee0",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO PE_PE
+	VALUES ("0411c378-8da3-4ce4-9975-e35bc82fcee0",
+	1,
+	"58b86566-1314-4b39-af0a-7ea08f67930a",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("58b86566-1314-4b39-af0a-7ea08f67930a",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'RequirementsClarification',
+	'',
+	0,
+	'../RequirementsClarification.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../../GPSWatch-NoGraphics.xtuml');

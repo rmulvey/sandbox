@@ -1,0 +1,118 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'ButtonFunctions',
+	'Each function within this package represents one of the buttons
+on the watch.  When a function is executed, it sends the 
+corresponding interface signal out through the UI port.
+This allows a user executing models in Verifier to simulate
+the use of the watch by invoking these functions to 
+represent button pushes.',
+	0);
+INSERT INTO S_SYNC
+	VALUES ("3a3151dc-619c-4350-94aa-848492d527a4",
+	"00000000-0000-0000-0000-000000000000",
+	'sendLapResetPressed',
+	'',
+	'send UI::lapResetPressed();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("3a3151dc-619c-4350-94aa-848492d527a4",
+	1,
+	"e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("6c8b34e5-87bd-44bc-979e-40a09357aacc",
+	"00000000-0000-0000-0000-000000000000",
+	'sendLightPressed',
+	'',
+	'send UI::lightPressed();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("6c8b34e5-87bd-44bc-979e-40a09357aacc",
+	1,
+	"e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("8d6c5f52-4db7-40b7-88c0-ec2a0d7d4ae1",
+	"00000000-0000-0000-0000-000000000000",
+	'sendModePressed',
+	'',
+	'send UI::modePressed();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("8d6c5f52-4db7-40b7-88c0-ec2a0d7d4ae1",
+	1,
+	"e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("c79841e1-54e1-4424-a15c-80ac79282df5",
+	"00000000-0000-0000-0000-000000000000",
+	'sendStartStopPressed',
+	'',
+	'send UI::startStopPressed();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("c79841e1-54e1-4424-a15c-80ac79282df5",
+	1,
+	"e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("139efaf4-94c6-4d2a-99bc-e037cefe58dd",
+	"00000000-0000-0000-0000-000000000000",
+	'sendTargetPressed',
+	'',
+	'send UI::setTargetPressed();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("139efaf4-94c6-4d2a-99bc-e037cefe58dd",
+	1,
+	"e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("e54bd7f4-2f7f-485a-b38f-2a25bcccaa89",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"0904c6e9-c370-49d8-bf27-782a1e59a175",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("0904c6e9-c370-49d8-bf27-782a1e59a175",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../UI.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../../../GPSWatch-NoGraphics.xtuml');

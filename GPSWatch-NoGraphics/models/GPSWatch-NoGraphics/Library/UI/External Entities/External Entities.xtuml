@@ -1,0 +1,224 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("e6bf1621-a5fb-4c98-86ce-2437eeba3846",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'External Entities',
+	'',
+	0);
+INSERT INTO S_EE
+	VALUES ("4b89d525-6468-4358-a329-510fe929bf96",
+	'Graphical User Interface',
+	'',
+	'GuiBridge',
+	"00000000-0000-0000-0000-000000000000",
+	'',
+	'Graphical User Interface',
+	1);
+INSERT INTO S_BRG
+	VALUES ("bef82c50-501c-4e85-b742-373b7e33a131",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'feedSetTargetPressedEvent',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("619c6317-98e6-4bc5-824e-f7e74d247ca5",
+	"bef82c50-501c-4e85-b742-373b7e33a131",
+	'evt',
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BRG
+	VALUES ("f348d5a0-02d7-447f-8f8d-f9b95e3db7e3",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'feedModePressedEvent',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("ab0930d5-a7ea-4ef3-8596-b46509b03f7b",
+	"f348d5a0-02d7-447f-8f8d-f9b95e3db7e3",
+	'evt',
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BRG
+	VALUES ("d77957a8-8f60-48af-aaab-ef42afa7b0fe",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'feedLightPressedEvent',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("e0cdc54f-5d30-4b1b-9c20-23a27a0e86db",
+	"d77957a8-8f60-48af-aaab-ef42afa7b0fe",
+	'evt',
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BRG
+	VALUES ("4027563d-a443-4462-a2d9-91a364350303",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'feedLapResetPressedEvent',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("0ba6094c-047c-4287-a775-24501b96553f",
+	"4027563d-a443-4462-a2d9-91a364350303",
+	'evt',
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BRG
+	VALUES ("35d4cd5f-68d2-48f0-93bb-0dab32bafd21",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'feedStartStopPressedEvent',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("c304f526-8cd0-4e35-ac76-cf76ed05feb5",
+	"35d4cd5f-68d2-48f0-93bb-0dab32bafd21",
+	'evt',
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BRG
+	VALUES ("36dfe68a-0dd0-4a68-a60e-b42da1bd3bb9",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'setData',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("50bc13e3-0b54-4e68-8826-26f07f44ae6a",
+	"36dfe68a-0dd0-4a68-a60e-b42da1bd3bb9",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BPARM
+	VALUES ("372279df-3d27-4b9c-9853-c20b2743da4f",
+	"36dfe68a-0dd0-4a68-a60e-b42da1bd3bb9",
+	'unit',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"50bc13e3-0b54-4e68-8826-26f07f44ae6a",
+	'');
+INSERT INTO S_BRG
+	VALUES ("eddc14f2-11bd-47f1-b087-02c8bdad776b",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'setTime',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("70d062e0-2c15-4335-9ae0-6303c9b608ed",
+	"eddc14f2-11bd-47f1-b087-02c8bdad776b",
+	'time',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_BRG
+	VALUES ("6b2106e5-f03a-4153-bc13-33404ca60a86",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'connect',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	1,
+	'');
+INSERT INTO S_BRG
+	VALUES ("7c410042-7f42-4d4f-9856-c63a716a60cf",
+	"4b89d525-6468-4358-a329-510fe929bf96",
+	'setIndicator',
+	'',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'',
+	3,
+	'');
+INSERT INTO S_BPARM
+	VALUES ("9c442cea-f69f-4d56-be7c-3c080c6387be",
+	"7c410042-7f42-4d4f-9856-c63a716a60cf",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("4b89d525-6468-4358-a329-510fe929bf96",
+	1,
+	"e6bf1621-a5fb-4c98-86ce-2437eeba3846",
+	"00000000-0000-0000-0000-000000000000",
+	5);
+INSERT INTO PE_PE
+	VALUES ("e6bf1621-a5fb-4c98-86ce-2437eeba3846",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"0904c6e9-c370-49d8-bf27-782a1e59a175",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("0904c6e9-c370-49d8-bf27-782a1e59a175",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../UI.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../../../GPSWatch-NoGraphics.xtuml');

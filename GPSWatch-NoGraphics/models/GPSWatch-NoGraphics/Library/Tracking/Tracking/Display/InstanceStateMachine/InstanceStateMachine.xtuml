@@ -1,0 +1,474 @@
+-- BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO SM_ISM
+	VALUES ("862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"58210918-e19e-49e5-a8b6-9a07e8b6374e");
+INSERT INTO SM_SM
+	VALUES ("862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_LEVT
+	VALUES ("d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'modeChange',
+	0,
+	'',
+	'Display1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'refresh',
+	0,
+	'',
+	'Display2',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	'displayDistance',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	'displaySpeed',
+	2,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	'displayPace',
+	3,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	'displayHeartRate',
+	4,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000",
+	'displayLapCount',
+	5,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("a2603f24-b33a-4f77-8d51-bfd7c144ce6e",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("a2603f24-b33a-4f77-8d51-bfd7c144ce6e",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("38c3411c-489d-4b41-b0ee-2251b04ca294",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("38c3411c-489d-4b41-b0ee-2251b04ca294",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("c89b8c7c-4164-4bcf-a9d4-ce16bb76818a",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("c89b8c7c-4164-4bcf-a9d4-ce16bb76818a",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("70267149-0a66-4c40-a445-660ea020534a",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("70267149-0a66-4c40-a445-660ea020534a",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("b1b0a2b1-e724-445a-a2e1-beb6b951c739",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("b1b0a2b1-e724-445a-a2e1-beb6b951c739",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("3aab48f8-f1cb-426e-bccf-dae7059447ef",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("3aab48f8-f1cb-426e-bccf-dae7059447ef",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"7c863abd-f999-40de-ab5c-94ea75dc80c5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("a52615dd-da91-45b8-877a-4e4b59dba719",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("a52615dd-da91-45b8-877a-4e4b59dba719",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"2a52c532-ac96-48ba-8c6f-6109894ce713",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("95bbf500-70a1-491a-b66b-23919af07bf7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("95bbf500-70a1-491a-b66b-23919af07bf7",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("fa5ade0d-48a2-4033-8f81-74fa0f4485db",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"ddc9f021-0d8e-40be-9265-3547e0ec9cbb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("fa5ade0d-48a2-4033-8f81-74fa0f4485db",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"21d7682c-84ad-42bc-9c70-a6bce75a99be",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("0bda5a8f-d44e-485b-9719-f409b0b9363e",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"73d7a88a-9882-4a7d-a5f1-60b55aaed10f",
+	"d9e9e4cd-00bc-4a9c-9eb1-59f092c196a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("0bda5a8f-d44e-485b-9719-f409b0b9363e",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"5af1d41a-dd15-4207-8361-9eeb271b1883",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("5e90fe43-9fe7-496d-9405-2a035d567193",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"5af1d41a-dd15-4207-8361-9eeb271b1883");
+INSERT INTO SM_AH
+	VALUES ("5e90fe43-9fe7-496d-9405-2a035d567193",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("5e90fe43-9fe7-496d-9405-2a035d567193",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'select one session 
+  related by self->WorkoutSession[R7.''indicates current status of''];
+distance = session.accumulatedDistance;
+if ( distance > 1000.0 )
+  send UI::setData(value: distance / 1000.0, unit: Unit::km);
+else 
+  send UI::setData(value: distance, unit: Unit::meters);
+end if;
+send UI::setIndicator( indicator: Display::goalDispositionIndicator() );',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("b8cf0f44-d066-4016-89ca-12022eccb3b1",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"7c863abd-f999-40de-ab5c-94ea75dc80c5");
+INSERT INTO SM_AH
+	VALUES ("b8cf0f44-d066-4016-89ca-12022eccb3b1",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("b8cf0f44-d066-4016-89ca-12022eccb3b1",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'select one session 
+  related by self->WorkoutSession[R7.''indicates current status of''];
+speed = session.currentSpeed;
+send UI::setData(value: speed, unit: Unit::kmPerHour);
+send UI::setIndicator( indicator: Display::goalDispositionIndicator() );',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("8f2863b1-2414-47c8-9b64-1bbb253784f6",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"21d7682c-84ad-42bc-9c70-a6bce75a99be");
+INSERT INTO SM_AH
+	VALUES ("8f2863b1-2414-47c8-9b64-1bbb253784f6",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("8f2863b1-2414-47c8-9b64-1bbb253784f6",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'select one session 
+  related by self->WorkoutSession[R7.''indicates current status of''];
+pace = session.currentPace;
+send UI::setData(value: pace, unit: Unit::minPerKm);
+send UI::setIndicator( indicator: Display::goalDispositionIndicator() );',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("35b48c0b-d18b-4ec1-9bc6-0148cb5f7449",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"2a52c532-ac96-48ba-8c6f-6109894ce713");
+INSERT INTO SM_AH
+	VALUES ("35b48c0b-d18b-4ec1-9bc6-0148cb5f7449",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("35b48c0b-d18b-4ec1-9bc6-0148cb5f7449",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'select one session 
+  related by self->WorkoutSession[R7.''indicates current status of''];
+heartRate = session.currentHeartRate;
+send UI::setData(value: heartRate, unit: Unit::bpm);
+send UI::setIndicator( indicator: Display::goalDispositionIndicator() );',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("57c8576a-63a9-45ed-a45a-e9b76a1fd1b9",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"73d7a88a-9882-4a7d-a5f1-60b55aaed10f");
+INSERT INTO SM_AH
+	VALUES ("57c8576a-63a9-45ed-a45a-e9b76a1fd1b9",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("57c8576a-63a9-45ed-a45a-e9b76a1fd1b9",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'select many lapMarkers related by
+  self->WorkoutSession[R7.''indicates current status of'']->
+  TrackLog[R4.''captures path in'']->LapMarker[R5.''has laps defined by''];
+send UI::setData(value: cardinality lapMarkers, unit: Unit::laps);
+send UI::setIndicator( indicator: Display::goalDispositionIndicator() );
+',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("33218502-2de8-4e7b-9410-8d1800e8fe99",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"a2603f24-b33a-4f77-8d51-bfd7c144ce6e");
+INSERT INTO SM_AH
+	VALUES ("33218502-2de8-4e7b-9410-8d1800e8fe99",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("33218502-2de8-4e7b-9410-8d1800e8fe99",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("d47ae167-8756-4543-8a95-c34773eaab3d",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"38c3411c-489d-4b41-b0ee-2251b04ca294");
+INSERT INTO SM_AH
+	VALUES ("d47ae167-8756-4543-8a95-c34773eaab3d",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("d47ae167-8756-4543-8a95-c34773eaab3d",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("4ae563bc-2556-4a9f-8221-0267a9ecec62",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"c89b8c7c-4164-4bcf-a9d4-ce16bb76818a");
+INSERT INTO SM_AH
+	VALUES ("4ae563bc-2556-4a9f-8221-0267a9ecec62",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("4ae563bc-2556-4a9f-8221-0267a9ecec62",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("e32038b9-1cb8-44f0-9ffb-31b9de81b24f",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"70267149-0a66-4c40-a445-660ea020534a");
+INSERT INTO SM_AH
+	VALUES ("e32038b9-1cb8-44f0-9ffb-31b9de81b24f",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("e32038b9-1cb8-44f0-9ffb-31b9de81b24f",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("64374b38-ed61-44da-88a9-8324a4762496",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"b1b0a2b1-e724-445a-a2e1-beb6b951c739");
+INSERT INTO SM_AH
+	VALUES ("64374b38-ed61-44da-88a9-8324a4762496",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("64374b38-ed61-44da-88a9-8324a4762496",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("1e10f93a-50b8-4640-a041-696cf5fd8eff",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"3aab48f8-f1cb-426e-bccf-dae7059447ef");
+INSERT INTO SM_AH
+	VALUES ("1e10f93a-50b8-4640-a041-696cf5fd8eff",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("1e10f93a-50b8-4640-a041-696cf5fd8eff",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("4ddfb06a-e209-4869-b110-389a9be3b1e3",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"a52615dd-da91-45b8-877a-4e4b59dba719");
+INSERT INTO SM_AH
+	VALUES ("4ddfb06a-e209-4869-b110-389a9be3b1e3",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("4ddfb06a-e209-4869-b110-389a9be3b1e3",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("27a8fab7-36e0-4037-b16c-b2148a030288",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"95bbf500-70a1-491a-b66b-23919af07bf7");
+INSERT INTO SM_AH
+	VALUES ("27a8fab7-36e0-4037-b16c-b2148a030288",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("27a8fab7-36e0-4037-b16c-b2148a030288",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("f7ff59e0-cd41-4148-a1f3-b3ef2cb05fd3",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"fa5ade0d-48a2-4033-8f81-74fa0f4485db");
+INSERT INTO SM_AH
+	VALUES ("f7ff59e0-cd41-4148-a1f3-b3ef2cb05fd3",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("f7ff59e0-cd41-4148-a1f3-b3ef2cb05fd3",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("d8fb358f-9430-47a8-8dc3-1a3c7364fab0",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	"0bda5a8f-d44e-485b-9719-f409b0b9363e");
+INSERT INTO SM_AH
+	VALUES ("d8fb358f-9430-47a8-8dc3-1a3c7364fab0",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de");
+INSERT INTO SM_ACT
+	VALUES ("d8fb358f-9430-47a8-8dc3-1a3c7364fab0",
+	"862f23b3-5dcf-4f40-bfc7-aa8db1e504de",
+	1,
+	'',
+	'');
+INSERT INTO O_OBJ_PROXY
+	VALUES ("58210918-e19e-49e5-a8b6-9a07e8b6374e",
+	'Display',
+	6,
+	'Display',
+	'Represents the display for the device, managing the sequence of screens
+and displaying the appropriate values based on the current mode of the 
+display.  
+This is a singleton instance.
+',
+	"00000000-0000-0000-0000-000000000000",
+	'../Display.xtuml');

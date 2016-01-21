@@ -1,0 +1,73 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("d610f311-0421-46d0-acb4-53c7f5cf1e70",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationUtil',
+	'');
+INSERT INTO C_EP
+	VALUES ("7eeaf3e4-601d-40f6-8f74-661fd047b41e",
+	"d610f311-0421-46d0-acb4-53c7f5cf1e70",
+	-1,
+	'getDistance',
+	'Returns distance, in kilometers, between the "from" and "to" coordinates passed as parameters.
+The coordinates must be passed as decimal degrees.');
+INSERT INTO C_IO
+	VALUES ("7eeaf3e4-601d-40f6-8f74-661fd047b41e",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'getDistance',
+	'Returns distance, in kilometers, between the "from" and "to" coordinates passed as parameters.
+The coordinates must be passed as decimal degrees.',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("12312e5b-a178-4512-8a79-673be016a81d",
+	"7eeaf3e4-601d-40f6-8f74-661fd047b41e",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'fromLat',
+	'Latitude for the "from" coordinates.',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("d5dca00e-20bb-4aae-9ae0-f56f1fefc717",
+	"7eeaf3e4-601d-40f6-8f74-661fd047b41e",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'toLat',
+	'Latitude for the "to" coordinates.',
+	0,
+	'',
+	"e5fb8814-9215-46b9-ade2-3d739fe3524f");
+INSERT INTO C_PP
+	VALUES ("e5fb8814-9215-46b9-ade2-3d739fe3524f",
+	"7eeaf3e4-601d-40f6-8f74-661fd047b41e",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'fromLong',
+	'Longitude for the "from" coordinates.',
+	0,
+	'',
+	"12312e5b-a178-4512-8a79-673be016a81d");
+INSERT INTO C_PP
+	VALUES ("c0fcf7e9-068c-4cb9-93c8-31c522f16766",
+	"7eeaf3e4-601d-40f6-8f74-661fd047b41e",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'toLong',
+	'Longitude for the "to" coordinates.',
+	0,
+	'',
+	"d5dca00e-20bb-4aae-9ae0-f56f1fefc717");
+INSERT INTO PE_PE
+	VALUES ("d610f311-0421-46d0-acb4-53c7f5cf1e70",
+	1,
+	"98ad330a-59c3-4d1d-9139-eb455f6f8381",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("98ad330a-59c3-4d1d-9139-eb455f6f8381",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'LocationInterfaces',
+	'',
+	0,
+	'../LocationInterfaces.xtuml');

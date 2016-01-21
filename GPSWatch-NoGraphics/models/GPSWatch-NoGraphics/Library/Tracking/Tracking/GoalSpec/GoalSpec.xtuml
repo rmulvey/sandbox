@@ -1,0 +1,181 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	'GoalSpec',
+	8,
+	'GoalSpec',
+	'Each instance specifies one particular workout goal.  The actual execution of the goal
+along with evaluation of whether it is currently being achieved is handled by another
+class, not this one.
+
+The criteria for the goal are merely numerical figures for comparison against the 
+measured quantity.  Accordingly, the terms may create confusion with certain goal
+types such as pace.  Since pace is the inverse of speed, a lower number represents
+a faster speed.  Even so, when specifying a pace-related goal the value for 
+minimum should be the lowest number (fastest pace) and the value for maximum should
+be the higher number (slower pace).',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("270d4f3d-f728-493d-ae8d-705c093bc44f",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_BATTR
+	VALUES ("270d4f3d-f728-493d-ae8d-705c093bc44f",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ATTR
+	VALUES ("270d4f3d-f728-493d-ae8d-705c093bc44f",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	"a81e5e77-6618-48cc-a2da-3278066531cb",
+	'minimum',
+	'The minimum value for the quantity associated with the goal.
+For example, a minimum heart rate to be maintained.
+The units (e.g., beats per minute or minutes per km) for this
+attribute are determined by another attribute indicating the 
+type of criteria for this goal.',
+	'',
+	'minimum',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("78e81223-b66d-4b58-af4d-44eb151f83a0",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_BATTR
+	VALUES ("78e81223-b66d-4b58-af4d-44eb151f83a0",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ATTR
+	VALUES ("78e81223-b66d-4b58-af4d-44eb151f83a0",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	"270d4f3d-f728-493d-ae8d-705c093bc44f",
+	'maximum',
+	'The maximum value for the quantity associated with the goal.
+For example, a maximum pace to be maintained.
+The units (e.g., beats per minute or minutes per km) for this
+attribute are determined by another attribute indicating the 
+type of criteria for this goal.',
+	'',
+	'maximum',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("932c3faa-5b97-4f6e-9494-1add06a2d03b",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_BATTR
+	VALUES ("932c3faa-5b97-4f6e-9494-1add06a2d03b",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ATTR
+	VALUES ("932c3faa-5b97-4f6e-9494-1add06a2d03b",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	"78e81223-b66d-4b58-af4d-44eb151f83a0",
+	'span',
+	'The span of the goal.  For example, a time-based goal specifies a span
+as a duration or length of time, while a distance-based goal uses specifies
+a distance.  The units for this attribute (e.g., seconds or km) are specified 
+by another attribute indicating the type of span.
+',
+	'',
+	'span',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6b6f9740-9c55-4f3a-9edc-2912fe3e9e44",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_BATTR
+	VALUES ("6b6f9740-9c55-4f3a-9edc-2912fe3e9e44",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ATTR
+	VALUES ("6b6f9740-9c55-4f3a-9edc-2912fe3e9e44",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	"932c3faa-5b97-4f6e-9494-1add06a2d03b",
+	'criteriaType',
+	'See data type description.',
+	'',
+	'criteriaType',
+	0,
+	"b149d095-7658-4b0d-af29-e73cc3e56089",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("b149d095-7658-4b0d-af29-e73cc3e56089",
+	"00000000-0000-0000-0000-000000000000",
+	'GoalCriteria',
+	'The criteria type for a particular workout goal.  ',
+	'',
+	'../../../../TrackingDataTypes/TrackingDataTypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("df6e3ad1-9348-45ea-af8a-0e2d80de9b9c",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_BATTR
+	VALUES ("df6e3ad1-9348-45ea-af8a-0e2d80de9b9c",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ATTR
+	VALUES ("df6e3ad1-9348-45ea-af8a-0e2d80de9b9c",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	"6b6f9740-9c55-4f3a-9edc-2912fe3e9e44",
+	'spanType',
+	'See data type description.',
+	'',
+	'spanType',
+	0,
+	"b0eb4d65-f0d6-4139-85f5-d24ec0fe98b0",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("b0eb4d65-f0d6-4139-85f5-d24ec0fe98b0",
+	"00000000-0000-0000-0000-000000000000",
+	'GoalSpan',
+	'',
+	'',
+	'../../../../TrackingDataTypes/TrackingDataTypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("a81e5e77-6618-48cc-a2da-3278066531cb",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_BATTR
+	VALUES ("a81e5e77-6618-48cc-a2da-3278066531cb",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ATTR
+	VALUES ("a81e5e77-6618-48cc-a2da-3278066531cb",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	"00000000-0000-0000-0000-000000000000",
+	'sequenceNumber',
+	'Workout goals are sequenced according to a number specified by the user when the goal
+is specified.  This attribute represents that user-specified number. ',
+	'',
+	'sequenceNumber',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_OIDA
+	VALUES ("a81e5e77-6618-48cc-a2da-3278066531cb",
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	0,
+	'sequenceNumber');
+INSERT INTO O_ID
+	VALUES (1,
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO O_ID
+	VALUES (2,
+	"1ab8c133-19dc-494e-bb6a-2fa02dab8297");
+INSERT INTO PE_PE
+	VALUES ("1ab8c133-19dc-494e-bb6a-2fa02dab8297",
+	1,
+	"e37aa241-e286-4df5-959f-871a2eb09015",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("e37aa241-e286-4df5-959f-871a2eb09015",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'Tracking',
+	'',
+	0,
+	'../Tracking.xtuml');

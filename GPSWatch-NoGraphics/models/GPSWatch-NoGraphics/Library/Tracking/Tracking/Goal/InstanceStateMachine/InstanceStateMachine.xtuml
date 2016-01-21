@@ -1,0 +1,385 @@
+-- BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO SM_ISM
+	VALUES ("cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"ef72247e-0642-472c-95fa-d555153865df");
+INSERT INTO SM_SM
+	VALUES ("cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_LEVT
+	VALUES ("619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'Completed',
+	0,
+	'',
+	'Goal1',
+	'Indicates that execution of this goal has been completed.  ');
+INSERT INTO SM_LEVT
+	VALUES ("a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'Evaluate',
+	0,
+	'',
+	'Goal2',
+	'Indicates that this goal should be evaluated for completeness and achievement.');
+INSERT INTO SM_LEVT
+	VALUES ("4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	3,
+	'Pause',
+	0,
+	'',
+	'Goal3',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'Executing',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'Completed',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("51703941-3577-4001-9e95-59f315ef159b",
+	"4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'Paused',
+	3,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("e22b718d-be8f-452a-8b09-99827b5183f0",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("e22b718d-be8f-452a-8b09-99827b5183f0",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"51703941-3577-4001-9e95-59f315ef159b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("c9d2dba7-6b3c-49e8-8334-dce28027aabb",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("c9d2dba7-6b3c-49e8-8334-dce28027aabb",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("d9663a4d-87c3-4791-a4f3-696d95fe51c3",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"4e009d37-5ee8-44b9-bbc0-09121b68d5ea",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("d9663a4d-87c3-4791-a4f3-696d95fe51c3",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("344201a5-4ed3-48ce-86db-c5788872d18c",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"a28b72dd-1cd8-4643-9790-fea9c061578f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("344201a5-4ed3-48ce-86db-c5788872d18c",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"b25e7e93-846e-49fe-9ef9-6d2d037e8dd3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("693f872c-b948-47f6-bddc-2aeeb0f6d757",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"8aeaf3cc-e14f-4759-8d54-8b1c365184f7",
+	"619f6c6f-24e9-47b4-9086-cf73465df7f2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("693f872c-b948-47f6-bddc-2aeeb0f6d757",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"51703941-3577-4001-9e95-59f315ef159b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("1a22b291-874b-4014-b60a-71ba7f798980",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"b25e7e93-846e-49fe-9ef9-6d2d037e8dd3");
+INSERT INTO SM_AH
+	VALUES ("1a22b291-874b-4014-b60a-71ba7f798980",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("1a22b291-874b-4014-b60a-71ba7f798980",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	1,
+	'// Determine whether this goal is currently being achieved.
+disposition = self.evaluateAchievement();
+
+// Update achievement records if necessary.  There are four cases:
+//   0. Still not achieving this goal. 
+//   1. Just started achieving this goal.
+//   2. Just stopped achieving this goal.
+//   3. Still achieving this goal.
+// For cases 0 and 3, there is nothing to be done for achievement records.
+// Case 1 requires the creation of a new achievment record, storing the start time.
+// Case 2 requires the storing of the end time for the open achievement record.
+if ( (self.disposition != GoalDisposition::Achieving) and (disposition == GoalDisposition::Achieving) )
+  // Case 1, create achievement record, store start time, relate it as open record.
+  create object instance achievement of Achievement;
+  relate self to achievement across R14.''has open'';
+  select one workoutTimer related by 
+    self->WorkoutSession[R11.''is currently executing within'']->WorkoutTimer[R8.''is timed by''];
+  achievement.startTime = workoutTimer.time;
+elif ( (self.disposition == GoalDisposition::Achieving) and (disposition != GoalDisposition::Achieving) )
+  // Case 2, store end time, relate as recorded record, unrelate as open record.
+  select one achievement related by self->Achievement[R14.''has open''];
+  achievement.close();
+end if;
+
+// Update disposition of this goal.
+self.disposition = disposition;
+
+// Determine whether execution of this goal is complete, 
+//  and if so, advance to the next one if it exists.
+self.evaluateCompletion();',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("b8fa41c5-e630-488d-8a93-951046c70e0a",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"51703941-3577-4001-9e95-59f315ef159b");
+INSERT INTO SM_AH
+	VALUES ("b8fa41c5-e630-488d-8a93-951046c70e0a",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("b8fa41c5-e630-488d-8a93-951046c70e0a",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	1,
+	'// Stop executing this goal and begin executing the next one, if there is one.
+
+// Stop the goal-evaluation timer, ignoring the return code which indicates 
+//   whether a timer event was in flight when the timer was cancelled.
+cancelSucceeded = TIM::timer_cancel( timer_inst_ref: self.evaluationTimer );
+
+// If this goal has an open achievement record, close it.
+select one openAchievement related by self->Achievement[R14.''has open''];
+if ( not empty openAchievement )
+  openAchievement.close();
+end if;
+
+// Add this goal to the collection of those that have already executed.
+select one session related by self->WorkoutSession[R11.''is currently executing within''];
+relate self to session across R13.''was executed within'';
+
+// Remove this goal from the collection of currently executing ones.
+unrelate self from session across R11.''is currently executing within'';
+
+// Find the next goal specification in the sequence and start executing it, if it exists.
+select one currentGoalSpec related by self->GoalSpec[R9.''specified by''];
+
+select any nextGoalSpec related by session->GoalSpec[R10.''includes'']
+  where ( selected.sequenceNumber == (currentGoalSpec.sequenceNumber + 1) );
+  
+if ( not empty nextGoalSpec )
+  Goal::create( sequenceNumber: nextGoalSpec.sequenceNumber );
+end if;
+',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("176caa72-5ff2-418b-b39c-d21b4b5cb908",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"8aeaf3cc-e14f-4759-8d54-8b1c365184f7");
+INSERT INTO SM_AH
+	VALUES ("176caa72-5ff2-418b-b39c-d21b4b5cb908",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("176caa72-5ff2-418b-b39c-d21b4b5cb908",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	1,
+	'// Deactivate evaluation timer, ignoring the return code because this 
+//   state model ignores any latent timer events.
+cancelSucceeded = TIM::timer_cancel( timer_inst_ref: self.evaluationTimer );',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("cfd5e6aa-2e4e-498f-9a1a-e018f55a810d",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"e22b718d-be8f-452a-8b09-99827b5183f0");
+INSERT INTO SM_AH
+	VALUES ("cfd5e6aa-2e4e-498f-9a1a-e018f55a810d",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("cfd5e6aa-2e4e-498f-9a1a-e018f55a810d",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("ca8f3508-5029-4c05-978a-bdd7301531e4",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"c9d2dba7-6b3c-49e8-8334-dce28027aabb");
+INSERT INTO SM_AH
+	VALUES ("ca8f3508-5029-4c05-978a-bdd7301531e4",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("ca8f3508-5029-4c05-978a-bdd7301531e4",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("798d6888-5245-4cb9-a4c1-2669ec2e35ae",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"d9663a4d-87c3-4791-a4f3-696d95fe51c3");
+INSERT INTO SM_AH
+	VALUES ("798d6888-5245-4cb9-a4c1-2669ec2e35ae",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("798d6888-5245-4cb9-a4c1-2669ec2e35ae",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	3,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("f7009d18-395c-462f-ac51-75551adfbdc3",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"344201a5-4ed3-48ce-86db-c5788872d18c");
+INSERT INTO SM_AH
+	VALUES ("f7009d18-395c-462f-ac51-75551adfbdc3",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("f7009d18-395c-462f-ac51-75551adfbdc3",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	1,
+	'// Start a timer that periodically causes evaluation of goal achievement.
+create event instance evaluateEvent of Goal2:Evaluate to self;
+self.evaluationTimer = TIM::timer_start_recurring( event_inst: evaluateEvent, microseconds: evaluationPeriod );',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("1e1cc27c-de60-4645-ada9-ee08544a566e",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	"693f872c-b948-47f6-bddc-2aeeb0f6d757");
+INSERT INTO SM_AH
+	VALUES ("1e1cc27c-de60-4645-ada9-ee08544a566e",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5");
+INSERT INTO SM_ACT
+	VALUES ("1e1cc27c-de60-4645-ada9-ee08544a566e",
+	"cbd273fe-ebbc-4f80-9ef4-65f33e9a45b5",
+	3,
+	'',
+	'');
+INSERT INTO O_OBJ_PROXY
+	VALUES ("ef72247e-0642-472c-95fa-d555153865df",
+	'Goal',
+	9,
+	'Goal',
+	'Each instance represents a particular goal as it is executing.
+This class knows how to evaluate whether the goal is being achieved 
+and whether the goal has completed.',
+	"00000000-0000-0000-0000-000000000000",
+	'../Goal.xtuml');

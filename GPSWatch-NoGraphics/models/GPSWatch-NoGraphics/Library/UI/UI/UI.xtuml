@@ -1,0 +1,38 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("81adecbc-5713-4793-bd44-f0a65af8c638",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'UI',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("81adecbc-5713-4793-bd44-f0a65af8c638",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"0904c6e9-c370-49d8-bf27-782a1e59a175",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("0904c6e9-c370-49d8-bf27-782a1e59a175",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../UI.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../../../GPSWatch-NoGraphics.xtuml');

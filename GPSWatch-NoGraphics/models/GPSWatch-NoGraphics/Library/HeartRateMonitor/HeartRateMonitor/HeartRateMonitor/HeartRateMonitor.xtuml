@@ -1,0 +1,70 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("169035da-0a20-4e84-a737-b1e3d581825e",
+	'HeartRateMonitor',
+	1,
+	'HeartRateMonitor',
+	'Represents the heart-rate monitoring facility.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("5485e7aa-1d58-4580-af52-90281fb54fae",
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO O_BATTR
+	VALUES ("5485e7aa-1d58-4580-af52-90281fb54fae",
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO O_ATTR
+	VALUES ("5485e7aa-1d58-4580-af52-90281fb54fae",
+	"169035da-0a20-4e84-a737-b1e3d581825e",
+	"00000000-0000-0000-0000-000000000000",
+	'recentHeartRate',
+	'Most recent heart-rate sample, expressed in beats per minute.',
+	'',
+	'recentHeartRate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ce1abfd0-fb15-466d-b7f9-87922d56e3ef",
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO O_BATTR
+	VALUES ("ce1abfd0-fb15-466d-b7f9-87922d56e3ef",
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO O_ATTR
+	VALUES ("ce1abfd0-fb15-466d-b7f9-87922d56e3ef",
+	"169035da-0a20-4e84-a737-b1e3d581825e",
+	"5485e7aa-1d58-4580-af52-90281fb54fae",
+	'timer',
+	'Handle for underlying timer mechanism enabling the 
+generation of delayed events that drive the model
+of the heart-rate monitor.',
+	'',
+	'timer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO O_ID
+	VALUES (1,
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO O_ID
+	VALUES (2,
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO PE_PE
+	VALUES ("169035da-0a20-4e84-a737-b1e3d581825e",
+	1,
+	"9d73fed1-a3a5-4011-9738-73b80c191748",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9d73fed1-a3a5-4011-9738-73b80c191748",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'HeartRateMonitor',
+	'',
+	0,
+	'../HeartRateMonitor.xtuml');

@@ -1,0 +1,77 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("97491101-3f13-4f43-a85c-aab67480569a",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationProvider',
+	'');
+INSERT INTO C_EP
+	VALUES ("64885dbf-a415-4273-97f7-feb32fbf475d",
+	"97491101-3f13-4f43-a85c-aab67480569a",
+	-1,
+	'registerListener',
+	'');
+INSERT INTO C_AS
+	VALUES ("64885dbf-a415-4273-97f7-feb32fbf475d",
+	'registerListener',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("a4ecc9e5-75f0-4300-993f-4106e7efa9be",
+	"97491101-3f13-4f43-a85c-aab67480569a",
+	-1,
+	'unregisterListener',
+	'');
+INSERT INTO C_AS
+	VALUES ("a4ecc9e5-75f0-4300-993f-4106e7efa9be",
+	'unregisterListener',
+	'',
+	0,
+	"64885dbf-a415-4273-97f7-feb32fbf475d");
+INSERT INTO C_EP
+	VALUES ("dc50988f-4d64-4961-961d-3f6f6f3a747f",
+	"97491101-3f13-4f43-a85c-aab67480569a",
+	-1,
+	'getLocation',
+	'');
+INSERT INTO C_IO
+	VALUES ("dc50988f-4d64-4961-961d-3f6f6f3a747f",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'getLocation',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("55866923-e6b2-4492-adaf-b8d79442a676",
+	"dc50988f-4d64-4961-961d-3f6f6f3a747f",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'latitude',
+	'Latitude, expressed in decimal degrees, of the current position.',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("3eaf2687-ae5a-42d6-98dc-9e0912bf87c1",
+	"dc50988f-4d64-4961-961d-3f6f6f3a747f",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'longitude',
+	'Longitude, expressed in decimal degrees, of the current position.',
+	1,
+	'',
+	"55866923-e6b2-4492-adaf-b8d79442a676");
+INSERT INTO PE_PE
+	VALUES ("97491101-3f13-4f43-a85c-aab67480569a",
+	1,
+	"98ad330a-59c3-4d1d-9139-eb455f6f8381",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("98ad330a-59c3-4d1d-9139-eb455f6f8381",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'LocationInterfaces',
+	'',
+	0,
+	'../LocationInterfaces.xtuml');

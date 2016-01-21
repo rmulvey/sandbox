@@ -1,0 +1,272 @@
+-- BP 7.1.6 content: ClassStateMachine syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO SM_ASM
+	VALUES ("30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"169035da-0a20-4e84-a737-b1e3d581825e");
+INSERT INTO SM_SM
+	VALUES ("30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("30b40207-3d57-4bed-b6a5-6d17feb1f536");
+INSERT INTO SM_SGEVT
+	VALUES ("b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	"b2a8faa0-bbce-4dbe-a20f-78167d5ce43c",
+	"00000000-0000-0000-0000-000000000000",
+	'HR::registerListener');
+INSERT INTO SPR_PS_PROXY
+	VALUES ("b2a8faa0-bbce-4dbe-a20f-78167d5ce43c",
+	'registerListener',
+	'',
+	'',
+	1,
+	'../../../HeartRateMonitor.xtuml');
+INSERT INTO SM_SEVT
+	VALUES ("b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'registerListener',
+	0,
+	'',
+	'HR::registerListener',
+	'');
+INSERT INTO SM_SGEVT
+	VALUES ("cbb94193-e509-479e-b7ed-aefca0219548",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	"1b99b29d-ded2-4c65-a9ee-0bb1930ddeaf",
+	"00000000-0000-0000-0000-000000000000",
+	'HR::unregisterListener');
+INSERT INTO SPR_PS_PROXY
+	VALUES ("1b99b29d-ded2-4c65-a9ee-0bb1930ddeaf",
+	'unregisterListener',
+	'',
+	'',
+	1,
+	'../../../HeartRateMonitor.xtuml');
+INSERT INTO SM_SEVT
+	VALUES ("cbb94193-e509-479e-b7ed-aefca0219548",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("cbb94193-e509-479e-b7ed-aefca0219548",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'unregisterListener',
+	0,
+	'',
+	'HR::unregisterListener',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("3252890d-ddac-460e-b994-c4891989de4d",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("3252890d-ddac-460e-b994-c4891989de4d",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("3252890d-ddac-460e-b994-c4891989de4d",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	3,
+	'timeout',
+	0,
+	'',
+	'HeartRateMonitor_A3',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	'idle',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"cbb94193-e509-479e-b7ed-aefca0219548",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"cbb94193-e509-479e-b7ed-aefca0219548",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"3252890d-ddac-460e-b994-c4891989de4d",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"3252890d-ddac-460e-b994-c4891989de4d",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("bf080051-df6e-4cc8-a371-38490f827d36",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	'monitoring',
+	2,
+	0);
+INSERT INTO SM_CH
+	VALUES ("bf080051-df6e-4cc8-a371-38490f827d36",
+	"b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("bf080051-df6e-4cc8-a371-38490f827d36",
+	"b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("bf080051-df6e-4cc8-a371-38490f827d36",
+	"cbb94193-e509-479e-b7ed-aefca0219548",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("bf080051-df6e-4cc8-a371-38490f827d36",
+	"3252890d-ddac-460e-b994-c4891989de4d",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("d73dd514-9735-4e08-9bec-4c31d6a63a99",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"b469c335-d664-4d69-85cd-9f14f06fb89e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("d73dd514-9735-4e08-9bec-4c31d6a63a99",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"bf080051-df6e-4cc8-a371-38490f827d36",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("723eff68-c10a-44de-abbe-c7ce68ddd805",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"bf080051-df6e-4cc8-a371-38490f827d36",
+	"cbb94193-e509-479e-b7ed-aefca0219548",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("723eff68-c10a-44de-abbe-c7ce68ddd805",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"c5f57c77-cbb5-4e74-99d3-c212e4f9956f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("d1b54048-5d4a-4741-bcae-aae960e1d10c",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"bf080051-df6e-4cc8-a371-38490f827d36",
+	"3252890d-ddac-460e-b994-c4891989de4d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("d1b54048-5d4a-4741-bcae-aae960e1d10c",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"bf080051-df6e-4cc8-a371-38490f827d36",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("a2e7a97a-dbf1-4a1d-aa75-838368b6cf10",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"c5f57c77-cbb5-4e74-99d3-c212e4f9956f");
+INSERT INTO SM_AH
+	VALUES ("a2e7a97a-dbf1-4a1d-aa75-838368b6cf10",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536");
+INSERT INTO SM_ACT
+	VALUES ("a2e7a97a-dbf1-4a1d-aa75-838368b6cf10",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	1,
+	'',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("aaff1af8-b5a3-4217-bc2a-8a29cb83e571",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"bf080051-df6e-4cc8-a371-38490f827d36");
+INSERT INTO SM_AH
+	VALUES ("aaff1af8-b5a3-4217-bc2a-8a29cb83e571",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536");
+INSERT INTO SM_ACT
+	VALUES ("aaff1af8-b5a3-4217-bc2a-8a29cb83e571",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	1,
+	'select any monitor from instances of HeartRateMonitor;
+send HR::heartRateChanged(heartRate: monitor.recentHeartRate);
+monitor.recentHeartRate = monitor.recentHeartRate + 1;',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("6bd88bde-f12c-47bf-b1be-8bd46bc5980f",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"d73dd514-9735-4e08-9bec-4c31d6a63a99");
+INSERT INTO SM_AH
+	VALUES ("6bd88bde-f12c-47bf-b1be-8bd46bc5980f",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536");
+INSERT INTO SM_ACT
+	VALUES ("6bd88bde-f12c-47bf-b1be-8bd46bc5980f",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	1,
+	'
+select any monitor from instances of HeartRateMonitor;
+if (empty monitor)
+  create object instance monitor of HeartRateMonitor;
+end if;
+monitor.recentHeartRate = 50;
+
+LOG::LogInfo(message: "listener registered");
+
+// start timer
+create event instance timeout of HeartRateMonitor_A3:timeout() to HeartRateMonitor class;
+monitor.timer = TIM::timer_start_recurring( event_inst: timeout, microseconds: (HeartRateSamplingPeriod * 1000000) ); ',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("fdf3af0d-8b41-4d60-b9fa-6b946d7f3bff",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"723eff68-c10a-44de-abbe-c7ce68ddd805");
+INSERT INTO SM_AH
+	VALUES ("fdf3af0d-8b41-4d60-b9fa-6b946d7f3bff",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536");
+INSERT INTO SM_ACT
+	VALUES ("fdf3af0d-8b41-4d60-b9fa-6b946d7f3bff",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	1,
+	'select any monitor from instances of HeartRateMonitor;
+res = TIM::timer_cancel(timer_inst_ref: monitor.timer);
+if ( res )
+  LOG::LogSuccess( message: "Heart Rate Monitor: timer_cancel() succeeded." );
+else
+  LOG::LogFailure( message: "Heart Rate Monitor: timer_cancel() failed." );
+end if;',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("413a4d69-ebed-431b-9b14-969b77247976",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	"d1b54048-5d4a-4741-bcae-aae960e1d10c");
+INSERT INTO SM_AH
+	VALUES ("413a4d69-ebed-431b-9b14-969b77247976",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536");
+INSERT INTO SM_ACT
+	VALUES ("413a4d69-ebed-431b-9b14-969b77247976",
+	"30b40207-3d57-4bed-b6a5-6d17feb1f536",
+	1,
+	'',
+	'');
+INSERT INTO O_OBJ_PROXY
+	VALUES ("169035da-0a20-4e84-a737-b1e3d581825e",
+	'HeartRateMonitor',
+	1,
+	'HeartRateMonitor',
+	'Represents the heart-rate monitoring facility.',
+	"00000000-0000-0000-0000-000000000000",
+	'../HeartRateMonitor.xtuml');

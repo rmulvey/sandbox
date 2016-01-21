@@ -1,0 +1,91 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("c1a1699d-182b-46ef-ae3a-5b240c6fbe93",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'LocationDataTypes',
+	'',
+	0);
+INSERT INTO CNST_CSP
+	VALUES ("a988daf5-6782-466e-86de-e4ef6d994d33",
+	'Speed',
+	'SpeedAveragingWindow is the number of track points used to calculate the current average speed.
+SecondsPerHour is the number of seconds in one hour.');
+INSERT INTO CNST_SYC
+	VALUES ("b53d5fe3-f8d3-44a3-9ff8-a9d8fb5f62d4",
+	'SpeedAveragingWindow',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"a988daf5-6782-466e-86de-e4ef6d994d33",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("b53d5fe3-f8d3-44a3-9ff8-a9d8fb5f62d4",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("b53d5fe3-f8d3-44a3-9ff8-a9d8fb5f62d4",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'5');
+INSERT INTO CNST_SYC
+	VALUES ("e63eecbc-4ea1-4efb-af7a-61247939cf7a",
+	'SecondsPerHour',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"a988daf5-6782-466e-86de-e4ef6d994d33",
+	"b53d5fe3-f8d3-44a3-9ff8-a9d8fb5f62d4",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LFSC
+	VALUES ("e63eecbc-4ea1-4efb-af7a-61247939cf7a",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("e63eecbc-4ea1-4efb-af7a-61247939cf7a",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'3600');
+INSERT INTO PE_PE
+	VALUES ("a988daf5-6782-466e-86de-e4ef6d994d33",
+	1,
+	"c1a1699d-182b-46ef-ae3a-5b240c6fbe93",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO CNST_CSP
+	VALUES ("be8a06f7-1bfe-4912-9a8a-a95b41613684",
+	'Distance',
+	'kmPerDegree is a rough conversion figure valid for most latitude figures (except where 
+the irregular shape of the earth perturbs the value) and for longitude figures
+away from the poles (where the distance between longitude lines decreases to zero).
+
+latitudeIncrement and longitudeIncrement specify the distance traveled by the simulated
+GPS during each interval.');
+INSERT INTO CNST_SYC
+	VALUES ("79aa210d-d4fe-40a5-a940-6930e0928059",
+	'kmPerDegree',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"be8a06f7-1bfe-4912-9a8a-a95b41613684",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("79aa210d-d4fe-40a5-a940-6930e0928059",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("79aa210d-d4fe-40a5-a940-6930e0928059",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'111.32');
+INSERT INTO PE_PE
+	VALUES ("be8a06f7-1bfe-4912-9a8a-a95b41613684",
+	1,
+	"c1a1699d-182b-46ef-ae3a-5b240c6fbe93",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("c1a1699d-182b-46ef-ae3a-5b240c6fbe93",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../GPSWatch-NoGraphics.xtuml');

@@ -1,0 +1,597 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'Start Stop Reset',
+	'',
+	0);
+INSERT INTO SQ_P
+	VALUES ("2a952d53-d91d-4d25-a918-4f9628f89dcf",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("2a952d53-d91d-4d25-a918-4f9628f89dcf",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'UI',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("2a952d53-d91d-4d25-a918-4f9628f89dcf",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("6a760d3c-d5ff-4df5-804b-205553b81929",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("6a760d3c-d5ff-4df5-804b-205553b81929",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'Tracking',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("6a760d3c-d5ff-4df5-804b-205553b81929",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("be35e601-e4ca-4147-b72b-27e67ee13325",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_AP
+	VALUES ("be35e601-e4ca-4147-b72b-27e67ee13325",
+	'User',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("be35e601-e4ca-4147-b72b-27e67ee13325",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("494d9cff-7b59-498c-9986-f2d7d3aad893",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("494d9cff-7b59-498c-9986-f2d7d3aad893",
+	"00000000-0000-0000-0000-000000000000",
+	'Location',
+	'Location',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("494d9cff-7b59-498c-9986-f2d7d3aad893",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("19b4a455-267c-4a8b-823f-e6665755afa9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("19b4a455-267c-4a8b-823f-e6665755afa9",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateMonitor',
+	'HeartRateMonitor',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("19b4a455-267c-4a8b-823f-e6665755afa9",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("8928efa0-6a01-4e60-968c-5d8e4e74b0f1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("8928efa0-6a01-4e60-968c-5d8e4e74b0f1",
+	"be35e601-e4ca-4147-b72b-27e67ee13325",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("8928efa0-6a01-4e60-968c-5d8e4e74b0f1",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("7ff0709f-cdfa-4c18-b930-35568d16355c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("7ff0709f-cdfa-4c18-b930-35568d16355c",
+	"2a952d53-d91d-4d25-a918-4f9628f89dcf",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("4548a0a5-34a3-43ce-858a-ec8f0b5aea25",
+	'provide updates to client every <interval> microseconds',
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	'');
+INSERT INTO PE_PE
+	VALUES ("7ff0709f-cdfa-4c18-b930-35568d16355c",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	"6a760d3c-d5ff-4df5-804b-205553b81929",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("4a4e211a-bf5f-4935-bf3d-d42c5745b185",
+	'Clear track and reset all cached values',
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	'');
+INSERT INTO PE_PE
+	VALUES ("f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	"494d9cff-7b59-498c-9986-f2d7d3aad893",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("9f948ec5-218d-4b22-9240-17d085304e67",
+	'',
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("6467cc5b-28e9-4f28-8d64-e9daf3c1bc6d",
+	"0db74da0-b4b7-493a-882f-d97efb4df692",
+	"9f948ec5-218d-4b22-9240-17d085304e67",
+	'provide updates to client every 2 seconds',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("0db74da0-b4b7-493a-882f-d97efb4df692",
+	'',
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	'');
+INSERT INTO PE_PE
+	VALUES ("3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	"19b4a455-267c-4a8b-823f-e6665755afa9",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("7ef9e8db-d512-4bae-a06f-570c81be866d",
+	'',
+	"189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("07bc2182-2845-402c-9232-dd88432279ba",
+	"43a4848d-4dac-43f8-a85f-55d5465bc169",
+	"7ef9e8db-d512-4bae-a06f-570c81be866d",
+	'provide updates to client every 3 seconds',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("43a4848d-4dac-43f8-a85f-55d5465bc169",
+	'',
+	"189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	'');
+INSERT INTO PE_PE
+	VALUES ("189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO MSG_M
+	VALUES ("19cb9206-fa9c-4848-b2a5-810b13227965",
+	"8928efa0-6a01-4e60-968c-5d8e4e74b0f1",
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("19cb9206-fa9c-4848-b2a5-810b13227965",
+	'press start/stop button',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'press start/stop button',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("19cb9206-fa9c-4848-b2a5-810b13227965");
+INSERT INTO PE_PE
+	VALUES ("19cb9206-fa9c-4848-b2a5-810b13227965",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("e588f729-3414-4467-98c1-e492f8096bea",
+	"8928efa0-6a01-4e60-968c-5d8e4e74b0f1",
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("e588f729-3414-4467-98c1-e492f8096bea",
+	'press start/stop button',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'press start/stop button',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("e588f729-3414-4467-98c1-e492f8096bea");
+INSERT INTO PE_PE
+	VALUES ("e588f729-3414-4467-98c1-e492f8096bea",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("a3cfa3ed-6295-4ecf-be78-b0b5cb882ec1",
+	"8928efa0-6a01-4e60-968c-5d8e4e74b0f1",
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("a3cfa3ed-6295-4ecf-be78-b0b5cb882ec1",
+	'press lap/reset button',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'press lap/reset button',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("a3cfa3ed-6295-4ecf-be78-b0b5cb882ec1");
+INSERT INTO PE_PE
+	VALUES ("a3cfa3ed-6295-4ecf-be78-b0b5cb882ec1",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("43342ef2-358d-45d4-b320-f122b73bf3c3",
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("43342ef2-358d-45d4-b320-f122b73bf3c3",
+	'startStopPressed',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'startStopPressed',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("43342ef2-358d-45d4-b320-f122b73bf3c3");
+INSERT INTO PE_PE
+	VALUES ("43342ef2-358d-45d4-b320-f122b73bf3c3",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("65e648e7-ca98-4d65-864f-446efdefd276",
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("65e648e7-ca98-4d65-864f-446efdefd276",
+	'locationUpdate',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'locationUpdate',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("65e648e7-ca98-4d65-864f-446efdefd276");
+INSERT INTO PE_PE
+	VALUES ("65e648e7-ca98-4d65-864f-446efdefd276",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("af3359b4-361d-4d0e-bcf1-432bfa71188c",
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("af3359b4-361d-4d0e-bcf1-432bfa71188c",
+	'locationUpdate',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'locationUpdate',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("af3359b4-361d-4d0e-bcf1-432bfa71188c");
+INSERT INTO PE_PE
+	VALUES ("af3359b4-361d-4d0e-bcf1-432bfa71188c",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("7f2cf8a5-82c0-4162-bd15-b544e9e0e972",
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("7f2cf8a5-82c0-4162-bd15-b544e9e0e972",
+	'locationUpdate',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'locationUpdate',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("7f2cf8a5-82c0-4162-bd15-b544e9e0e972");
+INSERT INTO PE_PE
+	VALUES ("7f2cf8a5-82c0-4162-bd15-b544e9e0e972",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("a6b3764a-78be-40ca-bcda-b90a0f8a088c",
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("a6b3764a-78be-40ca-bcda-b90a0f8a088c",
+	'locationUpdate',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'locationUpdate',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("a6b3764a-78be-40ca-bcda-b90a0f8a088c");
+INSERT INTO PE_PE
+	VALUES ("a6b3764a-78be-40ca-bcda-b90a0f8a088c",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("31d3bcbf-2d39-4508-8828-51bf10f23e3c",
+	"189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("31d3bcbf-2d39-4508-8828-51bf10f23e3c",
+	'heartRateChanged',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'heartRateChanged',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("31d3bcbf-2d39-4508-8828-51bf10f23e3c");
+INSERT INTO PE_PE
+	VALUES ("31d3bcbf-2d39-4508-8828-51bf10f23e3c",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("e5bc6b5c-122a-43a3-9109-d368bda4e658",
+	"189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("e5bc6b5c-122a-43a3-9109-d368bda4e658",
+	'heartRateChanged',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'heartRateChanged',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("e5bc6b5c-122a-43a3-9109-d368bda4e658");
+INSERT INTO PE_PE
+	VALUES ("e5bc6b5c-122a-43a3-9109-d368bda4e658",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("c03e3874-14e6-4a84-b9d9-0278a42bc38b",
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("c03e3874-14e6-4a84-b9d9-0278a42bc38b",
+	'startStopPressed',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'startStopPressed',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("c03e3874-14e6-4a84-b9d9-0278a42bc38b");
+INSERT INTO PE_PE
+	VALUES ("c03e3874-14e6-4a84-b9d9-0278a42bc38b",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("d94f20bc-bd2a-41d5-afae-9600a7517d9d",
+	"7ff0709f-cdfa-4c18-b930-35568d16355c",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("d94f20bc-bd2a-41d5-afae-9600a7517d9d",
+	'lapResetPressed',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'lapResetPressed',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("d94f20bc-bd2a-41d5-afae-9600a7517d9d");
+INSERT INTO PE_PE
+	VALUES ("d94f20bc-bd2a-41d5-afae-9600a7517d9d",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("aad89154-b24c-4f48-82fa-9d8a0c9fa848",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("aad89154-b24c-4f48-82fa-9d8a0c9fa848",
+	'registerListener',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'registerListener',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("aad89154-b24c-4f48-82fa-9d8a0c9fa848");
+INSERT INTO MSG_A
+	VALUES ("fdfab079-f731-41cf-ab89-2f930c85d327",
+	"aad89154-b24c-4f48-82fa-9d8a0c9fa848",
+	"00000000-0000-0000-0000-000000000000",
+	'interval',
+	'',
+	'interval',
+	'',
+	0);
+INSERT INTO MSG_IA
+	VALUES ("fdfab079-f731-41cf-ab89-2f930c85d327");
+INSERT INTO PE_PE
+	VALUES ("aad89154-b24c-4f48-82fa-9d8a0c9fa848",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("2875d16e-758e-4445-a019-39b06fdfd9a9",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	"3e2beab8-a7c6-47af-9357-e5798f3204d9",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("2875d16e-758e-4445-a019-39b06fdfd9a9",
+	'unregisterListener',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'unregisterListener',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("2875d16e-758e-4445-a019-39b06fdfd9a9");
+INSERT INTO PE_PE
+	VALUES ("2875d16e-758e-4445-a019-39b06fdfd9a9",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("b95e50bb-f27a-4538-8884-5af5696f6a5f",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	"189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("b95e50bb-f27a-4538-8884-5af5696f6a5f",
+	'registerListener',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'registerListener',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("b95e50bb-f27a-4538-8884-5af5696f6a5f");
+INSERT INTO PE_PE
+	VALUES ("b95e50bb-f27a-4538-8884-5af5696f6a5f",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("58cffcf0-01f4-4db8-a880-49df0bd1b569",
+	"f21dd7de-eff7-41a4-a7c1-7a7f614da3d1",
+	"189e1b7f-20e4-4f2b-a459-842c6b28bc74",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("58cffcf0-01f4-4db8-a880-49df0bd1b569",
+	'unregisterListener',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'unregisterListener',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("58cffcf0-01f4-4db8-a880-49df0bd1b569");
+INSERT INTO PE_PE
+	VALUES ("58cffcf0-01f4-4db8-a880-49df0bd1b569",
+	1,
+	"ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO PE_PE
+	VALUES ("ab3bef53-46ac-48f4-b2a6-ae03b364d0ac",
+	1,
+	"9ddb1f36-7c4c-4a2f-870a-2b841c39579c",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9ddb1f36-7c4c-4a2f-870a-2b841c39579c",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	"80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'Analysis',
+	'',
+	0,
+	'../Analysis.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("80afc8ce-7ef5-4cb7-9e96-f31db674dbfc",
+	'GPSWatch-NoGraphics',
+	1,
+	'../../GPSWatch-NoGraphics.xtuml');
