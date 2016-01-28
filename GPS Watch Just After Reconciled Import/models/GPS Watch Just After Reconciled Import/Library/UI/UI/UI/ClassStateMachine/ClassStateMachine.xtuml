@@ -1,0 +1,300 @@
+-- BP 7.1.6 content: ClassStateMachine syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO SM_ASM
+	VALUES ("cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"36113a4c-e53d-4e9a-8e91-d3b08caf1b3e");
+INSERT INTO SM_SM
+	VALUES ("cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_LEVT
+	VALUES ("5f2ac6bc-5c85-482d-b4d1-11410edc0f0d",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("5f2ac6bc-5c85-482d-b4d1-11410edc0f0d",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("5f2ac6bc-5c85-482d-b4d1-11410edc0f0d",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000",
+	3,
+	'setTargetPressed',
+	0,
+	'',
+	'UI_A3',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("f67ab44b-3d85-4b18-a78e-295861186133",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("f67ab44b-3d85-4b18-a78e-295861186133",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("f67ab44b-3d85-4b18-a78e-295861186133",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000",
+	4,
+	'startStopPressed',
+	0,
+	'',
+	'UI_A4',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("c2c92da6-09c3-4523-8f22-b7060c453239",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("c2c92da6-09c3-4523-8f22-b7060c453239",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("c2c92da6-09c3-4523-8f22-b7060c453239",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000",
+	5,
+	'lapResetPressed',
+	0,
+	'',
+	'UI_A5',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("edf5984a-2309-49d4-8a56-d5387508cb00",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("edf5984a-2309-49d4-8a56-d5387508cb00",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("edf5984a-2309-49d4-8a56-d5387508cb00",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000",
+	6,
+	'lightPressed',
+	0,
+	'',
+	'UI_A6',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("6bc2983a-6898-4b7e-9a50-b851b6b84122",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("6bc2983a-6898-4b7e-9a50-b851b6b84122",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("6bc2983a-6898-4b7e-9a50-b851b6b84122",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000",
+	7,
+	'modePressed',
+	0,
+	'',
+	'UI_A7',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000",
+	'running',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"5f2ac6bc-5c85-482d-b4d1-11410edc0f0d",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"f67ab44b-3d85-4b18-a78e-295861186133",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"c2c92da6-09c3-4523-8f22-b7060c453239",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"edf5984a-2309-49d4-8a56-d5387508cb00",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"6bc2983a-6898-4b7e-9a50-b851b6b84122",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("538024c9-a300-4ea7-8397-c0f3e9169052",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"5f2ac6bc-5c85-482d-b4d1-11410edc0f0d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("538024c9-a300-4ea7-8397-c0f3e9169052",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("8a8a76af-7ceb-4936-88d4-1163b2865751",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"f67ab44b-3d85-4b18-a78e-295861186133",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("8a8a76af-7ceb-4936-88d4-1163b2865751",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("c1a6f95d-fbea-41ea-bd7f-012fdb0b3a65",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"c2c92da6-09c3-4523-8f22-b7060c453239",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("c1a6f95d-fbea-41ea-bd7f-012fdb0b3a65",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("d1201953-15ad-4339-99d2-8378e2ae3fbe",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"edf5984a-2309-49d4-8a56-d5387508cb00",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("d1201953-15ad-4339-99d2-8378e2ae3fbe",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("bc9f2e8a-060d-426f-ae15-d5c30c1c9d14",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"6bc2983a-6898-4b7e-9a50-b851b6b84122",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("bc9f2e8a-060d-426f-ae15-d5c30c1c9d14",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("1c62beca-f484-44bd-9e0d-3ce94d2f2022",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"6c8e464a-8b43-478a-848e-fffbae977a5c");
+INSERT INTO SM_AH
+	VALUES ("1c62beca-f484-44bd-9e0d-3ce94d2f2022",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_ACT
+	VALUES ("1c62beca-f484-44bd-9e0d-3ce94d2f2022",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("c296dc0a-4a18-4a17-8a93-7cf82c71ca61",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"538024c9-a300-4ea7-8397-c0f3e9169052");
+INSERT INTO SM_AH
+	VALUES ("c296dc0a-4a18-4a17-8a93-7cf82c71ca61",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_ACT
+	VALUES ("c296dc0a-4a18-4a17-8a93-7cf82c71ca61",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	1,
+	'create event instance evt of UI_A3:setTargetPressed() to UI class;
+GuiBridge::feedSetTargetPressedEvent(evt: evt);
+::sendTargetPressed();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("25e2dd42-dfb9-45a7-9a34-0f9312d60bc3",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"8a8a76af-7ceb-4936-88d4-1163b2865751");
+INSERT INTO SM_AH
+	VALUES ("25e2dd42-dfb9-45a7-9a34-0f9312d60bc3",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_ACT
+	VALUES ("25e2dd42-dfb9-45a7-9a34-0f9312d60bc3",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	1,
+	'create event instance evt of UI_A4:startStopPressed() to UI class;
+GuiBridge::feedStartStopPressedEvent(evt: evt);
+::sendStartStopPressed();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("8417876d-909e-494f-b2e4-a22db0a3d9bb",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"c1a6f95d-fbea-41ea-bd7f-012fdb0b3a65");
+INSERT INTO SM_AH
+	VALUES ("8417876d-909e-494f-b2e4-a22db0a3d9bb",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_ACT
+	VALUES ("8417876d-909e-494f-b2e4-a22db0a3d9bb",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	1,
+	'create event instance evt of UI_A5:lapResetPressed() to UI class;
+GuiBridge::feedLapResetPressedEvent(evt: evt);
+::sendLapResetPressed();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("7407fc8e-c576-4a10-8790-9bd9381abce9",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"d1201953-15ad-4339-99d2-8378e2ae3fbe");
+INSERT INTO SM_AH
+	VALUES ("7407fc8e-c576-4a10-8790-9bd9381abce9",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_ACT
+	VALUES ("7407fc8e-c576-4a10-8790-9bd9381abce9",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	1,
+	'create event instance evt of UI_A6:lightPressed() to UI class;
+GuiBridge::feedLightPressedEvent(evt: evt);
+::sendLightPressed();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("a4ed148a-d752-4552-8f2b-96d377f27574",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	"bc9f2e8a-060d-426f-ae15-d5c30c1c9d14");
+INSERT INTO SM_AH
+	VALUES ("a4ed148a-d752-4552-8f2b-96d377f27574",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1");
+INSERT INTO SM_ACT
+	VALUES ("a4ed148a-d752-4552-8f2b-96d377f27574",
+	"cdc7c536-944a-4d91-aac6-6730cac71cc1",
+	1,
+	'create event instance evt of UI_A7:modePressed() to UI class;
+GuiBridge::feedModePressedEvent(evt: evt);
+::sendModePressed();',
+	'');
+INSERT INTO O_OBJ_PROXY
+	VALUES ("36113a4c-e53d-4e9a-8e91-d3b08caf1b3e",
+	'UI',
+	1,
+	'UI',
+	'Provides an interface between Verifier and an external user interface representing 
+the watch, in this case an animated rendition of the watch containing virtual
+buttons that can be "pushed" by clicking on them with a mouse.
+
+The system is first primed by creating, within the Verifier execution engine, an 
+instance of each event that can be received by this class-based state machine.
+This priming is done through execution of the feed*() bridge operations within 
+the GuiBridge external entity.  Each of these operations is bound to a realized
+Java function that queues the appropriate event within the Verifier execution 
+engine.
+
+Whenever a button on the animated watch is pushed, it causes the associated
+event to be generated.  The activity on the transition then queues another instance
+of the same event within the Verifier execution engine before sending the 
+corresponding interface signal out through the UI port.  That interface signal 
+can then be received by an application, such as the Tracking component, that is 
+controlled by the animated watch.',
+	"00000000-0000-0000-0000-000000000000",
+	'../UI.xtuml');

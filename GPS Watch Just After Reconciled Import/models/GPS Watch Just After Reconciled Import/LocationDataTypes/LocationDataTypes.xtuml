@@ -1,0 +1,117 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("5747fe1e-0749-4f40-a63e-5fde76996d43",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'LocationDataTypes',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("f2b8b986-1fbd-4c5a-92c1-b07b8572372e",
+	112,
+	"5747fe1e-0749-4f40-a63e-5fde76996d43",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::LocationDataTypes');
+INSERT INTO DIM_DIA
+	VALUES ("f2b8b986-1fbd-4c5a-92c1-b07b8572372e",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("3ca42b2e-6d06-44ed-9369-6a5201a3ac9c",
+	'Speed',
+	'SpeedAveragingWindow is the number of track points used to calculate the current average speed.
+SecondsPerHour is the number of seconds in one hour.');
+INSERT INTO CNST_SYC
+	VALUES ("e9a134ef-6155-4594-a7ea-cbe15869615c",
+	'SpeedAveragingWindow',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"3ca42b2e-6d06-44ed-9369-6a5201a3ac9c",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("e9a134ef-6155-4594-a7ea-cbe15869615c",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("e9a134ef-6155-4594-a7ea-cbe15869615c",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'5');
+INSERT INTO CNST_SYC
+	VALUES ("551cd0d6-1cd4-4084-88c1-f5e7579b4c5e",
+	'SecondsPerHour',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"3ca42b2e-6d06-44ed-9369-6a5201a3ac9c",
+	"e9a134ef-6155-4594-a7ea-cbe15869615c",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LFSC
+	VALUES ("551cd0d6-1cd4-4084-88c1-f5e7579b4c5e",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("551cd0d6-1cd4-4084-88c1-f5e7579b4c5e",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'3600');
+INSERT INTO PE_PE
+	VALUES ("3ca42b2e-6d06-44ed-9369-6a5201a3ac9c",
+	1,
+	"5747fe1e-0749-4f40-a63e-5fde76996d43",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO CNST_CSP
+	VALUES ("30fdfd7b-be56-4a97-bfe0-3ff5118170c1",
+	'Distance',
+	'kmPerDegree is a rough conversion figure valid for most latitude figures (except where 
+the irregular shape of the earth perturbs the value) and for longitude figures
+away from the poles (where the distance between longitude lines decreases to zero).
+
+latitudeIncrement and longitudeIncrement specify the distance traveled by the simulated
+GPS during each interval.');
+INSERT INTO CNST_SYC
+	VALUES ("37773976-e27b-4058-8d4b-fc0681f0ea87",
+	'kmPerDegree',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"30fdfd7b-be56-4a97-bfe0-3ff5118170c1",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("37773976-e27b-4058-8d4b-fc0681f0ea87",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("37773976-e27b-4058-8d4b-fc0681f0ea87",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'111.32');
+INSERT INTO PE_PE
+	VALUES ("30fdfd7b-be56-4a97-bfe0-3ff5118170c1",
+	1,
+	"5747fe1e-0749-4f40-a63e-5fde76996d43",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("5747fe1e-0749-4f40-a63e-5fde76996d43",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../GPS Watch Just After Reconciled Import.xtuml');

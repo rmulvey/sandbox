@@ -1,0 +1,341 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Stopwatch',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("2fe8737e-cd3e-4dc5-a7df-b18a9e01ad48",
+	112,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Sequences::Stopwatch');
+INSERT INTO DIM_DIA
+	VALUES ("2fe8737e-cd3e-4dc5-a7df-b18a9e01ad48",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_P
+	VALUES ("454aff43-d201-4d78-946a-26e2f2862df6",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_AP
+	VALUES ("454aff43-d201-4d78-946a-26e2f2862df6",
+	'User',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("454aff43-d201-4d78-946a-26e2f2862df6",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("9fc1d71f-513e-4283-aff6-ac33f7c1e51e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("9fc1d71f-513e-4283-aff6-ac33f7c1e51e",
+	"2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	'GPS Watch Just After Reconciled Import::Library::UI',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/UI/UI.xtuml');
+INSERT INTO PE_PE
+	VALUES ("9fc1d71f-513e-4283-aff6-ac33f7c1e51e",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("e7b4c646-cc53-4fa1-975a-675ee3b91293",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("e7b4c646-cc53-4fa1-975a-675ee3b91293",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'GPS Watch Just After Reconciled Import::Library::Tracking',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("bc932861-6512-40c3-94c7-ab0285c42a39",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'The Tracking component encapsulates the entire application software. This is the 
+only component in the system from which code will be generated for the final 
+product.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/Tracking/Tracking.xtuml');
+INSERT INTO PE_PE
+	VALUES ("e7b4c646-cc53-4fa1-975a-675ee3b91293",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("1831d403-77c3-4aca-8c18-f0b7f28be470",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("1831d403-77c3-4aca-8c18-f0b7f28be470",
+	"454aff43-d201-4d78-946a-26e2f2862df6",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("1831d403-77c3-4aca-8c18-f0b7f28be470",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("2f0c5860-7d8f-46ea-b3af-5c329fe1213a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("2f0c5860-7d8f-46ea-b3af-5c329fe1213a",
+	"9fc1d71f-513e-4283-aff6-ac33f7c1e51e",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("2f0c5860-7d8f-46ea-b3af-5c329fe1213a",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("e490de21-ca4a-40af-8171-2d5865d181f3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("e490de21-ca4a-40af-8171-2d5865d181f3",
+	"e7b4c646-cc53-4fa1-975a-675ee3b91293",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("e490de21-ca4a-40af-8171-2d5865d181f3",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("6737d449-7250-45c9-b2f1-dd0759d67b77",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_EEP
+	VALUES ("6737d449-7250-45c9-b2f1-dd0759d67b77",
+	"00000000-0000-0000-0000-000000000000",
+	'GUI Bridge EE',
+	'GUI Bridge EE',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("6737d449-7250-45c9-b2f1-dd0759d67b77",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("f2f9e3fe-f71f-4e4b-9362-ac0338249d49",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("f2f9e3fe-f71f-4e4b-9362-ac0338249d49",
+	"6737d449-7250-45c9-b2f1-dd0759d67b77",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("f2f9e3fe-f71f-4e4b-9362-ac0338249d49",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("95b5818d-9e2d-4f38-8123-70aa1da885f5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_CP
+	VALUES ("95b5818d-9e2d-4f38-8123-70aa1da885f5",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking::WorkoutTimer',
+	'Tracking::WorkoutTimer',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("95b5818d-9e2d-4f38-8123-70aa1da885f5",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	"95b5818d-9e2d-4f38-8123-70aa1da885f5",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("7de06360-01fc-440f-922d-9282ce73d251",
+	'',
+	"a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("24ec04c5-0e56-4ba2-b8f1-f0add1dffe3b",
+	"d1355280-9c5e-44ee-a917-7ed1401f86ea",
+	"7de06360-01fc-440f-922d-9282ce73d251",
+	'1 second ticking loop',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("d1355280-9c5e-44ee-a917-7ed1401f86ea",
+	'',
+	"a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	'');
+INSERT INTO PE_PE
+	VALUES ("a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO MSG_M
+	VALUES ("e313f69a-517d-41af-bfd1-b6992b8ea14f",
+	"2f0c5860-7d8f-46ea-b3af-5c329fe1213a",
+	"f2f9e3fe-f71f-4e4b-9362-ac0338249d49",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("e313f69a-517d-41af-bfd1-b6992b8ea14f",
+	'setTime(0)',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'setTime(0)',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("e313f69a-517d-41af-bfd1-b6992b8ea14f");
+INSERT INTO PE_PE
+	VALUES ("e313f69a-517d-41af-bfd1-b6992b8ea14f",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("252a0022-8850-441f-85a7-545321178129",
+	"2f0c5860-7d8f-46ea-b3af-5c329fe1213a",
+	"f2f9e3fe-f71f-4e4b-9362-ac0338249d49",
+	0);
+INSERT INTO MSG_SM
+	VALUES ("252a0022-8850-441f-85a7-545321178129",
+	'setTime(<new time>)',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'setTime(<new time>)',
+	'');
+INSERT INTO MSG_ISM
+	VALUES ("252a0022-8850-441f-85a7-545321178129");
+INSERT INTO PE_PE
+	VALUES ("252a0022-8850-441f-85a7-545321178129",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("aa65c969-9d11-4465-950e-26756b8fc693",
+	"e490de21-ca4a-40af-8171-2d5865d181f3",
+	"a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("aa65c969-9d11-4465-950e-26756b8fc693",
+	'startStopPressed event',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'startStopPressed event',
+	'');
+INSERT INTO MSG_IAM
+	VALUES ("aa65c969-9d11-4465-950e-26756b8fc693");
+INSERT INTO PE_PE
+	VALUES ("aa65c969-9d11-4465-950e-26756b8fc693",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO MSG_M
+	VALUES ("0a889578-d7c6-464c-9117-2bce5dd43c15",
+	"a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	"a649df2e-595e-4be3-8ad9-dea2dc3c7ea4",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("0a889578-d7c6-464c-9117-2bce5dd43c15",
+	'tick',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'tick',
+	'');
+INSERT INTO MSG_IAM
+	VALUES ("0a889578-d7c6-464c-9117-2bce5dd43c15");
+INSERT INTO PE_PE
+	VALUES ("0a889578-d7c6-464c-9117-2bce5dd43c15",
+	1,
+	"94a979bf-5022-444f-9d8b-4e8937c5def5",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO PE_PE
+	VALUES ("94a979bf-5022-444f-9d8b-4e8937c5def5",
+	1,
+	"d020db9a-fce2-44ad-add3-46e9a1a204c0",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("d020db9a-fce2-44ad-add3-46e9a1a204c0",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Sequences',
+	'',
+	0,
+	'../Sequences.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../../GPS Watch Just After Reconciled Import.xtuml');

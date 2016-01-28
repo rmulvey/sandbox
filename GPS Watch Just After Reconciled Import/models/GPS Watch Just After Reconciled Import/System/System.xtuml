@@ -1,0 +1,511 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'System',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("09fb5209-290a-4ff4-a249-1bfcc84a0497",
+	112,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::System');
+INSERT INTO DIM_DIA
+	VALUES ("09fb5209-290a-4ff4-a249-1bfcc84a0497",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CL_IC
+	VALUES ("85825a50-b96c-495f-83d6-d25eacafa2b6",
+	"2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::UI',
+	'');
+INSERT INTO CL_POR
+	VALUES ("85825a50-b96c-495f-83d6-d25eacafa2b6",
+	"1f38641c-4984-4b6b-a162-632efc76d68d",
+	'UI',
+	"739eb858-dad5-42d9-9f32-b0cfa4872f15");
+INSERT INTO CL_IIR
+	VALUES ("ebaeb78d-da50-4a0c-a3e6-87357b2ee778",
+	"9bc0120d-6f62-4185-a1fd-47051778d085",
+	"739eb858-dad5-42d9-9f32-b0cfa4872f15",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'');
+INSERT INTO CL_IP
+	VALUES ("ebaeb78d-da50-4a0c-a3e6-87357b2ee778",
+	'UI',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("1e48a664-efc1-41e4-8285-8bcae69c9cff",
+	"ebaeb78d-da50-4a0c-a3e6-87357b2ee778");
+INSERT INTO C_IR_PROXY
+	VALUES ("9bc0120d-6f62-4185-a1fd-47051778d085",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	"00000000-0000-0000-0000-000000000000",
+	"1f38641c-4984-4b6b-a162-632efc76d68d",
+	'../Library/UI/UI.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("1f38641c-4984-4b6b-a162-632efc76d68d",
+	"2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	'UI',
+	0,
+	0,
+	'../Library/UI/UI.xtuml');
+INSERT INTO PE_PE
+	VALUES ("85825a50-b96c-495f-83d6-d25eacafa2b6",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Library/UI/UI.xtuml');
+INSERT INTO CL_IC
+	VALUES ("cbdc60ce-6c9d-4719-b38f-8752c81b4546",
+	"0204f289-8900-4d34-93a6-6189697daf70",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::Location',
+	'');
+INSERT INTO CL_POR
+	VALUES ("cbdc60ce-6c9d-4719-b38f-8752c81b4546",
+	"ab308fe9-338c-4685-b4df-cd7ebec3c4ff",
+	'LOC',
+	"86f25ad0-8289-49eb-8a1f-bfb28a4db493");
+INSERT INTO CL_IIR
+	VALUES ("a247bad9-7636-48d3-a319-44619c3d2572",
+	"d7e68632-74f6-42cb-af4b-32f74874f649",
+	"86f25ad0-8289-49eb-8a1f-bfb28a4db493",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationProvider',
+	'');
+INSERT INTO CL_IP
+	VALUES ("a247bad9-7636-48d3-a319-44619c3d2572",
+	'LocationProvider',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("b37c1908-eeaa-4982-b0b5-788418916b39",
+	"a247bad9-7636-48d3-a319-44619c3d2572");
+INSERT INTO C_IR_PROXY
+	VALUES ("d7e68632-74f6-42cb-af4b-32f74874f649",
+	"666a11ea-1f8b-40b7-8902-fa4b28498294",
+	"00000000-0000-0000-0000-000000000000",
+	"ab308fe9-338c-4685-b4df-cd7ebec3c4ff",
+	'../Library/Location/Location.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("ab308fe9-338c-4685-b4df-cd7ebec3c4ff",
+	"0204f289-8900-4d34-93a6-6189697daf70",
+	'LOC',
+	0,
+	0,
+	'../Library/Location/Location.xtuml');
+INSERT INTO CL_POR
+	VALUES ("cbdc60ce-6c9d-4719-b38f-8752c81b4546",
+	"b527eee4-13ef-4999-9f65-b73efc7ead25",
+	'UTIL',
+	"07ccfba9-00db-40a9-a45e-c6d2d69b17a4");
+INSERT INTO CL_IIR
+	VALUES ("a6242c25-ac2b-4f7e-bee3-9608f36d9ab9",
+	"2aa0dc16-58dc-4e28-b101-d7369cc52712",
+	"07ccfba9-00db-40a9-a45e-c6d2d69b17a4",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationUtil',
+	'');
+INSERT INTO CL_IP
+	VALUES ("a6242c25-ac2b-4f7e-bee3-9608f36d9ab9",
+	'LocationUtil',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("0b62bb6b-9a33-4183-b9cd-f78c0570594a",
+	"a6242c25-ac2b-4f7e-bee3-9608f36d9ab9");
+INSERT INTO C_IR_PROXY
+	VALUES ("2aa0dc16-58dc-4e28-b101-d7369cc52712",
+	"a9df0c68-53f1-4dd1-9c02-f1df6443c71d",
+	"00000000-0000-0000-0000-000000000000",
+	"b527eee4-13ef-4999-9f65-b73efc7ead25",
+	'../Library/Location/Location.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("b527eee4-13ef-4999-9f65-b73efc7ead25",
+	"0204f289-8900-4d34-93a6-6189697daf70",
+	'UTIL',
+	0,
+	0,
+	'../Library/Location/Location.xtuml');
+INSERT INTO PE_PE
+	VALUES ("cbdc60ce-6c9d-4719-b38f-8752c81b4546",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("0204f289-8900-4d34-93a6-6189697daf70",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Location',
+	'Simulates a the GPS hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Library/Location/Location.xtuml');
+INSERT INTO CL_IC
+	VALUES ("a463cee7-bbca-483d-aed6-80ccd105e77d",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::Tracking',
+	'');
+INSERT INTO CL_POR
+	VALUES ("a463cee7-bbca-483d-aed6-80ccd105e77d",
+	"c18f8251-56af-44dd-96fa-09f21c53bbf6",
+	'LOC',
+	"9367d469-c96b-483d-95a7-a811994f0662");
+INSERT INTO CL_IIR
+	VALUES ("b428d07d-2770-4446-b8a0-86ae0f936e9d",
+	"4eb7babd-05e5-4e77-a9b3-6b61f093dde1",
+	"9367d469-c96b-483d-95a7-a811994f0662",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationProvider',
+	'');
+INSERT INTO CL_IR
+	VALUES ("b428d07d-2770-4446-b8a0-86ae0f936e9d",
+	"b37c1908-eeaa-4982-b0b5-788418916b39",
+	'LocationProvider',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("4eb7babd-05e5-4e77-a9b3-6b61f093dde1",
+	"666a11ea-1f8b-40b7-8902-fa4b28498294",
+	"00000000-0000-0000-0000-000000000000",
+	"c18f8251-56af-44dd-96fa-09f21c53bbf6",
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("c18f8251-56af-44dd-96fa-09f21c53bbf6",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'LOC',
+	0,
+	0,
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO CL_POR
+	VALUES ("a463cee7-bbca-483d-aed6-80ccd105e77d",
+	"fbff0d57-d71d-478b-a8f0-bf9fb366e43a",
+	'UI',
+	"d4cace32-4543-49c4-afd8-86e4adffbdb9");
+INSERT INTO CL_IIR
+	VALUES ("f3866dc1-6ce7-451d-897f-778f32423ce3",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced",
+	"d4cace32-4543-49c4-afd8-86e4adffbdb9",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'');
+INSERT INTO CL_IR
+	VALUES ("f3866dc1-6ce7-451d-897f-778f32423ce3",
+	"1e48a664-efc1-41e4-8285-8bcae69c9cff",
+	'UI',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("6da25709-dcd6-4d2d-a791-3d4ce1951ced",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	"00000000-0000-0000-0000-000000000000",
+	"fbff0d57-d71d-478b-a8f0-bf9fb366e43a",
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("fbff0d57-d71d-478b-a8f0-bf9fb366e43a",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'UI',
+	0,
+	0,
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO CL_POR
+	VALUES ("a463cee7-bbca-483d-aed6-80ccd105e77d",
+	"cf9aba95-4e7b-4b58-8da1-6d6f80647ac0",
+	'HR',
+	"279dc2a6-3a5f-44d4-893a-28bdc778e92f");
+INSERT INTO CL_IIR
+	VALUES ("dc11e40d-0b52-4b44-9f73-ffe68c175c7c",
+	"8ffa0458-2e4e-44ee-8c55-72749be94940",
+	"279dc2a6-3a5f-44d4-893a-28bdc778e92f",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateProvider',
+	'');
+INSERT INTO CL_IR
+	VALUES ("dc11e40d-0b52-4b44-9f73-ffe68c175c7c",
+	"32bd877d-5b47-4ccf-b54e-758416ceba5e",
+	'HeartRateProvider',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("8ffa0458-2e4e-44ee-8c55-72749be94940",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	"cf9aba95-4e7b-4b58-8da1-6d6f80647ac0",
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("cf9aba95-4e7b-4b58-8da1-6d6f80647ac0",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'HR',
+	0,
+	0,
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO CL_POR
+	VALUES ("a463cee7-bbca-483d-aed6-80ccd105e77d",
+	"db954ff5-657c-4f1b-bdd6-8f58e3458fc4",
+	'UTIL',
+	"deb5fd3a-1043-4cf1-9c9c-74688aa1e763");
+INSERT INTO CL_IIR
+	VALUES ("e4985d11-199c-449c-84ff-92aa1a093869",
+	"70617e1e-9023-4ddd-b4d8-c38cf06b3b1d",
+	"deb5fd3a-1043-4cf1-9c9c-74688aa1e763",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationUtil',
+	'');
+INSERT INTO CL_IR
+	VALUES ("e4985d11-199c-449c-84ff-92aa1a093869",
+	"0b62bb6b-9a33-4183-b9cd-f78c0570594a",
+	'LocationUtil',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("70617e1e-9023-4ddd-b4d8-c38cf06b3b1d",
+	"a9df0c68-53f1-4dd1-9c02-f1df6443c71d",
+	"00000000-0000-0000-0000-000000000000",
+	"db954ff5-657c-4f1b-bdd6-8f58e3458fc4",
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("db954ff5-657c-4f1b-bdd6-8f58e3458fc4",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'UTIL',
+	0,
+	0,
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO PE_PE
+	VALUES ("a463cee7-bbca-483d-aed6-80ccd105e77d",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("bc932861-6512-40c3-94c7-ab0285c42a39",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'The Tracking component encapsulates the entire application software. This is the 
+only component in the system from which code will be generated for the final 
+product.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO CL_IC
+	VALUES ("90d35e04-d8bb-45de-a014-03ee7a6b7508",
+	"6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::HeartRateMonitor',
+	'');
+INSERT INTO CL_POR
+	VALUES ("90d35e04-d8bb-45de-a014-03ee7a6b7508",
+	"d7cf9ff8-a8d7-4f65-b939-9b55c1f7f6a4",
+	'HR',
+	"bae0b22f-be27-4412-ab6d-23c180905b38");
+INSERT INTO CL_IIR
+	VALUES ("ba9f32bf-a9b9-408c-b531-b51316347f3f",
+	"81dee789-abbe-4aba-910b-73cbe29d2232",
+	"bae0b22f-be27-4412-ab6d-23c180905b38",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateProvider',
+	'');
+INSERT INTO CL_IP
+	VALUES ("ba9f32bf-a9b9-408c-b531-b51316347f3f",
+	'HeartRateProvider',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("32bd877d-5b47-4ccf-b54e-758416ceba5e",
+	"ba9f32bf-a9b9-408c-b531-b51316347f3f");
+INSERT INTO C_IR_PROXY
+	VALUES ("81dee789-abbe-4aba-910b-73cbe29d2232",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	"d7cf9ff8-a8d7-4f65-b939-9b55c1f7f6a4",
+	'../Library/HeartRateMonitor/HeartRateMonitor.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("d7cf9ff8-a8d7-4f65-b939-9b55c1f7f6a4",
+	"6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	'HR',
+	0,
+	0,
+	'../Library/HeartRateMonitor/HeartRateMonitor.xtuml');
+INSERT INTO PE_PE
+	VALUES ("90d35e04-d8bb-45de-a014-03ee7a6b7508",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateMonitor',
+	'Simulates a pulse monitor hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Library/HeartRateMonitor/HeartRateMonitor.xtuml');
+INSERT INTO C_SF
+	VALUES ("1e48a664-efc1-41e4-8285-8bcae69c9cff",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced",
+	"9bc0120d-6f62-4185-a1fd-47051778d085",
+	'',
+	'UI::UI::UI -o)- Tracking::UI::UI');
+INSERT INTO PE_PE
+	VALUES ("1e48a664-efc1-41e4-8285-8bcae69c9cff",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("6da25709-dcd6-4d2d-a791-3d4ce1951ced",
+	'UI',
+	'',
+	'Unnamed Interface',
+	'Tracking::UI::UI',
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("9bc0120d-6f62-4185-a1fd-47051778d085",
+	'UI',
+	'Unnamed Interface',
+	'',
+	'UI::UI::UI',
+	'../Library/UI/UI.xtuml');
+INSERT INTO C_SF
+	VALUES ("32bd877d-5b47-4ccf-b54e-758416ceba5e",
+	"8ffa0458-2e4e-44ee-8c55-72749be94940",
+	"81dee789-abbe-4aba-910b-73cbe29d2232",
+	'',
+	'HeartRateMonitor::HR::HeartRateProvider -o)- Tracking::HR::HeartRateProvider');
+INSERT INTO PE_PE
+	VALUES ("32bd877d-5b47-4ccf-b54e-758416ceba5e",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("8ffa0458-2e4e-44ee-8c55-72749be94940",
+	'HeartRateProvider',
+	'',
+	'Unnamed Interface',
+	'Tracking::HR::HeartRateProvider',
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("81dee789-abbe-4aba-910b-73cbe29d2232",
+	'HeartRateProvider',
+	'Unnamed Interface',
+	'',
+	'HeartRateMonitor::HR::HeartRateProvider',
+	'../Library/HeartRateMonitor/HeartRateMonitor.xtuml');
+INSERT INTO C_SF
+	VALUES ("b37c1908-eeaa-4982-b0b5-788418916b39",
+	"4eb7babd-05e5-4e77-a9b3-6b61f093dde1",
+	"d7e68632-74f6-42cb-af4b-32f74874f649",
+	'',
+	'Location::LOC::LocationProvider -o)- Tracking::LOC::LocationProvider');
+INSERT INTO PE_PE
+	VALUES ("b37c1908-eeaa-4982-b0b5-788418916b39",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("4eb7babd-05e5-4e77-a9b3-6b61f093dde1",
+	'LocationProvider',
+	'',
+	'Unnamed Interface',
+	'Tracking::LOC::LocationProvider',
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("d7e68632-74f6-42cb-af4b-32f74874f649",
+	'LocationProvider',
+	'Unnamed Interface',
+	'',
+	'Location::LOC::LocationProvider',
+	'../Library/Location/Location.xtuml');
+INSERT INTO C_SF
+	VALUES ("0b62bb6b-9a33-4183-b9cd-f78c0570594a",
+	"70617e1e-9023-4ddd-b4d8-c38cf06b3b1d",
+	"2aa0dc16-58dc-4e28-b101-d7369cc52712",
+	'',
+	'Location::UTIL::LocationUtil -o)- Tracking::UTIL::LocationUtil');
+INSERT INTO PE_PE
+	VALUES ("0b62bb6b-9a33-4183-b9cd-f78c0570594a",
+	1,
+	"210cbfdb-7d13-483b-9335-c0a739464ed7",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("70617e1e-9023-4ddd-b4d8-c38cf06b3b1d",
+	'LocationUtil',
+	'',
+	'Unnamed Interface',
+	'Tracking::UTIL::LocationUtil',
+	'../Library/Tracking/Tracking.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("2aa0dc16-58dc-4e28-b101-d7369cc52712",
+	'LocationUtil',
+	'Unnamed Interface',
+	'',
+	'Location::UTIL::LocationUtil',
+	'../Library/Location/Location.xtuml');
+INSERT INTO PE_PE
+	VALUES ("210cbfdb-7d13-483b-9335-c0a739464ed7",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../GPS Watch Just After Reconciled Import.xtuml');

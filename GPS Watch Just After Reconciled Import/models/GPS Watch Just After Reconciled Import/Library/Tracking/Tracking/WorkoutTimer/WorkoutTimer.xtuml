@@ -1,0 +1,157 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	'WorkoutTimer',
+	1,
+	'WorkoutTimer',
+	'Represents the stopwatch portion of the device.
+This class also knows:
+- Track points are stored only when the stopwatch is running.
+- If a goal is executing, evaluation of it must be paused when
+the timer pauses.
+- How to handle the lap/reset signal based on whether the 
+stopwatch is currently running.
+
+This is a singleton instance.
+',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("e1a30a1f-bdaf-4f58-8bba-ca4332447228",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	'activate',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Start the underlying timer that drives the workout timer.
+create event instance evt of WorkoutTimer3:tick() to self;
+self.timer = TIM::timer_start_recurring( event_inst: evt, microseconds: (timerPeriod * 1000000) );
+
+// Resume evaluation of the currently executing goal, if there is one.
+select one executingGoal related by
+  self->WorkoutSession[R8.''acts as the stopwatch for'']->Goal[R11.''is currently executing''];
+if ( not empty executingGoal )
+  generate Goal2:Evaluate to executingGoal;
+end if;
+
+// Resume listening for updates from the GPS and heart monitor.
+send LOC::registerListener();
+send HR::registerListener();',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("913b7238-a296-41ad-8cc9-5b4a2a096bbc",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	'deactivate',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Cancel the timer driving the workout timer, ignoring the return code.
+cancelSucceeded = TIM::timer_cancel(timer_inst_ref: self.timer);
+
+// Pause evaluation of the currently executing goal, if there is one.
+select one executingGoal related by
+  self->WorkoutSession[R8.''acts as the stopwatch for'']->Goal[R11.''is currently executing''];
+if ( not empty executingGoal )
+  generate Goal3:Pause to executingGoal;
+end if;
+
+// Stop listening for updates from the GPS and heart monitor.
+send LOC::unregisterListener();
+send HR::unregisterListener();',
+	1,
+	'',
+	"e1a30a1f-bdaf-4f58-8bba-ca4332447228");
+INSERT INTO O_TFR
+	VALUES ("e9c99e65-3a84-4d7e-bfbf-5de50e480e02",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Initialize this instance.
+
+self.time = 0;',
+	1,
+	'',
+	"913b7238-a296-41ad-8cc9-5b4a2a096bbc");
+INSERT INTO O_NBATTR
+	VALUES ("68fae217-c4d5-4625-9b54-5841c370cd7c",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_BATTR
+	VALUES ("68fae217-c4d5-4625-9b54-5841c370cd7c",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_ATTR
+	VALUES ("68fae217-c4d5-4625-9b54-5841c370cd7c",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("8f918648-bd5e-4059-a8a0-d5b8e0ecc9af",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_BATTR
+	VALUES ("8f918648-bd5e-4059-a8a0-d5b8e0ecc9af",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_ATTR
+	VALUES ("8f918648-bd5e-4059-a8a0-d5b8e0ecc9af",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	"68fae217-c4d5-4625-9b54-5841c370cd7c",
+	'time',
+	'Number of seconds elapsed during the associated workout session.
+Time elapses only when this timer is running.',
+	'',
+	'time',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("01e6a313-cde9-42a5-b42e-702b0adc88ee",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_BATTR
+	VALUES ("01e6a313-cde9-42a5-b42e-702b0adc88ee",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_ATTR
+	VALUES ("01e6a313-cde9-42a5-b42e-702b0adc88ee",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	"8f918648-bd5e-4059-a8a0-d5b8e0ecc9af",
+	'timer',
+	'Handle for underlying timer mechanism that produces the 
+delayed events enabling the timer to track elapsed time.',
+	'',
+	'timer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_ID
+	VALUES (1,
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO O_ID
+	VALUES (2,
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO PE_PE
+	VALUES ("28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	1,
+	"b09d0e81-cba7-44fc-8dbd-e6aeca3a9224",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b09d0e81-cba7-44fc-8dbd-e6aeca3a9224",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Tracking',
+	'',
+	0,
+	'../Tracking.xtuml');

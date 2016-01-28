@@ -1,0 +1,204 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Backlight',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("5a951a75-7bb7-4f4c-b73f-46d97fe483a6",
+	112,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Sequences::Backlight');
+INSERT INTO DIM_DIA
+	VALUES ("5a951a75-7bb7-4f4c-b73f-46d97fe483a6",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_P
+	VALUES ("119ee75a-5a18-464d-93cb-327e9867fc89",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_AP
+	VALUES ("119ee75a-5a18-464d-93cb-327e9867fc89",
+	'User',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("119ee75a-5a18-464d-93cb-327e9867fc89",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("48dd278e-b73d-47f0-8a4b-6823661452d5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("48dd278e-b73d-47f0-8a4b-6823661452d5",
+	"2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	'GPS Watch Just After Reconciled Import::Library::UI',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/UI/UI.xtuml');
+INSERT INTO PE_PE
+	VALUES ("48dd278e-b73d-47f0-8a4b-6823661452d5",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("97732f5a-aa4b-44af-91a7-1261a02732c4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_EEP
+	VALUES ("97732f5a-aa4b-44af-91a7-1261a02732c4",
+	"00000000-0000-0000-0000-000000000000",
+	'Graphical User Interface EE',
+	'Graphical User Interface EE',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("97732f5a-aa4b-44af-91a7-1261a02732c4",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("398e9868-c429-46a8-a70f-674123a704cb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("398e9868-c429-46a8-a70f-674123a704cb",
+	"119ee75a-5a18-464d-93cb-327e9867fc89",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("398e9868-c429-46a8-a70f-674123a704cb",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("e8810b8e-5944-4974-b260-029b09416ce4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("e8810b8e-5944-4974-b260-029b09416ce4",
+	"48dd278e-b73d-47f0-8a4b-6823661452d5",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("190fd5a9-0f5b-43c7-955e-f97412748c29",
+	'',
+	"e8810b8e-5944-4974-b260-029b09416ce4",
+	'');
+INSERT INTO PE_PE
+	VALUES ("e8810b8e-5944-4974-b260-029b09416ce4",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("ae9ea421-d5f8-40bf-80c3-fc2a7070071f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("ae9ea421-d5f8-40bf-80c3-fc2a7070071f",
+	"97732f5a-aa4b-44af-91a7-1261a02732c4",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("d6c828f2-ec86-4b51-90ab-c7168d5267c3",
+	'',
+	"ae9ea421-d5f8-40bf-80c3-fc2a7070071f",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("aef77b65-0a6e-4757-bca7-1b39ebe343e4",
+	"d0274a0c-5bde-49cc-bf81-033e494d97de",
+	"d6c828f2-ec86-4b51-90ab-c7168d5267c3",
+	'Turns on backlight, sets 5 second timer, when it expires, turns off backlight',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("d0274a0c-5bde-49cc-bf81-033e494d97de",
+	'',
+	"ae9ea421-d5f8-40bf-80c3-fc2a7070071f",
+	'');
+INSERT INTO PE_PE
+	VALUES ("ae9ea421-d5f8-40bf-80c3-fc2a7070071f",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO MSG_M
+	VALUES ("eefaf100-f6a1-4950-bfde-39d0e26416b2",
+	"e8810b8e-5944-4974-b260-029b09416ce4",
+	"ae9ea421-d5f8-40bf-80c3-fc2a7070071f",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("eefaf100-f6a1-4950-bfde-39d0e26416b2",
+	'feedLightPressedEvent(evt)',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'feedLightPressedEvent(evt)',
+	'');
+INSERT INTO MSG_IAM
+	VALUES ("eefaf100-f6a1-4950-bfde-39d0e26416b2");
+INSERT INTO PE_PE
+	VALUES ("eefaf100-f6a1-4950-bfde-39d0e26416b2",
+	1,
+	"ce476976-58de-4174-8a37-eca712b1d929",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO PE_PE
+	VALUES ("ce476976-58de-4174-8a37-eca712b1d929",
+	1,
+	"d020db9a-fce2-44ad-add3-46e9a1a204c0",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("d020db9a-fce2-44ad-add3-46e9a1a204c0",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Sequences',
+	'',
+	0,
+	'../Sequences.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../../GPS Watch Just After Reconciled Import.xtuml');

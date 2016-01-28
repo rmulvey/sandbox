@@ -1,0 +1,581 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("bc932861-6512-40c3-94c7-ab0285c42a39",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'The Tracking component encapsulates the entire application software. This is the 
+only component in the system from which code will be generated for the final 
+product.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO GD_MD
+	VALUES ("a551a92a-0efb-4630-b553-5009b691203d",
+	111,
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	98,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::Tracking');
+INSERT INTO GD_GE
+	VALUES ("abc525dc-817b-404f-af22-133cd82f6886",
+	"a551a92a-0efb-4630-b553-5009b691203d",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	103,
+	0,
+	'GPS Watch Just After Reconciled Import::Library::Tracking');
+INSERT INTO GD_SHP
+	VALUES ("abc525dc-817b-404f-af22-133cd82f6886");
+INSERT INTO GD_CTR
+	VALUES ("abc525dc-817b-404f-af22-133cd82f6886");
+INSERT INTO DIM_ND
+	VALUES (573.000000,
+	321.000000,
+	"abc525dc-817b-404f-af22-133cd82f6886");
+INSERT INTO DIM_GE
+	VALUES (4100.000000,
+	3100.000000,
+	"abc525dc-817b-404f-af22-133cd82f6886",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("abc525dc-817b-404f-af22-133cd82f6886",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("a551a92a-0efb-4630-b553-5009b691203d",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PO
+	VALUES ("c18f8251-56af-44dd-96fa-09f21c53bbf6",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'LOC',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("4eb7babd-05e5-4e77-a9b3-6b61f093dde1",
+	"666a11ea-1f8b-40b7-8902-fa4b28498294",
+	"00000000-0000-0000-0000-000000000000",
+	"c18f8251-56af-44dd-96fa-09f21c53bbf6");
+INSERT INTO C_R
+	VALUES ("4eb7babd-05e5-4e77-a9b3-6b61f093dde1",
+	'LocationProvider',
+	'',
+	'Unnamed Interface',
+	'Tracking::LOC::LocationProvider');
+INSERT INTO SPR_REP
+	VALUES ("b2810f3a-6b53-4a76-b507-9f9a635afad0",
+	"21638400-a137-405b-ac1f-b2ab5ad1e101",
+	"4eb7babd-05e5-4e77-a9b3-6b61f093dde1");
+INSERT INTO SPR_RS
+	VALUES ("b2810f3a-6b53-4a76-b507-9f9a635afad0",
+	'registerListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("21638400-a137-405b-ac1f-b2ab5ad1e101",
+	"666a11ea-1f8b-40b7-8902-fa4b28498294",
+	-1,
+	'registerListener',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("7bf402df-c7f4-4abe-b80d-864538326b9d",
+	"dd42d612-8127-4331-b539-b2876af40b48",
+	"4eb7babd-05e5-4e77-a9b3-6b61f093dde1");
+INSERT INTO SPR_RS
+	VALUES ("7bf402df-c7f4-4abe-b80d-864538326b9d",
+	'unregisterListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("dd42d612-8127-4331-b539-b2876af40b48",
+	"666a11ea-1f8b-40b7-8902-fa4b28498294",
+	-1,
+	'unregisterListener',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("a457dff6-8d8e-4415-9551-c952e1d31ee4",
+	"9a4b5bdc-1a93-4d77-9dc1-9543447e53cc",
+	"4eb7babd-05e5-4e77-a9b3-6b61f093dde1");
+INSERT INTO SPR_RO
+	VALUES ("a457dff6-8d8e-4415-9551-c952e1d31ee4",
+	'getLocation',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("9a4b5bdc-1a93-4d77-9dc1-9543447e53cc",
+	"666a11ea-1f8b-40b7-8902-fa4b28498294",
+	-1,
+	'getLocation',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("666a11ea-1f8b-40b7-8902-fa4b28498294",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationProvider',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO C_PO
+	VALUES ("fbff0d57-d71d-478b-a8f0-bf9fb366e43a",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'UI',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("6da25709-dcd6-4d2d-a791-3d4ce1951ced",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	"00000000-0000-0000-0000-000000000000",
+	"fbff0d57-d71d-478b-a8f0-bf9fb366e43a");
+INSERT INTO C_R
+	VALUES ("6da25709-dcd6-4d2d-a791-3d4ce1951ced",
+	'UI',
+	'',
+	'Unnamed Interface',
+	'Tracking::UI::UI');
+INSERT INTO SPR_REP
+	VALUES ("273416ce-a467-4cfa-bfff-3fb042551ca6",
+	"ecffa073-02ec-4944-b4a1-4d50820bf0dc",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RS
+	VALUES ("273416ce-a467-4cfa-bfff-3fb042551ca6",
+	'lapResetPressed',
+	'',
+	'// Find the singleton instance of the workout timer 
+// and forward this signal, as an event, to it.
+
+select any workoutTimer from instances of WorkoutTimer;
+if (not empty workoutTimer)
+  generate WorkoutTimer2:lapResetPressed() to workoutTimer;
+else
+  LOG::LogFailure( message:"Tracking:UI:lapResetPressed - No WorkoutTimer, so nothing to do." );
+end if;
+',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("ecffa073-02ec-4944-b4a1-4d50820bf0dc",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'lapResetPressed',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("7398430b-8f3f-45e0-a971-2105b24cf876",
+	"0009626c-e773-4595-b090-be7012daee3b",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RS
+	VALUES ("7398430b-8f3f-45e0-a971-2105b24cf876",
+	'startStopPressed',
+	'',
+	'// If necessary, create a workout session and everything required to 
+// support it.  Then, forward this signal to the workout timer.
+
+WorkoutSession::create();
+
+// Forward this signal, as an event, to the singleton instance of WorkoutTimer.
+select any workoutTimer from instances of WorkoutTimer;
+generate WorkoutTimer1:startStopPressed() to workoutTimer;',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("0009626c-e773-4595-b090-be7012daee3b",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'startStopPressed',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("04435200-a595-4f1a-b766-e6db78c52ffe",
+	"931564c3-8c5a-47d9-977e-8aa67cd65f67",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RS
+	VALUES ("04435200-a595-4f1a-b766-e6db78c52ffe",
+	'lightPressed',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("931564c3-8c5a-47d9-977e-8aa67cd65f67",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'lightPressed',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("57f32e8e-4a2d-4272-9a67-bb7c7f17de38",
+	"d875b3c0-0ff7-45f4-baf9-e23566f675d7",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RS
+	VALUES ("57f32e8e-4a2d-4272-9a67-bb7c7f17de38",
+	'modePressed',
+	'',
+	'// Notify the display to change modes.
+
+// Find the display related to the singleton instance of 
+//   workout session (if it exists), and notify it.
+select any session from instances of WorkoutSession;
+if ( not empty session )
+  select one display related by session->Display[R7.''current status indicated on''];
+  generate Display1:modeChange to display;
+end if;',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("d875b3c0-0ff7-45f4-baf9-e23566f675d7",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'modePressed',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("478098bc-7a3b-4ca8-a968-cf8f7b3a0b7f",
+	"c81504d9-8dc7-45cf-9274-364fa6a3d0a5",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RS
+	VALUES ("478098bc-7a3b-4ca8-a968-cf8f7b3a0b7f",
+	'setTargetPressed',
+	'',
+	'// If a goal is currently executing, advance to the next one,
+//   otherwise start the first specified goal, if it exists.
+Goal::nextGoal();',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("c81504d9-8dc7-45cf-9274-364fa6a3d0a5",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'setTargetPressed',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("f915c8e8-7213-4c6d-877c-a123aabcff43",
+	"97e9734e-1b61-49aa-a85e-29d7347f5af9",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RO
+	VALUES ("f915c8e8-7213-4c6d-877c-a123aabcff43",
+	'setTime',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("97e9734e-1b61-49aa-a85e-29d7347f5af9",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'setTime',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c327b8c3-5189-4f59-bde1-2409d1c9a4dd",
+	"cc7865b0-2a7d-4e94-b2cd-abf17c8157c9",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RO
+	VALUES ("c327b8c3-5189-4f59-bde1-2409d1c9a4dd",
+	'setData',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("cc7865b0-2a7d-4e94-b2cd-abf17c8157c9",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'setData',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("ad0c1895-442e-4daa-a9b8-ea855eb692c4",
+	"5740acf9-5d95-406f-a60c-fcff295a39a6",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RO
+	VALUES ("ad0c1895-442e-4daa-a9b8-ea855eb692c4",
+	'startTest',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("5740acf9-5d95-406f-a60c-fcff295a39a6",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'startTest',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("52a88648-23f4-4a51-a8d1-88d1c16aad11",
+	"7f4cc219-2365-4356-a6ad-bca644b95417",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RO
+	VALUES ("52a88648-23f4-4a51-a8d1-88d1c16aad11",
+	'setIndicator',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("7f4cc219-2365-4356-a6ad-bca644b95417",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'setIndicator',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("d587bbda-4acf-4d0b-b27e-d19e2b6f272a",
+	"8b5a0d57-fc76-4a59-ad02-3564331d8375",
+	"6da25709-dcd6-4d2d-a791-3d4ce1951ced");
+INSERT INTO SPR_RS
+	VALUES ("d587bbda-4acf-4d0b-b27e-d19e2b6f272a",
+	'newGoalSpec',
+	'',
+	'// Create a new goal specification and relate it to the
+//   singleton instance of workout session if it exists.
+select any session from instances of WorkoutSession;
+if ( not empty session )
+  create object instance goalSpec of GoalSpec;
+  goalSpec.sequenceNumber = param.sequenceNumber;
+  goalSpec.minimum = param.minimum;
+  goalSpec.maximum = param.maximum;
+  goalSpec.span = param.span;
+  goalSpec.criteriaType = param.criteriaType;
+  goalSpec.spanType = param.spanType;
+  relate goalSpec to session across R10.''included in'';
+end if;',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("8b5a0d57-fc76-4a59-ad02-3564331d8375",
+	"64042bb9-3869-4b67-8c87-49542e1a078f",
+	-1,
+	'newGoalSpec',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("64042bb9-3869-4b67-8c87-49542e1a078f",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'',
+	'../../UIInterfaces/UI/UI.xtuml');
+INSERT INTO C_PO
+	VALUES ("cf9aba95-4e7b-4b58-8da1-6d6f80647ac0",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'HR',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("8ffa0458-2e4e-44ee-8c55-72749be94940",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	"cf9aba95-4e7b-4b58-8da1-6d6f80647ac0");
+INSERT INTO C_R
+	VALUES ("8ffa0458-2e4e-44ee-8c55-72749be94940",
+	'HeartRateProvider',
+	'',
+	'Unnamed Interface',
+	'Tracking::HR::HeartRateProvider');
+INSERT INTO SPR_REP
+	VALUES ("39dd6d15-a8ed-4a76-98db-234289d09822",
+	"c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	"8ffa0458-2e4e-44ee-8c55-72749be94940");
+INSERT INTO SPR_RS
+	VALUES ("39dd6d15-a8ed-4a76-98db-234289d09822",
+	'heartRateChanged',
+	'',
+	'// Find the singleton instance of the workout session
+// and forward this signal, as an event, to it.
+// If there is no active workout session, then this 
+// sample is simply ignored and not recorded.
+
+select any session from instances of WorkoutSession;
+if (not empty session)
+  session.addHeartRateSample(heartRate: param.heartRate);
+end if;',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'heartRateChanged',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("69572de2-df13-4417-94c6-5bee5323f8e7",
+	"58877f51-3fde-4bc2-97e8-134e3d145681",
+	"8ffa0458-2e4e-44ee-8c55-72749be94940");
+INSERT INTO SPR_RS
+	VALUES ("69572de2-df13-4417-94c6-5bee5323f8e7",
+	'registerListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("58877f51-3fde-4bc2-97e8-134e3d145681",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'registerListener',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("c0034c39-3fac-49d2-a8a8-4a031593110c",
+	"23dddce7-6c8c-494b-873b-bc15cd022004",
+	"8ffa0458-2e4e-44ee-8c55-72749be94940");
+INSERT INTO SPR_RS
+	VALUES ("c0034c39-3fac-49d2-a8a8-4a031593110c",
+	'unregisterListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("23dddce7-6c8c-494b-873b-bc15cd022004",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'unregisterListener',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateProvider',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO C_PO
+	VALUES ("db954ff5-657c-4f1b-bdd6-8f58e3458fc4",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	'UTIL',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("70617e1e-9023-4ddd-b4d8-c38cf06b3b1d",
+	"a9df0c68-53f1-4dd1-9c02-f1df6443c71d",
+	"00000000-0000-0000-0000-000000000000",
+	"db954ff5-657c-4f1b-bdd6-8f58e3458fc4");
+INSERT INTO C_R
+	VALUES ("70617e1e-9023-4ddd-b4d8-c38cf06b3b1d",
+	'LocationUtil',
+	'',
+	'Unnamed Interface',
+	'Tracking::UTIL::LocationUtil');
+INSERT INTO SPR_REP
+	VALUES ("ccb30185-b8a3-4b43-a728-af3672001d0b",
+	"c0a36355-3973-4c7f-acb2-30fab4e88031",
+	"70617e1e-9023-4ddd-b4d8-c38cf06b3b1d");
+INSERT INTO SPR_RO
+	VALUES ("ccb30185-b8a3-4b43-a728-af3672001d0b",
+	'getDistance',
+	'Returns distance, in kilometers, between the "from" and "to" coordinates passed as parameters.
+The coordinates must be passed as decimal degrees.',
+	'return 1;',
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("c0a36355-3973-4c7f-acb2-30fab4e88031",
+	"a9df0c68-53f1-4dd1-9c02-f1df6443c71d",
+	-1,
+	'getDistance',
+	'Returns distance, in kilometers, between the "from" and "to" coordinates passed as parameters.
+The coordinates must be passed as decimal degrees.',
+	'../../LocationInterfaces/LocationUtil/LocationUtil.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("a9df0c68-53f1-4dd1-9c02-f1df6443c71d",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationUtil',
+	'',
+	'../../LocationInterfaces/LocationUtil/LocationUtil.xtuml');
+INSERT INTO PE_PE
+	VALUES ("bc932861-6512-40c3-94c7-ab0285c42a39",
+	1,
+	"b074d389-fa6b-4e6e-bb6c-77855ec8e379",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b074d389-fa6b-4e6e-bb6c-77855ec8e379",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Library',
+	'// ########## START OAL_1 ##########
+// always initialize data
+self.currentLocation.longitude = 0.0;
+self.currentLocation.latitude  = 0.0;
+self.currentLocation.speed     = 0.0;
+self.interval                  = 2000000;
+
+LOG::LogInfo(message: "Location listener registered.");
+
+ // start timer based on requested interval
+create event instance timeout of GPS3:timeout() to self;
+self.timer = TIM::timer_start_recurring(event_inst: timeout, microseconds: self.interval);
+// ########### END OAL_1 ###########
+
+
+
+// ########## START OAL_2 ##########
+// prepare signal data with some dummy values that change over time
+self.currentLocation.longitude = self.currentLocation.longitude + 2.0;
+self.currentLocation.latitude  = self.currentLocation.latitude  + 3.0;
+self.currentLocation.speed     = 
+                                (self.currentLocation.latitude - 
+                                 self.currentLocation.longitude) / 5.0;
+
+// pass the new location to client component
+send LocationProvider::locationUpdate(location: self.currentLocation);
+// ########### END OAL_2 ###########
+
+
+
+// ########## START OAL_3 ##########
+res = TIM::timer_cancel(timer_inst_ref: self.timer);
+// ########### END OAL_3 ###########
+
+
+
+// ########## START OAL_4 ##########
+select any gps from instances of GPS;
+if (empty gps)
+  // asynchronously create a new instance of GPS
+  generate GPS1:registerListener() to GPS creator;
+end if;
+// ########### END OAL_4 ###########
+
+
+// ########## START OAL_5 ##########
+// forward message to single instance of GPS
+select any gps from instances of GPS;
+if (not empty gps)
+  generate GPS2:unregisterListener() to gps;
+end if;
+// ########### END OAL_5 ###########
+
+
+// ########## START OAL_6 ##########
+// create an instance of the workout timer if it does not exist
+select any workoutTimer from instances of WorkoutTimer;
+if (empty workoutTimer)
+  create object instance workoutTimer of WorkoutTimer;
+end if;
+
+// forward message to the single instance of WorkoutTimer 
+generate WorkoutTimer1:startStopPressed() to workoutTimer;
+// ########### END OAL_6 ###########
+
+
+
+// ########## START OAL_7 ##########
+// print the new location to the console
+LOG::LogInfo(message: "location updated: ");
+LOG::LogReal(message: "longitude", r: param.location.longitude);
+LOG::LogReal(message: "latitude",  r: param.location.latitude );
+LOG::LogReal(message: "speed",     r: param.location.speed    );
+// ########### END OAL_7 ###########
+',
+	0,
+	'../Library.xtuml');

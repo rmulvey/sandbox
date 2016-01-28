@@ -1,0 +1,79 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("d99dec36-3b8f-4e88-8380-e32a38e0dd7d",
+	'TestCase',
+	2,
+	'TestCase',
+	'Represents a very simple automated test case.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("b4db4bfa-102c-4c72-a2e9-1cd5169ab550",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d",
+	'execute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'generate TestCase2:start(iterations: 2) to TestCase creator;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("3ab6a4d7-af43-43a3-a176-5709604b55d3",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO O_BATTR
+	VALUES ("3ab6a4d7-af43-43a3-a176-5709604b55d3",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO O_ATTR
+	VALUES ("3ab6a4d7-af43-43a3-a176-5709604b55d3",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("540be828-a2e1-4a78-b5f1-504f95600258",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO O_BATTR
+	VALUES ("540be828-a2e1-4a78-b5f1-504f95600258",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO O_ATTR
+	VALUES ("540be828-a2e1-4a78-b5f1-504f95600258",
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d",
+	"3ab6a4d7-af43-43a3-a176-5709604b55d3",
+	'iterations',
+	'',
+	'',
+	'iterations',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO O_ID
+	VALUES (1,
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO O_ID
+	VALUES (2,
+	"d99dec36-3b8f-4e88-8380-e32a38e0dd7d");
+INSERT INTO PE_PE
+	VALUES ("d99dec36-3b8f-4e88-8380-e32a38e0dd7d",
+	1,
+	"82dffe1f-9188-4b45-a2c5-a128f3dae45c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("82dffe1f-9188-4b45-a2c5-a128f3dae45c",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'UI',
+	'',
+	0,
+	'../UI.xtuml');

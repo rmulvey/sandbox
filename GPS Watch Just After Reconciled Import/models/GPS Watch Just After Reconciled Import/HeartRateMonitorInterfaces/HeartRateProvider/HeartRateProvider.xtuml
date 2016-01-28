@@ -1,0 +1,66 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateProvider',
+	'');
+INSERT INTO C_EP
+	VALUES ("c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'heartRateChanged',
+	'');
+INSERT INTO C_AS
+	VALUES ("c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	'heartRateChanged',
+	'',
+	1,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("9e4bc37c-f5d9-4c3e-947d-908c46d65c61",
+	"c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'heartRate',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("58877f51-3fde-4bc2-97e8-134e3d145681",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'registerListener',
+	'');
+INSERT INTO C_AS
+	VALUES ("58877f51-3fde-4bc2-97e8-134e3d145681",
+	'registerListener',
+	'',
+	0,
+	"c1b84d4a-3c17-461f-92cd-ec5eea3fd984");
+INSERT INTO C_EP
+	VALUES ("23dddce7-6c8c-494b-873b-bc15cd022004",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'unregisterListener',
+	'');
+INSERT INTO C_AS
+	VALUES ("23dddce7-6c8c-494b-873b-bc15cd022004",
+	'unregisterListener',
+	'',
+	0,
+	"58877f51-3fde-4bc2-97e8-134e3d145681");
+INSERT INTO PE_PE
+	VALUES ("9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	1,
+	"38a4cdb0-5b05-4137-a28c-890e7ee97be2",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("38a4cdb0-5b05-4137-a28c-890e7ee97be2",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'HeartRateMonitorInterfaces',
+	'',
+	0,
+	'../HeartRateMonitorInterfaces.xtuml');

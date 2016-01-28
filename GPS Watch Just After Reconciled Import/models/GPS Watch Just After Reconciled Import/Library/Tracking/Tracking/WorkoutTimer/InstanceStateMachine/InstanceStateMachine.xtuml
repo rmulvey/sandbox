@@ -1,0 +1,371 @@
+-- BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO SM_ISM
+	VALUES ("8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6");
+INSERT INTO SM_SM
+	VALUES ("8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_LEVT
+	VALUES ("ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'startStopPressed',
+	0,
+	'',
+	'WorkoutTimer1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'lapResetPressed',
+	0,
+	'',
+	'WorkoutTimer2',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	3,
+	'tick',
+	0,
+	'',
+	'WorkoutTimer3',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("45ba4f31-44b5-480a-a173-d661cf93872a",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	'stopped',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("45ba4f31-44b5-480a-a173-d661cf93872a",
+	"ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("45ba4f31-44b5-480a-a173-d661cf93872a",
+	"208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("45ba4f31-44b5-480a-a173-d661cf93872a",
+	"208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("45ba4f31-44b5-480a-a173-d661cf93872a",
+	"6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("45ba4f31-44b5-480a-a173-d661cf93872a",
+	"6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	'running',
+	2,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	'paused',
+	3,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("5f674e28-0c24-4bc4-b38b-db5b3508c136",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"45ba4f31-44b5-480a-a173-d661cf93872a",
+	"ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("5f674e28-0c24-4bc4-b38b-db5b3508c136",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("1c066116-9198-42dc-8597-8cc80fcbca72",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("1c066116-9198-42dc-8597-8cc80fcbca72",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("c820d75c-0217-48e4-830a-df4014eaaf15",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"208d625a-1ebf-45ae-8c9a-e8a70395e2c7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("c820d75c-0217-48e4-830a-df4014eaaf15",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"45ba4f31-44b5-480a-a173-d661cf93872a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("88c8fb6e-fefb-49e8-96c5-dc26c35afccd",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("88c8fb6e-fefb-49e8-96c5-dc26c35afccd",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("e6beff59-682d-4c96-b40f-d79b19b4fc6b",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"ec507ffa-05b8-447f-8b61-8fce586f44eb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("e6beff59-682d-4c96-b40f-d79b19b4fc6b",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"71b02fc6-8174-425c-8f2e-eae94d92f4ba",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("3917f6dd-b4f5-41ad-af73-acbb8d1eee40",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"6cf4aee6-d1b5-4adf-8e82-3b8176a12a90",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("3917f6dd-b4f5-41ad-af73-acbb8d1eee40",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("8046aaaa-62f1-4d58-8162-cb092cb9df2a",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"45ba4f31-44b5-480a-a173-d661cf93872a");
+INSERT INTO SM_AH
+	VALUES ("8046aaaa-62f1-4d58-8162-cb092cb9df2a",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("8046aaaa-62f1-4d58-8162-cb092cb9df2a",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'// Reset the session
+select one session related by self->WorkoutSession[R8.''acts as the stopwatch for''];
+session.reset();
+
+// Update the UI.
+send UI::setTime(time: self.time);
+select one display related by
+  self->WorkoutSession[R8.''acts as the stopwatch for'']->
+  Display[R7.''current status indicated on''];
+generate Display2:refresh to display;',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("bf1780b1-a8d1-469a-bbdf-3c755a46cc8b",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"4cbd4e03-0fa0-4b8a-a803-4fcaba4d0d21");
+INSERT INTO SM_AH
+	VALUES ("bf1780b1-a8d1-469a-bbdf-3c755a46cc8b",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("bf1780b1-a8d1-469a-bbdf-3c755a46cc8b",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("5a820aa8-a547-406c-8555-21fcbe28389d",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"71b02fc6-8174-425c-8f2e-eae94d92f4ba");
+INSERT INTO SM_AH
+	VALUES ("5a820aa8-a547-406c-8555-21fcbe28389d",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("5a820aa8-a547-406c-8555-21fcbe28389d",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("43799b57-1a98-44db-87c4-63017975a7b9",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"5f674e28-0c24-4bc4-b38b-db5b3508c136");
+INSERT INTO SM_AH
+	VALUES ("43799b57-1a98-44db-87c4-63017975a7b9",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("43799b57-1a98-44db-87c4-63017975a7b9",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'// Start the timer.
+self.activate();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("5ba27a11-7e17-43b5-a29d-51465f792e82",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"1c066116-9198-42dc-8597-8cc80fcbca72");
+INSERT INTO SM_AH
+	VALUES ("5ba27a11-7e17-43b5-a29d-51465f792e82",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("5ba27a11-7e17-43b5-a29d-51465f792e82",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'select any trackLog from instances of TrackLog;
+if (not empty trackLog)
+  trackLog.addLapMarker();
+end if;',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("96a4aae7-cb03-4f8f-adf4-199722dccda1",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"c820d75c-0217-48e4-830a-df4014eaaf15");
+INSERT INTO SM_AH
+	VALUES ("96a4aae7-cb03-4f8f-adf4-199722dccda1",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("96a4aae7-cb03-4f8f-adf4-199722dccda1",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("4345c0a0-c3ef-40ca-b87e-da5eb6f2c405",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"88c8fb6e-fefb-49e8-96c5-dc26c35afccd");
+INSERT INTO SM_AH
+	VALUES ("4345c0a0-c3ef-40ca-b87e-da5eb6f2c405",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("4345c0a0-c3ef-40ca-b87e-da5eb6f2c405",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'self.activate();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("465d6ac6-2c5b-4109-b879-15610cc37abf",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"e6beff59-682d-4c96-b40f-d79b19b4fc6b");
+INSERT INTO SM_AH
+	VALUES ("465d6ac6-2c5b-4109-b879-15610cc37abf",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("465d6ac6-2c5b-4109-b879-15610cc37abf",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'self.deactivate();',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("01157fe6-254a-457d-aad4-dfc0ef105e5d",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	"3917f6dd-b4f5-41ad-af73-acbb8d1eee40");
+INSERT INTO SM_AH
+	VALUES ("01157fe6-254a-457d-aad4-dfc0ef105e5d",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4");
+INSERT INTO SM_ACT
+	VALUES ("01157fe6-254a-457d-aad4-dfc0ef105e5d",
+	"8412b6a3-3ff6-4a2d-b97a-56180b2d0fd4",
+	1,
+	'// Update the stopwatch time.
+self.time = self.time + timerPeriod;
+
+// Store a new track point.
+select one trackLog related by 
+  self->WorkoutSession[R8.''acts as the stopwatch for'']->TrackLog[R4.''captures path in''];
+trackLog.addTrackPoint();
+
+// Refresh the user interface.
+send UI::setTime(time: self.time);',
+	'');
+INSERT INTO O_OBJ_PROXY
+	VALUES ("28fa1b0e-bbe8-45c7-b0bf-a56bbb39abc6",
+	'WorkoutTimer',
+	1,
+	'WorkoutTimer',
+	'Represents the stopwatch portion of the device.
+This class also knows:
+- Track points are stored only when the stopwatch is running.
+- If a goal is executing, evaluation of it must be paused when
+the timer pauses.
+- How to handle the lap/reset signal based on whether the 
+stopwatch is currently running.
+
+This is a singleton instance.
+',
+	"00000000-0000-0000-0000-000000000000",
+	'../WorkoutTimer.xtuml');

@@ -1,0 +1,87 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("d37ae6a6-6b08-47ca-b678-b508ec01576f",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'HeartRateTypes',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("0cdeecec-b972-45a3-8cb9-ae1388f738d0",
+	112,
+	"d37ae6a6-6b08-47ca-b678-b508ec01576f",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::HeartRateTypes');
+INSERT INTO DIM_DIA
+	VALUES ("0cdeecec-b972-45a3-8cb9-ae1388f738d0",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("c515c8fd-0eef-4577-91a0-6cb565783705",
+	'HeartRateConstants',
+	'SamplingPeriod is expressed in seconds and represents the period at which heart-rate samples are recorded.
+AveragingWindow is expressed in samples and represents the number of samples used when calculating the current average.');
+INSERT INTO CNST_SYC
+	VALUES ("d6b547c7-cf2d-4297-bc71-eaaeed0e11c2",
+	'HeartRateSamplingPeriod',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"c515c8fd-0eef-4577-91a0-6cb565783705",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("d6b547c7-cf2d-4297-bc71-eaaeed0e11c2",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("d6b547c7-cf2d-4297-bc71-eaaeed0e11c2",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'3');
+INSERT INTO CNST_SYC
+	VALUES ("cb35b556-3442-48d2-bb88-a939345d1121",
+	'HeartRateAveragingWindow',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"c515c8fd-0eef-4577-91a0-6cb565783705",
+	"d6b547c7-cf2d-4297-bc71-eaaeed0e11c2",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LFSC
+	VALUES ("cb35b556-3442-48d2-bb88-a939345d1121",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("cb35b556-3442-48d2-bb88-a939345d1121",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'5');
+INSERT INTO PE_PE
+	VALUES ("c515c8fd-0eef-4577-91a0-6cb565783705",
+	1,
+	"d37ae6a6-6b08-47ca-b678-b508ec01576f",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("d37ae6a6-6b08-47ca-b678-b508ec01576f",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../GPS Watch Just After Reconciled Import.xtuml');

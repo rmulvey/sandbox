@@ -1,0 +1,373 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'WorkoutSession',
+	7,
+	'WorkoutSession',
+	'Each instance represents a single workout session.  
+
+Presently, the device supports only a single session, 
+but future releases may support multiple sessions.  
+Even in that case, only a single session is executing 
+at any given time.  Other sessions represent completed
+or planned workout sessions.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("ac2586d6-984c-4f8e-9b6d-94a9dddd9eee",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'addHeartRateSample',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Add a new heart-rate sample and notify the UI of the current heart rate.
+
+select one workoutTimer related by self->WorkoutTimer[R8.''is timed by''];
+
+// Create and initialize a new heart-rate sample.
+create object instance sample of HeartRateSample;
+sample.heartRate = param.heartRate;
+sample.time = workoutTimer.time;
+relate self to sample across R6.''tracks heart rate over time as'';
+
+// Notify UI of the new heart rate.
+select one display related by self->Display[R7.''current status indicated on''];
+generate Display2:refresh to display;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("b00e20cb-4037-4711-9395-d6833cf80bc5",
+	"ac2586d6-984c-4f8e-9b6d-94a9dddd9eee",
+	'heartRate',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f56211ec-6c5e-4f60-8195-7ab94b595e7b",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'clearHeartRateSamples',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many samples related by self->HeartRateSample[R6];
+for each sample in samples
+  unrelate self from sample across R6;
+  delete object instance sample;
+end for;',
+	1,
+	'',
+	"ac2586d6-984c-4f8e-9b6d-94a9dddd9eee");
+INSERT INTO O_TFR
+	VALUES ("654a122b-5bdf-4f40-967d-ab7bee12c59d",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Initialize this workout session.
+
+self.startDate = TIM::current_date();
+self.startTime = TIM::current_clock();
+self.accumulatedDistance = 0.0;',
+	1,
+	'',
+	"f56211ec-6c5e-4f60-8195-7ab94b595e7b");
+INSERT INTO O_TFR
+	VALUES ("e492ff5b-63a0-461b-ab5d-2cf8190aaa75",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'create',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'// Unless a workout session already exists, create and initialize a 
+// workout session, workout timer, and tracklog, and relate them all.
+
+select any session from instances of WorkoutSession;
+
+if ( empty session )
+
+  // Create a workout session.
+  create object instance session of WorkoutSession;
+  session.initialize();
+
+  // Create a workout timer.
+  create object instance workoutTimer of WorkoutTimer;
+  workoutTimer.initialize();
+
+  // Create a track log.
+  create object instance trackLog of TrackLog;
+  
+  // Create a display.
+  create object instance display of Display;
+
+  // Relate them all together.
+  relate trackLog to session across R4.''represents path for'';
+  relate workoutTimer to session across R8.''acts as the stopwatch for'';
+  relate display to session across R7.''indicates current status of'';
+  
+end if;
+',
+	1,
+	'',
+	"654a122b-5bdf-4f40-967d-ab7bee12c59d");
+INSERT INTO O_TFR
+	VALUES ("1fe735b4-1e98-4ed1-9e97-83157c003290",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'reset',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Reset this session, including the timer, track log, goal specifications,
+// goals, and achievement records.
+
+// Reset the timer.
+select one workoutTimer related by self->WorkoutTimer[R8.''is timed by''];
+workoutTimer.initialize();
+
+// Reset the track log.
+select one trackLog related by self->TrackLog[R4.''captures path in''];
+trackLog.clearTrackPoints();
+trackLog.clearLapMarkers();
+
+// Remove all goal specifications.
+select many goalSpecs related by self->GoalSpec[R10.''includes''];
+for each goalSpec in goalSpecs
+  unrelate self from goalSpec across R10.''includes'';
+  delete object instance goalSpec;
+end for;
+
+// Remove any currently executing goal and open achievement record.
+select one executingGoal related by self->Goal[R11.''is currently executing''];
+if ( not empty executingGoal )
+  select one openAchievement related by executingGoal->Achievement[R14.''has open''];
+  if ( not empty openAchievement )
+    unrelate openAchievement from executingGoal across R14.''is open for'';
+    delete object instance openAchievement;
+  end if;
+  unrelate self from executingGoal across R11.''is currently executing'';
+  delete object instance executingGoal;
+end if;
+
+// Remove all other goals and achievement records.
+select many goals related by self->Goal[R13.''has executed''];
+for each goal in goals
+  select many achievements related by goal->Achievement[R12.''has recorded''];
+  for each achievement in achievements
+    unrelate goal from achievement across R12.''has recorded'';
+    delete object instance achievement;
+  end for;
+  unrelate self from goal across R13.''has executed'';
+  delete object instance goal;
+end for;
+
+// Reset the session.
+self.accumulatedDistance = 0.0;
+self.clearHeartRateSamples();
+',
+	1,
+	'',
+	"e492ff5b-63a0-461b-ab5d-2cf8190aaa75");
+INSERT INTO O_NBATTR
+	VALUES ("01f07b1f-e047-4f84-b44c-e446dda1834f",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_BATTR
+	VALUES ("01f07b1f-e047-4f84-b44c-e446dda1834f",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ATTR
+	VALUES ("01f07b1f-e047-4f84-b44c-e446dda1834f",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	"00000000-0000-0000-0000-000000000000",
+	'startDate',
+	'UTC Date on which this session commenced.',
+	'',
+	'startDate',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000e",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("364722ee-975b-4712-b6ce-ccd169643feb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_BATTR
+	VALUES ("364722ee-975b-4712-b6ce-ccd169643feb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ATTR
+	VALUES ("364722ee-975b-4712-b6ce-ccd169643feb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	"01f07b1f-e047-4f84-b44c-e446dda1834f",
+	'startTime',
+	'UTC time at which this session commenced.',
+	'',
+	'startTime',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000010",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("8c9bd3f7-7060-464b-b06a-291bb6673c9d",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'// Calculate the current speed, expressed in km per hour, by summing 
+// the straight-line distance between each of several of the most recent 
+// track points and then dividing that sum by the elapsed time between 
+// the first and last point in the subset used for the calculation.
+
+select one lastPoint related by self->TrackLog[R4.''captures path in'']->TrackPoint[R3.''has last''];
+speed = 0.0;
+if ( not empty lastPoint )
+  cursor = lastPoint;
+  index = SpeedAveragingWindow;  // Number of track points to use when calculating average speed.
+  totalDistance = 0.0;
+  elapsedTime = 0.0;  // Explicit delcaration because a Real is required for a later calculation.
+  elapsedTime = lastPoint.time;
+  while ( index > 0 )
+    select one previousPoint related by cursor->TrackPoint[R2.preceeds];
+    if ( empty previousPoint )
+      break;
+    end if;
+    send distance = UTIL::getDistance( fromLat:cursor.latitude, fromLong: cursor.longitude,
+                                      toLat: previousPoint.latitude, toLong: previousPoint.longitude );
+    totalDistance = totalDistance + distance;
+    index = index - 1;
+    cursor = previousPoint;
+  end while;
+  elapsedTime = elapsedTime - cursor.time;
+  speed = (totalDistance / 1000) / (elapsedTime / SecondsPerHour);
+end if;
+
+// Return the value by writing to the (derived) attribute.
+self.currentSpeed = speed;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("8c9bd3f7-7060-464b-b06a-291bb6673c9d",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ATTR
+	VALUES ("8c9bd3f7-7060-464b-b06a-291bb6673c9d",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	"364722ee-975b-4712-b6ce-ccd169643feb",
+	'currentSpeed',
+	'The current speed of the device, expressed in kilometers per hour, averaged 
+over a predefined number of the most recently acquired track points.
+',
+	'',
+	'currentSpeed',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("bc41e399-0cfb-4f1b-ac0e-abac221598ab",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'// Calculate current pace from current speed, converting from km/hour to minutes/km.
+
+if ( self.currentSpeed != 0.0 )
+  self.currentPace = 60.0 / self.currentSpeed;
+else
+  self.currentPace = 0.0;
+end if;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("bc41e399-0cfb-4f1b-ac0e-abac221598ab",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ATTR
+	VALUES ("bc41e399-0cfb-4f1b-ac0e-abac221598ab",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	"8c9bd3f7-7060-464b-b06a-291bb6673c9d",
+	'currentPace',
+	'The inverse of currentSpeed, expressed in minutes per kilometer.',
+	'',
+	'currentPace',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("aedf8f20-6ed0-4dd4-a8d6-7c63fc602ffb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	'// Calculate sliding average using the most recent samples.
+
+select one workoutTimer related by self->WorkoutTimer[R8.''is timed by''];
+select many samples related by self->HeartRateSample[R6.''tracks heart rate over time as'']
+  where ( selected.time >= ( workoutTimer.time - (HeartRateSamplingPeriod * HeartRateAveragingWindow) ) );
+numberOfSamples = 0;
+sum = 0;
+for each sample in samples
+  numberOfSamples = numberOfSamples + 1;
+  sum = sum + sample.heartRate;
+end for;
+if ( numberOfSamples > 0 )
+  self.currentHeartRate = sum / numberOfSamples;
+else
+  self.currentHeartRate = 0;
+end if;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("aedf8f20-6ed0-4dd4-a8d6-7c63fc602ffb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ATTR
+	VALUES ("aedf8f20-6ed0-4dd4-a8d6-7c63fc602ffb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	"bc41e399-0cfb-4f1b-ac0e-abac221598ab",
+	'currentHeartRate',
+	'Current heart rate, expressed in beats per minute, averaged over 
+a predefined number of the most recent heart-rate samples.',
+	'',
+	'currentHeartRate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ab7b292d-3056-40f6-bf56-609e629b8afa",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_BATTR
+	VALUES ("ab7b292d-3056-40f6-bf56-609e629b8afa",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ATTR
+	VALUES ("ab7b292d-3056-40f6-bf56-609e629b8afa",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	"aedf8f20-6ed0-4dd4-a8d6-7c63fc602ffb",
+	'accumulatedDistance',
+	'Accumulated distance, expressed in meters, for this workout session.',
+	'',
+	'accumulatedDistance',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_OIDA
+	VALUES ("01f07b1f-e047-4f84-b44c-e446dda1834f",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	0,
+	'startDate');
+INSERT INTO O_OIDA
+	VALUES ("364722ee-975b-4712-b6ce-ccd169643feb",
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	0,
+	'startTime');
+INSERT INTO O_ID
+	VALUES (1,
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO O_ID
+	VALUES (2,
+	"38ac941c-dca0-48e6-a045-9a35c2522cbd");
+INSERT INTO PE_PE
+	VALUES ("38ac941c-dca0-48e6-a045-9a35c2522cbd",
+	1,
+	"b09d0e81-cba7-44fc-8dbd-e6aeca3a9224",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b09d0e81-cba7-44fc-8dbd-e6aeca3a9224",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Tracking',
+	'',
+	0,
+	'../Tracking.xtuml');

@@ -1,0 +1,46 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("ea2bc0fd-db39-4c4a-b10d-74d776ce6fdf",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Analysis',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("70a44ea9-abaa-4877-94f6-8db647847e16",
+	112,
+	"ea2bc0fd-db39-4c4a-b10d-74d776ce6fdf",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Analysis');
+INSERT INTO DIM_DIA
+	VALUES ("70a44ea9-abaa-4877-94f6-8db647847e16",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("ea2bc0fd-db39-4c4a-b10d-74d776ce6fdf",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../GPS Watch Just After Reconciled Import.xtuml');

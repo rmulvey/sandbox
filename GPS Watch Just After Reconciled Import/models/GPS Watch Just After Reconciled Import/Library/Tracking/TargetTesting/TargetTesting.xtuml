@@ -1,0 +1,125 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("a330287d-6e30-48c5-8c6b-5dcfa9d62cc3",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'TargetTesting',
+	'Contains facilities for testing generated code.',
+	0);
+INSERT INTO GD_MD
+	VALUES ("d8f7df4e-9348-47aa-85ae-9ccec201a5c5",
+	112,
+	"a330287d-6e30-48c5-8c6b-5dcfa9d62cc3",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::Tracking::TargetTesting');
+INSERT INTO DIM_DIA
+	VALUES ("d8f7df4e-9348-47aa-85ae-9ccec201a5c5",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("1bca79ed-86fa-42ae-8433-9c3503cec43d",
+	"00000000-0000-0000-0000-000000000000",
+	'Initialize',
+	'',
+	'// Create a workout session and everything required to support it.
+WorkoutSession::create();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("1bca79ed-86fa-42ae-8433-9c3503cec43d",
+	1,
+	"a330287d-6e30-48c5-8c6b-5dcfa9d62cc3",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("fb92cd0d-1f4b-4920-b002-bb9cc022edbf",
+	"00000000-0000-0000-0000-000000000000",
+	'GoalTest_1',
+	'',
+	'// Initialize the system.
+::Initialize();
+
+// Create some goal specifications.
+send UI::newGoalSpec( 
+  sequenceNumber: 1,
+  minimum: 2.0,
+  maximum: 8.0,
+  span: 150.0,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Distance );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 2,
+  minimum: 60.0,
+  maximum: 80.0,
+  span: 10,
+  criteriaType: GoalCriteria::HeartRate,
+  spanType: GoalSpan::Time );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 3,
+  minimum: 5.0,
+  maximum: 6.0,
+  span: 15,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Time );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 4,
+  minimum: 1.0,
+  maximum: 2.0,
+  span: 15,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Time );
+  ',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("fb92cd0d-1f4b-4920-b002-bb9cc022edbf",
+	1,
+	"a330287d-6e30-48c5-8c6b-5dcfa9d62cc3",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("a330287d-6e30-48c5-8c6b-5dcfa9d62cc3",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"bc932861-6512-40c3-94c7-ab0285c42a39",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("bc932861-6512-40c3-94c7-ab0285c42a39",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'The Tracking component encapsulates the entire application software. This is the 
+only component in the system from which code will be generated for the final 
+product.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Tracking.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../../../GPS Watch Just After Reconciled Import.xtuml');

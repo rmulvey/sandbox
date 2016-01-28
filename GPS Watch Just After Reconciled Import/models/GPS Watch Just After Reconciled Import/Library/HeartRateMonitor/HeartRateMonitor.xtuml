@@ -1,0 +1,224 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateMonitor',
+	'Simulates a pulse monitor hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO GD_MD
+	VALUES ("3e6610c8-8954-463f-a90f-540fd09db51d",
+	111,
+	"6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	98,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::HeartRateMonitor');
+INSERT INTO GD_GE
+	VALUES ("4d941e1b-8e22-432c-a342-40970d17b540",
+	"3e6610c8-8954-463f-a90f-540fd09db51d",
+	"6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	103,
+	0,
+	'GPS Watch Just After Reconciled Import::Library::HeartRateMonitor');
+INSERT INTO GD_SHP
+	VALUES ("4d941e1b-8e22-432c-a342-40970d17b540");
+INSERT INTO GD_CTR
+	VALUES ("4d941e1b-8e22-432c-a342-40970d17b540");
+INSERT INTO DIM_ND
+	VALUES (573.000000,
+	321.000000,
+	"4d941e1b-8e22-432c-a342-40970d17b540");
+INSERT INTO DIM_GE
+	VALUES (4100.000000,
+	3100.000000,
+	"4d941e1b-8e22-432c-a342-40970d17b540",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("4d941e1b-8e22-432c-a342-40970d17b540",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("3e6610c8-8954-463f-a90f-540fd09db51d",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PO
+	VALUES ("d7cf9ff8-a8d7-4f65-b939-9b55c1f7f6a4",
+	"6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	'HR',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("81dee789-abbe-4aba-910b-73cbe29d2232",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	"d7cf9ff8-a8d7-4f65-b939-9b55c1f7f6a4");
+INSERT INTO C_P
+	VALUES ("81dee789-abbe-4aba-910b-73cbe29d2232",
+	'HeartRateProvider',
+	'Unnamed Interface',
+	'',
+	'HeartRateMonitor::HR::HeartRateProvider');
+INSERT INTO SPR_PEP
+	VALUES ("ed61ae36-ebf4-4ddb-9f25-41bac90deb6c",
+	"c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	"81dee789-abbe-4aba-910b-73cbe29d2232");
+INSERT INTO SPR_PS
+	VALUES ("ed61ae36-ebf4-4ddb-9f25-41bac90deb6c",
+	'heartRateChanged',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("c1b84d4a-3c17-461f-92cd-ec5eea3fd984",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'heartRateChanged',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("e92e8e21-8810-4acb-b948-b31ae7895014",
+	"58877f51-3fde-4bc2-97e8-134e3d145681",
+	"81dee789-abbe-4aba-910b-73cbe29d2232");
+INSERT INTO SPR_PS
+	VALUES ("e92e8e21-8810-4acb-b948-b31ae7895014",
+	'registerListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("58877f51-3fde-4bc2-97e8-134e3d145681",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'registerListener',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("54fcfe9d-e57d-4ce7-9223-11c00ee6b471",
+	"23dddce7-6c8c-494b-873b-bc15cd022004",
+	"81dee789-abbe-4aba-910b-73cbe29d2232");
+INSERT INTO SPR_PS
+	VALUES ("54fcfe9d-e57d-4ce7-9223-11c00ee6b471",
+	'unregisterListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("23dddce7-6c8c-494b-873b-bc15cd022004",
+	"9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	-1,
+	'unregisterListener',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("9fa2e3bd-2ba9-43f2-9aa7-3e50d20a19c6",
+	"00000000-0000-0000-0000-000000000000",
+	'HeartRateProvider',
+	'',
+	'../../HeartRateMonitorInterfaces/HeartRateProvider/HeartRateProvider.xtuml');
+INSERT INTO PE_PE
+	VALUES ("6c96bc65-ebb0-4b0b-86dc-d374abe33171",
+	1,
+	"b074d389-fa6b-4e6e-bb6c-77855ec8e379",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b074d389-fa6b-4e6e-bb6c-77855ec8e379",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'Library',
+	'// ########## START OAL_1 ##########
+// always initialize data
+self.currentLocation.longitude = 0.0;
+self.currentLocation.latitude  = 0.0;
+self.currentLocation.speed     = 0.0;
+self.interval                  = 2000000;
+
+LOG::LogInfo(message: "Location listener registered.");
+
+ // start timer based on requested interval
+create event instance timeout of GPS3:timeout() to self;
+self.timer = TIM::timer_start_recurring(event_inst: timeout, microseconds: self.interval);
+// ########### END OAL_1 ###########
+
+
+
+// ########## START OAL_2 ##########
+// prepare signal data with some dummy values that change over time
+self.currentLocation.longitude = self.currentLocation.longitude + 2.0;
+self.currentLocation.latitude  = self.currentLocation.latitude  + 3.0;
+self.currentLocation.speed     = 
+                                (self.currentLocation.latitude - 
+                                 self.currentLocation.longitude) / 5.0;
+
+// pass the new location to client component
+send LocationProvider::locationUpdate(location: self.currentLocation);
+// ########### END OAL_2 ###########
+
+
+
+// ########## START OAL_3 ##########
+res = TIM::timer_cancel(timer_inst_ref: self.timer);
+// ########### END OAL_3 ###########
+
+
+
+// ########## START OAL_4 ##########
+select any gps from instances of GPS;
+if (empty gps)
+  // asynchronously create a new instance of GPS
+  generate GPS1:registerListener() to GPS creator;
+end if;
+// ########### END OAL_4 ###########
+
+
+// ########## START OAL_5 ##########
+// forward message to single instance of GPS
+select any gps from instances of GPS;
+if (not empty gps)
+  generate GPS2:unregisterListener() to gps;
+end if;
+// ########### END OAL_5 ###########
+
+
+// ########## START OAL_6 ##########
+// create an instance of the workout timer if it does not exist
+select any workoutTimer from instances of WorkoutTimer;
+if (empty workoutTimer)
+  create object instance workoutTimer of WorkoutTimer;
+end if;
+
+// forward message to the single instance of WorkoutTimer 
+generate WorkoutTimer1:startStopPressed() to workoutTimer;
+// ########### END OAL_6 ###########
+
+
+
+// ########## START OAL_7 ##########
+// print the new location to the console
+LOG::LogInfo(message: "location updated: ");
+LOG::LogReal(message: "longitude", r: param.location.longitude);
+LOG::LogReal(message: "latitude",  r: param.location.latitude );
+LOG::LogReal(message: "speed",     r: param.location.speed    );
+// ########### END OAL_7 ###########
+',
+	0,
+	'../Library.xtuml');

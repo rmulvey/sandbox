@@ -1,0 +1,141 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("d7e82359-dcd7-4e5a-bd55-219ff9c52920",
+	"00000000-0000-0000-0000-000000000000",
+	"a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'TestCases',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("6c5279a7-d798-4c47-a0c6-3b85f8e7a428",
+	112,
+	"d7e82359-dcd7-4e5a-bd55-219ff9c52920",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'GPS Watch Just After Reconciled Import::Library::UI::TestCases');
+INSERT INTO DIM_DIA
+	VALUES ("6c5279a7-d798-4c47-a0c6-3b85f8e7a428",
+	'',
+	1.000000,
+	4000.000000,
+	3000.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("77b2d3b0-5d01-4c12-954e-44578361b9ca",
+	"00000000-0000-0000-0000-000000000000",
+	'RunTestCase',
+	'',
+	'TestCase::execute();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("77b2d3b0-5d01-4c12-954e-44578361b9ca",
+	1,
+	"d7e82359-dcd7-4e5a-bd55-219ff9c52920",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a3e74ffb-2faa-4932-aebe-937b5d984777",
+	"00000000-0000-0000-0000-000000000000",
+	'init',
+	'',
+	'GuiBridge::connect();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("a3e74ffb-2faa-4932-aebe-937b5d984777",
+	1,
+	"d7e82359-dcd7-4e5a-bd55-219ff9c52920",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("4fa2a8c4-3a62-408b-bec5-4025929a8094",
+	"00000000-0000-0000-0000-000000000000",
+	'createGoals_1',
+	'',
+	'// Create some goal specifications.
+send UI::newGoalSpec( 
+  sequenceNumber: 1,
+  minimum: 2.0,
+  maximum: 8.0,
+  span: 150.0,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Distance );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 2,
+  minimum: 60.0,
+  maximum: 80.0,
+  span: 10,
+  criteriaType: GoalCriteria::HeartRate,
+  spanType: GoalSpan::Time );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 3,
+  minimum: 5.0,
+  maximum: 6.0,
+  span: 15,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Time );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 4,
+  minimum: 1.0,
+  maximum: 2.0,
+  span: 15,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Time );
+  ',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("4fa2a8c4-3a62-408b-bec5-4025929a8094",
+	1,
+	"d7e82359-dcd7-4e5a-bd55-219ff9c52920",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("d7e82359-dcd7-4e5a-bd55-219ff9c52920",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("2a755c50-9a06-456b-8076-f8e98ae09f8a",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../UI.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("a5a92bae-a429-4e59-a48f-8bfd960907b6",
+	'GPS Watch Just After Reconciled Import',
+	1,
+	'../../../GPS Watch Just After Reconciled Import.xtuml');
