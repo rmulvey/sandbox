@@ -1,0 +1,190 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	"c89cf45d-c02f-4a5d-b3a4-feda46ba059e",
+	"c89cf45d-c02f-4a5d-b3a4-feda46ba059e",
+	'System',
+	'',
+	0);
+INSERT INTO CL_IC
+	VALUES ("1afd34e1-0bee-4618-be6e-05aaad2ba43f",
+	"afe638c5-604e-493a-99df-09d7554b2d2c",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'TemplateProject-NoGraphics::Library::ComponentOne',
+	'');
+INSERT INTO CL_POR
+	VALUES ("1afd34e1-0bee-4618-be6e-05aaad2ba43f",
+	"10b3be9b-dda1-4896-bf36-e1d77967710c",
+	'Port1',
+	"cf3849b7-07ae-4c8b-9852-70662e657c51");
+INSERT INTO CL_IIR
+	VALUES ("3146d27e-77f9-4c30-b99b-e95112ea6714",
+	"cb97e47e-ca65-4da2-8045-24490db743e7",
+	"cf3849b7-07ae-4c8b-9852-70662e657c51",
+	"00000000-0000-0000-0000-000000000000",
+	'Interface',
+	'');
+INSERT INTO CL_IP
+	VALUES ("3146d27e-77f9-4c30-b99b-e95112ea6714",
+	'Interface',
+	'');
+INSERT INTO CL_IPINS
+	VALUES ("14df52a8-307d-44f3-bfe9-f6fb1674090b",
+	"3146d27e-77f9-4c30-b99b-e95112ea6714");
+INSERT INTO C_IR_PROXY
+	VALUES ("cb97e47e-ca65-4da2-8045-24490db743e7",
+	"d75fe240-195d-42cb-a2b5-a336b3529d61",
+	"00000000-0000-0000-0000-000000000000",
+	"10b3be9b-dda1-4896-bf36-e1d77967710c",
+	'../Library/ComponentOne/ComponentOne.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("10b3be9b-dda1-4896-bf36-e1d77967710c",
+	"afe638c5-604e-493a-99df-09d7554b2d2c",
+	'Port1',
+	0,
+	0,
+	'../Library/ComponentOne/ComponentOne.xtuml');
+INSERT INTO PE_PE
+	VALUES ("1afd34e1-0bee-4618-be6e-05aaad2ba43f",
+	1,
+	"7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("afe638c5-604e-493a-99df-09d7554b2d2c",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'ComponentOne',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Library/ComponentOne/ComponentOne.xtuml');
+INSERT INTO CL_IC
+	VALUES ("8bab8c3d-600e-4cfe-8e1d-31e350b5c031",
+	"5839250c-a6f8-49e0-9c07-95e52dbd7f80",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'TemplateProject-NoGraphics::Library::ComponentTwo',
+	'');
+INSERT INTO CL_POR
+	VALUES ("8bab8c3d-600e-4cfe-8e1d-31e350b5c031",
+	"a4ed21ff-57fe-4a03-ae8e-c79964af215b",
+	'Port1',
+	"660346e8-322f-4d59-9f7f-85a3019baaf0");
+INSERT INTO CL_IIR
+	VALUES ("3d399883-423e-4ee9-ac3e-e16fb0a289d0",
+	"7c3e5807-1c68-4301-b112-9f55b3adc962",
+	"660346e8-322f-4d59-9f7f-85a3019baaf0",
+	"00000000-0000-0000-0000-000000000000",
+	'Interface',
+	'');
+INSERT INTO CL_IR
+	VALUES ("3d399883-423e-4ee9-ac3e-e16fb0a289d0",
+	"14df52a8-307d-44f3-bfe9-f6fb1674090b",
+	'Interface',
+	'');
+INSERT INTO C_IR_PROXY
+	VALUES ("7c3e5807-1c68-4301-b112-9f55b3adc962",
+	"d75fe240-195d-42cb-a2b5-a336b3529d61",
+	"00000000-0000-0000-0000-000000000000",
+	"a4ed21ff-57fe-4a03-ae8e-c79964af215b",
+	'../Library/ComponentTwo/ComponentTwo.xtuml');
+INSERT INTO C_PO_PROXY
+	VALUES ("a4ed21ff-57fe-4a03-ae8e-c79964af215b",
+	"5839250c-a6f8-49e0-9c07-95e52dbd7f80",
+	'Port1',
+	0,
+	0,
+	'../Library/ComponentTwo/ComponentTwo.xtuml');
+INSERT INTO PE_PE
+	VALUES ("8bab8c3d-600e-4cfe-8e1d-31e350b5c031",
+	1,
+	"7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_C_PROXY
+	VALUES ("5839250c-a6f8-49e0-9c07-95e52dbd7f80",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'ComponentTwo',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Library/ComponentTwo/ComponentTwo.xtuml');
+INSERT INTO CL_IC
+	VALUES ("1ce12ec5-0667-4a5d-ba79-b442d7fe7162",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Unassigned Imported Component',
+	'');
+INSERT INTO PE_PE
+	VALUES ("1ce12ec5-0667-4a5d-ba79-b442d7fe7162",
+	1,
+	"7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO CL_IC
+	VALUES ("c09764b8-37a5-41f8-87ec-4adce1731af4",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Unassigned Imported Component',
+	'');
+INSERT INTO PE_PE
+	VALUES ("c09764b8-37a5-41f8-87ec-4adce1731af4",
+	1,
+	"7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	"00000000-0000-0000-0000-000000000000",
+	21);
+INSERT INTO C_SF
+	VALUES ("14df52a8-307d-44f3-bfe9-f6fb1674090b",
+	"7c3e5807-1c68-4301-b112-9f55b3adc962",
+	"cb97e47e-ca65-4da2-8045-24490db743e7",
+	'',
+	'ComponentOne::Port1::Interface -o)- ComponentTwo::Port1::Interface');
+INSERT INTO PE_PE
+	VALUES ("14df52a8-307d-44f3-bfe9-f6fb1674090b",
+	1,
+	"7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	"00000000-0000-0000-0000-000000000000",
+	22);
+INSERT INTO C_R_PROXY
+	VALUES ("7c3e5807-1c68-4301-b112-9f55b3adc962",
+	'Interface',
+	'',
+	'Unnamed Interface',
+	'ComponentTwo::Port1::Interface',
+	'../Library/ComponentTwo/ComponentTwo.xtuml');
+INSERT INTO C_P_PROXY
+	VALUES ("cb97e47e-ca65-4da2-8045-24490db743e7",
+	'Interface',
+	'Unnamed Interface',
+	'',
+	'ComponentOne::Port1::Interface',
+	'../Library/ComponentOne/ComponentOne.xtuml');
+INSERT INTO PE_PE
+	VALUES ("7fabd15a-4e77-40f0-a08d-083fb5c3ef41",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("c89cf45d-c02f-4a5d-b3a4-feda46ba059e",
+	'TemplateProject-NoGraphics',
+	1,
+	'../TemplateProject-NoGraphics.xtuml');
