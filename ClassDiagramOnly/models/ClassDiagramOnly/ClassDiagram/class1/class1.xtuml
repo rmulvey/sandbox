@@ -1,7 +1,7 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("ba05f6bf-d990-4cc9-be37-9ad32d0d0e14",
+	VALUES ("6f6cdf85-4ddd-4b41-904f-3f7714f6707d",
 	'class1',
 	1,
 	'class1',
@@ -9,21 +9,21 @@ INSERT INTO O_OBJ
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_ID
 	VALUES (0,
-	"ba05f6bf-d990-4cc9-be37-9ad32d0d0e14");
+	"6f6cdf85-4ddd-4b41-904f-3f7714f6707d");
 INSERT INTO O_ID
 	VALUES (1,
-	"ba05f6bf-d990-4cc9-be37-9ad32d0d0e14");
+	"6f6cdf85-4ddd-4b41-904f-3f7714f6707d");
 INSERT INTO O_ID
 	VALUES (2,
-	"ba05f6bf-d990-4cc9-be37-9ad32d0d0e14");
+	"6f6cdf85-4ddd-4b41-904f-3f7714f6707d");
 INSERT INTO PE_PE
-	VALUES ("ba05f6bf-d990-4cc9-be37-9ad32d0d0e14",
+	VALUES ("6f6cdf85-4ddd-4b41-904f-3f7714f6707d",
 	1,
-	"122c8724-bdf2-4977-9b22-88cae6dbf931",
+	"e9325552-97be-4c31-baab-308394db5dba",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO EP_PKG_PROXY
-	VALUES ("122c8724-bdf2-4977-9b22-88cae6dbf931",
+	VALUES ("e9325552-97be-4c31-baab-308394db5dba",
 	"d0749545-3da6-4ba5-9e71-2793453f8447",
 	"d0749545-3da6-4ba5-9e71-2793453f8447",
 	'ClassDiagram',
