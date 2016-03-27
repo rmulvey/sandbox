@@ -1,0 +1,50 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("b11bd61d-f6f6-4cd8-97b8-57e079a0659f",
+	'EventToSelfClass',
+	1,
+	'EventToSelfClass',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("3d982c46-36d2-4733-970c-b1a6358faba6",
+	"b11bd61d-f6f6-4cd8-97b8-57e079a0659f");
+INSERT INTO O_BATTR
+	VALUES ("3d982c46-36d2-4733-970c-b1a6358faba6",
+	"b11bd61d-f6f6-4cd8-97b8-57e079a0659f");
+INSERT INTO O_ATTR
+	VALUES ("3d982c46-36d2-4733-970c-b1a6358faba6",
+	"b11bd61d-f6f6-4cd8-97b8-57e079a0659f",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"b11bd61d-f6f6-4cd8-97b8-57e079a0659f");
+INSERT INTO O_ID
+	VALUES (1,
+	"b11bd61d-f6f6-4cd8-97b8-57e079a0659f");
+INSERT INTO O_ID
+	VALUES (2,
+	"b11bd61d-f6f6-4cd8-97b8-57e079a0659f");
+INSERT INTO PE_PE
+	VALUES ("b11bd61d-f6f6-4cd8-97b8-57e079a0659f",
+	1,
+	"87566aee-7f94-46c6-9d65-d7ece2c5a9f8",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("87566aee-7f94-46c6-9d65-d7ece2c5a9f8",
+	"ad976926-b6af-4036-b73a-2de947d399a2",
+	"ad976926-b6af-4036-b73a-2de947d399a2",
+	'EventToSelfPkg',
+	'',
+	0,
+	'../EventToSelfPkg.xtuml');

@@ -1,0 +1,20 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("87566aee-7f94-46c6-9d65-d7ece2c5a9f8",
+	"ad976926-b6af-4036-b73a-2de947d399a2",
+	"ad976926-b6af-4036-b73a-2de947d399a2",
+	'EventToSelfPkg',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("87566aee-7f94-46c6-9d65-d7ece2c5a9f8",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("ad976926-b6af-4036-b73a-2de947d399a2",
+	'EventToSelfNoGraphics',
+	1,
+	'../EventToSelfNoGraphics.xtuml');

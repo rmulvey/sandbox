@@ -1,0 +1,102 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	'ReflexiveAssocClass',
+	1,
+	'ReflexiveAssocClass',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("ba384d76-8635-437b-8c70-0d94086e3f64",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31");
+INSERT INTO O_BATTR
+	VALUES ("ba384d76-8635-437b-8c70-0d94086e3f64",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31");
+INSERT INTO O_ATTR
+	VALUES ("ba384d76-8635-437b-8c70-0d94086e3f64",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	"00000000-0000-0000-0000-000000000000",
+	'id',
+	'',
+	'',
+	'id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	0,
+	"ba384d76-8635-437b-8c70-0d94086e3f64",
+	"67f19ff2-5d8a-49b4-95bf-e3204d51bdf7",
+	"ef79e38d-0fa0-43e0-997b-12fa9ba348eb",
+	"029ca98b-d113-4cdd-9947-335601d2ee1f",
+	"20702ad0-d434-4b1f-8ea9-0536ce9ad2e1",
+	"58c10d80-3d2a-4101-95a5-c245cfdfa8d5",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'ReflexiveAssocClass',
+	'id',
+	'R2.''from''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	"67f19ff2-5d8a-49b4-95bf-e3204d51bdf7",
+	"ef79e38d-0fa0-43e0-997b-12fa9ba348eb",
+	'../ReflexiveAssocPackage.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("ba384d76-8635-437b-8c70-0d94086e3f64",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	0,
+	"67f19ff2-5d8a-49b4-95bf-e3204d51bdf7",
+	"029ca98b-d113-4cdd-9947-335601d2ee1f",
+	'../ReflexiveAssocPackage.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("20702ad0-d434-4b1f-8ea9-0536ce9ad2e1",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	"ba384d76-8635-437b-8c70-0d94086e3f64",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	1,
+	'id');
+INSERT INTO O_ATTR
+	VALUES ("20702ad0-d434-4b1f-8ea9-0536ce9ad2e1",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	"ba384d76-8635-437b-8c70-0d94086e3f64",
+	'toid',
+	'',
+	'to',
+	'id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31");
+INSERT INTO O_OIDA
+	VALUES ("ba384d76-8635-437b-8c70-0d94086e3f64",
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	0,
+	'id');
+INSERT INTO O_ID
+	VALUES (1,
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31");
+INSERT INTO O_ID
+	VALUES (2,
+	"bfde4658-c068-473e-bb2f-12b4bd4bba31");
+INSERT INTO PE_PE
+	VALUES ("bfde4658-c068-473e-bb2f-12b4bd4bba31",
+	1,
+	"4573c057-c5b9-4a1a-aac1-bc8d495fcf11",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("4573c057-c5b9-4a1a-aac1-bc8d495fcf11",
+	"f94f00e4-e13b-419a-8ae7-6c983ee48167",
+	"f94f00e4-e13b-419a-8ae7-6c983ee48167",
+	'ReflexiveAssocPackage',
+	'',
+	0,
+	'../ReflexiveAssocPackage.xtuml');
