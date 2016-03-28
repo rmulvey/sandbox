@@ -1,0 +1,32 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("804e54f1-9225-430e-bc00-a160fef11ed2",
+	'Class1',
+	1,
+	'Class1',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_ID
+	VALUES (0,
+	"804e54f1-9225-430e-bc00-a160fef11ed2");
+INSERT INTO O_ID
+	VALUES (1,
+	"804e54f1-9225-430e-bc00-a160fef11ed2");
+INSERT INTO O_ID
+	VALUES (2,
+	"804e54f1-9225-430e-bc00-a160fef11ed2");
+INSERT INTO PE_PE
+	VALUES ("804e54f1-9225-430e-bc00-a160fef11ed2",
+	1,
+	"5b1a30da-7ae6-4af8-96de-735b45a75ad4",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("5b1a30da-7ae6-4af8-96de-735b45a75ad4",
+	"ec4c14c7-7de1-4ef6-884d-ab53a2804c3e",
+	"ec4c14c7-7de1-4ef6-884d-ab53a2804c3e",
+	'LinkedAssocTest',
+	'',
+	0,
+	'../LinkedAssocTest.xtuml');
