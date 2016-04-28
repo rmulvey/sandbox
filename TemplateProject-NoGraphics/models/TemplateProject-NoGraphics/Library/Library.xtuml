@@ -1,14 +1,14 @@
 -- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO EP_PKG
-	VALUES ("7065e9fd-8df7-4148-955e-9854ef6de51e",
+	VALUES ("ee795541-409e-47fa-a4ef-9bdc97bdfba7",
 	"c89cf45d-c02f-4a5d-b3a4-feda46ba059e",
 	"c89cf45d-c02f-4a5d-b3a4-feda46ba059e",
 	'Library',
 	'',
 	0);
 INSERT INTO PE_PE
-	VALUES ("7065e9fd-8df7-4148-955e-9854ef6de51e",
+	VALUES ("ee795541-409e-47fa-a4ef-9bdc97bdfba7",
 	1,
 	"00000000-0000-0000-0000-000000000000",
 	"00000000-0000-0000-0000-000000000000",

@@ -1,0 +1,50 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("1c8a463e-61bb-454a-9570-58cdcfc387a0",
+	'Comp1Class1',
+	1,
+	'Comp1Class1',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("1309ba11-21c0-424d-b644-ff2f2dfbf289",
+	"1c8a463e-61bb-454a-9570-58cdcfc387a0");
+INSERT INTO O_BATTR
+	VALUES ("1309ba11-21c0-424d-b644-ff2f2dfbf289",
+	"1c8a463e-61bb-454a-9570-58cdcfc387a0");
+INSERT INTO O_ATTR
+	VALUES ("1309ba11-21c0-424d-b644-ff2f2dfbf289",
+	"1c8a463e-61bb-454a-9570-58cdcfc387a0",
+	"00000000-0000-0000-0000-000000000000",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"1c8a463e-61bb-454a-9570-58cdcfc387a0");
+INSERT INTO O_ID
+	VALUES (1,
+	"1c8a463e-61bb-454a-9570-58cdcfc387a0");
+INSERT INTO O_ID
+	VALUES (2,
+	"1c8a463e-61bb-454a-9570-58cdcfc387a0");
+INSERT INTO PE_PE
+	VALUES ("1c8a463e-61bb-454a-9570-58cdcfc387a0",
+	1,
+	"97d88063-837b-4885-a3d2-3b5530e7d0ab",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("97d88063-837b-4885-a3d2-3b5530e7d0ab",
+	"00000000-0000-0000-0000-000000000000",
+	"c89cf45d-c02f-4a5d-b3a4-feda46ba059e",
+	'Component1Classes',
+	'',
+	0,
+	'../Component1Classes.xtuml');
