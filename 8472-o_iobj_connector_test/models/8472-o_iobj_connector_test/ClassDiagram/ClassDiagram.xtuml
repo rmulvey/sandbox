@@ -1,0 +1,83 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("cecaa11c-9917-4822-b381-a494892b2dda",
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'ClassDiagram',
+	'',
+	0);
+INSERT INTO R_SIMP
+	VALUES ("f916bb53-9e1a-4bf8-b92e-2f0f72a5f402");
+INSERT INTO R_REL
+	VALUES ("f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_PART
+	VALUES ("b79bfa6f-7255-48e9-9621-66c065923b92",
+	"f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	"cb28a9b7-8d30-444e-ac56-d85bbc2c02fb",
+	0,
+	0,
+	'');
+INSERT INTO R_RTO
+	VALUES ("b79bfa6f-7255-48e9-9621-66c065923b92",
+	"f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	"cb28a9b7-8d30-444e-ac56-d85bbc2c02fb",
+	-1);
+INSERT INTO R_OIR
+	VALUES ("b79bfa6f-7255-48e9-9621-66c065923b92",
+	"f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	"cb28a9b7-8d30-444e-ac56-d85bbc2c02fb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_OBJ_PROXY
+	VALUES ("b79bfa6f-7255-48e9-9621-66c065923b92",
+	'class1',
+	1,
+	'class1',
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'./class1/class1.xtuml');
+INSERT INTO R_PART
+	VALUES ("d2c14709-4e47-4969-99d4-1e597084bc59",
+	"f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	"c7f310de-5ccd-4a95-aae7-c4ad2c5dc151",
+	0,
+	0,
+	'');
+INSERT INTO R_RTO
+	VALUES ("d2c14709-4e47-4969-99d4-1e597084bc59",
+	"f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	"c7f310de-5ccd-4a95-aae7-c4ad2c5dc151",
+	-1);
+INSERT INTO R_OIR
+	VALUES ("d2c14709-4e47-4969-99d4-1e597084bc59",
+	"f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	"c7f310de-5ccd-4a95-aae7-c4ad2c5dc151",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_OBJ_PROXY
+	VALUES ("d2c14709-4e47-4969-99d4-1e597084bc59",
+	'class2',
+	2,
+	'class2',
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'./class2/class2.xtuml');
+INSERT INTO PE_PE
+	VALUES ("f916bb53-9e1a-4bf8-b92e-2f0f72a5f402",
+	1,
+	"cecaa11c-9917-4822-b381-a494892b2dda",
+	"00000000-0000-0000-0000-000000000000",
+	9);
+INSERT INTO PE_PE
+	VALUES ("cecaa11c-9917-4822-b381-a494892b2dda",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'8472-o_iobj_connector_test',
+	1,
+	'../8472-o_iobj_connector_test.xtuml');

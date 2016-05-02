@@ -1,0 +1,32 @@
+-- BP 7.1.6 content: SystemModel syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO S_SYS
+	VALUES ("edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'8472-o_iobj_connector_test',
+	1);
+INSERT INTO GD_MD
+	VALUES ("1e6f75f5-e304-4675-a004-c0147ddc81a3",
+	108,
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	92,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'8472-o_iobj_connector_test');
+INSERT INTO DIM_DIA
+	VALUES ("1e6f75f5-e304-4675-a004-c0147ddc81a3",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");

@@ -1,0 +1,41 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("daab8a28-b197-44b7-a367-de07ec4fd205",
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'pkg',
+	'',
+	0);
+INSERT INTO O_IOBJ
+	VALUES ("2ab492c1-cbf1-472e-aa58-3288e699cf07",
+	"b79bfa6f-7255-48e9-9621-66c065923b92",
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	'class1',
+	'class1');
+INSERT INTO PE_PE
+	VALUES ("2ab492c1-cbf1-472e-aa58-3288e699cf07",
+	1,
+	"daab8a28-b197-44b7-a367-de07ec4fd205",
+	"00000000-0000-0000-0000-000000000000",
+	19);
+INSERT INTO O_OBJ_PROXY
+	VALUES ("b79bfa6f-7255-48e9-9621-66c065923b92",
+	'class1',
+	1,
+	'class1',
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'../ClassDiagram/class1/class1.xtuml');
+INSERT INTO PE_PE
+	VALUES ("daab8a28-b197-44b7-a367-de07ec4fd205",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'8472-o_iobj_connector_test',
+	1,
+	'../8472-o_iobj_connector_test.xtuml');
