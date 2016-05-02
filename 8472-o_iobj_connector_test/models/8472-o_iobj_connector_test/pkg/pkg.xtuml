@@ -1,0 +1,20 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("242b17c7-e3b9-429d-ae3c-74f23d3682d8",
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	"edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'pkg',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("242b17c7-e3b9-429d-ae3c-74f23d3682d8",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("edbf41df-361e-42d4-b90b-292f8bc044b7",
+	'8472-o_iobj_connector_test',
+	1,
+	'../8472-o_iobj_connector_test.xtuml');
