@@ -1,0 +1,330 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	'Transient Var',
+	818,
+	'V_TRN',
+	'A variable that is created within a block of an action.
+It has visibility equal to the scope of the block. Once
+execution has passed out of the block in which the
+transient is first assigned a value, the variable no longer
+exists.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("590d0e9b-67b7-42d5-bfaf-988a4883e81c",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	'getDimensionsCnt',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many dims related by self->S_DIM[R844];
+dimensions = cardinality dims;
+return dimensions;
+',
+	1,
+	'',
+	"09609ab8-cf3b-4143-99ad-62957267e8c8");
+INSERT INTO O_TFR
+	VALUES ("14675862-aec7-4aa2-ab8d-9d467f43641c",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	'resizeDimensions',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// If the number of dimensions has increased then add dimensions
+while (param.numDimensions > self.getDimensionsCnt())
+  create object instance dim of S_DIM;
+  dim.dimensionCount = self.getDimensionsCnt();
+  relate dim to self across R844;
+end while;
+
+// If the number of dimensions has decreased then remove dimensions
+while (param.numDimensions < self.getDimensionsCnt())
+  select any dim related by self->S_DIM[R844] where (selected.dimensionCount == (self.getDimensionsCnt()-1));
+  unrelate dim from self across R844;
+  delete object instance dim;
+end while;
+
+// Update the specific dimension that was passed-in if its elementCount has 
+// changed.
+if (param.numDimensions > 0) 
+  select any dim related by self->S_DIM[R844] where (selected.dimensionCount == param.dimension);
+  if (dim.elementCount != param.elementCount)
+    dim.elementCount = param.elementCount;
+  end if;
+end if;
+',
+	1,
+	'',
+	"2f50cdf2-7622-4888-916d-a3fd5a8f7a1c");
+INSERT INTO O_TPARM
+	VALUES ("4a07ff1c-8155-404b-a252-bbcb87eb3417",
+	"14675862-aec7-4aa2-ab8d-9d467f43641c",
+	'numDimensions',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"ea91031f-42f3-4f68-84f2-01fa396ead1e",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("be9aefc0-a40b-4cf2-b21e-8d70309fbff6",
+	"14675862-aec7-4aa2-ab8d-9d467f43641c",
+	'dimension',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ea91031f-42f3-4f68-84f2-01fa396ead1e",
+	"14675862-aec7-4aa2-ab8d-9d467f43641c",
+	'elementCount',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"be9aefc0-a40b-4cf2-b21e-8d70309fbff6",
+	'');
+INSERT INTO O_TFR
+	VALUES ("2f50cdf2-7622-4888-916d-a3fd5a8f7a1c",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	'isReferringToDefaultDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one dt related by self->S_DT[R821];
+elementType = Util::getSimpleClassName(element:self.convertToInstance());
+if(dt.Name == S_DT::getDefaultDataTypeName(elementType:elementType))
+  return true;
+end if;
+return false;',
+	1,
+	'',
+	"590d0e9b-67b7-42d5-bfaf-988a4883e81c");
+INSERT INTO O_TFR
+	VALUES ("09609ab8-cf3b-4143-99ad-62957267e8c8",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	'convertToInstance',
+	'Translate:native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"edfe7ce0-a332-4b2d-84c9-919fbd112c1e");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("edfe7ce0-a332-4b2d-84c9-919fbd112c1e",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	'canReferToDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one body related by self->V_VAR[R814]->ACT_BLK[R823]->ACT_ACT[R601];
+isInGenericPackage = body.associateWithContainer();
+if isInGenericPackage
+  select one dt related by self->S_DT[R821];
+  if (not_empty dt)
+    select one containingElem related by body->ACT_BIE[R640]->PE_PE[R640];
+    return containingElem.canReferToDataType(dtID:dt.DT_ID, dtName:dt.Name);
+  end if;
+  return false;
+else
+  select one dt related by self->S_DT[R821];
+  if(not_empty dt)
+    body.associateWithOwningComponent();
+    select one component related by body->ACT_BIC[R694]->C_C[R694];
+    if(not_empty component)
+      select one reqSig related by body->ACT_RSB[R698];
+      select one reqOp related by body->ACT_ROB[R698];
+      select one proSig related by body->ACT_PSB[R698];
+      select one proOp related by body->ACT_POB[R698];
+      // if any of the following is not empty
+      // then the dt must live at the system level
+      if(not_empty reqSig)
+          return true;
+      elif(not_empty reqOp)
+          return true;
+      elif(not_empty proSig)
+          return true;
+      elif(not_empty proOp)
+          return true;
+      end if;
+    else
+        return true;
+    end if;
+  end if;
+  return false;
+end if;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"eebf4269-d945-4687-94a4-ece03c805cc9",
+	"d7497931-3df0-406e-bdfc-5bf21b6c9510",
+	"442e95f2-d458-4d95-8104-06462da96330",
+	"8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	"5259123f-35c1-4716-bfe9-74d4df671e8d",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Variable',
+	'Var_ID',
+	'R814');
+INSERT INTO R_RGO_PROXY
+	VALUES ("d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"eebf4269-d945-4687-94a4-ece03c805cc9",
+	"d7497931-3df0-406e-bdfc-5bf21b6c9510",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"eebf4269-d945-4687-94a4-ece03c805cc9",
+	"442e95f2-d458-4d95-8104-06462da96330",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	'Var_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'../Variable/Variable.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"00000000-0000-0000-0000-000000000000",
+	'Var_ID',
+	'
+
+',
+	'',
+	'Var_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c7a60cdb-d180-42cb-a715-c297a1005be4",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e");
+INSERT INTO O_BATTR
+	VALUES ("c7a60cdb-d180-42cb-a715-c297a1005be4",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e");
+INSERT INTO O_ATTR
+	VALUES ("c7a60cdb-d180-42cb-a715-c297a1005be4",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"d0f277ea-135f-407d-81b0-0009d54011fb",
+	'Dimensions',
+	'This attribute is not used and will always be empty.
+This attribute was deprecated when fixed-length
+arrays were introduced.  It was left in-place simply for 
+consistency/orthagonality with the other places in the meta-model that have 
+dimensions.  All other places in the Meta-model do use this field.  It is 
+used for user-entry of the the dimension string.  V_TRN.Dimensions is different 
+because the user never enters a dimension string for a transient.  A transient 
+gets its dimensions based on the rvalue that it is assigned from.',
+	'',
+	'Dimensions',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"35133802-1b64-4470-b677-760b79f4e5da",
+	"7f555313-b727-4f29-a2c1-3046b274d230",
+	"c38f5b98-ce4c-4615-955c-168aafed9908",
+	"906b3bed-2897-4c25-972e-6339438c65de",
+	"d0f277ea-135f-407d-81b0-0009d54011fb",
+	"85e913a7-6144-4a9c-85cd-de3344c17c99",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Data Type',
+	'DT_ID',
+	'R821.''has''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"7f555313-b727-4f29-a2c1-3046b274d230",
+	"c38f5b98-ce4c-4615-955c-168aafed9908",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("35133802-1b64-4470-b677-760b79f4e5da",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"7f555313-b727-4f29-a2c1-3046b274d230",
+	"906b3bed-2897-4c25-972e-6339438c65de",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("d0f277ea-135f-407d-81b0-0009d54011fb",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("d0f277ea-135f-407d-81b0-0009d54011fb",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	"8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	'DT_ID',
+	'',
+	'',
+	'Element_ID',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e");
+INSERT INTO O_OIDA
+	VALUES ("8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	0,
+	'Var_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e");
+INSERT INTO O_ID
+	VALUES (2,
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e");
+INSERT INTO PE_PE
+	VALUES ("d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

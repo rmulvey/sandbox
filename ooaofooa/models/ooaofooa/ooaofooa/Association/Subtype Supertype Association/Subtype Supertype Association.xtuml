@@ -1,0 +1,182 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	'Subtype Supertype Association',
+	212,
+	'R_SUBSUP',
+	'A supertype/subtype association (R_SUBSUP) is an  between two classes, a supertype (R_SUPER) and a subtype (R_SUB).   The class that holds the referential attributes for  the association is know as the referring class in the association (R_RGO) and the class that participates in the association and carries the identifying attributes used to formalize the association is the referred to class  (R_RTO).  Supertype/Subtype associations are always formalized in the subtype (R_SUB).',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("37cabd33-b827-4b41-88de-8006d73c6458",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	'dispose',
+	'The dispose operation for the R_SUPSUB class.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one assoc related by self->R_REL[R206];
+unrelate self from assoc across R206;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("1f82f06b-9531-4458-8b4d-d2ea5e4078a3",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	'isFormalized',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one rto related by self->R_SUPER[R212]->R_RTO[R204];
+select any rtida related by rto->O_RTIDA[R110];
+return not_empty rtida;
+',
+	1,
+	'',
+	"f33dc698-682e-4392-9731-97c2a3a7622f");
+INSERT INTO O_TFR
+	VALUES ("f33dc698-682e-4392-9731-97c2a3a7622f",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	'formalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'if ( self.isFormalized() )
+  self.unformalize();
+end if;
+
+select one sup_rto related by self->R_SUPER[R212]->R_RTO[R204];
+select one sup_obj related by sup_rto->R_OIR[R203]->O_OBJ[R201];
+select any oid related by sup_obj->O_ID[R104] where selected.Oid_ID == param.id;
+relate oid to sup_rto across R109;
+
+select many oida_set related by oid->O_OIDA[R105];
+select many sub_rgo_set related by self->R_SUB[R213]->R_RGO[R205];
+// always create the O_RTIDA instances even if the
+// association doesn''t have any subclasses defined at the moment
+for each oida in oida_set 
+  create object instance rtida of O_RTIDA;
+  relate oida to sup_rto across R110 using rtida;
+end for;
+for each sub_rgo in sub_rgo_set
+  select one sub_obj related by sub_rgo->R_OIR[R203]->O_OBJ[R201];
+  unused_oid = sub_obj.findUnusedIdentifier();
+  for each oida in oida_set 
+    newAttr_id = oida.addReference(rel_id: self.Rel_ID,
+        rto_obj_id: sup_rto.Obj_ID, rto_oir_id: sup_rto.OIR_ID, 
+        rgo_obj_id: sub_rgo.Obj_ID, rgo_oir_id: sub_rgo.OIR_ID,
+        id: unused_oid);
+  end for;
+end for;
+',
+	1,
+	'',
+	"37cabd33-b827-4b41-88de-8006d73c6458");
+INSERT INTO O_TPARM
+	VALUES ("81ae421e-a788-4e3c-b542-f1cc0fdc8f27",
+	"f33dc698-682e-4392-9731-97c2a3a7622f",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("fff7ece1-27c8-477c-bb7b-44b3c7c22e60",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	'unformalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'
+select one sup_rto related by self->R_SUPER[R212]->R_RTO[R204];
+select one sup_oir related by sup_rto->R_OIR[R203];
+
+sup_rto.unformalize();
+
+// have to relate again due to propagation of previous unrelates
+relate sup_oir to sup_rto across R203;
+
+',
+	1,
+	'',
+	"1f82f06b-9531-4458-8b4d-d2ea5e4078a3");
+INSERT INTO O_REF
+	VALUES ("138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	"b7a04cbe-22f6-4335-9c3c-d07de172d638",
+	0,
+	"9c1944f6-6264-4150-8eaf-e943918eb019",
+	"820428c0-4c65-4fd8-b66e-e940aa34e2cb",
+	"89884bc2-6846-472b-9848-049e5ba047c5",
+	"1b0c7670-be14-4033-bdc1-86c38271079f",
+	"54c40cf6-310b-4e55-8972-710c9a2754ac",
+	"ebcd0709-6223-42fc-80af-75431e9855e0",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Association',
+	'Rel_ID',
+	'R206');
+INSERT INTO R_RGO_PROXY
+	VALUES ("138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	"820428c0-4c65-4fd8-b66e-e940aa34e2cb",
+	"89884bc2-6846-472b-9848-049e5ba047c5",
+	'../Association.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("9c1944f6-6264-4150-8eaf-e943918eb019",
+	"b7a04cbe-22f6-4335-9c3c-d07de172d638",
+	0,
+	"820428c0-4c65-4fd8-b66e-e940aa34e2cb",
+	"1b0c7670-be14-4033-bdc1-86c38271079f",
+	'../Association.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("54c40cf6-310b-4e55-8972-710c9a2754ac",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("54c40cf6-310b-4e55-8972-710c9a2754ac",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	"00000000-0000-0000-0000-000000000000",
+	'Rel_ID',
+	'',
+	'',
+	'Rel_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c");
+INSERT INTO O_OIDA
+	VALUES ("54c40cf6-310b-4e55-8972-710c9a2754ac",
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	0,
+	'Rel_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c");
+INSERT INTO O_ID
+	VALUES (2,
+	"138ed9f3-45cc-48e1-942b-3fb739fd392c");
+INSERT INTO PE_PE
+	VALUES ("138ed9f3-45cc-48e1-942b-3fb739fd392c",
+	1,
+	"3471d4d3-f545-461f-b4a6-a95712a9d39c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3471d4d3-f545-461f-b4a6-a95712a9d39c",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Association',
+	'A association (R_REL) captures an association between things in the real world. A association is stated in terms of the formal classs (O_OBJ) that model the real world entities participating in the association. There can be any number of associations between the same two classs and any class can participate in any number of associations with other classs.',
+	201,
+	'../Association.xtuml');

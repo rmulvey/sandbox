@@ -1,0 +1,568 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	'For Stmt',
+	606,
+	'ACT_FOR',
+	'The class represents a for statement in a block of action language.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("3e19d8d8-fdcd-4d3c-a9ec-849f3687b53e",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one obj related by self->O_OBJ[R670];
+if ( not_empty obj )
+  unrelate self from obj across R670;
+end if;
+
+select one iter related by self->V_VAR[R614];
+if ( not_empty iter )
+  unrelate self from iter across R614;
+end if;
+
+select one iter_set related by self->V_VAR[R652];
+if ( not_empty iter_set )
+  unrelate self from iter_set across R652;
+end if;
+
+select one blk related by self->ACT_BLK[R605];
+if ( not_empty blk )
+  unrelate self from blk across R605;
+  blk.dispose();
+end if;
+delete object instance self;
+
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("05d440cc-373d-4f96-886f-044e71c5c1c3",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	'execute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Body:For Stmt.execute()
+
+// First check for a valid stack frame id
+// Grab the stack frame
+select any stack_frame from instances of I_STF where
+                              (selected.Stack_Frame_ID == param.stack_frame_id);
+select one body related by self->ACT_SMT[R603]->ACT_BLK[R602]->ACT_ACT[R601];                               
+if (empty stack_frame)
+  //Invalid stack frame ID!
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in For Stmt.execute: Invalid stack frame id. Terminating execution.",path:pathMsg);
+  select any stack from instances of I_STACK;
+  stack.runState = RunStateType::Terminated;
+else
+  select one stack related by stack_frame->I_STACK[R2943];
+  if (empty stack)
+    //Could not get stack!
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in For Stmt.execute: Could not get stack. Using random stack.",path:pathMsg);
+    select any stack from instances of I_STACK;
+    stack.runState = RunStateType::Terminated;
+  else
+    select one inst_set related by self->V_VAR[R652]->V_INS[R814];
+    select one loop_variable_inst_handle related by self->
+                                                       V_VAR[R614]->V_INT[R814];
+    select one block_to_execute related by self->ACT_BLK[R605];
+    // Get the local reference to the loop variable
+    select any loop_variable_local_ref related by stack_frame->
+             I_BSF[R2923]->L_LCL[R3000]->L_LCR[R3001] where selected.Local_ID == 
+                    self.getLocalLoopVarID(stack_frame_id:param.stack_frame_id);
+    select any local_instance related by loop_variable_local_ref->
+                                        L_LCL[R3001]->RV_RVL[R3306]->
+                       RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311]->I_INS[R3013];
+    select one set_instance_in_ref related by 
+                                          loop_variable_local_ref->L_IIR[R3012];
+    if (empty set_instance_in_ref)
+      // this is the first iteration, initialize set and get the first member
+      if (self.is_implicit)
+        // Create the local loop variable instance reference
+        // in the scope of the enclosing block
+        select one containing_block related by self->
+                                                   ACT_SMT[R603]->ACT_BLK[R602];
+        ref_ID = containing_block.newLocalReference(stack_frame_id:
+                                                    stack_frame.Stack_Frame_ID);
+        select any loop_variable_local_ref related by containing_block->
+                                  I_BSF[R2923]->L_LCL[R3000]->L_LCR[R3001] where
+                                                    selected.Local_ID == ref_ID;
+        relate loop_variable_inst_handle to loop_variable_local_ref
+                                                                   across R3004;
+      else
+        loop_variable_local_ref.clear();
+      end if;
+      // Ensure previous_instance in ref is empty to start with
+      select any prev_local_instance_in_ref related by inst_set->
+                           L_LCR[R3003]->L_LCL[R3001]->RV_RVL[R3306]->
+                           RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311] where
+                               selected.RuntimeValue_ID == GD::NULL_UNIQUE_ID();
+      select many locals related by inst_set->
+                            L_LCR[R3003]->L_LCL[R3001] where
+                                selected.Stack_Frame_ID == stack_frame.Stack_Frame_ID;
+      select many local_instance_in_refs related by locals->RV_RVL[R3306]->
+                                    RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311];
+      for each local_instance_in_ref in local_instance_in_refs
+        if (not_empty prev_local_instance_in_ref)
+          relate prev_local_instance_in_ref to local_instance_in_ref across
+                                                               R3011.''is after'';
+        end if;
+        prev_local_instance_in_ref = local_instance_in_ref;
+      end for;
+      // Set up the current loop variable to point to first iterated instance
+      select any first_local_instance_in_ref related by locals->RV_RVL[R3306]->
+                                    RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311];
+      select one local_instance related by 
+                                      first_local_instance_in_ref->I_INS[R3013];
+      if (not_empty local_instance)
+        loop_variable_local_ref.addInstance(inst_id:local_instance.Inst_ID);
+      end if;
+      relate loop_variable_local_ref to
+                                       first_local_instance_in_ref across R3012;
+    else
+      // This is not the first iteration, dispose the set iterator link
+      unrelate loop_variable_local_ref from set_instance_in_ref across R3012;
+      // and dispose the reference to the previous set member
+      select any loop_instance_in_ref related by
+                  loop_variable_local_ref->L_LCL[R3001]->RV_RVL[R3306]->
+                                     RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311];
+      loop_instance_in_ref.dispose();
+      // Find the next set member (if any)
+      select one next_local_ref related by set_instance_in_ref->
+                                                        L_IIR[R3011.''is after''];
+      // Ensure local_instance is set to it, even if there wasn''t one
+      select one local_instance related by next_local_ref->I_INS[R3013];
+      // Hook up the next instance across R3002 (if any, otherwise
+      // leave unrelated, an empty next instance
+      // signals no more instances in the set and loop exit . . . .
+      if (not_empty next_local_ref)
+        select one loop_variable_runtime_value related by
+                loop_variable_local_ref->L_LCL[R3001]->RV_RVL[R3306]->
+                                                   RV_SMV[R3300]->RV_IRV[R3308];
+        relate loop_variable_runtime_value to loop_instance_in_ref across R3311;
+        if (not_empty local_instance)
+          relate local_instance to loop_instance_in_ref across R3013;
+        end if;
+        relate loop_variable_local_ref to next_local_ref across R3012;
+      end if;
+    end if;
+    if (not_empty local_instance)
+      select any statement related by block_to_execute->ACT_SMT[R602];
+      if not_empty statement
+        // we''re going into a deeper block, so disable execution on current one
+        select any bisf related by stack_frame->I_BSF[R2923] where
+                                                           selected.isExecuting;
+        bisf.isExecuting = false;
+        // Set up block for execution
+        create object instance bisf of I_BSF;
+        relate stack_frame to block_to_execute across R2923 using bisf;
+        relate statement to bisf across R2941;
+        bisf.isExecuting = true;
+        block_to_execute.initialize();
+      end if;
+    else
+      // Looping is over, remove the link that tracks the current set member
+      select one set_instance_in_ref related by
+                                          loop_variable_local_ref->L_IIR[R3012];
+      if (not_empty set_instance_in_ref)
+        unrelate loop_variable_local_ref from set_instance_in_ref across R3012;
+      end if;
+    end if;
+  end if;
+end if;',
+	1,
+	'',
+	"3e19d8d8-fdcd-4d3c-a9ec-849f3687b53e");
+INSERT INTO O_TPARM
+	VALUES ("800da07e-cbba-4ebb-aeff-fb88313709fd",
+	"05d440cc-373d-4f96-886f-044e71c5c1c3",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("edfd9077-a9d9-45b8-8baf-39a8be209daf",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	'getLocalLoopVarID',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// Body:For Stmt.getLocalLoopID()
+                                    
+select any stack_frame related by self->
+             ACT_SMT[R603]->ACT_BLK[R602]->I_BSF[R2923]->I_STF[R2923] where
+                              (selected.Stack_Frame_ID == param.stack_frame_id);
+select one loop_variable_inst_handle related by self->V_VAR[R614]->V_INT[R814];
+
+// Empty local reference
+select any loop_variable_local_ref from instances of L_LCR where
+                                    (selected.Local_ID == GD::NULL_UNIQUE_ID());
+
+// Get all of the block in stack frames that exist for the stack frame
+select many block_in_stack_frames related by stack_frame->I_BSF[R2923];
+for each block_in_stack_frame in block_in_stack_frames
+
+  // Find the one local value that matches the block in stack frame where we are
+  // executing for the transient variable we want to assign
+  select any loop_variable_local_ref related by block_in_stack_frame->
+                            L_LCL[R3000]->L_LCR[R3001] where selected.Var_ID ==
+                                               loop_variable_inst_handle.Var_ID;
+  if (not_empty loop_variable_local_ref)
+    // We found the 1 local reference in this stack frame for this instance
+    // handle id.  So stop looking.
+    // All of this is necessary in order to support nested blocks that reference
+    // variables that were created in outer blocks in this stack frame
+    
+    // WARNING: This implementation is based on the Object Action Language
+    // definition that existed in November of 2005.
+    // If the language is changed to become a strongly typed language where a
+    // user can define a variable in an inner block with the same name as
+    // something that exists in the outer block, then this implementation will
+    // not work because it does not walk out of the current block.
+    break;
+  end if;
+end for;
+if (not_empty loop_variable_local_ref)
+  return loop_variable_local_ref.Local_ID;
+else
+  return GD::NULL_UNIQUE_ID();
+end if;',
+	1,
+	'',
+	"05d440cc-373d-4f96-886f-044e71c5c1c3");
+INSERT INTO O_TPARM
+	VALUES ("ef057f03-08c8-4b69-a6a6-edaeb356e4e7",
+	"edfd9077-a9d9-45b8-8baf-39a8be209daf",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	0,
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"4422da03-0dce-48a0-81da-0dfbe89b8802",
+	"7558839e-e4fb-46e4-97b0-decfec373abb",
+	"6b34a68b-0c4b-4361-882e-d148846f2e78",
+	"4c30dea4-f26e-49ab-a07c-d69c3c54dd1a",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Statement',
+	'Statement_ID',
+	'R603');
+INSERT INTO R_RGO_PROXY
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"4422da03-0dce-48a0-81da-0dfbe89b8802",
+	'../Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	0,
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"7558839e-e4fb-46e4-97b0-decfec373abb",
+	'../Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("6b34a68b-0c4b-4361-882e-d148846f2e78",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	1,
+	'Statement_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	'../Statement/Statement.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("6b34a68b-0c4b-4361-882e-d148846f2e78",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"00000000-0000-0000-0000-000000000000",
+	'Statement_ID',
+	'
+
+',
+	'',
+	'Statement_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	0,
+	"d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"2e71914f-2a23-4533-9c3d-68c205a1b9a5",
+	"523aa1c6-b4af-46ad-99b0-3e5a0521e499",
+	"f94b55b8-54a6-446c-b4cf-a8e0f4cd0ee0",
+	"7ac87b86-8562-410a-b76a-fd14b8092c7d",
+	"6bfca02c-6475-4586-be80-ef9389279b2a",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Block',
+	'Block_ID',
+	'R605.''controls''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"2e71914f-2a23-4533-9c3d-68c205a1b9a5",
+	"523aa1c6-b4af-46ad-99b0-3e5a0521e499",
+	'../Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	0,
+	"2e71914f-2a23-4533-9c3d-68c205a1b9a5",
+	"f94b55b8-54a6-446c-b4cf-a8e0f4cd0ee0",
+	'../Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("7ac87b86-8562-410a-b76a-fd14b8092c7d",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	1,
+	'Block_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	'../Block/Block.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("7ac87b86-8562-410a-b76a-fd14b8092c7d",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"6b34a68b-0c4b-4361-882e-d148846f2e78",
+	'Block_ID',
+	'',
+	'',
+	'Block_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a0546544-6a96-4e33-9d43-06e7508ef8c0",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3");
+INSERT INTO O_BATTR
+	VALUES ("a0546544-6a96-4e33-9d43-06e7508ef8c0",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3");
+INSERT INTO O_ATTR
+	VALUES ("a0546544-6a96-4e33-9d43-06e7508ef8c0",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"7ac87b86-8562-410a-b76a-fd14b8092c7d",
+	'is_implicit',
+	'Full Name: Is Implicit
+Specifies whether the loop instance handle found is being used for the first time in this scope or not.',
+	'',
+	'is_implicit',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"998bb2d2-56b2-4873-b9de-d7244ec03632",
+	"675c755d-46cf-49a0-a51c-ce6516e6abe1",
+	"e14cab6e-f510-4f45-a5a3-af7d67be1a9f",
+	"42ad9cc6-4774-4561-a86a-a727985b5d87",
+	"6f6077d9-a2a4-4791-948b-ca44c69df12c",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Variable',
+	'Var_ID',
+	'R614.''loop''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"998bb2d2-56b2-4873-b9de-d7244ec03632",
+	"675c755d-46cf-49a0-a51c-ce6516e6abe1",
+	'../Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"998bb2d2-56b2-4873-b9de-d7244ec03632",
+	"e14cab6e-f510-4f45-a5a3-af7d67be1a9f",
+	'../Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("42ad9cc6-4774-4561-a86a-a727985b5d87",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	'Var_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'../../Value/Variable/Variable.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("42ad9cc6-4774-4561-a86a-a727985b5d87",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"a0546544-6a96-4e33-9d43-06e7508ef8c0",
+	'Loop_Var_ID',
+	'
+
+',
+	'Loop_',
+	'Var_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"9d664860-7cf5-421c-b322-3ea2e7e5d882",
+	"eabb3ce7-433e-4ed8-9136-7c7a420a1890",
+	"c19497b0-ab62-48ca-a719-fb1b83eb9fe0",
+	"a04e4ce4-6c79-4250-8158-fdea2c628ce7",
+	"20b245e9-cb87-4771-a946-1dcda36412d1",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Variable',
+	'Var_ID',
+	'R652.''set''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"9d664860-7cf5-421c-b322-3ea2e7e5d882",
+	"eabb3ce7-433e-4ed8-9136-7c7a420a1890",
+	'../Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"9d664860-7cf5-421c-b322-3ea2e7e5d882",
+	"c19497b0-ab62-48ca-a719-fb1b83eb9fe0",
+	'../Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("a04e4ce4-6c79-4250-8158-fdea2c628ce7",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	'Var_ID');
+INSERT INTO O_ATTR
+	VALUES ("a04e4ce4-6c79-4250-8158-fdea2c628ce7",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"42ad9cc6-4774-4561-a86a-a727985b5d87",
+	'Set_Var_ID',
+	'
+
+',
+	'Set_',
+	'Var_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"17d86b5f-0053-47ae-8312-48e5145617f0",
+	"3ad7724e-8c1b-4b87-97f5-582dbeccd0ab",
+	"5591435a-bd8b-432e-89c3-c3ae63d2aa91",
+	"2732c39e-6147-48da-bbe4-28eb29bf6204",
+	"64ab2b66-ec82-456f-9404-3903d84b5c65",
+	"01c6f811-b863-4a16-a06b-967d74b3b024",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Model Class',
+	'Obj_ID',
+	'R670.''iterates a set of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"3ad7724e-8c1b-4b87-97f5-582dbeccd0ab",
+	"5591435a-bd8b-432e-89c3-c3ae63d2aa91",
+	'../Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("17d86b5f-0053-47ae-8312-48e5145617f0",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"3ad7724e-8c1b-4b87-97f5-582dbeccd0ab",
+	"2732c39e-6147-48da-bbe4-28eb29bf6204",
+	'../Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("64ab2b66-ec82-456f-9404-3903d84b5c65",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("64ab2b66-ec82-456f-9404-3903d84b5c65",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	"a04e4ce4-6c79-4250-8158-fdea2c628ce7",
+	'Obj_ID',
+	'',
+	'',
+	'Obj_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3");
+INSERT INTO O_OIDA
+	VALUES ("6b34a68b-0c4b-4361-882e-d148846f2e78",
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	0,
+	'Statement_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3");
+INSERT INTO O_ID
+	VALUES (2,
+	"5a8e1969-54be-4579-842d-1a8c0f8550b3");
+INSERT INTO PE_PE
+	VALUES ("5a8e1969-54be-4579-842d-1a8c0f8550b3",
+	1,
+	"5375dd69-33aa-4887-8270-296340adc334",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("5375dd69-33aa-4887-8270-296340adc334",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Body',
+	'This subsystem abstracts the action itself, the blocks and statements
+it contains together with the flow of control statements such as ''while'',
+''for each'' and ''if''.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	600,
+	'../Body.xtuml');

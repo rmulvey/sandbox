@@ -1,0 +1,335 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'Core Data Type',
+	10,
+	'S_CDT',
+	'Core Data Types are those data types which are fundamental, or core, to all data types.  The core data types are built-in to the tool and cannot be changed.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("b873431e-be02-4f98-ad76-7b10c38a7b5a",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.DT_ID;',
+	1,
+	'',
+	"52919afd-5972-4822-b6c1-34b04771631c");
+INSERT INTO O_TFR
+	VALUES ("bc827014-13a4-4667-b082-14bc65362b6f",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_compartment_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'result = "";
+if (param.at == Justification::Center_in_X)
+  result = "«primitive»";
+elif (param.at == Justification::Center)
+  select one selfDt related by self->S_DT[R17];
+  if ( not_empty selfDt )
+    result = selfDt.Name;
+    select one pe related by selfDt->PE_PE[R8001];
+    if not_empty pe
+      result = pe.getVisibilityAdornment() + result;
+    end if;
+  else
+    result = ::getOrphanedElementName();
+  end if;
+end if;
+return result;',
+	1,
+	'',
+	"a94bf199-1e56-4545-82cb-c67a1a475dd7");
+INSERT INTO O_TPARM
+	VALUES ("251f3ca5-6b98-42a6-8c32-d9c0250a60ba",
+	"bc827014-13a4-4667-b082-14bc65362b6f",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"c6a28526-5bbd-449b-a312-e2e44287dd1d",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("53cbdbde-b059-45b0-9d13-0f321d01b8c3",
+	"bc827014-13a4-4667-b082-14bc65362b6f",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"251f3ca5-6b98-42a6-8c32-d9c0250a60ba",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("c6a28526-5bbd-449b-a312-e2e44287dd1d",
+	"bc827014-13a4-4667-b082-14bc65362b6f",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	"00000000-0000-0000-0000-000000000000",
+	'Justification',
+	'The Justification data type is used to specify text at a given location in a compartment.
+------------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("d83fc4e3-ffef-4bd9-9280-4c2eced7debd",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_compartments',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 1;',
+	1,
+	'',
+	"bc827014-13a4-4667-b082-14bc65362b6f");
+INSERT INTO O_TFR
+	VALUES ("c4357c53-a75a-4bd2-9e5d-c8c82b12bc27",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_entries',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 1;',
+	1,
+	'',
+	"d83fc4e3-ffef-4bd9-9280-4c2eced7debd");
+INSERT INTO O_TPARM
+	VALUES ("d89371ee-ae9e-4f61-a49d-8991e694a800",
+	"c4357c53-a75a-4bd2-9e5d-c8c82b12bc27",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("301487d6-1a19-4568-9d10-7ec700cfe39f",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_text_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::None;',
+	1,
+	'',
+	"4b7de89a-54c3-43ce-acb7-8ba0622bcc0e");
+INSERT INTO O_TPARM
+	VALUES ("dbf9a8e0-09dd-47c8-a3a2-07087f89de46",
+	"301487d6-1a19-4568-9d10-7ec700cfe39f",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"01044946-caaf-4e30-8411-c83999c60ff5",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("57e0f48b-eb84-4f4d-9145-0eef5ad198ff",
+	"301487d6-1a19-4568-9d10-7ec700cfe39f",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"dbf9a8e0-09dd-47c8-a3a2-07087f89de46",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("01044946-caaf-4e30-8411-c83999c60ff5",
+	"301487d6-1a19-4568-9d10-7ec700cfe39f",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("4b7de89a-54c3-43ce-acb7-8ba0622bcc0e",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::Box;',
+	1,
+	'',
+	"b873431e-be02-4f98-ad76-7b10c38a7b5a");
+INSERT INTO O_TFR
+	VALUES ("52919afd-5972-4822-b6c1-34b04771631c",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'get_name',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one dt related by self->S_DT[R17];
+if ( empty dt )
+  return "";
+else
+  return dt.Name;
+end if;
+',
+	1,
+	'',
+	"c4357c53-a75a-4bd2-9e5d-c8c82b12bc27");
+INSERT INTO O_TFR
+	VALUES ("a94bf199-1e56-4545-82cb-c67a1a475dd7",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one dt related by self->S_DT[R17];
+unrelate self from dt across R17;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("baef39a5-a4d0-40b1-ac4d-7ed32c0ec47a",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	'convertToInstance',
+	'Translate:native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"301487d6-1a19-4568-9d10-7ec700cfe39f");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("a7e49b77-f67e-4411-90e2-398a24717b5d",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd");
+INSERT INTO O_BATTR
+	VALUES ("a7e49b77-f67e-4411-90e2-398a24717b5d",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd");
+INSERT INTO O_ATTR
+	VALUES ("a7e49b77-f67e-4411-90e2-398a24717b5d",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	"67e012c6-6721-44f1-a207-6119ccc9a227",
+	'Core_Typ',
+	'Full Name: Core Type
+Description: The core BridgePoint type for the data type
+Data Domain: 0 = void, 1 = boolean, 2 = integer, 3 = real, 4 = string, 5 = unique_id, 6 = current_state, 7 = same_as_base, 8 = inst_ref\<Object\>, 9 = inst_ref_set\<Object\>, 10 = inst\<Event\>, 11 = inst\<Mapping\>, 12 = inst_ref\<Mapping\>, 13 = component_ref
+
+enum0: void
+enum1: boolean
+enum2: integer
+enum3: real
+enum4: string
+enum5: unique_id
+enum6: state<State_Model>
+enum7:  same_as<Base_Attribute>
+enum8: inst_ref<Object>
+enum9: inst_ref_set<Object>
+enum10: inst<Event>
+enum11: inst<Mapping>
+enum12: inst_ref<Mapping>
+enum13: component_ref
+impl_detail: true
+readonly: true',
+	'',
+	'Core_Typ',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"35133802-1b64-4470-b677-760b79f4e5da",
+	"6e4805b1-8913-420c-ba6a-93dfb568b8ed",
+	"898a22ed-d88c-4aa2-b63f-6f150dbd7304",
+	"37312651-247c-4cbe-936f-23c2f217fe3c",
+	"67e012c6-6721-44f1-a207-6119ccc9a227",
+	"d0276558-3d68-4f55-a821-748722ccb7a8",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Data Type',
+	'DT_ID',
+	'R17');
+INSERT INTO R_RGO_PROXY
+	VALUES ("1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	"6e4805b1-8913-420c-ba6a-93dfb568b8ed",
+	"898a22ed-d88c-4aa2-b63f-6f150dbd7304",
+	'../Domain.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("35133802-1b64-4470-b677-760b79f4e5da",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"6e4805b1-8913-420c-ba6a-93dfb568b8ed",
+	"37312651-247c-4cbe-936f-23c2f217fe3c",
+	'../Domain.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("67e012c6-6721-44f1-a207-6119ccc9a227",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("67e012c6-6721-44f1-a207-6119ccc9a227",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	"00000000-0000-0000-0000-000000000000",
+	'DT_ID',
+	'',
+	'',
+	'Element_ID',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd");
+INSERT INTO O_OIDA
+	VALUES ("67e012c6-6721-44f1-a207-6119ccc9a227",
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	0,
+	'DT_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd");
+INSERT INTO O_ID
+	VALUES (2,
+	"1913ccb4-085b-4569-a8cc-07ea97d97afd");
+INSERT INTO PE_PE
+	VALUES ("1913ccb4-085b-4569-a8cc-07ea97d97afd",
+	1,
+	"b308feec-d790-479d-b13b-24dc13bbb084",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b308feec-d790-479d-b13b-24dc13bbb084",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Domain',
+	'A domain (S_DOM) consists of one or more subsystems (S_SS) that each contain an information model that abstracts a portion of the data for the domain: classes (O_OBJ), associations (R_REL), etc.  Breaking a domain into subsystems allows the complexity of the domain to be more easily managed: 1) subsystems are components and can be checked out individually allowing parallelism in development of the models and 2) breaking up a domain into smaller units is easier to understand.  A subsystem is composed of classes that tend to cluster, i.e., they have few associations that span subsystem boundaries.  Inter-subsystem associations, communications, and accesses are captured in the Subsystem Relationship Model (SRM), Subsystem Communication Model (SCM), and Subsystem Access Model (SAM) respectively.',
+	1,
+	'../Domain.xtuml');

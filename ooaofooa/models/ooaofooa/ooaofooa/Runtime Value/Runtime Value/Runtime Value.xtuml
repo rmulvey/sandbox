@@ -1,0 +1,659 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'Runtime Value',
+	3300,
+	'RV_RVL',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("7f5d49a3-5cb2-48db-bba3-636ce3b5cb11",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'getValue',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// Runtime Value.getValue()
+select one simpleVal related by self->RV_SMV[R3300];
+if not_empty simpleVal
+  return simpleVal.getValue();
+else
+  USER::logError(msg:"Simple access attempted on a compound value.",path:"");
+  return GD::NULL_INSTANCE();
+end if;',
+	1,
+	'',
+	"ae9ca3b6-8277-47f1-805a-cf293c7ba0bb");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("769cc9df-7e3e-4a73-a557-110662eacfd9",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'copyValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Runtime Value.copyValue()
+select any source from instances of RV_RVL where
+                                         selected.RuntimeValue_ID == param.from;
+select one dt related by source->S_DT[R3307];
+relate self to dt across R3307;
+select one srcSmpleVal related by source->RV_SMV[R3300];
+select one srcStrctVal related by source->RV_SVL[R3300];
+select one srcArrayVal related by source->RV_AVL[R3300];
+if not_empty srcSmpleVal
+  select one srcIrv related by srcSmpleVal->RV_IRV[R3308];
+  if not_empty srcIrv
+    select one irv related by self->RV_SMV[R3300]->RV_IRV[R3308];
+    if empty irv
+      self.createReferenceValue();
+      select one irv related by self->RV_SMV[R3300]->RV_IRV[R3308];
+    end if;
+    // Dispose all existing inst in references
+    select many instInRefs related by irv->L_IIR[R3311];
+    for each instInRef in instInRefs
+      instInRef.dispose();
+    end for;
+    select many insts related by srcIrv->L_IIR[R3311]->I_INS[R3013];
+    for each inst in insts
+      create object instance iir of L_IIR;
+      relate irv to iir across R3311;
+      relate iir to inst across R3013;
+    end for;
+  else
+    select one smpleVal related by self->RV_SMV[R3300];
+    if empty smpleVal
+      self.createSimpleValue();
+      select one smpleVal related by self->RV_SMV[R3300];
+    end if;
+    select one scv related by srcSmpleVal->RV_SCV[R3308];
+    if not_empty scv
+      smpleVal.setValue(value:srcSmpleVal.getValue());
+    else
+      select one srcCrv related by srcSmpleVal->RV_CRV[R3308];
+      if not_empty srcCrv
+        select one crv related by smpleVal->RV_CRV[R3308];
+        if empty crv
+          create object instance crv of RV_CRV;
+          relate crv to smpleVal across R3308;
+        end if;
+        select one exe related by srcCrv->I_EXE[R3309];
+        relate crv to exe across R3309;
+      else
+        // TODO log error
+      end if;
+    end if;
+  end if;
+elif not_empty srcStrctVal
+  select one strctVal related by self->RV_SVL[R3300];
+  if empty strctVal
+    create object instance strctVal of RV_SVL;
+    relate strctVal to self across R3300;
+  end if;
+  srcStrctVal.memberWiseCopy(destination:strctVal.RuntimeValue_ID);
+elif not_empty srcArrayVal
+  select one arrayVal related by self->RV_AVL[R3300];
+  if empty arrayVal
+    create object instance arrayVal of RV_AVL;
+    relate arrayVal to self across R3300;
+  end if;
+  srcArrayVal.arrayCopy(destination:arrayVal.RuntimeValue_ID);
+else
+  // TODO log error
+end if;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("946f1843-c297-4c65-afe3-0c74f85b33a5",
+	"769cc9df-7e3e-4a73-a557-110662eacfd9",
+	'from',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("6a50f221-b421-4e77-94de-6a93c4fd0090",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Runtime Value.dispose()
+select many divs related by self->I_DIV[R3303];
+for each div in divs
+  unrelate self from div across R3303;
+end for;
+select many avls related by self->I_AVL[R3304];
+for each avl in avls
+  unrelate self from avl across R3304;
+end for;
+select many avls related by self->I_AVL[R3312];
+for each avl in avls
+  unrelate self from avl across R3312;
+end for;
+select many vsfs related by self->I_VSF[R3305];
+for each vsf in vsfs
+  unrelate self from vsf across R3305;
+end for;
+select many lcls related by self->L_LCL[R3306];
+for each lcl in lcls
+  unrelate self from lcl across R3306;
+end for;
+select one simplVal related by self->RV_SMV[R3300];
+select one strctVal related by self->RV_SVL[R3300];
+select one arrayVal related by self->RV_AVL[R3300];
+if (not_empty simplVal)
+  unrelate self from simplVal across R3300;
+  simplVal.dispose();
+elif (not_empty strctVal)
+  unrelate self from strctVal across R3300;
+  strctVal.dispose();
+elif (not_empty arrayVal)
+  unrelate self from arrayVal across R3300;
+  arrayVal.dispose();
+end if;
+select one vis related by self->RV_VIS[R3301];
+if not_empty vis
+  select one str related by vis->RV_SVL[R3301];
+  unrelate self from str across R3301 using vis;
+  delete object instance vis;
+end if;
+select one via related by self->RV_VIA[R3302];
+if not_empty via
+  select one arr related by via->RV_AVL[R3302];
+  unrelate self from arr across R3302 using via;
+  delete object instance via;
+end if;
+select one dt related by self->S_DT[R3307];
+if not_empty dt
+  unrelate self from dt across R3307;
+end if;
+select one stackFrame related by self->I_STF[R3310];
+if not_empty stackFrame
+  unrelate self from stackFrame across R3310;
+end if;
+delete object instance self;
+
+',
+	1,
+	'',
+	"769cc9df-7e3e-4a73-a557-110662eacfd9");
+INSERT INTO O_TFR
+	VALUES ("1e6b8ea0-7995-431a-816e-bade2b9e3fee",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'setValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Runtime Value.setValue()
+select one simplVal related by self->RV_SMV[R3300];
+select one strctVal related by self->RV_SVL[R3300];
+select one arrayVal related by self->RV_AVL[R3300];
+if not_empty strctVal or not_empty arrayVal
+  USER::logError(msg:"Simple modification attempted on a compound value.",path:"");
+else
+  if empty simplVal
+    // Never been assigned before
+    self.createSimpleValue();
+    select one simplVal related by self->RV_SMV[R3300];
+  end if;
+  simplVal.setValue(value:param.value);
+end if;
+',
+	1,
+	'',
+	"476e071c-a95e-4099-8e4a-b27d1daff140");
+INSERT INTO O_TPARM
+	VALUES ("b83f82c8-6357-4211-bf31-9310a4a4f9b3",
+	"1e6b8ea0-7995-431a-816e-bade2b9e3fee",
+	'value',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("ae9ca3b6-8277-47f1-805a-cf293c7ba0bb",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'disposeIfOrphaned',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Runtime Value.disposeIfOrphaned()
+select one parent related by self->RV_VIS[R3301]->RV_SVL[R3301]->RV_RVL[R3300];
+if not_empty parent
+  parent.disposeIfOrphaned();
+else
+  select one parent related by self->RV_VIA[R3302]->
+                                                   RV_AVL[R3302]->RV_RVL[R3300];
+  if not_empty parent
+    parent.disposeIfOrphaned();
+  else
+    select any div related by self->I_DIV[R3303];
+    select any avl related by self->I_AVL[R3304];
+    select any vsf related by self->I_VSF[R3305];
+    select any lcl related by self->L_LCL[R3306];
+    if empty div and empty avl and empty vsf and empty lcl
+      self.dispose();
+    end if;
+  end if;
+end if;',
+	1,
+	'',
+	"6a50f221-b421-4e77-94de-6a93c4fd0090");
+INSERT INTO O_TFR
+	VALUES ("83715335-6f94-4d3f-b009-b3200900f48e",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'isEqual',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// Runtime Value.compare()
+select any withRtVal from instances of RV_RVL where
+                                           selected.RuntimeValue_ID == param.to;
+select one simpleRtVal related by self->RV_SMV[R3300];
+if not_empty simpleRtVal
+  select one withSimpleRtVal related by withRtVal->RV_SMV[R3300];
+  return GD::instance_to_string(value:simpleRtVal.getValue()) ==
+                            GD::instance_to_string(value:withSimpleRtVal.getValue());
+else
+  select one strctRtVal related by self->RV_SVL[R3300];
+  select one arrayRtVal related by self->RV_AVL[R3300];
+  result = true;
+  if not_empty strctRtVal
+    select many childRtValInStructs related by strctRtVal->RV_VIS[R3301];
+    select one withRtStructVal related by withRtVal->RV_SVL[R3300];
+    select many withChildRtValInStructs related by withRtStructVal->
+                                                                  RV_VIS[R3301];
+    if cardinality childRtValInStructs != cardinality withChildRtValInStructs
+      // The values have different numbers of children, they cannot be the same
+      result = false;
+    else
+      for each childInStruct in childRtValInStructs
+        select any withChildInStruct related by withRtStructVal->
+                        RV_VIS[R3301] where selected.Name == childInStruct.Name;
+        if empty withChildInStruct
+          // This value was never set in the compared with value,
+          // so the values must be different.
+          result = false;
+          break;
+        else
+          select one rtVal related by childInStruct->RV_RVL[R3301];
+          // This recursive call descends the value tree.
+          if not rtVal.isEqual(to:withChildInStruct.ContainedRuntimeValue_ID);
+            result = false;
+            break;
+          end if;
+        end if;
+      end for;
+    end if;
+  elif not_empty arrayRtVal
+    select many childrenInArray related by arrayRtVal->RV_VIA[R3302];
+    select one withRtarrayVal related by withRtVal->RV_AVL[R3300];
+    select many withChildrenInArray related by withRtarrayVal->RV_VIA[R3302];
+    if cardinality childrenInArray != cardinality withChildrenInArray
+      // The arrays have different numbers of elements
+      return false;
+    else
+      for each childInArray in childrenInArray
+        select any withChildInArray related by withRtarrayVal->
+                       RV_VIA[R3302] where selected.Index == childInArray.Index;
+        if empty withChildInArray
+          // This element is not present,
+          // so the values must be different.
+          result = false;
+          break;
+        else
+          select one rtVal related by childInArray->RV_RVL[R3302];
+          // This recursive call descends the value tree.
+          if not rtVal.isEqual(to:withChildInArray.ContainedRuntimeValue_ID);
+            result = false;
+            break;
+          end if;
+        end if;
+      end for;
+    end if;
+  end if;
+  return result;
+end if;',
+	1,
+	'',
+	"7f5d49a3-5cb2-48db-bba3-636ce3b5cb11");
+INSERT INTO O_TPARM
+	VALUES ("e4262f65-613e-4ee2-b00a-d2ea58760539",
+	"83715335-6f94-4d3f-b009-b3200900f48e",
+	'to',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("476e071c-a95e-4099-8e4a-b27d1daff140",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'setDefault',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Runtime Value.setdefault()
+// Set this value to the default values for all its members.
+if param.dimensions == 0
+  select one dt related by self->S_DT[R3307];
+  select one sdt related by dt->S_SDT[R17];
+  if(empty sdt)
+    select one udt related by dt->S_UDT[R17];
+    if(not_empty udt)
+      core_id = udt.getCoreType();
+      select any dt_pe from instances of PE_PE
+                                         where (selected.Element_ID == core_id);
+      select one base_dt related by dt_pe->S_DT[R8001];
+      select one sdt related by base_dt->S_SDT[R17];
+    end if;
+  end if;
+  if empty sdt
+    self.createSimpleValue();
+    select one smplVal related by self->RV_SMV[R3300];
+    dtName = dt.getCoreDataTypeName();
+    select one edt related by dt->S_EDT[R17];
+    if not_empty edt or dtName == "integer" or dtName == "real" or
+                                       dtName == "string" or dtName == "boolean"
+      smplVal.setValue(value:dt.getDefaultValue());
+    else
+      // Doesn''t have a reasonable default, set null
+      smplVal.setValue(value:GD::NULL_INSTANCE());
+    end if;
+  else
+    create object instance strctVal of RV_SVL;
+    relate self to strctVal across R3300;
+    select many members related by sdt->S_MBR[R44];
+    for each member in members
+      select one dt related by member->S_DT[R45];
+      create object instance valInStr of RV_VIS;
+      create object instance rtv of RV_RVL;
+      select one oldDt related by rtv->S_DT[R3307];
+      if not_empty oldDt
+        unrelate rtv from oldDt across R3307;
+      end if;
+      relate rtv to dt across R3307;
+      relate strctVal to rtv across R3301 using valInStr;
+      valInStr.Name = member.Name; 
+      rtv.setDefault(dimensions:member.getDimensionsCnt());
+    end for;
+  end if;
+else
+  // create an empty array
+  create object instance arrayVal of RV_AVL;
+  relate self to arrayVal across R3300;
+end if;',
+	1,
+	'',
+	"83715335-6f94-4d3f-b009-b3200900f48e");
+INSERT INTO O_TPARM
+	VALUES ("8b5b03ed-79f7-4726-9a11-01ea0f4f5e71",
+	"476e071c-a95e-4099-8e4a-b27d1daff140",
+	'dimensions',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("aeda46d6-e2c2-48f3-80b2-e3fbf295caec",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'createSimpleValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Never been assigned before
+create object instance simplVal of RV_SMV;
+relate simplVal to self across R3300;
+simplVal.initialize();
+',
+	1,
+	'',
+	"1e6b8ea0-7995-431a-816e-bade2b9e3fee");
+INSERT INTO O_TFR
+	VALUES ("f9c66d6f-eacc-4aa0-ad41-59364701d090",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'createReferenceValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Runtime Value.createReferenceValue()
+create object instance simplVal of RV_SMV;
+relate simplVal to self across R3300;
+create object instance refVal of RV_IRV;
+relate simplVal to refVal across R3308;
+',
+	1,
+	'',
+	"aeda46d6-e2c2-48f3-80b2-e3fbf295caec");
+INSERT INTO O_NBATTR
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94");
+INSERT INTO O_BATTR
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94");
+INSERT INTO O_ATTR
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"00000000-0000-0000-0000-000000000000",
+	'RuntimeValue_ID',
+	'',
+	'',
+	'RuntimeValue_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("b28425ec-d7d9-47f3-8399-ee4384fb8a6b",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'// Runtime Value.Label
+result = "";
+select one stv related by self->RV_SVL[R3300];
+select one arv related by self->RV_AVL[R3300];
+if not_empty stv or not_empty arv
+  select one dt related by self->S_DT[R3307];
+  if not_empty dt
+    result = dt.Name;
+  end if;
+end if;
+select one valInStruct related by self->RV_VIS[R3301];
+if(not_empty valInStruct)
+  result = valInStruct.Name;
+end if;
+select one valInArray related by self->RV_VIA[R3302];
+if(not_empty valInArray)
+  // We display the actual index of this element here.  This is used
+  // in multi-dimensional arrays when the user expands one of the dimensions
+  // and that entry contains more dimensions.
+  result = "[" + GD::int_to_string(value:valInArray.Index) + "]";
+end if;
+select one smplVal related by self->RV_SMV[R3300];
+select one strVal related by self->RV_SVL[R3300];
+select one arrVal related by self->RV_AVL[R3300];
+if not_empty smplVal
+  // TODO Need to handle exotic data types as in AttributeValue.Label
+  result = result + " = " + GD::instance_to_string(value:smplVal.getValue());
+elif not_empty strVal
+  select one dt related by self->S_DT[R3307];
+  if not_empty dt
+    result = dt.Name;
+  else
+    result = "Unknown";
+  end if;
+elif not_empty arrVal
+  select many vias related by arrVal->RV_VIA[R3302];
+  highestIndex = -1;
+  for each via in vias
+    if via.Index > highestIndex
+      highestIndex = via.Index;
+    end if;
+  end for;
+  length = 0;
+  // If the array has been initialized then we must add 1 to 
+  // get the length because the index is 0-based
+  if (highestIndex >= 0) 
+    length = highestIndex + 1;
+  end if;
+  result = result + " [" + GD::int_to_string(value:length) + "]";
+end if;
+self.Label = result;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("b28425ec-d7d9-47f3-8399-ee4384fb8a6b",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94");
+INSERT INTO O_ATTR
+	VALUES ("b28425ec-d7d9-47f3-8399-ee4384fb8a6b",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"38e4582e-4f46-4a49-b267-b5e2304747f2",
+	'Label',
+	'',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"35133802-1b64-4470-b677-760b79f4e5da",
+	"7604f975-d92b-426a-a1b0-874c235e3672",
+	"f6fbedbf-6686-4e3c-b773-9006934128e6",
+	"be6cb64d-15ce-414d-b868-27b4802442e6",
+	"7f049c91-88d1-4fb6-90ef-92a3b56529cc",
+	"3fc3ae30-6e53-4a10-8555-cde7b216cead",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Data Type',
+	'DT_ID',
+	'R3307');
+INSERT INTO R_RGO_PROXY
+	VALUES ("ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"7604f975-d92b-426a-a1b0-874c235e3672",
+	"f6fbedbf-6686-4e3c-b773-9006934128e6",
+	'../Runtime Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("35133802-1b64-4470-b677-760b79f4e5da",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"7604f975-d92b-426a-a1b0-874c235e3672",
+	"be6cb64d-15ce-414d-b868-27b4802442e6",
+	'../Runtime Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("7f049c91-88d1-4fb6-90ef-92a3b56529cc",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("7f049c91-88d1-4fb6-90ef-92a3b56529cc",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"b28425ec-d7d9-47f3-8399-ee4384fb8a6b",
+	'DT_ID',
+	'',
+	'',
+	'Element_ID',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"4d1cfc62-19f4-46a3-90b6-0ed8c46d16f2",
+	0,
+	"23515f1b-2fc6-4230-ad2f-b904fdfd0879",
+	"c82f12b4-1336-4d39-bd41-d5b0afab8d24",
+	"42a99415-8007-4145-a221-514f88c51624",
+	"d25a1fa4-5503-4e2f-8e44-b6e87a1b76d0",
+	"ae3f7034-ae2b-476a-bc69-d3e7b93d6053",
+	"05a43424-86b4-4ffc-bb07-d60c91d9a90f",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Stack Frame',
+	'Stack_Frame_ID',
+	'R3310.''disposed by''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"c82f12b4-1336-4d39-bd41-d5b0afab8d24",
+	"42a99415-8007-4145-a221-514f88c51624",
+	'../Runtime Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("23515f1b-2fc6-4230-ad2f-b904fdfd0879",
+	"4d1cfc62-19f4-46a3-90b6-0ed8c46d16f2",
+	0,
+	"c82f12b4-1336-4d39-bd41-d5b0afab8d24",
+	"d25a1fa4-5503-4e2f-8e44-b6e87a1b76d0",
+	'../Runtime Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ae3f7034-ae2b-476a-bc69-d3e7b93d6053",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"23515f1b-2fc6-4230-ad2f-b904fdfd0879",
+	"4d1cfc62-19f4-46a3-90b6-0ed8c46d16f2",
+	1,
+	'Stack_Frame_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("23515f1b-2fc6-4230-ad2f-b904fdfd0879",
+	"4d1cfc62-19f4-46a3-90b6-0ed8c46d16f2",
+	'../../Engine/Stack Frame/Stack Frame.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("ae3f7034-ae2b-476a-bc69-d3e7b93d6053",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	"7f049c91-88d1-4fb6-90ef-92a3b56529cc",
+	'Stack_Frame_ID',
+	'',
+	'',
+	'Stack_Frame_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94");
+INSERT INTO O_OIDA
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	0,
+	'RuntimeValue_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94");
+INSERT INTO O_ID
+	VALUES (2,
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94");
+INSERT INTO PE_PE
+	VALUES ("ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	1,
+	"334aa729-35fb-4ab4-8a56-40b790e9070e",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("334aa729-35fb-4ab4-8a56-40b790e9070e",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Runtime Value',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+Persistent:false
+',
+	3300,
+	'../Runtime Value.xtuml');

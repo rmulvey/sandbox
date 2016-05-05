@@ -1,0 +1,1462 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	'Interface Reference',
+	4011,
+	'C_IR',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("7ec6de5a-ad66-44be-845c-daa213d84718",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many delegationMediums related by self->C_RID[R4013];
+for each dMedium in delegationMediums
+  select one delegation related by dMedium->C_DG[R4013];
+  unrelate self from delegation across R4013 using dMedium;
+  delete object instance dMedium;
+  delegation.dispose();
+end for;
+
+select one delegation related by self->C_DG[R4014];
+if(not_empty delegation)
+  unrelate self from delegation across R4014;
+  delegation.dispose();
+end if;
+
+select one port related by self->C_PO[R4016];
+if(not_empty port) 
+  select one component related by port->C_C[R4010];
+  if (not_empty component)
+  	unrelate component from port across R4010;
+  end if;
+  unrelate port from self across R4016;
+  port.dispose();
+end if;
+
+self.removeSignalsAndOperations();
+
+select one interface related by self->C_I[R4012];
+if (not_empty interface)
+  unrelate interface from self across R4012;
+end if;
+
+select one provision related by self->C_P[R4009];
+select one requirement related by self->C_R[R4009];
+if(not_empty provision)
+  unrelate self from provision across R4009;
+  provision.dispose();
+elif(not_empty requirement)
+  unrelate self from requirement across R4009;
+  requirement.dispose();
+end if;
+
+delete object instance self;',
+	1,
+	'',
+	"3fb4928a-fb77-46d3-8991-b7b8c55adefb");
+INSERT INTO O_TFR
+	VALUES ("312b3e60-3d8e-47ff-8962-6e01f53271bc",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'formalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any rootIr from instances of C_IR where (selected.Id == self.getRootIR());
+select one interface related by rootIr->C_I[R4012];
+formalizedRoot = false;
+if not_empty interface
+  if(param.id == interface.Id and not Util::isProxy(element:interface.convertToInstance()))
+    // already formalized
+    formalizedRoot = true;
+  else
+    // otherwise this reference
+    // is formalized to another
+    // interface so unformalize
+    // now
+    self.unformalize(unformalizeOther:false);
+  end if;
+end if;
+if(not (self.Id == self.getRootIR()) and not formalizedRoot)
+  // if this is not the root reference
+  // there are delegations and the formalization
+  // should start with the root ir
+  select one rootPro related by rootIr->C_P[R4009];
+  if(not_empty rootPro)
+    rootPro.formalize(Id:param.id, formalizeReq:param.formalizeOther);
+  else
+    select one rootReq related by rootIr->C_R[R4009];
+    if(not_empty rootReq)
+      rootReq.formalize(Id:param.id, formalizePro:param.formalizeOther);
+    end if;
+  end if;
+  return;
+end if;
+select one provision related by self->C_P[R4009];
+select one requirement related by self->C_R[R4009];
+
+select one system related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                  ->EP_PKG[R8000]->S_SYS[R1405];
+if(empty system)
+  select one component related by self->C_PO[R4016]->C_C[R4010];
+  rootCompIdInPkg = component.getRootComponentId();
+  select any rootComponent from instances of C_C
+                                         where (selected.Id == rootCompIdInPkg);
+  select one package related by rootComponent->PE_PE[R8001]->EP_PKG[R8000];
+  select one system related by package->S_SYS[R1405];
+end if;
+
+    select any interfacePe from instances of PE_PE
+                                        where (selected.Element_ID == param.id);
+    select one interface related by interfacePe->C_I[R8001];
+
+  if (not_empty interface)
+    doNotFormalize = false;
+    if(not (self.Id == self.getRootIR() and formalizedRoot))
+      self.createSignalsAndOperations(interface_id:interface.Id);
+      relate interface to self across R4012;
+      if(not_empty requirement)
+        select many provisions related by requirement->C_SF[R4002]->C_P[R4002];
+        for each provision in provisions
+          if(param.formalizeOther) or (not provision.isFormal())
+            provision.formalize(Id:param.id, formalizeReq:false);
+          end if;
+        end for;
+      elif(not_empty provision)
+        select many requirements related by provision->C_SF[R4002]->C_R[R4002];
+        for each requirement in requirements
+          if(param.formalizeOther) or (not requirement.isFormal())
+            requirement.formalize(Id:interface.Id, formalizePro:false);
+          end if;
+        end for;
+      end if;
+    end if;
+    // associate all interface references that
+    // exist along the chain of delegations
+    // with the interface
+    if(self.Id == self.getRootIR())
+      self.formalizeDelegatedReferences(id:interface.Id, formalizeOther:param.formalizeOther);
+    end if;
+  end if;
+',
+	1,
+	'',
+	"238cdcc4-ad8f-437b-b5e6-b43d09001ced");
+INSERT INTO O_TPARM
+	VALUES ("1711c04b-d660-4d24-ba0b-fe7425ade364",
+	"312b3e60-3d8e-47ff-8962-6e01f53271bc",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"58bef198-b9b7-4e7e-b856-bbc6819a9379",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("58bef198-b9b7-4e7e-b856-bbc6819a9379",
+	"312b3e60-3d8e-47ff-8962-6e01f53271bc",
+	'formalizeOther',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("faef87b9-84d2-4b98-a3ba-568c0edd3645",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'isFormal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// If the association between self and C_I is set up
+// then this reference is formal
+select one interface related by self->C_I[R4012];
+return not_empty interface;',
+	1,
+	'',
+	"4c3c4c91-58ba-46a9-9450-af8568dc2283");
+INSERT INTO O_TFR
+	VALUES ("4c3c4c91-58ba-46a9-9450-af8568dc2283",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'interfaceName',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one interface related by self->C_I[R4012];
+if not_empty interface
+  return interface.Name;
+end if;
+result = "";
+select one requirement related by self->C_R[R4009];
+select one provision related by self->C_P[R4009];
+if not_empty requirement
+  result = requirement.InformalName;
+else
+  result = provision.InformalName;
+end if;
+return result;',
+	1,
+	'',
+	"a91016d6-4826-46f6-bbb1-826070663bd9");
+INSERT INTO O_TFR
+	VALUES ("57388d86-3467-41d5-a123-96ef2395d056",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'unformalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'if(not (self.Id == self.getRootIR()))
+  // if this is not the root reference
+  // there are delegations and the formalization
+  // should start with the root ir
+  select any rootIr from instances of C_IR where (selected.Id == self.getRootIR());
+  if(rootIr.isFormal())
+    select one rootPro related by rootIr->C_P[R4009];
+    if(not_empty rootPro)
+      rootPro.unformalize(unformalizeReq:param.unformalizeOther);
+    else
+      select one rootReq related by rootIr->C_R[R4009];
+      if(not_empty rootReq)
+        rootReq.unformalize(unformalizePro:param.unformalizeOther);
+      end if;
+    end if;
+    return;
+  end if;
+end if;
+select one requirement related by self->C_R[R4009];
+select one provision related by self->C_P[R4009];
+select one interface related by self->C_I[R4012];
+if(not_empty requirement)
+  select many reps related by requirement->SPR_REP[R4500];
+  for each rep in reps
+    select one ep related by rep->C_EP[R4500];
+    unrelate requirement from ep across R4500 using rep;
+    rep.dispose();
+  end for;
+  if(param.unformalizeOther)
+    select many provisions related by requirement->C_SF[R4002]->C_P[R4002];
+    for each provision in provisions
+      provision.unformalize(unformalizeReq:false);
+    end for;
+  end if;
+elif(not_empty provision)
+  select many peps related by provision->SPR_PEP[R4501];
+  for each pep in peps
+    select one ep related by pep->C_EP[R4501];
+    unrelate provision from ep across R4501 using pep;
+    pep.dispose();
+  end for;
+  select many reqs related by provision->C_SF[R4002]->C_R[R4002];
+  for each req in reqs
+    if(param.unformalizeOther) or (req.isFormal())
+      req.unformalize(unformalizePro:false);
+    end if;
+  end for;
+end if;
+if (not_empty interface)
+  unrelate interface from self across R4012;
+end if;
+// deassociate all interface references that
+// exist along the chain of delegations
+// with the interface
+if(self.Id == self.getRootIR())
+  self.unformalizeDelegatedReferences(unformalizeOther:param.unformalizeOther);
+end if;',
+	1,
+	'',
+	"6a932cb2-2d85-4d37-a04b-011993902114");
+INSERT INTO O_TPARM
+	VALUES ("168a7068-efe9-43db-acae-44756a1ef161",
+	"57388d86-3467-41d5-a123-96ef2395d056",
+	'unformalizeOther',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("1578f677-2e68-4c22-b8ad-39a169ab64ba",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'getDelegatedIR',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'resultID = GD::NULL_UNIQUE_ID();
+NULL_ID = GD::NULL_UNIQUE_ID();
+select one interface related by self->C_I[R4012];
+if (empty interface)
+  select many delegatedIRs related by self->C_DG[R4013]->C_IR[R4014];
+  for each delegatedIR in delegatedIRs
+    select one interface related by delegatedIR->C_I[R4012];
+    if (not_empty interface)
+      resultID = interface.Id;
+    else
+      return delegatedIR.getDelegatedIR();
+    end if;
+    if (resultID != NULL_ID)
+      break;
+    end if;
+  end for;
+end if;
+return resultID;',
+	1,
+	'',
+	"6fdfcef1-94ac-4740-b5ca-9cdf1f605e3b");
+INSERT INTO O_TFR
+	VALUES ("ebaba7a9-b5ed-4d2a-90c2-9b34699a912d",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'getRootIR',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'rootIR = self;
+NULL_ID = GD::NULL_UNIQUE_ID();
+tempIR = rootIR;
+while not_empty tempIR
+  rootIR = tempIR;
+  select any tempIR related by tempIR->C_DG[R4014]->C_RID[R4013]->C_IR[R4013];
+end while;
+ 
+return rootIR.Id;',
+	1,
+	'',
+	"1578f677-2e68-4c22-b8ad-39a169ab64ba");
+INSERT INTO O_TFR
+	VALUES ("3d3fce5c-96b9-4947-9ff9-65cbf4da9dd9",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'canUseInterfacesInPackage',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// When in a generic package the
+// interface will never be in an interface package
+return false;',
+	1,
+	'',
+	"1924e4b5-2422-481c-b17e-ead403bd5745");
+INSERT INTO O_TPARM
+	VALUES ("b2c0f351-3c3c-4ee9-a53c-31f65af283b4",
+	"3d3fce5c-96b9-4947-9ff9-65cbf4da9dd9",
+	'Id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("1924e4b5-2422-481c-b17e-ead403bd5745",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'canFormalizeAgainstAnyInterface',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// locate the component package
+select one system related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                  ->EP_PKG[R8000]->S_SYS[R1405];
+if(empty system)
+  // check for component as parent
+  select one component related by self->C_PO[R4016]->C_C[R4010];
+  if(not_empty component)
+    rootCompIdInPkg = component.getRootComponentId();
+    select any rootComponent from instances of C_C
+                                         where (selected.Id == rootCompIdInPkg);
+    select one system related by rootComponent->PE_PE[R8001]->EP_PKG[R8000]
+                                                                 ->S_SYS[R1405];
+  end if;
+end if;
+
+  // verify that there is at least one interface
+  // which we can formalize against
+  select one package related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                ->EP_PKG[R8000];
+  if(not_empty package)
+    package.clearScope();
+    package.collectVisibleElementsForName(name:"",
+                         type:ElementTypeConstants::INTERFACE, descending:false,
+                                      originatingContainerID:package.Package_ID,
+                    delegatingPkgID:GD::NULL_UNIQUE_ID(), collectGlobally:true);
+    select many srs related by package->PE_SRS[R8005]
+                       where (selected.Type == ElementTypeConstants::INTERFACE);
+    select many interfaces related by srs->PE_VIS[R8006]->PE_PE[R8002] 
+                                                                   ->C_I[R8001];
+    for each interface in interfaces
+      if(interface.Id != self.Formal_Interface_Id)
+        return true;
+      end if;
+    end for;
+  end if;
+  select one component related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                   ->C_C[R8003];
+  if(not_empty component)
+    component.clearScope();
+    component.collectVisibleElementsForName(name:"",
+                         type:ElementTypeConstants::INTERFACE,
+                                      originatingContainerID:component.Id,
+                                    delegatingContainerID:GD::NULL_UNIQUE_ID(),
+                                                          collectGlobally:true);
+    select many crs related by component->PE_CRS[R8007]
+                       where (selected.Type == ElementTypeConstants::INTERFACE);
+    select many interfaces related by crs->PE_CVS[R8008]->PE_PE[R8004] 
+                                                                   ->C_I[R8001];
+    for each interface in interfaces
+      if(interface.Id != self.Formal_Interface_Id)
+        return true;
+      end if;
+    end for;
+  end if;
+
+return false;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6fdfcef1-94ac-4740-b5ca-9cdf1f605e3b",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'formalizeDelegatedReferences',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many nextRefs related by self->C_RID[R4013]->C_DG[R4013]->C_IR[R4014];
+for each nextRef in nextRefs
+  formalize = false;
+  if(nextRef.isFormal())
+    select one interface related by nextRef->C_I[R4012];
+    if(interface.Id != param.id)
+      nextRef.unformalize(unformalizeOther:false);
+      formalize = true;
+    end if;
+  else
+    formalize = true;
+  end if;
+  if(formalize)
+    nextRef.formalize(formalizeOther:param.formalizeOther, id:param.id);
+  end if;
+  nextRef.formalizeDelegatedReferences(id:param.id, formalizeOther:param.formalizeOther);
+end for;',
+	1,
+	'',
+	"312b3e60-3d8e-47ff-8962-6e01f53271bc");
+INSERT INTO O_TPARM
+	VALUES ("ba8515f2-32ff-4926-af98-f431005f3bcc",
+	"6fdfcef1-94ac-4740-b5ca-9cdf1f605e3b",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"baf5599c-1fca-408d-a0b8-1c7551ba3ef5",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("baf5599c-1fca-408d-a0b8-1c7551ba3ef5",
+	"6fdfcef1-94ac-4740-b5ca-9cdf1f605e3b",
+	'formalizeOther',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("4281e711-733d-46c3-bea8-ce17540cf9a1",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'unformalizeDelegatedReferences',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many nextRefs related by self->C_RID[R4013]->C_DG[R4013]->C_IR[R4014];
+for each nextRef in nextRefs
+  nextRef.unformalize(unformalizeOther:param.unformalizeOther);
+  nextRef.unformalizeDelegatedReferences(unformalizeOther:param.unformalizeOther);
+end for;',
+	1,
+	'',
+	"57388d86-3467-41d5-a123-96ef2395d056");
+INSERT INTO O_TPARM
+	VALUES ("dbee19fc-44c5-4d70-bdc4-06372b5208b8",
+	"4281e711-733d-46c3-bea8-ce17540cf9a1",
+	'unformalizeOther',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a91016d6-4826-46f6-bbb1-826070663bd9",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'get_name',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'//Interface Reference::get_name()
+result = self.interfaceName();
+select one port related by self->C_PO[R4016];
+if not_empty port and port.Name != "";
+  result = port.Name + " ( " + result + " )";
+end if;
+return result;',
+	1,
+	'',
+	"ebaba7a9-b5ed-4d2a-90c2-9b34699a912d");
+INSERT INTO O_TFR
+	VALUES ("6a932cb2-2d85-4d37-a04b-011993902114",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'resolveInterface',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one proxyInterface related by self->C_I[R4012];
+if(not_empty proxyInterface and
+                            not Util::isProxy(element:self.convertToInstance()))
+  select one genericPkgSys related by self->C_PO[R4016]->C_C[R4010]
+                                    ->PE_PE[R8001]->EP_PKG[R8000]->S_SYS[R1405];
+  if(empty genericPkgSys)
+    // check for component as parent
+   select one component related by self->C_PO[R4016]->C_C[R4010];
+   if(not_empty component)
+      rootCompIdInPkg = component.getRootComponentId();
+      select any rootComponent from instances of C_C
+                                         where (selected.Id == rootCompIdInPkg);
+      select one genericPkgSys related by rootComponent->PE_PE[R8001]
+  		    									  ->EP_PKG[R8000]->S_SYS[R1405];
+    end if;
+  end if;
+
+    id = self.findMatchingInterface(system_id:genericPkgSys.Sys_ID, pe:GD::NULL_UNIQUE_ID());
+	// this interface could be in another system, just get the
+	// first one in the ElementVisibility lists
+	select one pkg related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                ->EP_PKG[R8000];
+    select one comp related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                   ->C_C[R8003];
+	select many resolvedInterfaces related by pkg->PE_VIS[R8002]->PE_PE[R8002]
+                                                                   ->C_I[R8001];
+    if(empty resolvedInterfaces)
+      select many resolvedInterfaces related by comp->PE_CVS[R8004]
+                                                     ->PE_PE[R8004]->C_I[R8001];
+    end if;
+    interfaceLocated = false;
+	for each interface in resolvedInterfaces
+	  if(interface.Id == id)
+	    interfaceLocated = true;
+	    unrelate self from proxyInterface across R4012;
+	    relate self to interface across R4012;
+        // migrate executable properties
+        self.migrateExecutableProperties();
+        break;
+      end if;	  
+	end for;
+	if(not interfaceLocated)
+	  Util::addPastedElementToProblemList(elementName:self.interfaceName(),
+                         message:"Interfaces for the following references could"
+                                                          + " not be located:");
+	end if;
+end if;',
+	1,
+	'',
+	"7fc7dafd-67dd-462b-b19e-4792b2d23b53");
+INSERT INTO O_TFR
+	VALUES ("3fb4928a-fb77-46d3-8991-b7b8c55adefb",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'createSignalsAndOperations',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any interfacePe from instances of PE_PE
+                              where (selected.Element_ID == param.interface_id);
+select one interface related by interfacePe->C_I[R8001];
+
+if(not_empty interface)
+  select many operations related by interface->C_EP[R4003]->C_IO[R4004];
+  select many signals related by interface->C_EP[R4003]->C_AS[R4004];
+  select one requirement related by self->C_R[R4009];
+  if(not_empty requirement)
+    for each signal in signals
+      select one ep related by signal->C_EP[R4004];
+      create object instance req_ep of SPR_REP;
+      create object instance req_signal of SPR_RS;
+      req_signal.initialize();
+      relate requirement to ep across R4500 using req_ep;
+      relate req_signal to req_ep across R4502;
+    end for;
+    for each operation in operations
+      select one ep related by operation->C_EP[R4004];
+      create object instance req_ep of SPR_REP;
+      create object instance req_operation of SPR_RO;
+      req_operation.initialize();
+      relate requirement to ep across R4500 using req_ep;
+      relate req_operation to req_ep across R4502;
+    end for;
+  else
+    select one provision related by self->C_P[R4009];
+    for each signal in signals
+      select one ep related by signal->C_EP[R4004];
+      create object instance pro_ep of SPR_PEP;
+      create object instance pro_signal of SPR_PS;
+      pro_signal.initialize();
+      relate provision to ep across R4501 using pro_ep;
+      relate pro_signal to pro_ep across R4503;
+    end for;
+    for each operation in operations
+      select one ep related by operation->C_EP[R4004];
+      create object instance pro_ep of SPR_PEP;
+      create object instance pro_operation of SPR_PO;
+      pro_operation.initialize();
+      relate provision to ep across R4501 using pro_ep;
+      relate pro_operation to pro_ep across R4503;
+    end for;
+  end if;
+end if;',
+	1,
+	'',
+	"16ccf269-1e4c-4eaa-b45b-fbca2c12db32");
+INSERT INTO O_TPARM
+	VALUES ("2f3a731d-508f-4bf1-9c43-099f0e393825",
+	"3fb4928a-fb77-46d3-8991-b7b8c55adefb",
+	'interface_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("7fc7dafd-67dd-462b-b19e-4792b2d23b53",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'removeSignalsAndOperations',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one requirement related by self->C_R[R4009];
+if(not_empty requirement)
+  select many reps related by requirement->SPR_REP[R4500];
+  for each rep in reps
+    select one ep related by rep->C_EP[R4500];
+    unrelate requirement from ep across R4500 using rep;
+    rep.dispose();
+  end for;
+else
+  select one provision related by self->C_P[R4009];
+  select many peps related by provision->SPR_PEP[R4501];
+  for each pep in peps
+    select one ep related by pep->C_EP[R4501];
+    unrelate provision from ep across R4501 using pep;
+    pep.dispose();
+  end for;
+end if;',
+	1,
+	'',
+	"faef87b9-84d2-4b98-a3ba-568c0edd3645");
+INSERT INTO O_TFR
+	VALUES ("16ccf269-1e4c-4eaa-b45b-fbca2c12db32",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"3d3fce5c-96b9-4947-9ff9-65cbf4da9dd9");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("238cdcc4-ad8f-437b-b5e6-b43d09001ced",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'findMatchingInterface',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'select one currentInterface related by self->C_I[R4012];
+if(empty currentInterface)
+  return GD::NULL_UNIQUE_ID();
+end if;
+id = GD::NULL_UNIQUE_ID();
+if(Util::isProxy(element:currentInterface.convertToInstance()))
+  name = currentInterface.Name;
+  select any system from instances of S_SYS where (selected.Sys_ID
+  															== param.system_id);
+  select one pkg related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                ->EP_PKG[R8000];
+  select one comp related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                   ->C_C[R8003];
+    select one packageableElement related by self->C_PO[R4016]->C_C[R4010]
+                                                                 ->PE_PE[R8001];
+    if(param.pe != GD::NULL_UNIQUE_ID())
+      select any packageableElement from instances of PE_PE where (selected.Element_ID == param.pe);
+      select one pkg related by packageableElement->EP_PKG[R8000];
+      if(empty pkg)
+        select one comp related by packageableElement->C_C[R8003];
+      end if;
+    end if;
+    packageableElement.resolveInterfaceRelativeToSelf(expected_name:name);
+    select many resolvedInterfaces related by pkg->PE_VIS[R8002]->PE_PE[R8002]
+                                                                   ->C_I[R8001];
+    if(empty resolvedInterfaces)
+      select many resolvedInterfaces related by comp->PE_CVS[R8004]
+                                                     ->PE_PE[R8004]->C_I[R8001];
+    end if;
+    // the interfaces will be all that can be used and share the
+    // same name
+    if(cardinality resolvedInterfaces == 1)
+	  for each interface in resolvedInterfaces
+	    return interface.Id;
+	  end for;
+	else
+	  // otherwise locate a perfect match, if none found
+	  // just return the first one in the list
+	  for each interface in resolvedInterfaces
+	    if(self.interfacePreciselyMatches(id: interface.Id))
+	      return interface.Id;
+	    end if;
+	  end for;
+	  for each interface in resolvedInterfaces
+	    return interface.Id;
+	  end for;	  
+    end if;
+  
+else
+  id = currentInterface.Id;
+end if;
+return id;',
+	1,
+	'',
+	"7ec6de5a-ad66-44be-845c-daa213d84718");
+INSERT INTO O_TPARM
+	VALUES ("baea5217-cda0-4283-86e0-4b2348e64263",
+	"238cdcc4-ad8f-437b-b5e6-b43d09001ced",
+	'system_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("9292aaed-9e8f-447b-ba7d-008cae0f32e2",
+	"238cdcc4-ad8f-437b-b5e6-b43d09001ced",
+	'pe',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"baea5217-cda0-4283-86e0-4b2348e64263",
+	'');
+INSERT INTO O_TFR
+	VALUES ("05ff0313-dadc-4d2b-a8cc-420ea8d7dfb4",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'getComponentId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'select one port related by self->C_PO[R4016];
+return port.getComponentId();',
+	1,
+	'',
+	"4281e711-733d-46c3-bea8-ce17540cf9a1");
+INSERT INTO O_TFR
+	VALUES ("b2ff6943-b744-4081-9f13-06b8f5e921d2",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'isSynchronized',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'/**
+ *  An interface reference is synchronized if the interface exists and the
+ *  signature matches.
+ */
+// first check the existence
+select one interface related by self->C_I[R4012];
+if(empty interface)
+  return true;
+end if;
+if(Util::isProxy(element:interface.convertToInstance()))
+  return false;
+end if;
+// also check the parents in the case where the interface
+// was not converted to a proxy but is torn down
+select one pe related by interface->PE_PE[R8001];
+if(empty pe)
+  return false;
+end if;
+// next ask each current op/signal associated
+select one provision related by self->C_P[R4009];
+select one requirement related by self->C_R[R4009];
+// additionally check for any messages that exist in the interface
+// but not under the interface reference
+select many eps related by interface->C_EP[R4003];
+for each ep in eps
+  if(not_empty provision)
+    select any pep related by provision->SPR_PEP[R4501]
+                                where (selected.ExecutableProperty_Id == ep.Id);
+    if(empty pep)
+      return false;
+    end if;
+  end if;
+  if(not_empty requirement)
+    select any rep related by requirement->SPR_REP[R4500]
+                                where (selected.ExecutableProperty_Id == ep.Id);
+    if(empty rep)
+      return false;
+    end if;
+  end if;
+end for;
+return true;',
+	1,
+	'',
+	"05ff0313-dadc-4d2b-a8cc-420ea8d7dfb4");
+INSERT INTO O_TFR
+	VALUES ("61daa95d-911d-4d68-9a13-b2d28dd42c1a",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'synchronizeSignalsAndOperations',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ * This operation will synchronize the signal and operation set with the current
+ * state of the formal interface 
+**/
+select one interface related by self->C_I[R4012];
+select many operations related by interface->C_EP[R4003]->C_IO[R4004];
+select many signals related by interface->C_EP[R4003]->C_AS[R4004];
+select one provision related by self->C_P[R4009];
+if(not_empty provision)
+  // compare the operation set with the associated provided operations
+  select many providedOperations related by provision->SPR_PEP[R4501]
+                                                                ->SPR_PO[R4503];
+  // first remove any that point at missing C_EP instances
+  for each providedOperation in providedOperations
+    select one pep related by providedOperation->SPR_PEP[R4503];
+    select one ep related by pep->C_EP[R4501];
+    // if the ep is a proxy, it does not exist in the target
+    // as it would have been resolved by the selection
+    select one iface related by ep->C_I[R4003];
+    if(empty ep or Util::isProxy(element:ep.convertToInstance()) or empty iface
+                            or Util::isProxy(element:iface.convertToInstance()))
+      unrelate provision from ep across R4501 using pep;
+      pep.dispose();
+    end if;
+  end for;
+  // then create any that are missing in the local reference
+  for each operation in operations
+    select any pep related by operation->C_EP[R4004]->SPR_PEP[R4501]
+                        where (selected.Provision_Id == provision.Provision_Id);
+    if(empty pep)
+      // create the necessary provided operation
+      select one ep related by operation->C_EP[R4004];
+      create object instance pro_ep of SPR_PEP;
+      create object instance pro_operation of SPR_PO;
+      pro_operation.initialize();
+      relate provision to ep across R4501 using pro_ep;
+      relate pro_operation to pro_ep across R4503;        
+    end if;
+  end for;
+  // compare the signal set with the associated provided signals
+  select many providedSignals related by provision->SPR_PEP[R4501]
+                                                                ->SPR_PS[R4503];
+  // first remove any that point at missing C_EP instances
+  for each providedSignal in providedSignals
+    select one pep related by providedSignal->SPR_PEP[R4503];
+    select one ep related by pep->C_EP[R4501];
+    // if the ep is a proxy, it does not exist in the target
+    // as it would have been resolved by the selection
+    select one iface related by ep->C_I[R4003];
+    if(empty ep or Util::isProxy(element:ep.convertToInstance()) or empty iface
+                            or Util::isProxy(element:iface.convertToInstance()))
+      unrelate provision from ep across R4501 using pep;
+      pep.dispose();
+    end if;
+  end for;  
+  // then create any that are missing in the local reference
+  for each signal in signals
+    select any pep related by signal->C_EP[R4004]->SPR_PEP[R4501]
+                        where (selected.Provision_Id == provision.Provision_Id);
+    if(empty pep)
+      // create the necessary provided signal
+      select one ep related by signal->C_EP[R4004];
+      create object instance pro_ep of SPR_PEP;
+      create object instance pro_signal of SPR_PS;
+      pro_signal.initialize();
+      relate provision to ep across R4501 using pro_ep;
+      relate pro_signal to pro_ep across R4503;        
+    end if;
+  end for;
+end if;
+select one requirement related by self->C_R[R4009];
+if(not_empty requirement)
+  // compare the operation set with the associated requirements operations
+  select many requiredOperations related by requirement->SPR_REP[R4500]
+                                                                ->SPR_RO[R4502];
+  // first remove any that are pointing at missing C_EP instances
+  for each requiredOperation in requiredOperations
+    select one rep related by requiredOperation->SPR_REP[R4502];
+    select one ep related by rep->C_EP[R4500];
+    // if the ep is a proxy, it does not exist in the target
+    // as it would have been resolved by the selection
+    select one iface related by ep->C_I[R4003];
+    if(empty ep or Util::isProxy(element:ep.convertToInstance()) or empty iface
+                            or Util::isProxy(element:iface.convertToInstance()))
+      unrelate requirement from ep across R4500 using rep;
+      rep.dispose();
+    end if;
+  end for;
+  // then create any that are missing in the local reference
+  for each operation in operations
+    select any rep related by operation->C_EP[R4004]->SPR_REP[R4500]
+                  where (selected.Requirement_Id == requirement.Requirement_Id);
+    if(empty rep)
+      // create the necessary required operation
+      select one ep related by operation->C_EP[R4004];
+      create object instance req_ep of SPR_REP;
+      create object instance req_operation of SPR_RO;
+      req_operation.initialize();
+      relate requirement to ep across R4500 using req_ep;
+      relate req_operation to req_ep across R4502;        
+    end if;
+  end for;
+  // compare the signal set with the associated provided signals
+  select many requiredSignals related by requirement->SPR_REP[R4500]
+                                                                ->SPR_RS[R4502];
+  // first remove any that are pointing at missing C_EP instances
+  for each requiredSignal in requiredSignals
+    select one rep related by requiredSignal->SPR_REP[R4502];
+    select one ep related by rep->C_EP[R4500];
+    // if the ep is a proxy, it does not exist in the target
+    // as it would have been resolved by the selection
+    select one iface related by ep->C_I[R4003];
+    if(empty ep or Util::isProxy(element:ep.convertToInstance()) or empty iface
+                            or Util::isProxy(element:iface.convertToInstance()))
+      unrelate requirement from ep across R4500 using rep;
+      rep.dispose();
+    end if;
+  end for;  
+  // then create any that are missing in the local reference
+  for each signal in signals
+    select any rep related by signal->C_EP[R4004]->SPR_REP[R4500]
+                  where (selected.Requirement_Id == requirement.Requirement_Id);
+    if(empty rep)
+      // create the necessary required signal
+      select one ep related by signal->C_EP[R4004];
+      create object instance req_ep of SPR_REP;
+      create object instance req_signal of SPR_RS;
+      req_signal.initialize();
+      relate requirement to ep across R4500 using req_ep;
+      relate req_signal to req_ep across R4502;        
+    end if;
+  end for;
+end if;',
+	1,
+	'',
+	"b2ff6943-b744-4081-9f13-06b8f5e921d2");
+INSERT INTO O_TFR
+	VALUES ("0d08c2eb-5828-44aa-acab-71d9c7be3a4b",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'migrateExecutableProperties',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  During paste we want to migrate provided and required executable properties
+ *  rather than just leave them is unsynchronized.  This allows the move case to
+ *  work without an additional step from the user.
+ */
+select one provision related by self->C_P[R4009];
+select one requirement related by self->C_R[R4009];
+if(not_empty provision)
+  select many peps related by provision->SPR_PEP[R4501];
+  for each pep in peps
+    pep.migrateExecutableProperty();
+  end for;
+end if;
+if(not_empty requirement)
+  select many reps related by requirement->SPR_REP[R4500];
+  for each rep in reps
+    rep.migrateExecutableProperty();
+  end for;
+end if;',
+	1,
+	'',
+	"61daa95d-911d-4d68-9a13-b2d28dd42c1a");
+INSERT INTO O_TFR
+	VALUES ("049e19c9-5dbf-4aae-b5ed-82b2950e5a11",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'interfacePreciselyMatches',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'/**
+ *  An interface precisely matches if the required and provided local
+ *  messages match the interface messages
+ */
+select one pkg related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                ->EP_PKG[R8000];
+select one comp related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                   ->C_C[R8003];
+select many resolvedInterfaces related by pkg->PE_VIS[R8002]->PE_PE[R8002]
+                                                                   ->C_I[R8001];
+if(empty resolvedInterfaces)
+  select many resolvedInterfaces related by comp->PE_CVS[R8004]
+                                                     ->PE_PE[R8004]->C_I[R8001];
+end if;
+for each interface in resolvedInterfaces
+  if(interface.Id == param.id)
+    // this is the interface in question, compare local
+    // data with remote data
+    // do some quick checks first for optimization
+    select many eps related by interface->C_EP[R4003];
+    select many peps related by self->C_P[R4009]->SPR_PEP[R4501];
+    if(not_empty peps)
+      if(cardinality peps != cardinality eps)
+        return false;
+      end if;
+      foundMatch = false;
+      for each pep in peps
+        select one epProxy related by pep->C_EP[R4501];
+        for each ep in eps
+          if(ep.Name == epProxy.getCachedName())
+            select one iop related by ep->C_IO[R4004];
+            if(not_empty iop)
+              select one providedOp related by pep->SPR_PO[R4503];
+              if(not_empty providedOp)
+                foundMatch = true;
+              else
+                foundMatch = false;
+              end if;
+            else
+              select one as related by ep->C_AS[R4004];
+              if(not_empty as)
+                select one providedSignal related by pep->SPR_PS[R4503];
+                if(not_empty providedSignal)
+                  foundMatch = true;
+                else
+                  foundMatch = false;
+                end if;
+              end if;
+            end if;
+          end if;
+        end for;
+        if(not foundMatch)
+          return false;
+        end if;
+      end for;
+      // if we get here the interface is a match
+      return true;
+    end if;
+    select many reps related by self->C_R[R4009]->SPR_REP[R4500];
+    if(not_empty reps)
+      if(cardinality reps != cardinality eps)
+        return false;
+      end if;
+      foundMatch = false;
+      for each rep in reps
+        select one epProxy related by rep->C_EP[R4500];
+        for each ep in eps
+          if(ep.Name == epProxy.getCachedName())
+            select one iop related by ep->C_IO[R4004];
+            if(not_empty iop)
+              select one requiredOp related by rep->SPR_RO[R4502];
+              if(not_empty requiredOp)
+                foundMatch = true;
+              else
+                foundMatch = false;
+              end if;
+            else
+              select one as related by ep->C_AS[R4004];
+              if(not_empty as)
+                select one requiredSignal related by rep->SPR_RS[R4502];
+                if(not_empty requiredSignal)
+                  foundMatch = true;
+                else
+                  foundMatch = false;
+                end if;
+              end if;
+            end if;
+          end if;
+        end for;
+        if(not foundMatch)
+          return false;
+        end if;
+      end for;
+      // if we get here the interface is a match
+      return true;
+    end if;
+  end if;
+end for;
+return false;',
+	1,
+	'',
+	"0d08c2eb-5828-44aa-acab-71d9c7be3a4b");
+INSERT INTO O_TPARM
+	VALUES ("596fdb35-a38a-4ac0-ac6a-36250441b3dc",
+	"049e19c9-5dbf-4aae-b5ed-82b2950e5a11",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("5655d75e-e408-4803-b669-0c1dc42ff3e1",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'synchronize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  Synchronize this reference with the associated interface
+ */
+select one interface related by self->C_I[R4012];
+if(not_empty interface)
+  // if the interface is a proxy, then simply unformalize
+  isTornDown = Util::isProxy(element:interface.convertToInstance());
+  if(not isTornDown)
+    // check for parents
+    select one pe related by interface->PE_PE[R8001];
+    if(empty pe)
+      isTornDown = true;
+    end if;
+  end if;
+  if(isTornDown)
+    self.unformalize(unformalizeOther:false);
+    return;
+  end if;
+  self.synchronizeSignalsAndOperations();
+end if;',
+	1,
+	'',
+	"049e19c9-5dbf-4aae-b5ed-82b2950e5a11");
+INSERT INTO O_TFR
+	VALUES ("f4c17a8a-285d-4ba2-a98a-83e902de3f25",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'collectReferencesForSynchronization',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/*
+ *  Collect subtype
+ */
+select one provision related by self->C_P[R4009];
+if(not_empty provision)
+  Util::addElementToList(elementList:param.referenceList,
+                                         element:provision.convertToInstance());
+  provision.collectReferencesForSynchronization(
+                   referenceList:param.referenceList, syncType: param.syncType);
+end if;
+select one requirement related by self->C_R[R4009];
+if(not_empty requirement)
+  Util::addElementToList(elementList:param.referenceList,
+                                       element:requirement.convertToInstance());
+  requirement.collectReferencesForSynchronization(
+                   referenceList:param.referenceList, syncType: param.syncType);
+end if;',
+	1,
+	'',
+	"5655d75e-e408-4803-b669-0c1dc42ff3e1");
+INSERT INTO O_TPARM
+	VALUES ("bcb3927e-3118-4273-8ad8-ca3a79553431",
+	"f4c17a8a-285d-4ba2-a98a-83e902de3f25",
+	'referenceList',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("451379c0-6e88-466f-9c21-5d0e1d5b2694",
+	"f4c17a8a-285d-4ba2-a98a-83e902de3f25",
+	'syncType',
+	"4f33ba55-5c9d-455a-b1bc-43ab2c076b7f",
+	0,
+	'',
+	"bcb3927e-3118-4273-8ad8-ca3a79553431",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("4f33ba55-5c9d-455a-b1bc-43ab2c076b7f",
+	"00000000-0000-0000-0000-000000000000",
+	'SynchronizationType',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("f8fd45d0-8533-4825-8a8b-28f5773d8a69",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'isReferringToDefaultInterface',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one interface related by self->C_I[R4012];
+if(not_empty interface)
+  return Util::isProxy(element:interface.convertToInstance());
+end if;
+return true;',
+	1,
+	'',
+	"f4c17a8a-285d-4ba2-a98a-83e902de3f25");
+INSERT INTO O_TFR
+	VALUES ("40dde816-10b1-4308-9bbe-e616dc195932",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'canReferToInterface',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one system related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                  ->EP_PKG[R8000]->S_SYS[R1405];
+if(empty system)
+  // check for component as parent
+  select one component related by self->C_PO[R4016]->C_C[R4010];
+  if(not_empty component)
+    rootCompIdInPkg = component.getRootComponentId();
+    select any rootComponent from instances of C_C
+                                         where (selected.Id == rootCompIdInPkg);
+    select one system related by rootComponent->PE_PE[R8001]->EP_PKG[R8000]
+                                                                 ->S_SYS[R1405];
+  end if;
+end if;
+  // verify that there is at least one interface
+  // which we can formalize against
+  select one package related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                ->EP_PKG[R8000];
+  if(not_empty package)
+    package.clearScope();
+    package.collectVisibleElementsForName(name:"",
+                         type:ElementTypeConstants::INTERFACE, descending:false,
+                                      originatingContainerID:package.Package_ID,
+                    delegatingPkgID:GD::NULL_UNIQUE_ID(), collectGlobally:true);
+    select many srs related by package->PE_SRS[R8005]
+                       where (selected.Type == ElementTypeConstants::INTERFACE);
+    select many interfaces related by srs->PE_VIS[R8006]->PE_PE[R8002] 
+                                                                   ->C_I[R8001];
+    for each interface in interfaces
+      if(interface.Id == self.Formal_Interface_Id)
+        return true;
+      end if;
+    end for;
+  end if;
+  select one component related by self->C_PO[R4016]->C_C[R4010]->PE_PE[R8001]
+                                                                   ->C_C[R8003];
+  if(not_empty component)
+    component.clearScope();
+    component.collectVisibleElementsForName(name:"",
+                         type:ElementTypeConstants::INTERFACE,
+                                      originatingContainerID:component.Id,
+                                    delegatingContainerID:GD::NULL_UNIQUE_ID(),
+                                                          collectGlobally:true);
+    select many crs related by component->PE_CRS[R8007]
+                       where (selected.Type == ElementTypeConstants::INTERFACE);
+    select many interfaces related by crs->PE_CVS[R8008]->PE_PE[R8004] 
+                                                                   ->C_I[R8001];
+    for each interface in interfaces
+      if(interface.Id == self.Formal_Interface_Id)
+        return true;
+      end if;
+    end for;
+  end if;
+
+return false;',
+	1,
+	'',
+	"f8fd45d0-8533-4825-8a8b-28f5773d8a69");
+INSERT INTO O_REF
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	0,
+	"e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"baac022f-2c13-42ae-b81c-026fbe05c24f",
+	"c1853c4a-ec29-4c3d-b87f-9de30b66f244",
+	"4743f74f-166a-4a2c-ae15-04b622b4c75b",
+	"357499f5-2128-4a85-99d0-7d9d6553b692",
+	"7e40365b-09f9-4694-be79-765bd39ce663",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Port',
+	'Id',
+	'R4016.''originates from''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	"baac022f-2c13-42ae-b81c-026fbe05c24f",
+	"c1853c4a-ec29-4c3d-b87f-9de30b66f244",
+	'../Component.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	0,
+	"baac022f-2c13-42ae-b81c-026fbe05c24f",
+	"4743f74f-166a-4a2c-ae15-04b622b4c75b",
+	'../Component.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("357499f5-2128-4a85-99d0-7d9d6553b692",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'../Port/Port.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("357499f5-2128-4a85-99d0-7d9d6553b692",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"850f4b8d-6841-4155-b9bf-122d7187e710",
+	'Port_Id',
+	'',
+	'Port_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829");
+INSERT INTO O_BATTR
+	VALUES ("dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829");
+INSERT INTO O_ATTR
+	VALUES ("dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	"1f6bd066-3086-44d9-be95-61b2a9464fdb",
+	0,
+	"69520fc5-2476-4bdc-85e3-3d66e4d46968",
+	"e503e6c1-911f-413a-a3d1-8451e9094176",
+	"f4e8a9c9-5b01-449f-b380-23080ecb05ab",
+	"7301bb8b-beef-486c-92dd-f3092b02634d",
+	"76163216-43ad-4239-921e-cc7072b8d5b5",
+	"1d398108-91cd-494c-94cc-42d478f5ab08",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Interface',
+	'Id',
+	'R4012.''may be defined by''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	"e503e6c1-911f-413a-a3d1-8451e9094176",
+	"f4e8a9c9-5b01-449f-b380-23080ecb05ab",
+	'../Component.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("69520fc5-2476-4bdc-85e3-3d66e4d46968",
+	"1f6bd066-3086-44d9-be95-61b2a9464fdb",
+	0,
+	"e503e6c1-911f-413a-a3d1-8451e9094176",
+	"7301bb8b-beef-486c-92dd-f3092b02634d",
+	'../Component.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("76163216-43ad-4239-921e-cc7072b8d5b5",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("76163216-43ad-4239-921e-cc7072b8d5b5",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	'Formal_Interface_Id',
+	'',
+	'Formal_Interface_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	"2ced4820-99b5-4830-8c9b-acceb705b93a",
+	0,
+	"fd507d5d-b3d5-4408-93ca-351c52060a06",
+	"bfe65dc6-b31e-4987-9e0a-20b74db54441",
+	"c338eab5-3cfe-4890-a799-d530793d50fc",
+	"c90b60f1-a413-4eab-8390-aa8867754cb8",
+	"850f4b8d-6841-4155-b9bf-122d7187e710",
+	"70e882e4-c662-4685-b433-3892c00b7696",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Delegation',
+	'Id',
+	'R4014.''receives delegation via''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	"bfe65dc6-b31e-4987-9e0a-20b74db54441",
+	"c338eab5-3cfe-4890-a799-d530793d50fc",
+	'../Component.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("fd507d5d-b3d5-4408-93ca-351c52060a06",
+	"2ced4820-99b5-4830-8c9b-acceb705b93a",
+	0,
+	"bfe65dc6-b31e-4987-9e0a-20b74db54441",
+	"c90b60f1-a413-4eab-8390-aa8867754cb8",
+	'../Component.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("850f4b8d-6841-4155-b9bf-122d7187e710",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("850f4b8d-6841-4155-b9bf-122d7187e710",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	"76163216-43ad-4239-921e-cc7072b8d5b5",
+	'Delegation_Id',
+	'',
+	'Delegation_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"d5ea1473-5027-42a0-98e8-35deb3074829");
+INSERT INTO O_OIDA
+	VALUES ("dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"d5ea1473-5027-42a0-98e8-35deb3074829");
+INSERT INTO O_ID
+	VALUES (2,
+	"d5ea1473-5027-42a0-98e8-35deb3074829");
+INSERT INTO PE_PE
+	VALUES ("d5ea1473-5027-42a0-98e8-35deb3074829",
+	1,
+	"c2aef6af-89fe-4e4a-a894-da16c0b6f512",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c2aef6af-89fe-4e4a-a894-da16c0b6f512",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Component',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+
+The component subsystem contains the classes necessary to capture the data
+required for modeling components.',
+	4000,
+	'../Component.xtuml');

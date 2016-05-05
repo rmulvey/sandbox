@@ -1,0 +1,674 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'Local Value',
+	3002,
+	'L_LVL',
+	'Local value normally has a 0...1 multiplicity with transient variable, but in the case of recursion there is a many relationship.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d72ca01e-dfc5-4e95-80ef-cf63e41dd035",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Local Value.dispose()
+select one trans related by self->V_TRN[R3005];
+if (not_empty trans)
+  unrelate self from trans across R3005;
+end if;
+
+select one propertyParameter related by self->C_PP[R3017];
+if(not_empty propertyParameter)
+  unrelate self from propertyParameter across R3017;
+end if;
+                             
+select one lcl related by self->L_LCL[R3001];
+if ( not_empty lcl )
+  unrelate self from lcl across R3001;
+  lcl.dispose();
+end if;
+
+select one val related by self->V_VAL[R3010];
+if (not_empty val)
+  unrelate self from val across R3010;
+end if;
+
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("3ab78d2c-ce3c-48ce-8547-0755777d592b",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'setBoolean',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+if not_empty rtVal
+  rtVal.setValue(value:GD::boolean_to_instance(value:param.value));
+else
+  // TODO Log error
+end if;
+',
+	1,
+	'',
+	"3b1acda8-9b96-4bd2-86fb-4368d881daf0");
+INSERT INTO O_TPARM
+	VALUES ("99517d98-aff6-4b2a-aaa6-12e09b4c7643",
+	"3ab78d2c-ce3c-48ce-8547-0755777d592b",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("af76c531-56e0-4c05-a5d0-007fa1b6e186",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'setInteger',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+if not_empty rtVal
+  rtVal.setValue(value:GD::int_to_instance(value:param.value));
+else
+  // TODO Log error
+end if;
+',
+	1,
+	'',
+	"3ab78d2c-ce3c-48ce-8547-0755777d592b");
+INSERT INTO O_TPARM
+	VALUES ("129f6f90-118c-416d-b9b5-ff73f094a016",
+	"af76c531-56e0-4c05-a5d0-007fa1b6e186",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a1e53c3b-f1b5-4c09-bb3d-7826c95c6089",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'setString',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+if not_empty rtVal
+  rtVal.setValue(value:GD::string_to_instance(value:param.value));
+else
+  // TODO Log error
+end if;
+',
+	1,
+	'',
+	"09f0ce80-2ea6-4492-803a-1f7194a6c88b");
+INSERT INTO O_TPARM
+	VALUES ("0cfc5279-b297-4b62-b7c6-e7fc4bc5efc8",
+	"a1e53c3b-f1b5-4c09-bb3d-7826c95c6089",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("09f0ce80-2ea6-4492-803a-1f7194a6c88b",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'setReal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+if not_empty rtVal
+  rtVal.setValue(value:GD::real_to_instance(value:param.value));
+else
+  // TODO Log error
+end if;
+',
+	1,
+	'',
+	"af76c531-56e0-4c05-a5d0-007fa1b6e186");
+INSERT INTO O_TPARM
+	VALUES ("6757281a-229c-45f6-a17c-4a42867343dc",
+	"09f0ce80-2ea6-4492-803a-1f7194a6c88b",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("71693caf-c0bd-493e-90bd-77099b9b4272",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'setUnique_ID',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+if not_empty rtVal
+  rtVal.setValue(value:GD::unique_id_to_instance(value:param.value));
+else
+  // TODO Log error
+end if;
+',
+	1,
+	'',
+	"a1e53c3b-f1b5-4c09-bb3d-7826c95c6089");
+INSERT INTO O_TPARM
+	VALUES ("cd1840b8-9325-4e52-b365-0055c411c634",
+	"71693caf-c0bd-493e-90bd-77099b9b4272",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("3b1acda8-9b96-4bd2-86fb-4368d881daf0",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'getValue',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// Local: Local Value.getValue
+select one body related by self-> V_VAL[R3010]->ACT_BLK[R826]->ACT_ACT[R601];
+// If the value is not related to a V_VAL then just return the Value attribute.
+select one val related by self->V_VAL[R3010];
+if (empty val)
+  select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+  if not_empty rtVal
+    return rtVal.getValue();
+  else
+    return GD::NULL_INSTANCE();
+  end if;
+end if;
+
+// This local is associated to a V_VAL so this must be the local value of a 
+// parameter passed by ref. Retrieve the value of the associated V_VAL.
+
+// We are assuming that the value passed by reference lives in the previous 
+// stack frame.
+select any stack_frame from instances of I_STF where selected.Stack_Frame_ID == param.stack_frame_id;
+if (empty stack_frame)
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Local Value.getValue: no such stack frame exists in the system",path:pathMsg);
+  return GD::string_to_instance(value: "Error");
+end if;
+
+sf_id = stack_frame.Stack_Frame_ID; // just a place holder
+
+// Is the passed by reference value in a calling component?
+select one blocked_frame related by stack_frame->I_STF[R2965.''blocks''];
+if not_empty blocked_frame
+  sf_id = blocked_frame.Stack_Frame_ID;
+else
+  // is it in a local caller?
+  select one previous_stack_frame related by stack_frame->I_STF[R2928.''previous context''];
+  if (empty previous_stack_frame)
+    // is it in a wired bridge caller? (legacy inter-domain)
+    if (stack_frame.Created_For_Wired_Bridge == true)
+      sf_id = stack_frame.Bridge_Caller_Stack_Frame_ID;
+    else  
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Local Value.getValue: unable to find a previous stack frame",path:pathMsg);
+      return GD::string_to_instance(value: "Error");  
+    end if;
+  else
+    sf_id = previous_stack_frame.Stack_Frame_ID; 
+  end if; 
+end if;
+return val.getValue(stack_frame_id: sf_id);',
+	1,
+	'',
+	"91767482-39ea-424c-877d-446ff192b662");
+INSERT INTO O_TPARM
+	VALUES ("ec7a7cf8-0e1f-4f72-a749-1604f4f774ba",
+	"3b1acda8-9b96-4bd2-86fb-4368d881daf0",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("37de8e8d-79d8-47d4-9a1f-fb97815de792",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'setValue',
+	'If the Local Value is not associated to a Value across R3010 then the Value 
+attribute of the Local Value is assigned the value parameter of this operation.
+
+If the Local Value is associated to a Value(this indicates a by reference 
+parameter) then attempt set that Value.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Local: Local Value.setValue
+select one body related by self-> V_VAL[R3010]->ACT_BLK[R826]->ACT_ACT[R601];
+// If the value is not related to a V_VAL then just set the Value attribute.
+select one val related by self->V_VAL[R3010];
+if (empty val)
+  select one lcl  related by self->L_LCL[R3001];
+  select one rtVal related by lcl->RV_RVL[R3306];
+  if empty rtVal
+    // Obtain the data type
+    select one dt related by self->V_TRN[R3005]->S_DT[R821];
+    if empty dt
+      // Alternate means to find a transient data type
+      select one dt related by self->V_TRN[R3005]->V_VAR[R814]->S_DT[R848];
+    end if;
+    if empty dt
+      select one dt related by self->C_PP[R3017]->S_DT[R4007];
+    end if;
+    if empty dt
+      select one dt related by lcl->S_SPARM[R3007]->S_DT[R26];
+    end if;
+    if empty dt
+      select one dt related by lcl->O_TPARM[R3008]->S_DT[R118];
+    end if;
+    if empty dt
+      select one dt related by lcl->S_BPARM[R3009]->S_DT[R22];
+    end if;
+    create object instance rtVal of RV_RVL;
+    relate rtVal to lcl across R3306;
+    relate rtVal to dt across R3307;
+  end if;
+  rtVal.setValue(value:param.value);
+  return;
+end if;
+
+// This local is associated to a V_VAL so this must be the local value of a 
+// parameter passed by ref. Set the value of the associated V_VAL.
+
+// We are assuming that the value passed by reference lives in the previous 
+// stack frame.
+select any stack_frame from instances of I_STF where selected.Stack_Frame_ID == param.stack_frame_id;
+if (empty stack_frame)
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Local Value.setValue: no such stack frame exists in the system",path:pathMsg);  
+end if;
+
+sf_id = stack_frame.Stack_Frame_ID; // just a place holder
+
+// Is the passed by reference value in a calling component?
+select one blocked_frame related by stack_frame->I_STF[R2965.''blocks''];
+if not_empty blocked_frame
+  sf_id = blocked_frame.Stack_Frame_ID;
+else
+  // is it in a local caller?
+  select one previous_stack_frame related by stack_frame->I_STF[R2928.''previous context''];
+  if (empty previous_stack_frame)
+    // is it in a wired bridge caller? (legacy inter-domain)
+    if (stack_frame.Created_For_Wired_Bridge == true)
+      sf_id = stack_frame.Bridge_Caller_Stack_Frame_ID;
+    else  
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Local Value.setValue: unable to find a previous stack frame",path:pathMsg);
+    end if;
+  else
+    sf_id = previous_stack_frame.Stack_Frame_ID;  
+  end if;
+end if;
+val.setValue(stack_frame_id: sf_id, value: param.value,
+                                                     member_id:param.member_id);
+',
+	1,
+	'',
+	"71693caf-c0bd-493e-90bd-77099b9b4272");
+INSERT INTO O_TPARM
+	VALUES ("5aab78de-da9e-4659-83dc-cec02377fb77",
+	"37de8e8d-79d8-47d4-9a1f-fb97815de792",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("dda0cc2f-bcea-4ffd-9552-e84426f04d3f",
+	"37de8e8d-79d8-47d4-9a1f-fb97815de792",
+	'value',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"5aab78de-da9e-4659-83dc-cec02377fb77",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("58a757f3-a699-4d70-a56b-a4fb81927e29",
+	"37de8e8d-79d8-47d4-9a1f-fb97815de792",
+	'member_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"dda0cc2f-bcea-4ffd-9552-e84426f04d3f",
+	'');
+INSERT INTO O_TFR
+	VALUES ("91767482-39ea-424c-877d-446ff192b662",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	'getRuntimeValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// Local: Local Value.getRuntimeValue()
+select one body related by self-> V_VAL[R3010]->ACT_BLK[R826]->ACT_ACT[R601];
+// If the value is not related to a V_VAL then just return the Value attribute.
+select one val related by self->V_VAL[R3010];
+if (empty val)
+  select one rtVal related by self->L_LCL[R3001]->RV_RVL[R3306];
+  if not_empty rtVal
+    return rtVal.RuntimeValue_ID;
+  else
+    return GD::NULL_UNIQUE_ID();
+  end if;
+end if;
+
+// This local is associated to a V_VAL so this must be the local value of a 
+// parameter passed by ref. Retrieve the value of the associated V_VAL.
+
+// We are assuming that the value passed by reference lives in the previous 
+// stack frame.
+select any stack_frame from instances of I_STF where selected.Stack_Frame_ID == param.stack_frame_id;
+if (empty stack_frame)
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Local Value.getRuntimeValue: no such stack frame exists in the system",path:pathMsg);
+  return GD::NULL_UNIQUE_ID();
+end if;
+
+sf_id = stack_frame.Stack_Frame_ID; // just a place holder
+
+// Is the passed by reference value in a calling component?
+select one blocked_frame related by stack_frame->I_STF[R2965.''blocks''];
+if not_empty blocked_frame
+  sf_id = blocked_frame.Stack_Frame_ID;
+else
+  // is it in a local caller?
+  select one previous_stack_frame related by stack_frame->I_STF[R2928.''previous context''];
+  if (empty previous_stack_frame)
+    // is it in a wired bridge caller? (legacy inter-domain)
+    if (stack_frame.Created_For_Wired_Bridge == true)
+      sf_id = stack_frame.Bridge_Caller_Stack_Frame_ID;
+    else  
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Local Value.getRuntimeValue: unable to find a previous stack frame",path:pathMsg);
+      return GD::NULL_UNIQUE_ID();
+    end if;
+  else
+    sf_id = previous_stack_frame.Stack_Frame_ID; 
+  end if; 
+end if;
+return val.getRuntimeValue(stack_frame_id: sf_id);',
+	1,
+	'',
+	"d72ca01e-dfc5-4e95-80ef-cf63e41dd035");
+INSERT INTO O_TPARM
+	VALUES ("de0d2b42-c7f8-4daf-8351-48ae3ab12606",
+	"91767482-39ea-424c-877d-446ff192b662",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	0,
+	"ffdff308-0931-48ad-a530-0ca912369a86",
+	"4992a5a6-5e58-41a6-91d1-936486d66bd1",
+	"fd8a175a-143c-4bfa-9f51-599bd4981c2f",
+	"9262fc43-9b02-49ae-a3d1-ce0c8e89c380",
+	"b9782d5e-6955-4afe-89cc-2baae8958d41",
+	"058b6b7a-7083-4880-875d-da0447f29e2e",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Local',
+	'Local_ID',
+	'R3001');
+INSERT INTO R_RGO_PROXY
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"4992a5a6-5e58-41a6-91d1-936486d66bd1",
+	"fd8a175a-143c-4bfa-9f51-599bd4981c2f",
+	'../Local.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("ffdff308-0931-48ad-a530-0ca912369a86",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	0,
+	"4992a5a6-5e58-41a6-91d1-936486d66bd1",
+	"9262fc43-9b02-49ae-a3d1-ce0c8e89c380",
+	'../Local.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("b9782d5e-6955-4afe-89cc-2baae8958d41",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"ffdff308-0931-48ad-a530-0ca912369a86",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	1,
+	'Local_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("ffdff308-0931-48ad-a530-0ca912369a86",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	'../Local/Local.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("b9782d5e-6955-4afe-89cc-2baae8958d41",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"00000000-0000-0000-0000-000000000000",
+	'Local_ID',
+	'',
+	'',
+	'Local_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	0,
+	"8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	"293e70cc-d606-40f7-877e-d57851b8e136",
+	"3fe12bbc-6a1e-42b6-9661-3fba3a8e368f",
+	"19178516-1a93-4d61-a783-f4efeb7f7d6b",
+	"59fe699f-dc10-444d-9868-3ae2a912a201",
+	"57f77a09-635f-4a29-89ff-fed20bb6ecdf",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Transient Var',
+	'Var_ID',
+	'R3005.''is value of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"293e70cc-d606-40f7-877e-d57851b8e136",
+	"3fe12bbc-6a1e-42b6-9661-3fba3a8e368f",
+	'../Local.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("8cf2334e-e2a8-44c6-baa8-9f6a1d95bf36",
+	"d8aa1790-8106-40b5-b8f2-e1ae978c0b7e",
+	0,
+	"293e70cc-d606-40f7-877e-d57851b8e136",
+	"19178516-1a93-4d61-a783-f4efeb7f7d6b",
+	'../Local.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("59fe699f-dc10-444d-9868-3ae2a912a201",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	'Var_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'../../Value/Variable/Variable.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("59fe699f-dc10-444d-9868-3ae2a912a201",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"b9782d5e-6955-4afe-89cc-2baae8958d41",
+	'Var_ID',
+	'',
+	'',
+	'Var_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"f73068c8-90c9-4982-a72c-2c542d88e301",
+	"b9f6bc78-33e0-4e61-89d2-3932bdbbb0be",
+	"6224d13b-e134-4234-a9fd-c2b2e2f313f7",
+	"ef1b306c-fd31-4ee7-8685-0e4eaaa08edc",
+	"06487887-e8bb-4a7c-80e5-77ab2c336bb7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R3010.''has reference to''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"f73068c8-90c9-4982-a72c-2c542d88e301",
+	"b9f6bc78-33e0-4e61-89d2-3932bdbbb0be",
+	'../Local.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"f73068c8-90c9-4982-a72c-2c542d88e301",
+	"6224d13b-e134-4234-a9fd-c2b2e2f313f7",
+	'../Local.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ef1b306c-fd31-4ee7-8685-0e4eaaa08edc",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../../Value/Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("ef1b306c-fd31-4ee7-8685-0e4eaaa08edc",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"59fe699f-dc10-444d-9868-3ae2a912a201",
+	'Value_ID',
+	'',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"1dbc98fa-0dd7-465f-925b-b7a33e30c120",
+	0,
+	"8c9a9f0c-2dd6-471c-87ab-b289684f5905",
+	"fb190f67-046f-4545-87b1-7dff21aa8e2a",
+	"68a37c83-1823-486e-b341-2a1ea9d7aabf",
+	"1fe76d88-7565-48f6-944a-9320054827bb",
+	"d4da7619-a25d-41a4-a92a-5ec5b3b8043c",
+	"ae77e47f-eb45-490d-acab-565f9739d5ab",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Property Parameter',
+	'PP_Id',
+	'R3017.''is value of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"fb190f67-046f-4545-87b1-7dff21aa8e2a",
+	"68a37c83-1823-486e-b341-2a1ea9d7aabf",
+	'../Local.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("8c9a9f0c-2dd6-471c-87ab-b289684f5905",
+	"1dbc98fa-0dd7-465f-925b-b7a33e30c120",
+	0,
+	"fb190f67-046f-4545-87b1-7dff21aa8e2a",
+	"1fe76d88-7565-48f6-944a-9320054827bb",
+	'../Local.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("d4da7619-a25d-41a4-a92a-5ec5b3b8043c",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"8c9a9f0c-2dd6-471c-87ab-b289684f5905",
+	"1dbc98fa-0dd7-465f-925b-b7a33e30c120",
+	1,
+	'PP_Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("8c9a9f0c-2dd6-471c-87ab-b289684f5905",
+	"1dbc98fa-0dd7-465f-925b-b7a33e30c120",
+	'../../Component/Property Parameter/Property Parameter.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("d4da7619-a25d-41a4-a92a-5ec5b3b8043c",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	"ef1b306c-fd31-4ee7-8685-0e4eaaa08edc",
+	'PP_Id',
+	'',
+	'',
+	'PP_Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9");
+INSERT INTO O_OIDA
+	VALUES ("b9782d5e-6955-4afe-89cc-2baae8958d41",
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	0,
+	'Local_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9");
+INSERT INTO O_ID
+	VALUES (2,
+	"40e2963c-9ebc-49d2-bd64-78bcc3a165a9");
+INSERT INTO PE_PE
+	VALUES ("40e2963c-9ebc-49d2-bd64-78bcc3a165a9",
+	1,
+	"8d2918c3-90d8-4eb4-8db2-b149b2318f2c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d2918c3-90d8-4eb4-8db2-b149b2318f2c",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Local',
+	'Persistent:false
+',
+	0,
+	'../Local.xtuml');

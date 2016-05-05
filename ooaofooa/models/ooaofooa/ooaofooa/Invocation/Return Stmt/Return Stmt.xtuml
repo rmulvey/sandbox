@@ -1,0 +1,306 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	'Return Stmt',
+	624,
+	'ACT_RET',
+	'Represents a return statement. It has an optional relationship with a value
+because returns may bear a value depending on whether the callee
+returns void or not.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("7a19ff87-df3e-49f2-b26e-31da0c52539e",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one val related by self->V_VAL[R668];
+if ( not_empty val )
+  unrelate self from val across R668;
+  val.dispose();
+end if;
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("1a9c5454-916e-48b9-819f-ff66255cb5aa",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	'execute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Invocation:Return Stmt.execute()
+select one body related by self ->ACT_SMT[R603]->ACT_BLK[R602]->ACT_ACT[R601];  
+select any stack_frame from instances of I_STF where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+invokedFrame = stack_frame;
+select one stack related by stack_frame->I_STACK[R2943];
+select one invokingFrame related by stack_frame->I_STF[R2965.''blocks''];
+
+// Set the return the value to the executing body
+select one return_value related by self->V_VAL[R668];
+
+if (empty return_value)
+  //If there is no return value then just return here.
+  // Pop the stack and move the instruction pointer to the next statement after
+  // the invocation.
+  if not_empty invokingFrame
+    stack.pop(disposeFrame:false);
+    unrelate stack_frame from stack across R2943;
+    select one invokingStack related by invokingFrame->I_STACK[R2943];
+    stack_frame.readyForInterrupt = false;
+    invokingStack.enqueue(
+                   stack_frame_id:stack_frame.Stack_Frame_ID,
+                      remote_stack_frame_id:stack_frame.Stack_Frame_ID,
+                                                              isActivity:false);
+    // Notification of the remote component is done at the very last moment
+    // at the very end of Statement.execute()
+  else
+    stack.pop(disposeFrame:true);
+    select one stack_frame related by stack->I_STF[R2929];
+    select any top_blk_in_stack_frame related by stack_frame->
+                                        I_BSF[R2923] where selected.isExecuting;
+    select one invokingFrame related by stack_frame->I_STF[R2965.''blocks''];
+    select one statement related by top_blk_in_stack_frame->ACT_SMT[R2941];
+    if (empty invokingFrame)
+      select one blockingFrame related by  stack_frame->I_STF[R2965.''blocked by''];
+      select any intermediate_value related by stack_frame->I_VSF[R2951];
+      if (empty intermediate_value and empty blockingFrame)
+        // If a value computation is in progress, or we were blocked waiting
+        // for a synchronous operation when we were interrupted we want to
+        // complete work on the current statement.
+        if (not_empty statement)
+          statement.setupNextStatement(stack_frame_id:
+                                         top_blk_in_stack_frame.Stack_Frame_ID);
+        else
+          select one stmt related by self ->ACT_SMT[R603];
+          select one blk related by stmt ->ACT_BLK[R602];
+          select one body related by blk ->ACT_ACT[R601];
+          if (not_empty body)
+            blk.exitAsynchronousActivity(stack_ID:stack.Stack_ID,body_ID:body.Action_ID);  
+          end if;                                                                 
+        end if;
+      end if;
+    end if;
+  end if;
+else
+  return_value.computeValue(stack_frame_id:param.stack_frame_id);
+  select any result related by stack_frame->I_VSF[R2951];
+  select one rtVal related by result->RV_RVL[R3305];
+  if (empty rtVal)
+    // Return value requires computation, return to allow it to be carried out
+    return;
+  else
+    if not_empty invokingFrame
+      // This return is on an intercomponent call
+      // We are going to move this frame onto the invoking components queue,
+      // so we do not want to dispose it.
+      stack.pop(disposeFrame:false);
+      // We do want it off the invoked components stack tho''.
+      unrelate invokedFrame from stack across R2943;
+    else
+      stack.pop(disposeFrame:true);
+      select one stack_frame related by stack->I_STF[R2929];
+    end if;
+    if (empty stack_frame)
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error: Stack Underflow.  No stack to put return value ("
+      		+ GD::instance_to_string(value: rtVal.getValue()) + ") onto.",path:pathMsg);
+    else
+      if empty invokingFrame
+        // it is a local return within the component
+        select many targetResults related by stack_frame->I_VSF[R2951] where
+                               selected.RuntimeValue_ID == GD::NULL_UNIQUE_ID();
+        // Set the value of the last one in the set . . .
+        resultCount = cardinality targetResults;
+        for each targetResult in targetResults
+          resultCount = resultCount - 1;
+          if (resultCount == 0)
+            create object instance newRtVal of RV_RVL;
+            relate newRtVal to targetResult across R3305;
+            select one dt related by return_value->S_DT[R820];
+            relate newRtVal to dt across R3307;
+            newRtVal.copyValue(from:rtVal.RuntimeValue_ID);
+            rtVal.dispose();
+            return;
+          end if;
+        end for;
+        pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error: Stack Underflow. No target found for return value.",path:pathMsg);
+      else
+        // the thread of control is returning to an invoking component
+        select one invokingStack related by invokingFrame->I_STACK[R2943];
+        invokedFrame.readyForInterrupt = false;
+        invokingStack.enqueue(stack_frame_id:invokedFrame.Stack_Frame_ID,
+                           remote_stack_frame_id:stack_frame.Stack_Frame_ID,
+                                                              isActivity:false);
+        // Notification of the remote component is done at the very last moment
+        // at the very end of Statement.execute()
+      end if;
+    end if;
+  end if;
+end if;',
+	1,
+	'',
+	"7a19ff87-df3e-49f2-b26e-31da0c52539e");
+INSERT INTO O_TPARM
+	VALUES ("50083b09-e5e2-4d2f-8175-da2e4172453f",
+	"1a9c5454-916e-48b9-819f-ff66255cb5aa",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	0,
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"fdc81100-dadd-4985-9e45-3759dd1a2550",
+	"7558839e-e4fb-46e4-97b0-decfec373abb",
+	"3266b7d5-ebee-4c14-a547-8aa7d26c4025",
+	"fbe141f8-82fb-4ec3-8747-749a25418181",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Statement',
+	'Statement_ID',
+	'R603');
+INSERT INTO R_RGO_PROXY
+	VALUES ("4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"fdc81100-dadd-4985-9e45-3759dd1a2550",
+	'../../Body/Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	0,
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"7558839e-e4fb-46e4-97b0-decfec373abb",
+	'../../Body/Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("3266b7d5-ebee-4c14-a547-8aa7d26c4025",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	1,
+	'Statement_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	'../../Body/Statement/Statement.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("3266b7d5-ebee-4c14-a547-8aa7d26c4025",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"00000000-0000-0000-0000-000000000000",
+	'Statement_ID',
+	'
+
+',
+	'',
+	'Statement_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"74b38919-8858-4907-9492-db8e8e48710e",
+	"a45ccacf-46dd-40b8-91bb-6342aca46d90",
+	"ce9f0065-def5-414b-878f-875afa5890b7",
+	"317adfe0-e236-41d2-998a-278df89199c9",
+	"ab550fe7-fc6b-4f80-b306-5c6d484211e6",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R668.''has''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"74b38919-8858-4907-9492-db8e8e48710e",
+	"a45ccacf-46dd-40b8-91bb-6342aca46d90",
+	'../Invocation.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"74b38919-8858-4907-9492-db8e8e48710e",
+	"ce9f0065-def5-414b-878f-875afa5890b7",
+	'../Invocation.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("317adfe0-e236-41d2-998a-278df89199c9",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../../Value/Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("317adfe0-e236-41d2-998a-278df89199c9",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	"3266b7d5-ebee-4c14-a547-8aa7d26c4025",
+	'Value_ID',
+	'
+
+',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32");
+INSERT INTO O_OIDA
+	VALUES ("3266b7d5-ebee-4c14-a547-8aa7d26c4025",
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	0,
+	'Statement_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32");
+INSERT INTO O_ID
+	VALUES (2,
+	"4a3ba437-7dad-4ec6-bedc-3711f1fb0f32");
+INSERT INTO PE_PE
+	VALUES ("4a3ba437-7dad-4ec6-bedc-3711f1fb0f32",
+	1,
+	"f32f7bad-c1a4-43a8-8652-05993f749e71",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("f32f7bad-c1a4-43a8-8652-05993f749e71",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Invocation',
+	'This subsystem captures the concepts of call and return. It covers
+calls to operations, bridges and functions and includes the return
+statement.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	600,
+	'../Invocation.xtuml');

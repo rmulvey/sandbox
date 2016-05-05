@@ -1,0 +1,458 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'Signal Event',
+	528,
+	'SM_SGEVT',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d97ab7d0-edcf-4f60-bb99-f12c5aa994bd",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Signal Event.dispose()
+select one provSig related by self->SPR_PS[R528];
+if not_empty provSig
+  unrelate self from provSig across R528;
+end if;
+select one reqSig related by self->SPR_RS[R529];
+if not_empty reqSig
+  unrelate self from reqSig across R529;
+end if;
+select one sevt related by self->SM_SEVT[R526];
+if not_empty sevt
+  unrelate self from sevt across R526;
+end if;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("eda74d90-2ade-4619-b113-53c0a966424b",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'get_event_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one provSig related by self->SPR_PS[R528];
+select one reqSig related by self->SPR_RS[R529];
+if empty provSig and empty reqSig
+  return self.signal_name;
+else
+  result = self.signal_name;
+  select one ifRef related by provSig->SPR_PEP[R4503]->C_P[R4501]
+                                                                                                 ->C_IR[R4009];
+  if empty ifRef
+    select one ifRef related by reqSig->SPR_REP[R4502]->C_R[R4500]
+                                                                                                ->C_IR[R4009];
+  end if;
+  select many parameters related by provSig->SPR_PEP[R4503]->
+                                                       C_EP[R4501]->C_PP[R4006];
+  if not_empty reqSig
+    select many parameters related by reqSig->SPR_REP[R4502]->
+                                                                             C_EP[R4500]->C_PP[R4006];
+  end if;
+  if (not_empty parameters)
+    result = result + " (";
+    sep = "";
+    for each parameter in parameters
+      select one dt related by parameter->S_DT[R4007];
+      result = result + sep + parameter.Name + ":" + dt.Name;
+      sep = ", ";
+    end for;
+    result = result + ")";
+  end if;
+  return result;
+end if;',
+	1,
+	'',
+	"d97ab7d0-edcf-4f60-bb99-f12c5aa994bd");
+INSERT INTO O_TFR
+	VALUES ("7ffe2621-8b36-4928-b1d1-b32b0c7246af",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'get_name',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'//Signal Event.get_name()
+return self.signal_name;',
+	1,
+	'',
+	"eda74d90-2ade-4619-b113-53c0a966424b");
+INSERT INTO O_TFR
+	VALUES ("2a93b0fd-275c-4e35-8aab-9525930bf09a",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'getCachedSignalName',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'	return m_signal_name;',
+	0,
+	'',
+	"7ffe2621-8b36-4928-b1d1-b32b0c7246af");
+INSERT INTO O_TFR
+	VALUES ("fb4af059-612d-4596-accf-46649ee5b264",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'setCachedSignalName',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'	m_signal_name = p_Value;',
+	0,
+	'',
+	"2a93b0fd-275c-4e35-8aab-9525930bf09a");
+INSERT INTO O_TPARM
+	VALUES ("a11a9abc-b415-4156-baff-7259ed55534b",
+	"fb4af059-612d-4596-accf-46649ee5b264",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"6e8fd3d8-32cf-4483-8ae6-4d9aed340600",
+	0,
+	"cd781809-eda5-4508-9800-1279a08cf4b4",
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"779abad6-0bcd-4cb4-af48-4afdfdb4c3bd",
+	"b5e376df-82f7-435a-9c14-b78b3552be48",
+	"19907554-c26c-42e3-bba7-44071335c63d",
+	"8dc760b2-65ba-432d-9234-fec7e8d554e7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'SEM Event',
+	'SMevt_ID',
+	'R526');
+INSERT INTO R_RGO_PROXY
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"779abad6-0bcd-4cb4-af48-4afdfdb4c3bd",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("cd781809-eda5-4508-9800-1279a08cf4b4",
+	"6e8fd3d8-32cf-4483-8ae6-4d9aed340600",
+	0,
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"b5e376df-82f7-435a-9c14-b78b3552be48",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("19907554-c26c-42e3-bba7-44071335c63d",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"cdb80faa-5a5c-42cb-a807-72e5ffcc371d",
+	"85bdf335-51a2-4603-b6af-19ba8f7a45e5",
+	1,
+	'SMevt_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("cdb80faa-5a5c-42cb-a807-72e5ffcc371d",
+	"85bdf335-51a2-4603-b6af-19ba8f7a45e5",
+	'../State Machine Event/State Machine Event.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("19907554-c26c-42e3-bba7-44071335c63d",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"00000000-0000-0000-0000-000000000000",
+	'SMevt_ID',
+	'',
+	'',
+	'SMevt_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"6e8fd3d8-32cf-4483-8ae6-4d9aed340600",
+	0,
+	"feba825d-2baf-4e14-b7da-48531698488f",
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"779abad6-0bcd-4cb4-af48-4afdfdb4c3bd",
+	"b5e376df-82f7-435a-9c14-b78b3552be48",
+	"81083e81-5ef0-446b-8473-2d3672575a4b",
+	"249c610a-e412-43e4-a7cf-2fc1323d3034",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'SEM Event',
+	'SM_ID',
+	'R526');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("feba825d-2baf-4e14-b7da-48531698488f",
+	"6e8fd3d8-32cf-4483-8ae6-4d9aed340600",
+	0,
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"b5e376df-82f7-435a-9c14-b78b3552be48",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("81083e81-5ef0-446b-8473-2d3672575a4b",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	1,
+	'SM_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	'../State Machine/State Machine.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("81083e81-5ef0-446b-8473-2d3672575a4b",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"19907554-c26c-42e3-bba7-44071335c63d",
+	'SM_ID',
+	'',
+	'',
+	'SM_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"6e8fd3d8-32cf-4483-8ae6-4d9aed340600",
+	0,
+	"8e0a3740-242e-42eb-8430-b55d1de9f250",
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"779abad6-0bcd-4cb4-af48-4afdfdb4c3bd",
+	"b5e376df-82f7-435a-9c14-b78b3552be48",
+	"ee43c115-a476-4b28-ad8c-7a7ed2a899fa",
+	"8bbf7814-bb05-4b0d-b7e9-b379777dcf4d",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'SEM Event',
+	'SMspd_ID',
+	'R526');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("8e0a3740-242e-42eb-8430-b55d1de9f250",
+	"6e8fd3d8-32cf-4483-8ae6-4d9aed340600",
+	0,
+	"61a40724-209d-4c51-9c9e-467ee34fe6ca",
+	"b5e376df-82f7-435a-9c14-b78b3552be48",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ee43c115-a476-4b28-ad8c-7a7ed2a899fa",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"687f0a3c-0ce1-40b3-a498-b18d64de5cc5",
+	"c7bef657-8c46-4a09-b499-e99eb1f234d4",
+	1,
+	'SMspd_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("687f0a3c-0ce1-40b3-a498-b18d64de5cc5",
+	"c7bef657-8c46-4a09-b499-e99eb1f234d4",
+	'../Event Supplemental Data/Event Supplemental Data.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("ee43c115-a476-4b28-ad8c-7a7ed2a899fa",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"81083e81-5ef0-446b-8473-2d3672575a4b",
+	'SMspd_ID',
+	'',
+	'',
+	'SMspd_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"ed304e19-7d35-4b24-9842-e85d3e06ec25",
+	0,
+	"4b338858-38a3-4dc2-a6b8-791ca0c9fccc",
+	"1dc9ca30-208c-4bb8-ad7c-054d1361a351",
+	"5ac71ed4-9211-4edc-a0c0-97125565ec42",
+	"7252cc66-f467-4380-9d00-ac5739116470",
+	"634e2e0b-4fce-41f3-aefe-8604676cacea",
+	"fe5a29b7-b924-4654-bb56-9acb1059ae1b",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Provided Signal',
+	'Id',
+	'R528');
+INSERT INTO R_RGO_PROXY
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"1dc9ca30-208c-4bb8-ad7c-054d1361a351",
+	"5ac71ed4-9211-4edc-a0c0-97125565ec42",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("4b338858-38a3-4dc2-a6b8-791ca0c9fccc",
+	"ed304e19-7d35-4b24-9842-e85d3e06ec25",
+	0,
+	"1dc9ca30-208c-4bb8-ad7c-054d1361a351",
+	"7252cc66-f467-4380-9d00-ac5739116470",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("634e2e0b-4fce-41f3-aefe-8604676cacea",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"17cc65db-d9bd-4966-9d81-e4630f998a59",
+	"a9a14c8a-d125-41d5-a1c3-51aefe127031",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("17cc65db-d9bd-4966-9d81-e4630f998a59",
+	"a9a14c8a-d125-41d5-a1c3-51aefe127031",
+	'../../Component/Signal Provisions and Requirements/Provided Executable Property/Provided Executable Property.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("634e2e0b-4fce-41f3-aefe-8604676cacea",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"ee43c115-a476-4b28-ad8c-7a7ed2a899fa",
+	'Provided_Signal_Id',
+	'',
+	'Provided_Signal_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"574641e6-2061-4d12-b332-9ea219cfb721",
+	0,
+	"1d608b9d-cb6b-4fae-b631-78fd03335a92",
+	"519f2845-e71a-4f6d-912b-9c3dc8ce0c97",
+	"131e8b3d-9e54-4d96-a129-5390336e8dfd",
+	"b1a1eb84-ab45-4388-90d2-155cbce0ea66",
+	"89cef121-d38c-4baf-9177-01b6706bbd3a",
+	"aba1c37b-be81-4b65-ae40-ee8cffcffa68",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Required Signal',
+	'Id',
+	'R529');
+INSERT INTO R_RGO_PROXY
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"519f2845-e71a-4f6d-912b-9c3dc8ce0c97",
+	"131e8b3d-9e54-4d96-a129-5390336e8dfd",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("1d608b9d-cb6b-4fae-b631-78fd03335a92",
+	"574641e6-2061-4d12-b332-9ea219cfb721",
+	0,
+	"519f2845-e71a-4f6d-912b-9c3dc8ce0c97",
+	"b1a1eb84-ab45-4388-90d2-155cbce0ea66",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("89cef121-d38c-4baf-9177-01b6706bbd3a",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"ebd14632-fee4-4368-8f7b-a06b91d25922",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("ebd14632-fee4-4368-8f7b-a06b91d25922",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'../../Component/Signal Provisions and Requirements/Required Executable Property/Required Executable Property.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("89cef121-d38c-4baf-9177-01b6706bbd3a",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"634e2e0b-4fce-41f3-aefe-8604676cacea",
+	'Required_Signal_Id',
+	'',
+	'Required_Signal_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("3a37beda-7227-474b-b5f3-5d9ca9bb5be4",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	'/*
+ * Get the signal name for the signal or use the cached value if a signal
+ * cannot be found
+ */
+select one proSignal related by self->SPR_PS[R528];
+select one reqSignal related by self->SPR_RS[R529];
+if(not_empty proSignal or not_empty reqSignal)
+  result = "";
+  select one ifRef related by proSignal->SPR_PEP[R4503]->C_P[R4501]->C_IR[R4009];
+  if empty ifRef
+    select one ifRef related by reqSignal->SPR_REP[R4502]->C_R[R4500]->C_IR[R4009];
+  end if;
+  select one port related by ifRef->C_PO[R4016];
+  if not_empty port
+    if port.Name != ""
+      result = port.Name + "::";
+    else
+      select one interface related by ifRef->C_I[R4012];
+      if not_empty interface
+        if interface.Name != "";
+          result = interface.Name + "::";
+        end if;
+      else
+        self.signal_name = self.getCachedSignalName();
+      end if;
+    end if;
+    if not_empty proSignal
+      result = result + proSignal.Name;
+    else
+      result = result + reqSignal.Name;
+    end if;
+    self.setCachedSignalName(value: result);
+    self.signal_name = result;
+  else
+    self.signal_name = self.getCachedSignalName();
+  end if;
+else
+  self.signal_name = self.getCachedSignalName();
+end if; 
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("3a37beda-7227-474b-b5f3-5d9ca9bb5be4",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303");
+INSERT INTO O_ATTR
+	VALUES ("3a37beda-7227-474b-b5f3-5d9ca9bb5be4",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	"89cef121-d38c-4baf-9177-01b6706bbd3a",
+	'signal_name',
+	'User_Visible:false',
+	'',
+	'signal_name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"cd221ca5-3bee-49ea-88f0-36ebed816303");
+INSERT INTO O_OIDA
+	VALUES ("19907554-c26c-42e3-bba7-44071335c63d",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	0,
+	'SMevt_ID');
+INSERT INTO O_OIDA
+	VALUES ("81083e81-5ef0-446b-8473-2d3672575a4b",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	0,
+	'SM_ID');
+INSERT INTO O_OIDA
+	VALUES ("ee43c115-a476-4b28-ad8c-7a7ed2a899fa",
+	"cd221ca5-3bee-49ea-88f0-36ebed816303",
+	0,
+	'SMspd_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"cd221ca5-3bee-49ea-88f0-36ebed816303");
+INSERT INTO O_ID
+	VALUES (2,
+	"cd221ca5-3bee-49ea-88f0-36ebed816303");
+INSERT INTO PE_PE
+	VALUES ("cd221ca5-3bee-49ea-88f0-36ebed816303",
+	1,
+	"3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'State Machine',
+	'Classes (O_OBJ) that have interesting behavior are given lifecycles. These lifecycles are described using state machines (SM_SM). A state machine consists of states, events, transitions and state actions. The state machine exists for each instance of the class for which it has been modeled (SM_ISM). A state machine can also be an assigner state machine (SM_ASM) of which only one can exists for all class instances. The purpose of the assigner state machine is to act as a single point of control through which competing requests are serialized.',
+	501,
+	'../State Machine.xtuml');

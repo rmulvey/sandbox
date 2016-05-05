@@ -1,0 +1,1269 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'Attribute',
+	103,
+	'O_ATTR',
+	'An attribute is an abstraction of a single characteristic possessed by a class.  Usually classes contain a set of attributes to completely capture all pertinent information.  Each attribute is given a unique name within a class.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("8241d684-c340-4df3-9950-fffe4c751e6e",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'dispose',
+	'Dispose this Attribute.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Subsystem Subsystem
+select many oidas related by self->O_OIDA[R105];
+for each oida in oidas
+  oida.dispose();
+end for;
+select one battr related by self->O_BATTR[R106];
+if (not_empty battr)
+  battr.dispose();
+else
+  select one rattr related by self->O_RATTR[R106];
+  rattr.dispose();
+end if;
+select one dt related by self->S_DT[R114];
+if ( not_empty dt )
+  unrelate self from dt across R114;
+end if;
+select one owningClass related by self->O_OBJ[R102];
+select one nextAttr related by self->O_ATTR[R103.''precedes''];
+::changeNotificationEnablement(enabled:false);
+if(not_empty nextAttr)
+  // We need to disable the listeners because the ordering change
+  // causes a NPE when the display updates midstream
+  if (self.PAttr_ID == GD::NULL_UNIQUE_ID())
+    // this attribute is at the top of the list
+    unrelate self from nextAttr across R103.''precedes'';
+  else
+    // otherwise this attribute is somewhere in the middle
+    // or at the end
+    select many attrs related by owningClass->O_ATTR[R102];
+    for each attr in attrs
+      select one thisAttr related by attr->O_ATTR[R103.''precedes''];
+      if (self == thisAttr)
+        // now tell the next attribute that this is not
+        // the attribute that it succeeds anymore
+        unrelate self from nextAttr across R103.''precedes'';
+        // and tell this attribute that it no longer succeeds
+        // any attribute. 
+        // *NOTE* this is not really required for deletion but
+        // more for restoration
+        unrelate self from attr across R103.''succeeds'';
+        // finally connect the two attributes that this
+        // attribute was between
+        relate nextAttr to attr across R103.''succeeds'';
+        break;
+      end if;
+    end for;
+  end if;
+else
+  // we are at the end of the list
+  select one priorAttr related by self->O_ATTR[R103.''succeeds''];
+  if ( not_empty priorAttr )
+    unrelate self from priorAttr across R103.''succeeds'';
+  end if;
+end if;
+::changeNotificationEnablement(enabled:true);
+unrelate self from owningClass across R102;
+//
+// Communication and Access Subsystem
+select many smoaas related by self->CA_SMOAA[R419];
+for each smoaa in smoaas
+  smoaa.dispose();
+end for;
+//
+// Value Subsystem
+select many selref_set related by self->V_SLR[R812];
+for each selref in selref_set
+  unrelate self from selref across R812;
+end for;
+select many attrvals related by self->V_AVL[R806];
+for each attrval in attrvals
+  unrelate self from attrval across R806;
+end for;
+//
+// Instance Subsystem
+select many avls related by self->I_AVL[R2910];
+for each avl in avls
+  unrelate self from avl across R2910;
+  avl.dispose();
+end for;
+//
+// Sequence subsystem
+select many attrValues related by self->SQ_AV[R938];
+for each attrValue in attrValues
+  attrValue.dispose();
+end for;
+select many dims related by self->S_DIM[R120];
+for each dim in dims
+  unrelate self from dim across R120;
+  delete object instance dim;
+end for;
+//
+// Finally delete self
+delete object instance self;',
+	1,
+	'',
+	"13dfad99-b3fb-43c7-b3b8-a0ef392af880");
+INSERT INTO O_TFR
+	VALUES ("1bc31272-65f8-4329-8b65-3f73f99e72ba",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'initialize',
+	'Initialize this new Attribute.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.Prefix = "";
+self.Pfx_Mode = 0;
+name = ::getUniqueInitialName( 
+    instance: self.convertToInstance(), 
+    candidateName: "Unnamed Attribute");
+success = ::getNewElementName(name:name,instance: self.convertToInstance(),validateName:true);    
+if ( success!="") 
+ self.Root_Nam=success;
+else 
+ self.dispose();
+end if;        
+
+  // Owning Class is in a package . . .
+  select one system related by self->O_OBJ[R102]->PE_PE[R8001]->
+                                                    EP_PKG[R8000]->S_SYS[R1405];
+  if not_empty system
+    dt_id = system.getCoreTypeId(name:"integer");
+    select any pe from instances of PE_PE where selected.Element_ID == dt_id;
+    select one intdt related by pe->S_DT[R8001]; 
+    relate self to intdt across R114;
+  else
+    // this is an error, if the system is not
+    // found we cannot find the core type
+    USER::logError(msg:"Unable to locate system root for data type: integer",path:"");
+  end if;
+
+create object instance ba of O_BATTR;
+relate self to ba across R106;
+create object instance nba of O_NBATTR;
+relate ba to nba across R107;',
+	1,
+	'',
+	"4afb9a15-b8ed-4121-9a01-68e1599794ae");
+INSERT INTO O_TFR
+	VALUES ("65f581a9-0095-4c49-8068-18e83277b1d5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'isAllowedType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// Attribute::isAllowedType()
+select one packageableElem related by self->O_OBJ[R102]->PE_PE[R8001];
+select one package related by packageableElem->EP_PKG[R8000];
+select one component related by packageableElem->C_C[R8003];
+
+  select any dt related by package->PE_VIS[R8002]->
+                PE_PE[R8002]->S_DT[R8001] where selected.Name == param.typeName;
+  if not_empty component
+    select any dt related by component->PE_CVS[R8004]->
+                PE_PE[R8004]->S_DT[R8001] where selected.Name == param.typeName;
+  end if;
+  if not_empty dt
+    select one rattr related by self->O_RATTR[R106];
+    if ( not_empty rattr )
+      select one base_attr related by rattr->O_BATTR[R113]->O_ATTR[R106];
+      if ( empty base_attr )
+        return  param.typeName == "same_as<Base_Attribute>";
+      else
+        select one base_dt related by base_attr->S_DT[R114];
+        return param.typeName == base_dt.Name;
+      end if;
+    else
+      if ( dt.isCommonAllowedType() )
+        return true;
+      elif ( param.typeName == "state<State_Model>"  )
+        return true;
+      end if;
+    end if;
+  end if;
+  return false;
+',
+	1,
+	'',
+	"1bc31272-65f8-4329-8b65-3f73f99e72ba");
+INSERT INTO O_TPARM
+	VALUES ("879b737e-2d20-4070-9f31-82c744f273ee",
+	"65f581a9-0095-4c49-8068-18e83277b1d5",
+	'typeName',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("36bebd2c-b63e-4d50-9204-7eb710802e52",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'actionFilter',
+	'Bridge: UI
+',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if (param.name == "subtype" )
+  if (param.value =="O_NBATTR" )
+    select one nba related by self->O_BATTR[R106]->O_NBATTR[R107];
+    return not_empty nba;
+  elif (param.value == "O_DBATTR" )
+    select one dba related by self->O_BATTR[R106]->O_DBATTR[R107];
+    return not_empty dba;
+  elif (param.value == "O_RATTR" )
+    select one ra related by self->O_RATTR[R106];
+    return not_empty ra;
+  end if;
+elif (param.name == "id" )
+  select many cia related by self->O_OIDA[R105];
+  if ( param.value == "none" )
+    return empty cia;
+  elif ( param.value == "some" )
+    return not_empty cia;
+  elif ( param.value == "not all" )
+    select many id_set related by self->O_OBJ[R102]->O_ID[R104];
+    return cardinality cia != cardinality id_set;
+  elif ( param.value == "all" )
+    select many id_set related by self->O_OBJ[R102]->O_ID[R104];
+    return cardinality cia == cardinality id_set;
+  end if;
+elif (param.name == "can" )
+  if ( param.value == "move up" )
+    select one prev_attr related by self->O_ATTR[R103.''succeeds''];
+    return not_empty prev_attr;
+  elif ( param.value == "move down" )
+    select one next_attr related by self->O_ATTR[R103.''precedes''];
+    return not_empty next_attr;
+  elif ( param.value == "combine" )
+     select one rattr related by self->O_RATTR[R106];
+       if ( not_empty rattr )
+         select one base_attr related by rattr->O_BATTR[R113];
+          select many candidate_set related by self->O_OBJ[R102]->O_ATTR[R102]->O_RATTR[R106]
+            where selected.BAttr_ID == base_attr.Attr_ID and 
+                  selected.BObj_ID == base_attr.Obj_ID;
+            for each candidate in candidate_set
+             if ( not rattr.alreadyCombinedWith( id: candidate.Attr_ID ) )
+               return true;
+             end if;
+           end for;
+       end if;
+       return false;
+  elif ( param.value == "split" )
+   	 select one rattr related by self->O_RATTR[R106];
+   	  if ( not_empty rattr )
+   	    select many ref_set related by rattr->O_REF[R108];
+   	    return cardinality ref_set > 1;
+      end if;
+      return false;  
+  elif(param.value == "SetType")
+     select one refAttr related by self->O_RATTR[R106];
+     if(not_empty refAttr)
+       return false;
+     else
+       return true;
+     end if;
+   end if;
+end if;
+return false;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("f7bc33c9-eb3a-4074-9cd4-3af872a8ccdb",
+	"36bebd2c-b63e-4d50-9204-7eb710802e52",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("717c9f1e-5373-401d-80ea-c3f0a75e182d",
+	"36bebd2c-b63e-4d50-9204-7eb710802e52",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"f7bc33c9-eb3a-4074-9cd4-3af872a8ccdb",
+	'');
+INSERT INTO O_TFR
+	VALUES ("65630298-d8c9-44d0-89ac-8fc45e3116a2",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'isPartOfId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select any oida related by self->O_OIDA[R105] where (selected.Oid_ID == param.id );
+return not_empty oida;
+',
+	1,
+	'',
+	"65f581a9-0095-4c49-8068-18e83277b1d5");
+INSERT INTO O_TPARM
+	VALUES ("96a6562a-3e96-44d7-a170-4db719064c9b",
+	"65630298-d8c9-44d0-89ac-8fc45e3116a2",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f877f63e-686e-4ceb-9480-f1528810b202",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'migrateBaseToDerived',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one battr related by self->O_BATTR[R106];
+if ( not_empty battr )
+  select one nbattr related by battr->O_NBATTR[R107];
+  if ( not_empty nbattr )
+    create object instance dbattr of O_DBATTR;
+    dbattr.Suc_Pars = ParseStatus::parseInitial;
+    unrelate battr from nbattr across R107;
+    relate battr to dbattr across R107;
+    delete object instance nbattr;
+  end if;
+end if;
+',
+	1,
+	'',
+	"a6c56e46-5dc1-4a30-9dcb-c71d75207821");
+INSERT INTO O_TFR
+	VALUES ("68bde191-e459-4532-b6f5-fb01f32c3dfe",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'migrateDerivedToBase',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one battr related by self->O_BATTR[R106];
+if ( not_empty battr )
+  select one dbattr related by battr->O_DBATTR[R107];
+  if ( not_empty dbattr )
+    create object instance nbattr of O_NBATTR;
+    unrelate battr from dbattr across R107;
+    relate battr to nbattr across R107;
+    delete object instance dbattr;
+  end if;
+end if;
+',
+	1,
+	'',
+	"8df7e8f9-3a12-4355-8a53-0f213f1f250b");
+INSERT INTO O_TFR
+	VALUES ("8df7e8f9-3a12-4355-8a53-0f213f1f250b",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'migrateBaseToReferential',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one battr related by self->O_BATTR[R106];
+if ( not_empty battr )
+  battr.dispose();
+end if;
+create object instance rattr of O_RATTR;
+rattr.Ref_Mode = 1;  // use referred to attribute name
+relate self to rattr across R106;
+
+rattr.setDatatype();
+',
+	1,
+	'',
+	"f877f63e-686e-4ceb-9480-f1528810b202");
+INSERT INTO O_TFR
+	VALUES ("d99879a3-66e0-46d9-8d4f-e146fdd9dca1",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'moveUp',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'::changeNotificationEnablement(enabled:false);
+select one prev_attr related by self->O_ATTR[R103.''succeeds''];
+select one prev_prev_attr related by prev_attr->O_ATTR[R103.''succeeds''];
+select one next_attr related by self->O_ATTR[R103.''precedes''];
+
+if ( not_empty prev_prev_attr )
+  unrelate prev_attr from prev_prev_attr across R103.''succeeds'';
+end if;
+if ( not_empty next_attr )
+  unrelate next_attr from self across R103.''succeeds'';
+end if;
+unrelate self from prev_attr across R103.''succeeds'';
+
+if ( not_empty prev_prev_attr )
+  relate self to prev_prev_attr across R103.''succeeds'';
+end if;
+// want to enable listeners at the last possible moment
+if ( empty next_attr )
+  ::changeNotificationEnablement(enabled:true);
+end if;
+relate prev_attr to self across R103.''succeeds'';
+if ( not_empty next_attr )
+  ::changeNotificationEnablement(enabled:true);
+  relate next_attr to prev_attr across R103.''succeeds'';
+end if;
+',
+	1,
+	'',
+	"a4fd8f57-a351-4e02-bd96-1a3cb29bb004");
+INSERT INTO O_TFR
+	VALUES ("a4fd8f57-a351-4e02-bd96-1a3cb29bb004",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'moveDown',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'::changeNotificationEnablement(enabled:false);
+select one next_attr related by self->O_ATTR[R103.''precedes''];
+select one prev_attr related by self->O_ATTR[R103.''succeeds''];
+select one next_next_attr related by next_attr->O_ATTR[R103.''precedes''];
+
+if ( not_empty next_next_attr )
+  unrelate next_next_attr from next_attr across R103.''succeeds'';
+end if;
+if ( not_empty prev_attr )
+  unrelate self from prev_attr across R103.''succeeds'';
+end if;
+unrelate next_attr from self across R103.''succeeds'';
+
+if ( not_empty prev_attr )
+  relate next_attr to prev_attr across R103.''succeeds'';
+end if;
+   
+// want to enable listeners at the last possible moment
+if ( empty next_next_attr )
+  ::changeNotificationEnablement(enabled:true);
+end if;
+relate self to next_attr across R103.''succeeds'';
+if ( not_empty next_next_attr )
+  ::changeNotificationEnablement(enabled:true);
+  relate next_next_attr to self across R103.''succeeds'';
+end if;',
+	1,
+	'',
+	"68bde191-e459-4532-b6f5-fb01f32c3dfe");
+INSERT INTO O_TFR
+	VALUES ("d8538266-fc30-4f90-8f20-897bfb0456b8",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'addToIdentifier',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any oid related by self->O_OBJ[R102]->O_ID[R104]
+     where selected.Oid_ID == param.oid;
+create object instance oida of O_OIDA;
+relate self to oid across R105 using oida;
+select many rto_set related by oid->R_RTO[R109];
+for each rto in rto_set
+  rto.addAttributeToIdentifier( attr_id: self.Attr_ID );
+end for;',
+	1,
+	'',
+	"36bebd2c-b63e-4d50-9204-7eb710802e52");
+INSERT INTO O_TPARM
+	VALUES ("e843bd7f-a78a-4301-9f33-a24fa6a7bcce",
+	"d8538266-fc30-4f90-8f20-897bfb0456b8",
+	'oid',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("20b8db87-06d3-432e-9ce2-1d53c8e32a8a",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'removeFromIdentifier',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select any oida related by self->O_OIDA[R105]
+    where selected.Oid_ID == param.oid;
+select one oid related by oida->O_ID[R105];
+select many id_attr_set related by oid->O_OIDA[R105];
+if ( cardinality id_attr_set == 1 )
+  // if this is the last attribute in this id, make sure it''s not
+  // being referenced
+  select any rtida related by oida->O_RTIDA[R110];
+  if ( not_empty rtida )
+    return "Operation not allowed.  Cannot remove the last attribute from an identifying attribute used to formalize an association.";
+  end if;
+end if;
+
+oida.dispose();
+
+return "";
+',
+	1,
+	'',
+	"d99879a3-66e0-46d9-8d4f-e146fdd9dca1");
+INSERT INTO O_TPARM
+	VALUES ("02e7230c-1075-4e18-aae5-062fbfae8244",
+	"20b8db87-06d3-432e-9ce2-1d53c8e32a8a",
+	'oid',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("0496ea28-f6fb-42fa-a846-ef25f4d708a0",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'canDelete',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if (self.Name == "current_state")
+  select one dt related by self->S_DT[R114];
+  if (dt.Name == "state<State_Model>")
+    select one ism related by self->O_OBJ[R102]->SM_ISM[R518];
+    if (not_empty ism)
+      /*Now check if there are other attributes with same name & dt, if there 
+      are any let this be deleteable and renameable*/
+      select many attrs related by self->O_OBJ[R102]->O_ATTR[R102] where selected.Name == "current_state";
+      if (cardinality attrs > 1)
+        exist = false;
+        for each attr in attrs
+          select one adt related by attr->S_DT[R114];
+          if (adt.Name == "state<State_Model>" and self != attr)
+            exist = true;
+          end if;
+        end for;
+        return exist;
+      else
+        return false;
+      end if;
+    end if;
+  end if;
+else   
+  select one refAttr related by self->O_RATTR[R106];
+  if (not_empty refAttr)
+    return false;
+  end if;
+end if;
+return true;',
+	1,
+	'',
+	"d8538266-fc30-4f90-8f20-897bfb0456b8");
+INSERT INTO O_TFR
+	VALUES ("6b3f9ddf-bc93-4d71-9297-356d6bccebfe",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'canRename',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if (self.Name == "current_state")
+  select one dt related by self->S_DT[R114];
+  if (dt.Name == "state<State_Model>")
+    select one ism related by self->O_OBJ[R102]->SM_ISM[R518];
+    if (not_empty ism)
+      /*Now check if there are other attributes with same name & dt, if there 
+      are any let this be deleteable and renameable*/
+      select many attrs related by self->O_OBJ[R102]->O_ATTR[R102] where selected.Name == "current_state";
+      if (cardinality attrs > 1)
+        exist = false;
+        for each attr in attrs
+          select one adt related by attr->S_DT[R114];
+          if (adt.Name == "state<State_Model>" and self != attr)
+            exist = true;
+          end if;
+        end for;
+        return exist;
+      else
+        return false;
+      end if;
+    end if;
+  end if;
+else   
+  select one refAttr related by self->O_RATTR[R106];
+  if (not_empty refAttr)
+    if (refAttr.Ref_Mode != 0)
+      return false;
+    end if;
+  end if;
+end if;
+return true;',
+	1,
+	'',
+	"f0c2c520-1455-4d14-b7d1-9e6a9975221f");
+INSERT INTO O_TFR
+	VALUES ("4afb9a15-b8ed-4121-9a01-68e1599794ae",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'get_root',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one battr related by self->O_BATTR[R106];
+if ( not_empty battr )
+  return self.Root_Nam;
+else
+  select one rattr related by self->O_RATTR[R106];
+  return rattr.get_root();
+end if;',
+	1,
+	'',
+	"5c16a025-a4a8-4bc4-b4f9-9a5fa770132e");
+INSERT INTO O_TFR
+	VALUES ("5c16a025-a4a8-4bc4-b4f9-9a5fa770132e",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'get_prefix',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one battr related by self->O_BATTR[R106];
+if ( not_empty battr )
+  if ( self.Pfx_Mode == 1 )  // use local prefix
+    return self.Prefix;
+  else
+    // can''t be referred to prefix, must be no prefix
+    return "";
+  end if;
+else
+  select one rattr related by self->O_RATTR[R106];
+  return rattr.get_prefix();
+end if;',
+	1,
+	'',
+	"b606fadc-4449-46f6-873e-7f49c0a6fed6");
+INSERT INTO O_TFR
+	VALUES ("13dfad99-b3fb-43c7-b3b8-a0ef392af880",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// just return this instance as an Object
+return this;',
+	0,
+	'',
+	"6b3f9ddf-bc93-4d71-9297-356d6bccebfe");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("b606fadc-4449-46f6-873e-7f49c0a6fed6",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Attr_ID;',
+	1,
+	'',
+	"49e603e5-0349-4295-8db1-1aee0ccfc1ac");
+INSERT INTO O_TFR
+	VALUES ("6db887ac-e0b5-4a07-bf76-bd28489470c6",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'resolveDatatype',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// if this attribute is a proxy do not
+// try to resolve the dt, it can be a
+// proxy when a supertype model class
+// has been exported for state machine
+// resolution purposes
+if(Util::isProxy(element:self.convertToInstance()))
+  return;
+end if;
+
+select one dtProxy related by self->S_DT[R114];
+if(not_empty dtProxy)
+  name = dtProxy.Name;
+  unrelate dtProxy from self across R114;
+  
+  select one packageableElem related by self->O_OBJ[R102]->PE_PE[R8001];
+  select one package related by packageableElem->EP_PKG[R8000];
+  select one component related by packageableElem->C_C[R8003];
+
+    id = packageableElem.resolveDataTypeRelativeToSelf(default_name:"integer",
+                                                            expected_name:name);                                                          
+    select any resolvedDt related by package->PE_VIS[R8002]->
+                         PE_PE[R8002]->S_DT[R8001] where selected.DT_ID == id;
+    if (empty resolvedDt)
+      select any resolvedDt related by component->PE_CVS[R8004]->
+                       PE_PE[R8004]->S_DT[R8001] where selected.DT_ID == id;
+    end if;	
+    if not_empty resolvedDt
+      relate resolvedDt to self across R114;
+    end if;
+end if;',
+	1,
+	'',
+	"a7541c24-ff4c-406a-8bc6-e26a60db1cf3");
+INSERT INTO O_TFR
+	VALUES ("49e603e5-0349-4295-8db1-1aee0ccfc1ac",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'getDimensionsCnt',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many dims related by self->S_DIM[R120];
+dimensions = cardinality dims;
+return dimensions;',
+	1,
+	'',
+	"8241d684-c340-4df3-9950-fffe4c751e6e");
+INSERT INTO O_TFR
+	VALUES ("a7541c24-ff4c-406a-8bc6-e26a60db1cf3",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'resizeDimensions',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// If the number of dimensions has increased then add dimensions
+while (param.numDimensions > self.getDimensionsCnt())
+  create object instance dim of S_DIM;
+  dim.dimensionCount = self.getDimensionsCnt();
+  relate dim to self across R120;
+end while;
+
+// If the number of dimensions has decreased then remove dimensions
+while (param.numDimensions < self.getDimensionsCnt())
+  select any dim related by self->S_DIM[R120] where (selected.dimensionCount == (self.getDimensionsCnt()-1));
+  unrelate dim from self across R120;
+  delete object instance dim;
+end while;
+
+// Update the specific dimension that was passed-in if its elementCount has 
+// changed.
+if (param.numDimensions > 0) 
+  select any dim related by self->S_DIM[R120] where (selected.dimensionCount == param.dimension);
+  if (dim.elementCount != param.elementCount)
+    dim.elementCount = param.elementCount;
+  end if;
+end if;
+',
+	1,
+	'',
+	"20b8db87-06d3-432e-9ce2-1d53c8e32a8a");
+INSERT INTO O_TPARM
+	VALUES ("6137f248-2f8e-4bb9-b8d6-d055dd7e87d7",
+	"a7541c24-ff4c-406a-8bc6-e26a60db1cf3",
+	'numDimensions',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"e0ccb5b6-f19c-42a4-b3a9-69833fe51a8f",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("e0ccb5b6-f19c-42a4-b3a9-69833fe51a8f",
+	"a7541c24-ff4c-406a-8bc6-e26a60db1cf3",
+	'elementCount',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"e78de7e0-5dc5-4f6e-ba52-b123fbe019b7",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("e78de7e0-5dc5-4f6e-ba52-b123fbe019b7",
+	"a7541c24-ff4c-406a-8bc6-e26a60db1cf3",
+	'dimension',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f0c2c520-1455-4d14-b7d1-9e6a9975221f",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'canReferToDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// select the dt
+select one dt related by self->S_DT[R114];
+if(not_empty dt)
+  select one packageableElem related by self->O_OBJ[R102]->PE_PE[R8001];
+
+    return packageableElem.canReferToDataType(dtID:dt.DT_ID, dtName: dt.Name);
+end if;
+return false;',
+	1,
+	'',
+	"0496ea28-f6fb-42fa-a846-ef25f4d708a0");
+INSERT INTO O_TFR
+	VALUES ("a6c56e46-5dc1-4a30-9dcb-c71d75207821",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'isReferringToDefaultDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one dt related by self->S_DT[R114];
+elementType = Util::getSimpleClassName(element:self.convertToInstance());
+if(dt.Name == S_DT::getDefaultDataTypeName(elementType:elementType))
+  return true;
+end if;
+return false;',
+	1,
+	'',
+	"65630298-d8c9-44d0-89ac-8fc45e3116a2");
+INSERT INTO O_TFR
+	VALUES ("28153523-9558-4cdf-bb55-fb70cf767097",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'canUseDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// Attribute::canUseDataType()
+select one packageableElem related by self->O_OBJ[R102]->PE_PE[R8001];
+select one package related by packageableElem->EP_PKG[R8000];
+select one component related by packageableElem->C_C[R8003];
+
+  // Find the previously created visibility list
+  select any resultSet related by package->PE_SRS[R8005] where
+        selected.Name == "" and selected.Type == ElementTypeConstants::DATATYPE;
+  select any dt related by resultSet->PE_VIS[R8006]->
+                     PE_PE[R8002]->S_DT[R8001] where selected.DT_ID == param.id;
+  if not_empty component
+    // Find the previously created visibility list
+    select any compResultSet related by component->PE_CRS[R8007] where
+        selected.Name == "" and selected.Type == ElementTypeConstants::DATATYPE;
+    select any dt related by compResultSet->PE_CVS[R8008]->
+                     PE_PE[R8004]->S_DT[R8001] where selected.DT_ID == param.id;
+  end if;
+  if(not_empty dt)
+    if(self.isAllowedType(typeName:dt.Name))
+      return true;
+    end if;
+  end if;
+  return false;
+',
+	1,
+	'',
+	"6db887ac-e0b5-4a07-bf76-bd28489470c6");
+INSERT INTO O_TPARM
+	VALUES ("c8c4fe9e-0078-44a3-8de1-45e54b41c3ab",
+	"28153523-9558-4cdf-bb55-fb70cf767097",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("4d14c713-436a-43e5-88e3-679e85e79c04",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'checkIntegrity',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// check for any attributes with the same name
+select one package related by self->O_OBJ[R102]->PE_PE[R8001]->EP_PKG[R8000];
+select many attributes related by self->O_OBJ[R102]->O_ATTR[R102];
+for each attribute in attributes
+  if(attribute != self and attribute.Name == self.Name)
+    select one system related by package->S_SYS[R1405];
+    sys_id = GD::NULL_UNIQUE_ID();
+    if(not_empty system)
+      sys_id = system.Sys_ID;
+    end if;
+    select one class related by self->O_OBJ[R102];
+	MI_IM::createIssue(sys_id:sys_id, description:
+	               "Found another attribute under the same class " +
+	            "with the same name.", severity:Severity::Error, name:self.Name,
+	   path:class.getPath(path:self.Name, includeSelf:true), id:self.Attr_ID,
+	                                          element:self.convertToInstance());
+  end if;
+end for;',
+	1,
+	'',
+	"28153523-9558-4cdf-bb55-fb70cf767097");
+INSERT INTO O_NBATTR
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"00000000-0000-0000-0000-000000000000",
+	'Attr_ID',
+	'Full Name: Attribute Identifier
+Description: A unique identifier for an instance of attribute.',
+	'',
+	'Attr_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"1cfca1bb-b1db-4fce-92ce-3cadad04f725",
+	"d274b764-cc3d-4b5d-95ef-6f57122a9134",
+	"f4f08ea4-b389-4a6a-a0b6-7c4b39723962",
+	"04e936c6-fa9c-4446-a0be-ab1427bf49b8",
+	"72b42db2-8b72-49bb-accd-8124845aade7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Attribute',
+	'Attr_ID',
+	'R103.''succeeds''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"1cfca1bb-b1db-4fce-92ce-3cadad04f725",
+	"d274b764-cc3d-4b5d-95ef-6f57122a9134",
+	'../Subsystem.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"1cfca1bb-b1db-4fce-92ce-3cadad04f725",
+	"f4f08ea4-b389-4a6a-a0b6-7c4b39723962",
+	'../Subsystem.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("04e936c6-fa9c-4446-a0be-ab1427bf49b8",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	1,
+	'Attr_ID');
+INSERT INTO O_ATTR
+	VALUES ("04e936c6-fa9c-4446-a0be-ab1427bf49b8",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	'PAttr_ID',
+	'',
+	'P',
+	'Attr_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("ff1857b9-df7f-4280-9e4a-f8e6a94f41a5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'if ( self.Pfx_Mode == 1 )  // use local prefix
+  select one rattr related by self->O_RATTR[R106];
+  if ( empty rattr )
+    self.Name = self.Prefix + self.Root_Nam;
+  else
+    self.Name = self.Prefix + rattr.get_root_name();
+      end if;
+elif ( self.Pfx_Mode == 2 )  // use referred to prefix
+  select one rattr related by self->O_RATTR[R106];
+  if ( empty rattr )
+    self.Name = ::getOrphanedElementName();
+  else
+    self.Name = rattr.get_prefix_string() + rattr.get_root_name();
+      end if;
+else  // no prefix
+  select one rattr related by self->O_RATTR[R106];
+  if ( empty rattr )
+    self.Name = self.Root_Nam;
+  else
+    self.Name = rattr.get_root_name();
+  end if;
+end if;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("ff1857b9-df7f-4280-9e4a-f8e6a94f41a5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("ff1857b9-df7f-4280-9e4a-f8e6a94f41a5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"04e936c6-fa9c-4446-a0be-ab1427bf49b8",
+	'Name',
+	'Full Name: Attribute Name
+Description: The name of the class attribute as it appears on the OIM of the application analysis domain.  The name of the class attribute is mathematically derived from ''O_ATTR.Root_Nam'', ''O_ATTR.Prefix'', and ''O_ATTR.Prx_Mode''.',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("bd5b143d-232b-4087-a24b-08ed6da8c198",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("bd5b143d-232b-4087-a24b-08ed6da8c198",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("bd5b143d-232b-4087-a24b-08ed6da8c198",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"ff1857b9-df7f-4280-9e4a-f8e6a94f41a5",
+	'Descrip',
+	'Full Name: Description
+Description:  A textual description of the class attribute as specified in the application analysis domain.',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("55d2f656-b4ee-4b17-99de-20aff8487c7e",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("55d2f656-b4ee-4b17-99de-20aff8487c7e",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("55d2f656-b4ee-4b17-99de-20aff8487c7e",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"bd5b143d-232b-4087-a24b-08ed6da8c198",
+	'Prefix',
+	'Full Name: Attribute Name Prefix
+Description: Prefix for the attribute.',
+	'',
+	'Prefix',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6bf5bbd6-fcee-4f59-bc3a-9e6c35005a9b",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("6bf5bbd6-fcee-4f59-bc3a-9e6c35005a9b",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("6bf5bbd6-fcee-4f59-bc3a-9e6c35005a9b",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"55d2f656-b4ee-4b17-99de-20aff8487c7e",
+	'Root_Nam',
+	'Full Name: Attribute Root Name
+Description: The root name (name without prefix) of the attribute',
+	'',
+	'Root_Nam',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("62228e06-171d-46e6-8898-1f3ed9f8d917",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("62228e06-171d-46e6-8898-1f3ed9f8d917",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("62228e06-171d-46e6-8898-1f3ed9f8d917",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"6bf5bbd6-fcee-4f59-bc3a-9e6c35005a9b",
+	'Pfx_Mode',
+	'Full Name: Prefix Mode
+Description: Indicates usage of a prefix.
+Data Domain: 0 = uses no prefix, 1 = uses local prefix, 2 = uses referred to prefix
+
+enum0: No Prefix
+enum1: Prefix
+enum2: Referred To Prefix
+',
+	'',
+	'Pfx_Mode',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("b0c3d47b-1341-4b8e-a5b1-ae551976bfce",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("b0c3d47b-1341-4b8e-a5b1-ae551976bfce",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("b0c3d47b-1341-4b8e-a5b1-ae551976bfce",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"200bd22b-7e01-4fe5-ac8c-240aacb86f2a",
+	'Dimensions',
+	'Full Name: Array Dimensions',
+	'',
+	'Dimensions',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1bfb15c8-9bbb-4e58-b27f-8c479ccb737d",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_BATTR
+	VALUES ("1bfb15c8-9bbb-4e58-b27f-8c479ccb737d",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ATTR
+	VALUES ("1bfb15c8-9bbb-4e58-b27f-8c479ccb737d",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"b0c3d47b-1341-4b8e-a5b1-ae551976bfce",
+	'DefaultValue',
+	'Full Name: Default Value
+Description: This attribute holds text representing the initialization value for this attribute upon instance creation.
+',
+	'',
+	'DefaultValue',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"35133802-1b64-4470-b677-760b79f4e5da",
+	"237047a4-e1b9-4d45-9020-c48e5eb8a8d4",
+	"2ffffe5d-420c-4fb2-b470-fe1315017764",
+	"103e2594-dae3-47a5-a063-fe1361ff4438",
+	"200bd22b-7e01-4fe5-ac8c-240aacb86f2a",
+	"2ce2740f-b66c-4796-b551-d2778931b04f",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Data Type',
+	'DT_ID',
+	'R114.''defines type of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"237047a4-e1b9-4d45-9020-c48e5eb8a8d4",
+	"2ffffe5d-420c-4fb2-b470-fe1315017764",
+	'../Subsystem.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("35133802-1b64-4470-b677-760b79f4e5da",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"237047a4-e1b9-4d45-9020-c48e5eb8a8d4",
+	"103e2594-dae3-47a5-a063-fe1361ff4438",
+	'../Subsystem.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("200bd22b-7e01-4fe5-ac8c-240aacb86f2a",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("200bd22b-7e01-4fe5-ac8c-240aacb86f2a",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"62228e06-171d-46e6-8898-1f3ed9f8d917",
+	'DT_ID',
+	'',
+	'',
+	'Element_ID',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"17d86b5f-0053-47ae-8312-48e5145617f0",
+	"eb7c5bde-3ada-43e2-a27c-7f61533879f6",
+	"836929c3-423e-4329-99a6-0510b1f436f9",
+	"37b62e9e-bac3-4ec1-9447-1c4d8f539edf",
+	"2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"aa27d24c-cfa0-47c4-ab93-d5313c101b48",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Model Class',
+	'Obj_ID',
+	'R102.''abstracts characteristics of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"eb7c5bde-3ada-43e2-a27c-7f61533879f6",
+	"836929c3-423e-4329-99a6-0510b1f436f9",
+	'../Subsystem.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("17d86b5f-0053-47ae-8312-48e5145617f0",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"eb7c5bde-3ada-43e2-a27c-7f61533879f6",
+	"37b62e9e-bac3-4ec1-9447-1c4d8f539edf",
+	'../Subsystem.xtuml');
+INSERT INTO O_REF
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"1cfca1bb-b1db-4fce-92ce-3cadad04f725",
+	"d274b764-cc3d-4b5d-95ef-6f57122a9134",
+	"f4f08ea4-b389-4a6a-a0b6-7c4b39723962",
+	"2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"05a3d90b-5543-43ce-919a-346ce132ca18",
+	"aa27d24c-cfa0-47c4-ab93-d5313c101b48",
+	0,
+	'',
+	'Attribute',
+	'Obj_ID',
+	'R103.''succeeds''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"1cfca1bb-b1db-4fce-92ce-3cadad04f725",
+	"f4f08ea4-b389-4a6a-a0b6-7c4b39723962",
+	'../Subsystem.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	'Obj_ID',
+	'',
+	'',
+	'Obj_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_OIDA
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	'Attr_ID');
+INSERT INTO O_OIDA
+	VALUES ("2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	'Obj_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO O_ID
+	VALUES (2,
+	"fd352c4f-1255-4579-b497-90365ef7aa0d");
+INSERT INTO PE_PE
+	VALUES ("fd352c4f-1255-4579-b497-90365ef7aa0d",
+	1,
+	"c911a9af-f860-4c80-b3fc-340550bf9bcd",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c911a9af-f860-4c80-b3fc-340550bf9bcd",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Subsystem',
+	'A class (O_OBJ)  is an abstraction of a real world thing that has specific attributes (O_ATTR) and, if active, has a lifecycle model as a state machine (SM_SM).  All instances of the class must have the same characteristics and follow the same state behavior.  Classes fall into many categories, some of which are: tangible things, roles, interactions and specifications. ',
+	101,
+	'../Subsystem.xtuml');

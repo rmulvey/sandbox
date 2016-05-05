@@ -1,0 +1,144 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7bc20dc3-a900-4798-b65a-4147152118f0",
+	'Satisfaction In Component',
+	9000,
+	'PA_SIC',
+	'User_Visible:false',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("7bc20dc3-a900-4798-b65a-4147152118f0",
+	"635d3b9b-edc6-456d-888d-7375eef81516",
+	0,
+	"60a1905f-e390-4af7-8e38-ce84e413b25d",
+	"c55d5a5d-503f-4f5e-b01d-1c9b03c30781",
+	"139f03b7-109d-4219-91e6-ba735a3273fe",
+	"37885bf8-5b51-4f43-99ad-1573acc1a33d",
+	"72d9f15b-2d2f-45d9-9f60-d6eebcbec3dd",
+	"b10d69d9-880d-4b39-9b07-1ceb7af72e3b",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Component',
+	'Id',
+	'R9000');
+INSERT INTO R_RGO_PROXY
+	VALUES ("7bc20dc3-a900-4798-b65a-4147152118f0",
+	"c55d5a5d-503f-4f5e-b01d-1c9b03c30781",
+	"139f03b7-109d-4219-91e6-ba735a3273fe",
+	'../Persistence Associations.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("60a1905f-e390-4af7-8e38-ce84e413b25d",
+	"635d3b9b-edc6-456d-888d-7375eef81516",
+	0,
+	"c55d5a5d-503f-4f5e-b01d-1c9b03c30781",
+	"37885bf8-5b51-4f43-99ad-1573acc1a33d",
+	'../Persistence Associations.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("72d9f15b-2d2f-45d9-9f60-d6eebcbec3dd",
+	"7bc20dc3-a900-4798-b65a-4147152118f0",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("72d9f15b-2d2f-45d9-9f60-d6eebcbec3dd",
+	"7bc20dc3-a900-4798-b65a-4147152118f0",
+	"00000000-0000-0000-0000-000000000000",
+	'Component_Id',
+	'',
+	'Component_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("7bc20dc3-a900-4798-b65a-4147152118f0",
+	"d9bc1626-8625-4e0a-9b0b-4b665f303da8",
+	0,
+	"2fe092f6-5e22-4d82-8143-cc1904978ea9",
+	"c55d5a5d-503f-4f5e-b01d-1c9b03c30781",
+	"139f03b7-109d-4219-91e6-ba735a3273fe",
+	"68ea53ce-812c-4575-a7fc-ee4c9f5b20c8",
+	"cc11a974-8f1a-4050-836c-7e8e0f49f380",
+	"86bc7a15-b3b9-4583-99ed-467d6a6431a2",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Satisfaction',
+	'Id',
+	'R9000');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("2fe092f6-5e22-4d82-8143-cc1904978ea9",
+	"d9bc1626-8625-4e0a-9b0b-4b665f303da8",
+	0,
+	"c55d5a5d-503f-4f5e-b01d-1c9b03c30781",
+	"68ea53ce-812c-4575-a7fc-ee4c9f5b20c8",
+	'../Persistence Associations.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("cc11a974-8f1a-4050-836c-7e8e0f49f380",
+	"7bc20dc3-a900-4798-b65a-4147152118f0",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("cc11a974-8f1a-4050-836c-7e8e0f49f380",
+	"7bc20dc3-a900-4798-b65a-4147152118f0",
+	"72d9f15b-2d2f-45d9-9f60-d6eebcbec3dd",
+	'Satisfaction_Id',
+	'',
+	'Satisfaction_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (2,
+	"7bc20dc3-a900-4798-b65a-4147152118f0");
+INSERT INTO O_ID
+	VALUES (1,
+	"7bc20dc3-a900-4798-b65a-4147152118f0");
+INSERT INTO O_ID
+	VALUES (0,
+	"7bc20dc3-a900-4798-b65a-4147152118f0");
+INSERT INTO O_OIDA
+	VALUES ("72d9f15b-2d2f-45d9-9f60-d6eebcbec3dd",
+	"7bc20dc3-a900-4798-b65a-4147152118f0",
+	0,
+	'Component_Id');
+INSERT INTO O_OIDA
+	VALUES ("cc11a974-8f1a-4050-836c-7e8e0f49f380",
+	"7bc20dc3-a900-4798-b65a-4147152118f0",
+	0,
+	'Satisfaction_Id');
+INSERT INTO PE_PE
+	VALUES ("7bc20dc3-a900-4798-b65a-4147152118f0",
+	1,
+	"c78f7ddf-352a-4cc4-9819-b28ae661f953",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c78f7ddf-352a-4cc4-9819-b28ae661f953",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Persistence Associations',
+	'This subsystem contains associations required to allow correct persistence
+locations.
+
+Once the infrastructure is fixed to correctly allow multiple traversals between
+export items, this subsystem shall be removed.
+
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+
+Persistent:false',
+	9000,
+	'../Persistence Associations.xtuml');

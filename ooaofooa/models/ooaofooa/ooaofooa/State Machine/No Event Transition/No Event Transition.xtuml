@@ -1,0 +1,268 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	'No Event Transition',
+	509,
+	'SM_NETXN',
+	'A no event transition is a transition between to states to which no event is currently assigned. ',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("528a7677-0c58-437a-b5ca-50ccf5a0771f",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	'get_connector_text',
+	'''No Event Assigned'' is always returned.
+-----------------------------------------------------------------------------------
+Bridge:GD
+',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'return "No Event Assigned";',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("01bc48d8-6118-4a3a-bb7f-a7a9147b0fc4",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	'get_name',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one initial_state related by self->SM_STATE[R508];
+select one final_state related by self->SM_TXN[R507]->SM_STATE[R506];
+if ( not_empty initial_state and not_empty final_state )
+  return initial_state.Name + "/" + final_state.Name;
+else
+  // during import may not be related yet
+  return "";
+end if;
+',
+	1,
+	'',
+	"528a7677-0c58-437a-b5ca-50ccf5a0771f");
+INSERT INTO O_REF
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"cb0e282d-74c6-4f86-8256-4bc5b089a582",
+	0,
+	"e3ca4e53-1fca-4541-95f0-736cbff77e75",
+	"db89f334-e7f7-4edf-bcf5-90d867e733a3",
+	"5bfead79-9308-4ac1-8ba9-ae33d7f2aa9c",
+	"2c0a9a8e-21ea-475e-98f0-c0d8d29f54f8",
+	"45503e94-7f13-43fb-b959-08504af5c591",
+	"f6ff8d8d-4f71-4d7a-b7e8-5153ab2b5b40",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Transition',
+	'Trans_ID',
+	'R507');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"db89f334-e7f7-4edf-bcf5-90d867e733a3",
+	"5bfead79-9308-4ac1-8ba9-ae33d7f2aa9c",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("e3ca4e53-1fca-4541-95f0-736cbff77e75",
+	"cb0e282d-74c6-4f86-8256-4bc5b089a582",
+	0,
+	"db89f334-e7f7-4edf-bcf5-90d867e733a3",
+	"2c0a9a8e-21ea-475e-98f0-c0d8d29f54f8",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("45503e94-7f13-43fb-b959-08504af5c591",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"e3ca4e53-1fca-4541-95f0-736cbff77e75",
+	"cb0e282d-74c6-4f86-8256-4bc5b089a582",
+	1,
+	'Trans_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("e3ca4e53-1fca-4541-95f0-736cbff77e75",
+	"cb0e282d-74c6-4f86-8256-4bc5b089a582",
+	'../Transition/Transition.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("45503e94-7f13-43fb-b959-08504af5c591",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"00000000-0000-0000-0000-000000000000",
+	'Trans_ID',
+	'
+
+',
+	'',
+	'Trans_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"057bc1d4-d11a-40fe-bfb9-e1bd7658f24d",
+	0,
+	"769395a9-378f-4c72-9fb6-a4b14f155ff3",
+	"2dace8a2-725e-4fe0-a624-8a632b8045c4",
+	"c9e5936f-6b6b-4d41-9935-706c38eb54f2",
+	"97e561c9-33c7-4018-b485-9b05de838a46",
+	"3febee7d-8414-4ca4-b2e2-67c2846cd053",
+	"7ac47e42-1add-444a-9d58-8013b42a1884",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'State Machine State',
+	'SM_ID',
+	'R508.''originates from''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"2dace8a2-725e-4fe0-a624-8a632b8045c4",
+	"c9e5936f-6b6b-4d41-9935-706c38eb54f2",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("769395a9-378f-4c72-9fb6-a4b14f155ff3",
+	"057bc1d4-d11a-40fe-bfb9-e1bd7658f24d",
+	0,
+	"2dace8a2-725e-4fe0-a624-8a632b8045c4",
+	"97e561c9-33c7-4018-b485-9b05de838a46",
+	'../State Machine.xtuml');
+INSERT INTO O_REF
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"cb0e282d-74c6-4f86-8256-4bc5b089a582",
+	0,
+	"ea0fba5a-5570-412e-8222-0c9ed1e969a9",
+	"db89f334-e7f7-4edf-bcf5-90d867e733a3",
+	"5bfead79-9308-4ac1-8ba9-ae33d7f2aa9c",
+	"2c0a9a8e-21ea-475e-98f0-c0d8d29f54f8",
+	"3febee7d-8414-4ca4-b2e2-67c2846cd053",
+	"2493d3b8-0c47-4af0-8ba1-96abf21c86c8",
+	"7ac47e42-1add-444a-9d58-8013b42a1884",
+	0,
+	'',
+	'Transition',
+	'SM_ID',
+	'R507');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("ea0fba5a-5570-412e-8222-0c9ed1e969a9",
+	"cb0e282d-74c6-4f86-8256-4bc5b089a582",
+	0,
+	"db89f334-e7f7-4edf-bcf5-90d867e733a3",
+	"2c0a9a8e-21ea-475e-98f0-c0d8d29f54f8",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("3febee7d-8414-4ca4-b2e2-67c2846cd053",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	1,
+	'SM_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	'../State Machine/State Machine.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("3febee7d-8414-4ca4-b2e2-67c2846cd053",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"45503e94-7f13-43fb-b959-08504af5c591",
+	'SM_ID',
+	'',
+	'',
+	'SM_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"057bc1d4-d11a-40fe-bfb9-e1bd7658f24d",
+	0,
+	"5f53a782-ac02-423a-afd2-43e90959c0d4",
+	"2dace8a2-725e-4fe0-a624-8a632b8045c4",
+	"c9e5936f-6b6b-4d41-9935-706c38eb54f2",
+	"97e561c9-33c7-4018-b485-9b05de838a46",
+	"3714d9fa-8397-425e-9033-798806bacf18",
+	"d0bbc7f4-b4b8-405e-9f7c-d449bc76b3d1",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'State Machine State',
+	'SMstt_ID',
+	'R508.''originates from''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("5f53a782-ac02-423a-afd2-43e90959c0d4",
+	"057bc1d4-d11a-40fe-bfb9-e1bd7658f24d",
+	0,
+	"2dace8a2-725e-4fe0-a624-8a632b8045c4",
+	"97e561c9-33c7-4018-b485-9b05de838a46",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("3714d9fa-8397-425e-9033-798806bacf18",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"5f53a782-ac02-423a-afd2-43e90959c0d4",
+	"057bc1d4-d11a-40fe-bfb9-e1bd7658f24d",
+	1,
+	'SMstt_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("5f53a782-ac02-423a-afd2-43e90959c0d4",
+	"057bc1d4-d11a-40fe-bfb9-e1bd7658f24d",
+	'../State Machine State/State Machine State.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("3714d9fa-8397-425e-9033-798806bacf18",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"3febee7d-8414-4ca4-b2e2-67c2846cd053",
+	'SMstt_ID',
+	'',
+	'',
+	'SMstt_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("bdfe67a8-4959-4924-9544-e416679c02be",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d");
+INSERT INTO O_BATTR
+	VALUES ("bdfe67a8-4959-4924-9544-e416679c02be",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d");
+INSERT INTO O_ATTR
+	VALUES ("bdfe67a8-4959-4924-9544-e416679c02be",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	"3714d9fa-8397-425e-9033-798806bacf18",
+	'SMspd_ID',
+	'
+
+',
+	'',
+	'SMspd_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d");
+INSERT INTO O_OIDA
+	VALUES ("3febee7d-8414-4ca4-b2e2-67c2846cd053",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	0,
+	'SM_ID');
+INSERT INTO O_OIDA
+	VALUES ("45503e94-7f13-43fb-b959-08504af5c591",
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	0,
+	'Trans_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d");
+INSERT INTO O_ID
+	VALUES (2,
+	"fd0f8ede-2044-438c-98a1-c4871cfc7b6d");
+INSERT INTO PE_PE
+	VALUES ("fd0f8ede-2044-438c-98a1-c4871cfc7b6d",
+	1,
+	"3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'State Machine',
+	'Classes (O_OBJ) that have interesting behavior are given lifecycles. These lifecycles are described using state machines (SM_SM). A state machine consists of states, events, transitions and state actions. The state machine exists for each instance of the class for which it has been modeled (SM_ISM). A state machine can also be an assigner state machine (SM_ASM) of which only one can exists for all class instances. The purpose of the assigner state machine is to act as a single point of control through which competing requests are serialized.',
+	501,
+	'../State Machine.xtuml');

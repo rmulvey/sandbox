@@ -1,0 +1,650 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("fbf65e68-914f-4420-8041-af2de3fef08c",
+	'Imported Requirement',
+	4702,
+	'CL_IR',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'get_connector_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one satisfaction related by self->C_SF[R4706];
+if(not_empty satisfaction and not param.connected_disabled)
+  return "";  
+else
+  select one req related by self->CL_IIR[R4703]->C_IR[R4701]->C_R[R4009];
+  if(empty req)
+    return "";
+  end if;
+  if(param.at == End::Middle)
+    return req.Name;
+  elif(param.at == End::Start_Fixed)
+    return req.get_connector_text(Obj_ID:param.Obj_ID,
+    							   Obj_TypeIsImported:param.Obj_TypeIsImported,
+ 						    							   			at:param.at,
+    							   					 parent_ID:param.parent_ID,
+    				               connected_disabled:param.connected_disabled);
+  end if;
+end if;
+return "";',
+	1,
+	'',
+	"935e9261-c5ae-4a53-9bbc-9b7d798dad6f");
+INSERT INTO O_TPARM
+	VALUES ("abdfdc91-1a8c-4dd9-ad83-c73b5c8ef975",
+	"027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd",
+	'Obj_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8bc2a026-6f5c-4739-912e-5ea1346b8dc0",
+	"027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd",
+	'Obj_TypeIsImported',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"abdfdc91-1a8c-4dd9-ad83-c73b5c8ef975",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("d55b7623-a3e5-4714-a938-48b27fba7f7f",
+	"027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"8bc2a026-6f5c-4739-912e-5ea1346b8dc0",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f9390a28-d78e-4364-b005-bcf6767b5871",
+	"00000000-0000-0000-0000-000000000000",
+	'End',
+	'Text is positioned at a user adjustable offset from the Start, Middle and End of a connector. Start_Fixed and End_Fixed specify fixed position text found at the start and end of some connectors.
+-------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("06669552-ec1e-4d7f-b18d-7e68317e2a7d",
+	"027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd",
+	'parent_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"d55b7623-a3e5-4714-a938-48b27fba7f7f",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("204e8a0e-a21c-4286-a375-031e0afc2f3c",
+	"027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd",
+	'connected_disabled',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"06669552-ec1e-4d7f-b18d-7e68317e2a7d",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a72461a8-6153-4c50-b126-f28e11e6f485",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Id;',
+	1,
+	'',
+	"027fd6f4-6e4f-4ad8-b627-bde56e7fb3bd");
+INSERT INTO O_TFR
+	VALUES ("9f1be310-8cf0-4691-b839-3afb66933f20",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'select one requirement related by self->CL_IIR[R4703]->C_IR[R4701]->C_R[R4009];
+if(not_empty requirement)
+  return requirement.get_style(at:param.at);
+end if;
+return Style::None;',
+	1,
+	'',
+	"a72461a8-6153-4c50-b126-f28e11e6f485");
+INSERT INTO O_TPARM
+	VALUES ("2ad8f115-0dda-4519-b7c2-fb53b10127bd",
+	"9f1be310-8cf0-4691-b839-3afb66933f20",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("730d7b28-4596-4322-beaf-13135f0d656b",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"b95cedd2-1394-4d1a-8758-2b1c4b7c0f95");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("935e9261-c5ae-4a53-9bbc-9b7d798dad6f",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.dissatisfy();
+select one importedRef related by self->CL_IIR[R4703];
+if(not_empty importedRef)
+  unrelate self from importedRef across R4703;
+  importedRef.dispose();
+end if;
+delete object instance self;',
+	1,
+	'',
+	"730d7b28-4596-4322-beaf-13135f0d656b");
+INSERT INTO O_TFR
+	VALUES ("3f434a3b-d125-4e0d-8396-0a19d4fb6b1d",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'linkConnector',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if(self.canLinkConnector(to:param.to))
+  isLinked = false;
+  select one selfImportedRef related by self->CL_IIR[R4703];
+  select one component related by selfImportedRef->C_IR[R4701]->C_PO[R4016]->C_C[R4010];
+  if (param.to != GD::NULL_UNIQUE_ID())
+    select any provision from instances of C_P where(selected.Provision_Id == param.to);
+    if (not_empty provision)
+      isLinked = component.initializeRequirement(requirement_id:selfImportedRef.Id, provision_id:provision.Provision_Id, proceed:true);
+    else
+      select any importedRef from instances of CL_IIR where (selected.Id == param.to);
+      if (not_empty importedRef)
+        isLinked = component.initializeRequirement(requirement_id:selfImportedRef.Id, provision_id:importedRef.Id, proceed:true);
+      end if;
+    end if;    
+  end if;
+  return isLinked;
+end if;
+return false;
+',
+	1,
+	'',
+	"9f1be310-8cf0-4691-b839-3afb66933f20");
+INSERT INTO O_TPARM
+	VALUES ("5fb65d7f-acd4-4540-bd06-2ad8f22eeac2",
+	"3f434a3b-d125-4e0d-8396-0a19d4fb6b1d",
+	'to',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a431254b-bf7e-442f-a768-8aa5cbaab8a0",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'dissatisfy',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one satisfaction related by self->C_SF[R4706];
+if(not_empty satisfaction)
+  unrelate self from satisfaction across R4706;
+  satisfaction.dispose();
+end if;',
+	1,
+	'',
+	"3f434a3b-d125-4e0d-8396-0a19d4fb6b1d");
+INSERT INTO O_TFR
+	VALUES ("b95cedd2-1394-4d1a-8758-2b1c4b7c0f95",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'actionFilter',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if param.name == "can"
+  if param.value == "dissatisfy"
+    select one satisfaction related by self->C_SF[R4706];
+    if not_empty satisfaction
+      return true;
+    end if;
+  end if;
+end if;
+return false;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("963cfb2c-c243-4410-a846-a2ce969c0b1e",
+	"b95cedd2-1394-4d1a-8758-2b1c4b7c0f95",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("fb339865-c71d-4053-82b4-a63874c67813",
+	"b95cedd2-1394-4d1a-8758-2b1c4b7c0f95",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"963cfb2c-c243-4410-a846-a2ce969c0b1e",
+	'');
+INSERT INTO O_TFR
+	VALUES ("cf03fbf0-2794-4d82-8873-87744ce122ae",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'getSatisfactionCount',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select one satisfaction related by self->C_SF[R4706];
+if not_empty satisfaction
+  return 1;
+else
+  return 0;
+end if;',
+	1,
+	'',
+	"a431254b-bf7e-442f-a768-8aa5cbaab8a0");
+INSERT INTO O_TPARM
+	VALUES ("693440e6-b182-4b5c-8bdc-ad440d9a0f91",
+	"cf03fbf0-2794-4d82-8873-87744ce122ae",
+	'filterDelegations',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("31d8d909-82ef-4def-a66c-3c4922a1c4dd",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'canLinkConnector',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'isLinked = false;
+select one selfImportedRef related by self->CL_IIR[R4703];
+select one component related by selfImportedRef->C_IR[R4701]->C_PO[R4016]->C_C[R4010];
+if (param.to != GD::NULL_UNIQUE_ID())
+  select any provision from instances of C_P where(selected.Provision_Id == param.to);
+  if (not_empty provision)
+    isLinked = component.initializeRequirement(requirement_id:selfImportedRef.Id, provision_id:provision.Provision_Id, proceed:false);
+  else
+    select any importedRef from instances of CL_IIR where (selected.Id == param.to);
+    if (not_empty importedRef)
+      isLinked = component.initializeRequirement(requirement_id:selfImportedRef.Id, provision_id:importedRef.Id, proceed:false);
+    end if;
+  end if;    
+end if;
+return isLinked;
+',
+	1,
+	'',
+	"cf03fbf0-2794-4d82-8873-87744ce122ae");
+INSERT INTO O_TPARM
+	VALUES ("229bde6c-0267-474b-8c75-bfe30987fb7b",
+	"31d8d909-82ef-4def-a66c-3c4922a1c4dd",
+	'to',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a5622af8-7d95-49e2-8194-062c9af99bf5",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'get_connector_tooltip',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one req related by self->CL_IIR[R4703]->C_IR[R4701]->C_R[R4009];
+if(not_empty req)
+  return req.get_connector_tooltip(end:param.end);
+end if;
+return "";',
+	1,
+	'',
+	"31d8d909-82ef-4def-a66c-3c4922a1c4dd");
+INSERT INTO O_TPARM
+	VALUES ("9f252160-4042-4a1f-be76-5f0c8e977baa",
+	"a5622af8-7d95-49e2-8194-062c9af99bf5",
+	'end',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("85b20633-1a86-4546-aa6f-d028a71e240e",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'getConfigurationInheritanceElementId',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'select one requirement related by self->CL_IIR[R4703]->C_IR[R4701]
+                                                                   ->C_R[R4009];
+if(not_empty requirement)
+  return requirement.convertToInstance();
+end if;
+return self.convertToInstance();',
+	1,
+	'',
+	"a5622af8-7d95-49e2-8194-062c9af99bf5");
+INSERT INTO O_TFR
+	VALUES ("03d41e9e-ff32-4825-9900-7f6f2d0db36d",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'isSynchronized',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// ask the supertype
+select one importedRef related by self->CL_IIR[R4703];
+if(not_empty importedRef)
+  return importedRef.isSynchronized();
+end if;
+return true;',
+	1,
+	'',
+	"85b20633-1a86-4546-aa6f-d028a71e240e");
+INSERT INTO O_TFR
+	VALUES ("9e3416bf-c49f-4467-84f4-ad0efdff6293",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'getCachedName',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'	return m_name;',
+	0,
+	'',
+	"03d41e9e-ff32-4825-9900-7f6f2d0db36d");
+INSERT INTO O_TFR
+	VALUES ("f037af56-1446-4bc9-a4c7-316e628a1581",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'setCachedName',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'	m_name = p_Name;',
+	0,
+	'',
+	"9e3416bf-c49f-4467-84f4-ad0efdff6293");
+INSERT INTO O_TPARM
+	VALUES ("5008fbec-69b6-426a-b0df-c3f31fe8a6b5",
+	"f037af56-1446-4bc9-a4c7-316e628a1581",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("4b282506-e6de-49b5-9461-3213f138f594",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'collectChanges',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  Collect changes that will occur once this imported reference is synchronized
+ */
+if(not self.isSynchronized())
+  // create a removal change
+  Util::createElementChange(changeList: param.changeList,
+                                        elementChanged:self.convertToInstance(),
+                                     isRemoval:true, changeLabel:"removed");
+end if;',
+	1,
+	'',
+	"f037af56-1446-4bc9-a4c7-316e628a1581");
+INSERT INTO O_TPARM
+	VALUES ("cd1a3763-dc2e-4647-88f1-a549af3739d3",
+	"4b282506-e6de-49b5-9461-3213f138f594",
+	'changeList',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("18db84b9-31e1-435f-92ba-4ca3a8842f52",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'synchronize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/*
+ *  Synchronize by removing the local ref
+ */
+if(not self.isSynchronized())
+  self.dispose();
+end if;',
+	1,
+	'',
+	"4b282506-e6de-49b5-9461-3213f138f594");
+INSERT INTO O_TFR
+	VALUES ("b61190a1-a6ae-4bf7-8fb7-eae5c203310c",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'getConnectedId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'select one satisfactionInstance related by self->C_SF[R4706] ;
+result = GD::NULL_UNIQUE_ID();
+if(not empty satisfactionInstance)
+  select one interfaceReference related by satisfactionInstance->C_P[R4002]->C_IR[R4009] ;
+  select any importedReference related by interfaceReference->CL_IIR[R4701] where selected.Ref_Id==satisfactionInstance.Provision_Id;
+  if (not_empty importedReference)   
+    result =  importedReference.Id;
+  end if;
+end if;
+return result;',
+	1,
+	'',
+	"18db84b9-31e1-435f-92ba-4ca3a8842f52");
+INSERT INTO O_DBATTR
+	VALUES ("d440b666-f5d7-4844-8cf9-61b8ebafb3b2",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	'name = self.getCachedName();
+select one requirement related by self->CL_IIR[R4703]->C_IR[R4701]->C_R[R4009];
+if(not_empty requirement)
+  name = requirement.Name;
+end if;
+self.setCachedName(name:name);
+self.Name = name;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("d440b666-f5d7-4844-8cf9-61b8ebafb3b2",
+	"fbf65e68-914f-4420-8041-af2de3fef08c");
+INSERT INTO O_ATTR
+	VALUES ("d440b666-f5d7-4844-8cf9-61b8ebafb3b2",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	"cf967e25-33b8-4820-b682-34e7c2e30c19",
+	'Name',
+	'Full Name: Imported Required Interface',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1f02844f-b3d7-4316-b7a5-101df50e8b69",
+	"fbf65e68-914f-4420-8041-af2de3fef08c");
+INSERT INTO O_BATTR
+	VALUES ("1f02844f-b3d7-4316-b7a5-101df50e8b69",
+	"fbf65e68-914f-4420-8041-af2de3fef08c");
+INSERT INTO O_ATTR
+	VALUES ("1f02844f-b3d7-4316-b7a5-101df50e8b69",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	"d440b666-f5d7-4844-8cf9-61b8ebafb3b2",
+	'Descrip',
+	'Full Name: Imported Required Interface Description
+Description: A textual description of this imported interface.',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fbf65e68-914f-4420-8041-af2de3fef08c",
+	"147125a0-06d2-4dfc-bd1c-668ac4ac52eb",
+	0,
+	"bf5bb791-1b7f-44b1-88ee-4215fd31c869",
+	"5bb7cec7-553a-4553-a702-1e72a312bb1a",
+	"3bc3228a-672e-4d51-9bef-b5aa34f795e0",
+	"1f084af4-089c-4424-83d9-8d9a2a93c4a8",
+	"d43c6f5a-d106-443d-bf22-4ab40c695135",
+	"9d7350fc-cb29-4a61-9087-ede1f44ac2ff",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Imported Reference',
+	'Id',
+	'R4703');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fbf65e68-914f-4420-8041-af2de3fef08c",
+	"5bb7cec7-553a-4553-a702-1e72a312bb1a",
+	"3bc3228a-672e-4d51-9bef-b5aa34f795e0",
+	'../Component Library.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("bf5bb791-1b7f-44b1-88ee-4215fd31c869",
+	"147125a0-06d2-4dfc-bd1c-668ac4ac52eb",
+	0,
+	"5bb7cec7-553a-4553-a702-1e72a312bb1a",
+	"1f084af4-089c-4424-83d9-8d9a2a93c4a8",
+	'../Component Library.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("d43c6f5a-d106-443d-bf22-4ab40c695135",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	"bf5bb791-1b7f-44b1-88ee-4215fd31c869",
+	"147125a0-06d2-4dfc-bd1c-668ac4ac52eb",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("bf5bb791-1b7f-44b1-88ee-4215fd31c869",
+	"147125a0-06d2-4dfc-bd1c-668ac4ac52eb",
+	'../Imported Reference/Imported Reference.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("d43c6f5a-d106-443d-bf22-4ab40c695135",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("fbf65e68-914f-4420-8041-af2de3fef08c",
+	"d9bc1626-8625-4e0a-9b0b-4b665f303da8",
+	0,
+	"2fe092f6-5e22-4d82-8143-cc1904978ea9",
+	"3faebeb7-9564-4c38-bc46-1c60d8a97bf4",
+	"ad1919dc-7db4-4948-be16-04adb21dbb0f",
+	"ec448ae2-c993-4c3e-a68d-afa65c51b4e3",
+	"cf967e25-33b8-4820-b682-34e7c2e30c19",
+	"524767b4-d13b-4e71-b3d9-1ca5e6a19371",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Satisfaction',
+	'Id',
+	'R4706.''provides satisfaction through''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fbf65e68-914f-4420-8041-af2de3fef08c",
+	"3faebeb7-9564-4c38-bc46-1c60d8a97bf4",
+	"ad1919dc-7db4-4948-be16-04adb21dbb0f",
+	'../Component Library.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("2fe092f6-5e22-4d82-8143-cc1904978ea9",
+	"d9bc1626-8625-4e0a-9b0b-4b665f303da8",
+	0,
+	"3faebeb7-9564-4c38-bc46-1c60d8a97bf4",
+	"ec448ae2-c993-4c3e-a68d-afa65c51b4e3",
+	'../Component Library.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("cf967e25-33b8-4820-b682-34e7c2e30c19",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("cf967e25-33b8-4820-b682-34e7c2e30c19",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	"d43c6f5a-d106-443d-bf22-4ab40c695135",
+	'Satisfaction_Element_Id',
+	'',
+	'Satisfaction_Element_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"fbf65e68-914f-4420-8041-af2de3fef08c");
+INSERT INTO O_OIDA
+	VALUES ("d43c6f5a-d106-443d-bf22-4ab40c695135",
+	"fbf65e68-914f-4420-8041-af2de3fef08c",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"fbf65e68-914f-4420-8041-af2de3fef08c");
+INSERT INTO O_ID
+	VALUES (2,
+	"fbf65e68-914f-4420-8041-af2de3fef08c");
+INSERT INTO PE_PE
+	VALUES ("fbf65e68-914f-4420-8041-af2de3fef08c",
+	1,
+	"e03e8363-19c3-465a-a0ee-6d35d800e63b",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("e03e8363-19c3-465a-a0ee-6d35d800e63b",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Component Library',
+	'',
+	4700,
+	'../Component Library.xtuml');

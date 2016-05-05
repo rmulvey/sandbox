@@ -1,0 +1,908 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'Asynchronous Message',
+	1013,
+	'MSG_AM',
+	'This subclass represents, and holds its unique data, an asynchronous message.
+The types of asynchronous messages are:
+
+Informal Asynchronous Message
+Event Message',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("26b9bf37-b0fd-4470-aeee-db8c56714a35",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// dispose any formal asych messages
+select one em related by self->MSG_E[R1019];
+if(not_empty em)
+  unrelate self from em across R1019;
+  em.dispose();
+end if;
+// dispose any informal asynch messages
+select one im related by self->MSG_IAM[R1019];
+if(not_empty im)
+  unrelate self from im across R1019;
+  im.dispose();
+end if;
+select one sigMsg related by self->MSG_SIG[R1019];
+if not_empty sigMsg
+  unrelate self from sigMsg across R1019;
+  sigMsg.dispose();
+end if;
+// delete supertype, and unrelate
+select one msg related by self->MSG_M[R1018];
+if(not_empty msg)
+  unrelate self from msg across R1018;
+  msg.dispose();
+end if;
+delete object instance self;',
+	1,
+	'',
+	"2df9637e-9df4-44c5-9b8b-f6fd70722184");
+INSERT INTO O_TFR
+	VALUES ("5d1e92ca-f262-46a3-b740-9e14075611f2",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'unformalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// dispose the associated event message
+select one em related by self->MSG_E[R1019];
+select one sigMsg related by self->MSG_SIG[R1019];
+if(not_empty em)
+  em.dispose();
+elif not_empty sigMsg
+  sigMsg.dispose();
+end if;
+// unrelate from target element if under a communication
+select one message related by self->MSG_M[R1018];
+message.deassociateFromTarget();
+self.disposeFormalArguments();
+// create an informal asych message
+create object instance im of MSG_IAM;
+relate im to self across R1019;',
+	1,
+	'',
+	"3fcdf622-3906-42b7-88e5-0f1f5fe0c8a3");
+INSERT INTO O_TFR
+	VALUES ("57971f6f-60d8-407a-ba79-0943101e0edf",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.InformalName = "Informal Message";
+// create informal subtype
+create object instance im of MSG_IAM;
+relate im to self across R1019;',
+	1,
+	'',
+	"88f5d10a-7f8b-4aa6-bec0-3001e15846f1");
+INSERT INTO O_TFR
+	VALUES ("4fc1c88a-986e-48e1-9c0d-1d34ae0c93c9",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'newArgument',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// have the supertype create the argument
+select one msg related by self->MSG_M[R1018];
+if(not_empty msg)
+  msg.newArgument();
+end if;',
+	1,
+	'',
+	"57971f6f-60d8-407a-ba79-0943101e0edf");
+INSERT INTO O_TFR
+	VALUES ("2df9637e-9df4-44c5-9b8b-f6fd70722184",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'canRename',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// only informal messages can be renamed
+select one im related by self->MSG_IAM[R1019];
+if(not_empty im)
+  return true;
+else
+  return false;
+end if;',
+	1,
+	'',
+	"c9213366-10de-4ec3-8d71-f053f5c7822e");
+INSERT INTO O_TFR
+	VALUES ("56a5661e-9e24-4528-9157-09e3c0f4f718",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'get_name',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'return self.Label;',
+	1,
+	'',
+	"72fbcfa3-ab4b-4dba-88b6-c7e05ab72b89");
+INSERT INTO O_TFR
+	VALUES ("88f5d10a-7f8b-4aa6-bec0-3001e15846f1",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'if(param.at == End::End)
+  return Style::OpenArrow;
+else
+  return Style::Solid;
+end if;',
+	1,
+	'',
+	"1fc190c9-a7e9-4239-9483-cb231d651d35");
+INSERT INTO O_TPARM
+	VALUES ("63481479-8e4f-4376-80dc-87179d2e9ec9",
+	"88f5d10a-7f8b-4aa6-bec0-3001e15846f1",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f9390a28-d78e-4364-b005-bcf6767b5871",
+	"00000000-0000-0000-0000-000000000000",
+	'End',
+	'Text is positioned at a user adjustable offset from the Start, Middle and End of a connector. Start_Fixed and End_Fixed specify fixed position text found at the start and end of some connectors.
+-------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("72fbcfa3-ab4b-4dba-88b6-c7e05ab72b89",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'get_connector_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'if(param.at == End::Middle)
+  result = self.Label;
+  select many args related by self->MSG_M[R1018]->MSG_A[R1001];
+  if(not self.isFormal)
+    select many args related by self->MSG_M[R1018]->MSG_A[R1000];
+  end if;
+  if(not_empty args)
+    result = result + " (";
+    count = 0;
+    for each arg in args
+      count = count + 1;
+      result = result + arg.Label;
+      if(count != cardinality args)
+        result = result + ", ";
+      end if;
+    end for;  
+    result = result + ")";
+  end if;
+  if(self.DurationObservation != "")
+    result = result  + "  " + self.DurationObservation;
+  end if;
+  if(self.SequenceNumb != "")
+    if(result != "")
+      result = ": " + result;
+    end if;
+    result = self.SequenceNumb + result;
+  end if;
+  return result;
+elif(param.at == End::Start)
+  if(self.GuardCondition != "")
+    return "[" + self.GuardCondition + "]";
+  end if;
+  return "";
+elif(param.at == End::End)
+  if(self.DurationConstraint != "")
+    return "{" + self.DurationConstraint + "}";
+  else
+    return "";
+  end if;
+else
+  return "";
+end if;',
+	1,
+	'',
+	"d83c795a-e676-4717-b8b8-e981ad15ea34");
+INSERT INTO O_TPARM
+	VALUES ("694e02f2-1135-48d8-906b-77d7098ad071",
+	"72fbcfa3-ab4b-4dba-88b6-c7e05ab72b89",
+	'Obj_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("9faf0357-a0e3-4914-abb6-06eb431df2c4",
+	"72fbcfa3-ab4b-4dba-88b6-c7e05ab72b89",
+	'Obj_TypeIsImported',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"694e02f2-1135-48d8-906b-77d7098ad071",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("95b04bff-e135-4ee0-9a89-6af5f934bdc6",
+	"72fbcfa3-ab4b-4dba-88b6-c7e05ab72b89",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"9faf0357-a0e3-4914-abb6-06eb431df2c4",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8667e741-c4ed-4b11-b780-da792d1fbd63",
+	"72fbcfa3-ab4b-4dba-88b6-c7e05ab72b89",
+	'parent_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"95b04bff-e135-4ee0-9a89-6af5f934bdc6",
+	'');
+INSERT INTO O_TFR
+	VALUES ("c9213366-10de-4ec3-8d71-f053f5c7822e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'actionFilter',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if(param.name == "can")
+  select one packageableElem related by self->MSG_M[R1018]->PE_PE[R8001];
+  select one package related by packageableElem->EP_PKG[R8000];
+  select one message related by self->MSG_M[R1018];
+  if(empty package and message.participatesInCommunication)
+    select one package related by self->MSG_M[R1018]->SQ_P[R1007]->PE_PE[R8001]
+                                                                ->EP_PKG[R8000];
+  end if;
+  select one component related by packageableElem->C_C[R8003];
+  isInGenericPackage = not_empty package or not_empty component;
+  
+  if(param.value == "addArg")
+    return not self.isFormal;
+  elif(param.value == "unform")
+    return self.isFormal;
+  elif(param.value == "formInstClassEvent")
+    select one cip related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_CIP[R930];
+    if(not_empty cip)
+      // do not allow if on a communication
+      if(message.participatesInCommunication)
+        return false;
+      else
+        // if there is only one possible event, and we are formal
+        // do not allow
+        if(self.isFormal)
+          if(cip.getClassEventCount() == 1)
+            return false;
+          end if;
+        end if;
+        return cip.formalClassHasCBEvents(checkForCreationEvents:true);
+      end if;
+    end if;
+  elif(param.value == "formClassEvent")
+    select one cp related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_CP[R930];
+    if(empty cp)
+      // try the communication line
+      select one cp related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_LS[R930]
+                                                      ->SQ_P[R940]->SQ_CP[R930];
+    end if;
+    if(not_empty cp)
+      if(message.participatesInCommunication)
+        return false;
+      end if;
+      // if there is only one possible event, and we are formal
+      // do not allow
+      if(self.isFormal)
+        if(cp.getClassEventCount() == 1)
+          return false;
+        end if;
+      end if;
+      return cp.formalClassHasCBEvents();
+    end if;
+  elif(param.value == "formInstEvent")
+    select one ls related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_LS[R930];
+    if (not_empty ls)
+      select one cip related by ls->SQ_P[R940]->SQ_CIP[R930];
+      if(not_empty cip)
+        // if there is only one possible event, and we are formal
+        // do not allow
+        if(self.isFormal)
+          if(cip.getInstanceEventCount() == 1)
+            return false;
+          end if;
+        end if;
+        return cip.formalClassHasIBEvents();
+      end if;  // not_empty cip
+    end if; // not_empty ls
+  elif(param.value == "formSig")  
+    // if there is only one possible interface operation and we are
+    // already using it then do not show the menu
+    select one signal related by self->MSG_SIG[R1019]->C_AS[R1021];
+    if(not_empty signal)
+      select one cop related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_COP[R930];
+      if(empty cop)
+        select one cop related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_LS[R930]
+                                                     ->SQ_P[R940]->SQ_COP[R930];
+      end if;
+      if(not_empty cop)
+        if(cop.getInterfaceSignalCount() == 1)
+          return false;
+        end if;
+      end if;
+    end if;
+  
+    select one cop related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_COP[R930];
+    if(empty cop)
+      select one cop related by self->MSG_M[R1018]->SQ_P[R1007]->SQ_LS[R930]
+                                                     ->SQ_P[R940]->SQ_COP[R930];
+    end if;
+    if(not_empty cop)
+      // if on communication do not allow, other filters will handle
+      // this
+      if(message.participatesInCommunication)
+        return false;
+      end if;
+      return cop.isFormalAndHasSignals();
+    end if;
+  // the following filtering is used for the communication diagram
+  elif(param.value == "formCommClassEvent") or (param.value == "formCommMsgSig")
+                                         or (param.value == "formCommInstEvent") 
+    pkgID = GD::NULL_UNIQUE_ID();
+    // if this message is not shown on a communication diagram
+    // do not allow
+
+      // if the above association is not setup, the message is associated with
+      // a participant already, get the communication through this participant
+      if (not message.participatesInCommunication)
+        return false;
+      end if;
+
+      pkgID = package.Package_ID;
+
+    // if the selection count does not equal two return false, this
+    // prevents the menu entries from existing while only one of the
+    // elements is selected
+    if(Sel::getCurrentSelectionCount() != 2)
+      return false;
+    end if;
+    // if the selection does not contain a participant
+    // do not allow
+    if(not Util::selectionContainsValidParticipant(from:Util::getCommunicationInstance(id:pkgID)))
+      return false;
+    end if;
+    // additionally check if this message is already formalized
+    // to the only available operation
+    if(self.isFormal)
+      select one participant related by self->MSG_M[R1018]->SQ_P[R1007];
+      if(param.value == "formCommClassEvent")
+        select one cp related by participant->SQ_CP[R930];
+        if(not_empty cp)
+          if(cp.getClassEventCount() == 1)
+            return false;
+          end if;
+        end if;
+      elif(param.value == "formCommInstEvent")
+        select one cip related by participant->SQ_CIP[R930];
+        if(not_empty cip)
+          if(cip.getInstanceEventCount() == 1)
+            return false;
+          end if;
+        end if;
+      elif(param.value == "formCommMsgSig")
+        select one cop related by participant->SQ_COP[R930];
+        if(not_empty cop)
+          if(cop.getInterfaceSignalCount() == 1)
+            return false;
+          end if;
+        end if;
+      end if;
+    end if;
+    return true;
+  end if;
+elif(param.name == "show")
+  if(param.value == "noTargetMessage")
+    if(Sel::getCurrentSelectionCount() != 1)
+      return false;
+    end if;
+    select one target related by self->MSG_M[R1018]->SQ_P[R1007];
+    return empty target;
+  end if;
+end if;
+return false;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("326172c6-252d-4f02-85d5-2ed44e5269f8",
+	"c9213366-10de-4ec3-8d71-f053f5c7822e",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a64c4a38-f43b-481d-9076-049726193248",
+	"c9213366-10de-4ec3-8d71-f053f5c7822e",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"326172c6-252d-4f02-85d5-2ed44e5269f8",
+	'');
+INSERT INTO O_TFR
+	VALUES ("1fc190c9-a7e9-4239-9483-cb231d651d35",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Msg_ID;',
+	1,
+	'',
+	"56a5661e-9e24-4528-9157-09e3c0f4f718");
+INSERT INTO O_TFR
+	VALUES ("3ae05970-3f6f-41e6-9801-13e45033b026",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'disposeFormalArguments',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one parent related by self->MSG_M[R1018];
+parent.disposeFormalArguments();',
+	1,
+	'',
+	"26b9bf37-b0fd-4470-aeee-db8c56714a35");
+INSERT INTO O_TFR
+	VALUES ("d83c795a-e676-4717-b8b8-e981ad15ea34",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'formalizeWithEvent',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any event from instances of SM_EVT where (selected.SMevt_ID == param.eventId);
+self.prepareForFormalization();
+create object instance em of MSG_E;
+relate em to self across R1019;
+relate em to event across R1009;
+select one message related by self->MSG_M[R1018];
+// create a message argument for every data item
+// assigned to this event
+select many evtdis related by event->SM_EVTDI[R532];
+for each evtdi in evtdis
+  create object instance arg of MSG_A;
+  create object instance earg of MSG_EA;
+  relate arg to message across R1001;
+  relate earg to arg across R1013;
+  relate earg to evtdi across R1017;
+  arg.Value = "";
+end for;  
+',
+	1,
+	'',
+	"3ae05970-3f6f-41e6-9801-13e45033b026");
+INSERT INTO O_TPARM
+	VALUES ("f2d64f98-eb33-492c-b1a3-c22d6156a18e",
+	"d83c795a-e676-4717-b8b8-e981ad15ea34",
+	'eventId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("3fcdf622-3906-42b7-88e5-0f1f5fe0c8a3",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'prepareForFormalization',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one eem related by self->MSG_E[R1019];
+select one im related by self->MSG_IAM[R1019];
+select one sig related by self->MSG_SIG[R1019];
+select one message related by self->MSG_M[R1018];
+if(not_empty im)
+  unrelate im from self across R1019;
+  im.dispose();
+elif(not_empty eem)
+  unrelate eem from self across R1019;
+  eem.dispose();
+  message.disposeFormalArguments();
+elif not_empty sig
+  unrelate self from sig across R1019;
+  sig.dispose();
+  message.disposeFormalArguments();
+end if;
+
+',
+	1,
+	'',
+	"4fc1c88a-986e-48e1-9c0d-1d34ae0c93c9");
+INSERT INTO O_TFR
+	VALUES ("1c8c544c-3907-4b2d-b7f2-626120a36cef",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'formalizeWithSignal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any sigProp from instances of C_EP where selected.Id == param.signalId;
+if not_empty sigProp
+  select one sig related by sigProp->C_AS[R4004];
+  if not_empty sig
+    self.prepareForFormalization();
+    create object instance sigM of MSG_SIG;
+    relate sigM to self across R1019;
+    relate sigM to sig across R1021;
+    select one message related by self->MSG_M[R1018];
+    // create a message argument for every parameter
+    // assigned to this signal
+    select many parms related by sigProp->C_PP[R4006];
+    for each parm in parms
+      create object instance arg of MSG_A;
+      create object instance eparg of MSG_EPA;
+      relate arg to message across R1001;
+      relate eparg to arg across R1013;
+      relate eparg to parm across R1023;
+      arg.Value = "";
+    end for;
+  end if;
+end if;
+',
+	1,
+	'',
+	"5d1e92ca-f262-46a3-b740-9e14075611f2");
+INSERT INTO O_TPARM
+	VALUES ("2dcade51-4338-4209-ac48-b29c288da548",
+	"1c8c544c-3907-4b2d-b7f2-626120a36cef",
+	'signalId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("b5a69f09-cfe1-4e05-88b8-b2aa6d1fd453",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'canFormalizeUsingInterfaceSignal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'/**
+ *  Filter operation when choosing which interface signal can be used
+ *  to formalize this asynchronous message
+ */
+
+// Check that we are not already formalized to the given interface
+// signal
+select one currentSignal related by self->MSG_SIG[R1019]->C_AS[R1021];
+if(not_empty currentSignal and param.id == currentSignal.Id)
+  return false;
+end if;
+return true;',
+	1,
+	'',
+	"1c8c544c-3907-4b2d-b7f2-626120a36cef");
+INSERT INTO O_TPARM
+	VALUES ("20c71c94-de02-436c-b84d-024429eca2c7",
+	"b5a69f09-cfe1-4e05-88b8-b2aa6d1fd453",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("760a4da8-583e-442d-a8bf-0046c6ad36fa",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'pasteMessageArgument',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one message related by self->MSG_M[R1018];
+message.pasteMessageArgument(id:param.id);',
+	1,
+	'',
+	"b5a69f09-cfe1-4e05-88b8-b2aa6d1fd453");
+INSERT INTO O_TPARM
+	VALUES ("8b3024a0-96bc-4d21-973c-311a9dabedd0",
+	"760a4da8-583e-442d-a8bf-0046c6ad36fa",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("cc11100d-8e9f-452e-a7b1-e621743d1e18",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'canCopyMessageArgument',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one message related by self->MSG_M[R1018];
+return message.canCopyMessageArgument(id:param.id);',
+	1,
+	'',
+	"760a4da8-583e-442d-a8bf-0046c6ad36fa");
+INSERT INTO O_TPARM
+	VALUES ("e2d7fad6-766f-4f7a-8f4d-8d21a99183ca",
+	"cc11100d-8e9f-452e-a7b1-e621743d1e18",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("29e8639f-0f3e-4d05-9fd4-1882047d00d2",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'canPasteMessageArgument',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'return not self.isFormal;',
+	1,
+	'',
+	"cc11100d-8e9f-452e-a7b1-e621743d1e18");
+INSERT INTO O_NBATTR
+	VALUES ("9c5fe733-7e4e-4c65-9e64-52d61884b0ca",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_BATTR
+	VALUES ("9c5fe733-7e4e-4c65-9e64-52d61884b0ca",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("9c5fe733-7e4e-4c65-9e64-52d61884b0ca",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"061de499-2796-4d98-9c92-4fa7225152f3",
+	'GuardCondition',
+	'Full Name: Guard Condition',
+	'',
+	'GuardCondition',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("061de499-2796-4d98-9c92-4fa7225152f3",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_BATTR
+	VALUES ("061de499-2796-4d98-9c92-4fa7225152f3",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("061de499-2796-4d98-9c92-4fa7225152f3",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"67d9b161-bb16-4c91-8bee-13a8c915214b",
+	'Descrip',
+	'Full Name: Message Description',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("a0516769-f613-42f6-a051-2740b70fc35e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'select one iam related by self->MSG_IAM[R1019];
+if(not_empty iam)
+  self.isFormal = false;
+else
+  self.isFormal = true;
+end if;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("a0516769-f613-42f6-a051-2740b70fc35e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("a0516769-f613-42f6-a051-2740b70fc35e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"ff0a501e-b337-4dd2-8322-1d1bfc1d2f82",
+	'isFormal',
+	'Full Name: Is Formal',
+	'',
+	'isFormal',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ff0a501e-b337-4dd2-8322-1d1bfc1d2f82",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_BATTR
+	VALUES ("ff0a501e-b337-4dd2-8322-1d1bfc1d2f82",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("ff0a501e-b337-4dd2-8322-1d1bfc1d2f82",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"f7356ce6-799f-4e75-8a41-8664a0d02b13",
+	'DurationConstraint',
+	'Full Name: Duration Constraint',
+	'',
+	'DurationConstraint',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("ab8d87e7-36e9-441a-ab39-d66700753d3c",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	'result = "";
+select one em related by self->MSG_E[R1019];
+select one sigMsg related by self->MSG_SIG[R1019];
+if(not_empty em)
+  select one evt related by em->SM_EVT[R1009];
+  result = evt.Drv_Lbl + ": " + evt.Mning;
+elif not_empty sigMsg
+  select one signal related by sigMsg->C_AS[R1021];
+  result = signal.Name;
+else
+  result = self.InformalName;
+end if;
+self.Label = result;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("ab8d87e7-36e9-441a-ab39-d66700753d3c",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("ab8d87e7-36e9-441a-ab39-d66700753d3c",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"a0516769-f613-42f6-a051-2740b70fc35e",
+	'Label',
+	'User_Visible: false',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f7356ce6-799f-4e75-8a41-8664a0d02b13",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_BATTR
+	VALUES ("f7356ce6-799f-4e75-8a41-8664a0d02b13",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("f7356ce6-799f-4e75-8a41-8664a0d02b13",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"9c5fe733-7e4e-4c65-9e64-52d61884b0ca",
+	'DurationObservation',
+	'Full Name: Duration Observation',
+	'',
+	'DurationObservation',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("67d9b161-bb16-4c91-8bee-13a8c915214b",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_BATTR
+	VALUES ("67d9b161-bb16-4c91-8bee-13a8c915214b",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("67d9b161-bb16-4c91-8bee-13a8c915214b",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"dda8c97c-53b9-405f-abc6-ab6f702bca68",
+	'InformalName',
+	'Full Name: Informal Name',
+	'',
+	'InformalName',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("3370a472-4f4f-4c95-af1d-af042b2d4d5e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_BATTR
+	VALUES ("3370a472-4f4f-4c95-af1d-af042b2d4d5e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ATTR
+	VALUES ("3370a472-4f4f-4c95-af1d-af042b2d4d5e",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"ab8d87e7-36e9-441a-ab39-d66700753d3c",
+	'SequenceNumb',
+	'Full Name: Sequence Number',
+	'',
+	'SequenceNumb',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"1efcafbb-c79d-4ade-8ed4-a39d2679686c",
+	0,
+	"d4cb1c26-ff58-4bb2-a7f3-ecd7cb8f9cb5",
+	"c83efff0-ba4f-4df8-af2a-54c522ee6032",
+	"3b085506-c2b2-475f-a52b-a955dae6df6f",
+	"3966a321-400f-4323-b07a-039435d2f104",
+	"dda8c97c-53b9-405f-abc6-ab6f702bca68",
+	"8481fdf8-39d6-4781-b539-b87435eed977",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Message',
+	'Msg_ID',
+	'R1018');
+INSERT INTO R_RGO_PROXY
+	VALUES ("e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"c83efff0-ba4f-4df8-af2a-54c522ee6032",
+	"3b085506-c2b2-475f-a52b-a955dae6df6f",
+	'../Message.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("d4cb1c26-ff58-4bb2-a7f3-ecd7cb8f9cb5",
+	"1efcafbb-c79d-4ade-8ed4-a39d2679686c",
+	0,
+	"c83efff0-ba4f-4df8-af2a-54c522ee6032",
+	"3966a321-400f-4323-b07a-039435d2f104",
+	'../Message.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("dda8c97c-53b9-405f-abc6-ab6f702bca68",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("dda8c97c-53b9-405f-abc6-ab6f702bca68",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	"00000000-0000-0000-0000-000000000000",
+	'Msg_ID',
+	'',
+	'',
+	'Msg_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_OIDA
+	VALUES ("dda8c97c-53b9-405f-abc6-ab6f702bca68",
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	0,
+	'Msg_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO O_ID
+	VALUES (2,
+	"e7f2270f-1295-4f7b-abdc-bb5ebd293da8");
+INSERT INTO PE_PE
+	VALUES ("e7f2270f-1295-4f7b-abdc-bb5ebd293da8",
+	1,
+	"9e35749c-1d54-4f67-99a2-2ffc0008bb08",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9e35749c-1d54-4f67-99a2-2ffc0008bb08",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Message',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE',
+	1000,
+	'../Message.xtuml');

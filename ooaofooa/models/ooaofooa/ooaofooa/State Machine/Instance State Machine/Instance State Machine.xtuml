@@ -1,0 +1,497 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'Instance State Machine',
+	520,
+	'SM_ISM',
+	'An instance state machine is a state machine for an instance of a class.  Each instance of a class can be thought of as executing its own private version of the state machine.  This is in contrast to an assigner state machine (SM_ASM) which is a state machine for the entire class.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("fa266d4f-2a66-4e1b-8923-78d54b8d5ad1",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'get_name',
+	'This operation returns the name of the class it belongs to.
+----------------------------------------------------------------------------------------------------------
+Bridge:GD,TEXT
+',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one obj related by self->O_OBJ[R518];
+if ( not_empty obj )
+  return obj.Name;
+else
+  return ::getOrphanedElementName();
+end if;',
+	1,
+	'',
+	"f0a4f537-284d-4419-94f1-f3e4edaee210");
+INSERT INTO O_TFR
+	VALUES ("db81a3ab-d7db-4399-97c3-4c8c217e1de1",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'newState',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.newState();
+
+',
+	1,
+	'',
+	"e0c7329f-6b10-4281-bb2f-bfdfa649d925");
+INSERT INTO O_TFR
+	VALUES ("e0c7329f-6b10-4281-bb2f-bfdfa649d925",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'newEvent',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.newEvent();
+
+',
+	1,
+	'',
+	"27ee23dd-4bc6-403e-8aa2-2b66700b1541");
+INSERT INTO O_TFR
+	VALUES ("f0354386-83f8-4045-8281-58925553a76e",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'newTransition',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one sm related by self->SM_SM[R517];
+return sm.newTransition(from:param.from, to:param.to);',
+	1,
+	'',
+	"db81a3ab-d7db-4399-97c3-4c8c217e1de1");
+INSERT INTO O_TPARM
+	VALUES ("dad46200-3490-4027-91f9-684a47c4c6bb",
+	"f0354386-83f8-4045-8281-58925553a76e",
+	'from',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("fc85e594-bfe6-4ba1-892f-43623820b7cb",
+	"f0354386-83f8-4045-8281-58925553a76e",
+	'to',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"675a3b05-d96e-4425-affe-06b1c8fe0aac",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("675a3b05-d96e-4425-affe-06b1c8fe0aac",
+	"f0354386-83f8-4045-8281-58925553a76e",
+	'fromTypeIsImportedClass',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"dad46200-3490-4027-91f9-684a47c4c6bb",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("6ddae83b-8083-4067-842e-6cf2a14a1766",
+	"f0354386-83f8-4045-8281-58925553a76e",
+	'toTypeIsImportedClass',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"fc85e594-bfe6-4ba1-892f-43623820b7cb",
+	'');
+INSERT INTO O_TFR
+	VALUES ("27ee23dd-4bc6-403e-8aa2-2b66700b1541",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'newCreationTransition',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one sm related by self->SM_SM[R517];
+return sm.newCreationTransition(from:param.from, to:param.to);',
+	1,
+	'',
+	"dbfbad3e-fb85-44ea-9e85-e6cbb88059c0");
+INSERT INTO O_TPARM
+	VALUES ("ca9d448d-75d1-490b-9c2a-46184fd62d16",
+	"27ee23dd-4bc6-403e-8aa2-2b66700b1541",
+	'from',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5a474e46-6ed1-4093-97ef-a1714ceabdd5",
+	"27ee23dd-4bc6-403e-8aa2-2b66700b1541",
+	'to',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"8919ca6b-632b-4a01-bb3d-df314a961319",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8919ca6b-632b-4a01-bb3d-df314a961319",
+	"27ee23dd-4bc6-403e-8aa2-2b66700b1541",
+	'fromTypeIsImportedClass',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"ca9d448d-75d1-490b-9c2a-46184fd62d16",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("1b44f517-65eb-4fb9-a9f8-b33cbf65cb2d",
+	"27ee23dd-4bc6-403e-8aa2-2b66700b1541",
+	'toTypeIsImportedClass',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"5a474e46-6ed1-4093-97ef-a1714ceabdd5",
+	'');
+INSERT INTO O_TFR
+	VALUES ("dbfbad3e-fb85-44ea-9e85-e6cbb88059c0",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'get_ooa_id',
+	'The ooa_id of a State Machine is it''''s SM_ID.
+-----------------------------------------------------------------------------------
+Bridge:GD',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.SM_ID;',
+	1,
+	'',
+	"fa266d4f-2a66-4e1b-8923-78d54b8d5ad1");
+INSERT INTO O_TFR
+	VALUES ("f0a4f537-284d-4419-94f1-f3e4edaee210",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.dispose();',
+	1,
+	'',
+	"4fe02742-6d02-4aad-a511-2667774dcb6e");
+INSERT INTO O_TFR
+	VALUES ("88d5260b-d137-4c96-b47d-3474766113fc",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'pasteStateMachineState',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.pasteStateMachineState(id:param.id);',
+	1,
+	'',
+	"f2e61c9e-4020-48b9-a943-7e3877b8337b");
+INSERT INTO O_TPARM
+	VALUES ("8175888e-91b3-4ddb-9680-39281d5ccd94",
+	"88d5260b-d137-4c96-b47d-3474766113fc",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("4fe02742-6d02-4aad-a511-2667774dcb6e",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'convertToInstance',
+	'// return an instance representation of self
+Translate:native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("58704681-5fed-40b7-bc5e-ac4e5d64f1ce",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'pasteTransition',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.pasteTransition(id:param.id);',
+	1,
+	'',
+	"88d5260b-d137-4c96-b47d-3474766113fc");
+INSERT INTO O_TPARM
+	VALUES ("ce965320-7d2c-4bae-8233-1a8058b593ca",
+	"58704681-5fed-40b7-bc5e-ac4e5d64f1ce",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f2e61c9e-4020-48b9-a943-7e3877b8337b",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'pasteCreationTransition',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.pasteTransition(id:param.id);',
+	1,
+	'',
+	"f0354386-83f8-4045-8281-58925553a76e");
+INSERT INTO O_TPARM
+	VALUES ("11b0ca47-6e25-425e-9c30-85beec2e8c6a",
+	"f2e61c9e-4020-48b9-a943-7e3877b8337b",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("f0ba2cec-dee7-4951-969c-7a48f483505e",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'getStateCount',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many states related by self->SM_SM[R517]->SM_STATE[R501];
+return cardinality states;',
+	1,
+	'',
+	"58704681-5fed-40b7-bc5e-ac4e5d64f1ce");
+INSERT INTO O_TFR
+	VALUES ("ff049d06-6dbc-4552-815a-18e750e70845",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'getStateId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'id = GD::NULL_UNIQUE_ID();
+select many states related by self->SM_SM[R517]->SM_STATE[R501];
+// We''re preincrementing the index
+count = -1;
+for each state in states
+  if (not_empty state)
+      count = count+1;
+  end if;
+  if (count == param.index)
+      return state.get_ooa_id();  
+  end if;
+end for;
+return id;',
+	1,
+	'',
+	"f0ba2cec-dee7-4951-969c-7a48f483505e");
+INSERT INTO O_TPARM
+	VALUES ("14d3ee8f-b9bd-4d2f-b7da-a694f36e8cc2",
+	"ff049d06-6dbc-4552-815a-18e750e70845",
+	'index',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("b89ada59-55e7-4712-bc5e-07ee633fbc34",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'pasteStateMachineEvent',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one sm related by self->SM_SM[R517];
+sm.pasteStateMachineEvent(id:param.id);',
+	1,
+	'',
+	"ff049d06-6dbc-4552-815a-18e750e70845");
+INSERT INTO O_TPARM
+	VALUES ("d17257b9-97d4-434d-ba5e-256cf6152aa7",
+	"b89ada59-55e7-4712-bc5e-07ee633fbc34",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("af5035c4-b1e3-4988-b930-d77794a2e7d7",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'getTransitionCount',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many transitions related by self->SM_SM[R517]->SM_STATE[R501]->SM_TXN[R506];
+return cardinality transitions; ',
+	1,
+	'',
+	"b89ada59-55e7-4712-bc5e-07ee633fbc34");
+INSERT INTO O_TFR
+	VALUES ("a665f16d-dc67-4f91-b84e-62dc15563f96",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	'getTransitionId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'id = GD::NULL_UNIQUE_ID();
+select many transitions related by self->SM_SM[R517]->SM_STATE[R501]->SM_TXN[R506];
+// We''re preincrementing the index
+count = -1;
+for each transition in transitions
+  count = count + 1;
+  if (count == param.index)
+    id = transition.Trans_ID;
+    break;
+  end if;
+end for; 
+return id;',
+	1,
+	'',
+	"af5035c4-b1e3-4988-b930-d77794a2e7d7");
+INSERT INTO O_TPARM
+	VALUES ("df5bd522-29a7-40e4-aceb-cfad3c5dfa86",
+	"a665f16d-dc67-4f91-b84e-62dc15563f96",
+	'index',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	0,
+	"918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"284505d1-481e-4e22-8250-579df9d3e573",
+	"1bafaa45-3919-4d71-8f35-ea24e6144de5",
+	"d343de45-4f39-4ee9-84b8-98ca4011c99a",
+	"aa5612f6-a418-484a-ab53-7bf14f77034c",
+	"a01353d2-01ce-46db-ba93-c6dc1052165e",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'State Machine',
+	'SM_ID',
+	'R517');
+INSERT INTO R_RGO_PROXY
+	VALUES ("518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"284505d1-481e-4e22-8250-579df9d3e573",
+	"1bafaa45-3919-4d71-8f35-ea24e6144de5",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	0,
+	"284505d1-481e-4e22-8250-579df9d3e573",
+	"d343de45-4f39-4ee9-84b8-98ca4011c99a",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("aa5612f6-a418-484a-ab53-7bf14f77034c",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	1,
+	'SM_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	'../State Machine/State Machine.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("aa5612f6-a418-484a-ab53-7bf14f77034c",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"00000000-0000-0000-0000-000000000000",
+	'SM_ID',
+	'',
+	'',
+	'SM_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"17d86b5f-0053-47ae-8312-48e5145617f0",
+	"9dda4283-3026-4001-a78b-b05a2ee711f6",
+	"2070e1c7-1d0f-4fc2-af74-31b6f915a133",
+	"75c5c6b5-9cba-4830-b488-680c1943869f",
+	"746d22bf-3a2f-4f8e-b050-b9aff70a239d",
+	"bc5c70bc-f962-46eb-91f6-d6465cdd7c80",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Model Class',
+	'Obj_ID',
+	'R518');
+INSERT INTO R_RGO_PROXY
+	VALUES ("518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"9dda4283-3026-4001-a78b-b05a2ee711f6",
+	"2070e1c7-1d0f-4fc2-af74-31b6f915a133",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("17d86b5f-0053-47ae-8312-48e5145617f0",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"9dda4283-3026-4001-a78b-b05a2ee711f6",
+	"75c5c6b5-9cba-4830-b488-680c1943869f",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("746d22bf-3a2f-4f8e-b050-b9aff70a239d",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("746d22bf-3a2f-4f8e-b050-b9aff70a239d",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	"aa5612f6-a418-484a-ab53-7bf14f77034c",
+	'Obj_ID',
+	'',
+	'',
+	'Obj_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6");
+INSERT INTO O_OIDA
+	VALUES ("aa5612f6-a418-484a-ab53-7bf14f77034c",
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	0,
+	'SM_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6");
+INSERT INTO O_ID
+	VALUES (2,
+	"518f9dc8-f064-4436-a9f4-cb9ddad733d6");
+INSERT INTO PE_PE
+	VALUES ("518f9dc8-f064-4436-a9f4-cb9ddad733d6",
+	1,
+	"3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'State Machine',
+	'Classes (O_OBJ) that have interesting behavior are given lifecycles. These lifecycles are described using state machines (SM_SM). A state machine consists of states, events, transitions and state actions. The state machine exists for each instance of the class for which it has been modeled (SM_ISM). A state machine can also be an assigner state machine (SM_ASM) of which only one can exists for all class instances. The purpose of the assigner state machine is to act as a single point of control through which competing requests are serialized.',
+	501,
+	'../State Machine.xtuml');

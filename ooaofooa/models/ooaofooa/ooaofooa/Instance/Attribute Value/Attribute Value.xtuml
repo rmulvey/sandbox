@@ -1,0 +1,659 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	'Attribute Value',
+	2903,
+	'I_AVL',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("7055f04c-fc7a-45a5-9483-93fff25ca7fe",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'setBoolean',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->RV_RVL[R3304];
+if not_empty rtVal
+  rtVal.setValue(value:GD::boolean_to_instance(value:param.value));
+else
+  // TODO Log Error
+end if;',
+	1,
+	'',
+	"6c3af1e8-a875-469e-80bd-995f0581e564");
+INSERT INTO O_TPARM
+	VALUES ("2f7b0535-07c6-4e2b-8e01-e0ba1120d319",
+	"7055f04c-fc7a-45a5-9483-93fff25ca7fe",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("905c4e0c-4fbd-44c9-84ea-4dd524a0b38b",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'setInteger',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->RV_RVL[R3304];
+if not_empty rtVal
+  rtVal.setValue(value:GD::int_to_instance(value:param.value));
+else
+  // TODO Log Error
+end if;',
+	1,
+	'',
+	"7055f04c-fc7a-45a5-9483-93fff25ca7fe");
+INSERT INTO O_TPARM
+	VALUES ("25ec7daf-1aed-4f6f-9ed9-067818fbff45",
+	"905c4e0c-4fbd-44c9-84ea-4dd524a0b38b",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("490fcc2d-f2fc-466e-8a27-cb6e7488e771",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'setString',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->RV_RVL[R3304];
+if not_empty rtVal
+  rtVal.setValue(value:GD::string_to_instance(value:param.value));
+else
+  // TODO Log Error
+end if;',
+	1,
+	'',
+	"99427900-93fa-4dc1-b263-0ab2ecb021e0");
+INSERT INTO O_TPARM
+	VALUES ("70199e21-2a77-4d5b-a8a6-ebfdfeb97882",
+	"490fcc2d-f2fc-466e-8a27-cb6e7488e771",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("99427900-93fa-4dc1-b263-0ab2ecb021e0",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'setReal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->RV_RVL[R3304];
+if not_empty rtVal
+  rtVal.setValue(value:GD::real_to_instance(value:param.value));
+else
+  // TODO Log Error
+end if;',
+	1,
+	'',
+	"905c4e0c-4fbd-44c9-84ea-4dd524a0b38b");
+INSERT INTO O_TPARM
+	VALUES ("ed2208be-39f9-4f7b-b283-e398f7dbdb9a",
+	"99427900-93fa-4dc1-b263-0ab2ecb021e0",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("55fe4302-4edd-4dcf-9fe7-2c826f879a69",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Instance:Attribute Value.dispose()
+
+//  Unrelate from attribute
+select one attribute related by self->O_ATTR[R2910];
+if (not_empty attribute)
+  unrelate self from attribute across R2910;
+end if;
+
+//  Unrelate from instance
+select one inst related by self->I_INS[R2909];
+if (not_empty inst)
+  unrelate self from inst across R2909;
+end if;
+// Unrelate and dispose runtime value
+select one rtv related by self->RV_RVL[R3304];
+if not_empty rtv
+  unrelate rtv from self across R3304;
+  rtv.dispose();
+end if;
+select one rtv related by self->RV_RVL[R3312];
+if not_empty rtv
+  unrelate rtv from self across R3312;
+  rtv.dispose();
+end if;
+// And delete ourself
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("58123431-87c3-4dde-97b1-811a258483be",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'setUnique_ID',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one rtVal related by self->RV_RVL[R3304];
+if not_empty rtVal
+  rtVal.setValue(value:GD::unique_id_to_instance(value:param.value));
+else
+  // TODO Log Error
+end if;',
+	1,
+	'',
+	"490fcc2d-f2fc-466e-8a27-cb6e7488e771");
+INSERT INTO O_TPARM
+	VALUES ("7d02ae15-cbb5-4975-b6ff-d3aa8618254c",
+	"58123431-87c3-4dde-97b1-811a258483be",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("6c3af1e8-a875-469e-80bd-995f0581e564",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'getValue',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// Attribute Value.getValue
+rtVal_ID = self.getRuntimeValue();
+select any value from instances of RV_RVL where
+                                           selected.RuntimeValue_ID == rtVal_ID;
+if not_empty value
+  select one rtVal related by self->RV_RVL[R3304];
+  select one arrayVal related by rtVal->RV_AVL[R3300];
+  
+  if (not_empty arrayVal)
+	return GD::NULL_INSTANCE();
+  else
+	return value.getValue();
+  end if;
+else
+  // Attribute is a referential but doesn''t fomalize any association
+  return GD::string_to_instance(value: "not participating");  
+end if;',
+	1,
+	'',
+	"888212a5-393e-4dd1-9881-96f084d3707a");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("888212a5-393e-4dd1-9881-96f084d3707a",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'getRuntimeValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// Attribute Value.getRuntimeValue
+select one ref_attr related by self->O_ATTR[R2910]->O_RATTR[R106];
+if (empty ref_attr)
+  select one value related by self->RV_RVL[R3304];
+  if not_empty value
+    return value.RuntimeValue_ID;
+  else
+    return GD::NULL_UNIQUE_ID();
+  end if;
+else
+  // This is a referential attribute, we will need to find the value of the 
+  // attribute value that it refers to.
+  select one inst related by self->I_INS[R2909];
+  select many oref_set related by ref_attr->O_REF[R108];
+  for each oref in oref_set
+    select one rta related by oref->O_RTIDA[R111]->O_OIDA[R110]->O_ATTR[R105];
+    if (not_empty rta)
+      select any simp_link related by inst->I_LIP[R2958]->I_LNK[R2901] where
+                                                 selected.Rel_ID == oref.Rel_ID;
+      if (empty simp_link)
+        select any simp_link related by inst->I_LIP[R2958]->I_LNK[R2902] where
+                                                 selected.Rel_ID == oref.Rel_ID;
+      end if;
+      select any assoc_link related by inst->I_LIP[R2958]->I_LNK[R2903] where
+                                                 selected.Rel_ID == oref.Rel_ID;
+      // Determing which is the correct link to use
+      if (not_empty simp_link)
+        select one refto_inst related by simp_link->I_LIP[R2902]->I_INS[R2958];
+        select any attr_val related by refto_inst->I_AVL[R2909] where
+                                                selected.Attr_ID == rta.Attr_ID;
+        if (empty attr_val)
+          select one refto_inst related by simp_link->
+                                                     I_LIP[R2901]->I_INS[R2958];
+          select any attr_val related by refto_inst->I_AVL[R2909] where
+                                                selected.Attr_ID == rta.Attr_ID;
+        end if;  
+        if (not_empty attr_val)
+          return attr_val.getRuntimeValue();  //recursive call
+        end if;
+        break;      
+      elif (not_empty assoc_link)
+        select one refto_inst related by assoc_link->I_LIP[R2902]->I_INS[R2958];
+        select any attr_val related by refto_inst->I_AVL[R2909] where
+                                                selected.Attr_ID == rta.Attr_ID;
+        select one assoc_rel related by assoc_link->R_REL[R2904]->R_ASSOC[R206];
+        select one aone related by assoc_rel->R_AONE[R209];
+        select one aoth related by assoc_rel->R_AOTH[R210];
+        if aone.Obj_ID == aoth.Obj_ID
+          // The linked association is reflexive, cannot use attribute identity
+          // to disambiguate references. Use attribute ordering instead.
+          select any first_ref_attr related by rta->O_OIDA[R105]->
+                                      O_RTIDA[R110]->O_REF[R111]->O_RATTR[R108];
+          if ref_attr == first_ref_attr
+            select one refto_inst related by assoc_link->I_LIP[R2901]->
+                                                                   I_INS[R2958];
+            select any attr_val related by refto_inst->I_AVL[R2909] where
+                                                selected.Attr_ID == rta.Attr_ID;
+          end if;
+        elif empty attr_val
+          select one refto_inst related by assoc_link->I_LIP[R2901]->
+                                                                   I_INS[R2958];
+          select any attr_val related by refto_inst->I_AVL[R2909] where
+                                                selected.Attr_ID == rta.Attr_ID;
+        end if;                
+        if (not_empty attr_val)
+          return attr_val.getRuntimeValue();  //recursive call
+        end if;
+        break;          
+      end if;   
+    end if;  
+  end for;
+  // Attribute is a referential but doesn''t fomalize any association
+  return GD::NULL_UNIQUE_ID();  
+end if;',
+	1,
+	'',
+	"55fe4302-4edd-4dcf-9fe7-2c826f879a69");
+INSERT INTO O_DBATTR
+	VALUES ("10071b19-d583-4a41-b1ac-39d8fe4c4003",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'select one sdt related by self->O_ATTR[R2910]->S_DT[R114]->S_SDT[R17];
+if (empty sdt)
+  self.Value = GD::instance_to_string(value:self.getValue());
+else
+  select one dt related by sdt->S_DT[R17];
+  self.Value = dt.Name;
+end if;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("10071b19-d583-4a41-b1ac-39d8fe4c4003",
+	"926570ad-da94-4216-9905-d82b5c680af2");
+INSERT INTO O_ATTR
+	VALUES ("10071b19-d583-4a41-b1ac-39d8fe4c4003",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"070c6a58-c1eb-40bc-ad4e-4b7247a587ea",
+	'Value',
+	'',
+	'',
+	'Value',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"5aebb5bf-71fe-472f-ad1c-948c22e96eba",
+	0,
+	"1b5a001c-6820-4f2a-9f31-c9fd64c95438",
+	"05b99eae-6e85-416f-b3b2-410302131644",
+	"b3be249b-eff1-4c0d-9dbb-71f3dec0f377",
+	"d5ef389d-7913-46c0-82d2-a413e6e5d095",
+	"bdbaeb3a-a2fe-4a4d-aa08-6a42b4bbdeff",
+	"c3c988f4-7509-41c2-a226-319fe6403b85",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Instance',
+	'Inst_ID',
+	'R2909.''defines value for characteristic of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"05b99eae-6e85-416f-b3b2-410302131644",
+	"b3be249b-eff1-4c0d-9dbb-71f3dec0f377",
+	'../Instance.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("1b5a001c-6820-4f2a-9f31-c9fd64c95438",
+	"5aebb5bf-71fe-472f-ad1c-948c22e96eba",
+	0,
+	"05b99eae-6e85-416f-b3b2-410302131644",
+	"d5ef389d-7913-46c0-82d2-a413e6e5d095",
+	'../Instance.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("bdbaeb3a-a2fe-4a4d-aa08-6a42b4bbdeff",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"1b5a001c-6820-4f2a-9f31-c9fd64c95438",
+	"5aebb5bf-71fe-472f-ad1c-948c22e96eba",
+	1,
+	'Inst_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("1b5a001c-6820-4f2a-9f31-c9fd64c95438",
+	"5aebb5bf-71fe-472f-ad1c-948c22e96eba",
+	'../Instance/Instance.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("bdbaeb3a-a2fe-4a4d-aa08-6a42b4bbdeff",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"00000000-0000-0000-0000-000000000000",
+	'Inst_ID',
+	'',
+	'',
+	'Inst_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"d3e449a9-f70f-4c84-9416-2e7ea6396e27",
+	"966144ee-e25f-4e44-a60f-ac5f5356a833",
+	"4839e87b-9bb8-492a-9d12-06de3002b1ad",
+	"070c6a58-c1eb-40bc-ad4e-4b7247a587ea",
+	"895b468e-5e69-40b0-ad66-51bd23729202",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Attribute',
+	'Attr_ID',
+	'R2910.''is instance of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"d3e449a9-f70f-4c84-9416-2e7ea6396e27",
+	"966144ee-e25f-4e44-a60f-ac5f5356a833",
+	'../Instance.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"d3e449a9-f70f-4c84-9416-2e7ea6396e27",
+	"4839e87b-9bb8-492a-9d12-06de3002b1ad",
+	'../Instance.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("070c6a58-c1eb-40bc-ad4e-4b7247a587ea",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	1,
+	'Attr_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'../../Subsystem/Attribute/Attribute.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("070c6a58-c1eb-40bc-ad4e-4b7247a587ea",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"aece7e43-3762-43ac-8d68-719d53c05431",
+	'Attr_ID',
+	'',
+	'',
+	'Attr_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("3351c779-b21f-4310-b253-c4371ae4840d",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	'select one attr related by self->O_ATTR[R2910];
+attrName = "Unknown Attribute";
+if (not_empty attr)
+  attrName = attr.Name;
+  select one dt related by attr->S_DT[R114];
+  select one sdt related by dt->S_SDT[R17];
+  if (attr.getDimensionsCnt() == 0 and empty sdt)
+    result = "";
+    // Handle the exotic types
+    if (not_empty dt and dt.Name != "inst_ref<Timer>" and dt.Name != "date" and
+                                                         dt.Name != "timestamp")
+      // above are exceptions because they are user defined types (UDT).
+      select one udt related by dt->S_UDT[R17];
+      if (not_empty udt)
+        baseId = udt.getCoreType();
+        select any base_pe from instances of PE_PE
+                                          where (selected.Element_ID == baseId);
+        select one dt related by base_pe->S_DT[R8001];
+      end if;
+    end if;
+    result = self.Value;
+    if ( not_empty dt)
+      select one rtVal related by self->RV_RVL[R3304];
+      if (dt.Name == "timestamp")
+        result = GD::timestamp_to_string(value:rtVal.getValue());
+      elif (dt.Name == "date")
+        result = GD::date_to_string(value:rtVal.getValue());
+      elif (dt.Name == "inst_ref<Timer>")
+        result = GD::timer_to_string(value:rtVal.getValue());
+      elif (dt.Name == "inst<Event>")
+        result = GD::event_to_string(value:rtVal.getValue());
+      elif (dt.Name == "component_ref")
+        result = GD::component_instance_to_string(value:rtVal.getValue());
+      end if;
+    end if;
+    self.Label = attrName + " = " + result;
+  else
+    self.Label = attrName;
+  end if;
+else
+  self.Label = attrName;
+end if;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("3351c779-b21f-4310-b253-c4371ae4840d",
+	"926570ad-da94-4216-9905-d82b5c680af2");
+INSERT INTO O_ATTR
+	VALUES ("3351c779-b21f-4310-b253-c4371ae4840d",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"10071b19-d583-4a41-b1ac-39d8fe4c4003",
+	'Label',
+	'',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	0,
+	"38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ce2f0d8e-04fe-4090-8bfd-e8b9708270f5",
+	"2b38e49b-2c29-4953-bc09-9a04f3285efd",
+	"3b1156ef-4b40-424e-94c2-112fe8e7eb21",
+	"d3674719-e872-404c-8fe4-264e48231c9d",
+	"e89e8b56-d1a0-4e7c-94ce-8336f7ace55f",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Runtime Value',
+	'RuntimeValue_ID',
+	'R3304');
+INSERT INTO R_RGO_PROXY
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"ce2f0d8e-04fe-4090-8bfd-e8b9708270f5",
+	"2b38e49b-2c29-4953-bc09-9a04f3285efd",
+	'../../Runtime Value/Runtime Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	0,
+	"ce2f0d8e-04fe-4090-8bfd-e8b9708270f5",
+	"3b1156ef-4b40-424e-94c2-112fe8e7eb21",
+	'../../Runtime Value/Runtime Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("d3674719-e872-404c-8fe4-264e48231c9d",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	1,
+	'RuntimeValue_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	'../../Runtime Value/Runtime Value/Runtime Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("d3674719-e872-404c-8fe4-264e48231c9d",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"3351c779-b21f-4310-b253-c4371ae4840d",
+	'RuntimeValue_ID',
+	'',
+	'',
+	'RuntimeValue_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"d3e449a9-f70f-4c84-9416-2e7ea6396e27",
+	"966144ee-e25f-4e44-a60f-ac5f5356a833",
+	"4839e87b-9bb8-492a-9d12-06de3002b1ad",
+	"aece7e43-3762-43ac-8d68-719d53c05431",
+	"c55ff614-d3a8-405b-adf0-1a4e30e7b7a7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Attribute',
+	'Obj_ID',
+	'R2910.''is instance of''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"d3e449a9-f70f-4c84-9416-2e7ea6396e27",
+	"4839e87b-9bb8-492a-9d12-06de3002b1ad",
+	'../Instance.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("aece7e43-3762-43ac-8d68-719d53c05431",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("aece7e43-3762-43ac-8d68-719d53c05431",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"bdbaeb3a-a2fe-4a4d-aa08-6a42b4bbdeff",
+	'Obj_ID',
+	'',
+	'',
+	'Obj_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	0,
+	"38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"a3513795-baac-4400-8a02-f569c00a0ecb",
+	"b651a601-d6c8-4203-8fca-90015fa57ed6",
+	"21cd0950-25e5-4c63-aaa4-675a999824e5",
+	"7bd0f24d-b925-4f70-bdb3-6e0ac938ea48",
+	"7e7dc1cd-dc42-4dbe-9cc2-fe2ef0a2c015",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Runtime Value',
+	'RuntimeValue_ID',
+	'R3312.''has derived''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	"a3513795-baac-4400-8a02-f569c00a0ecb",
+	"b651a601-d6c8-4203-8fca-90015fa57ed6",
+	'../../Runtime Value/Runtime Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	0,
+	"a3513795-baac-4400-8a02-f569c00a0ecb",
+	"21cd0950-25e5-4c63-aaa4-675a999824e5",
+	'../../Runtime Value/Runtime Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("7bd0f24d-b925-4f70-bdb3-6e0ac938ea48",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"38e4582e-4f46-4a49-b267-b5e2304747f2",
+	"ac6ab589-443c-4b9e-b5d2-cdee3596dc94",
+	1,
+	'RuntimeValue_ID');
+INSERT INTO O_ATTR
+	VALUES ("7bd0f24d-b925-4f70-bdb3-6e0ac938ea48",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	"d3674719-e872-404c-8fe4-264e48231c9d",
+	'Derived_RuntimeValue_ID',
+	'Persistent:false',
+	'Derived_',
+	'RuntimeValue_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"926570ad-da94-4216-9905-d82b5c680af2");
+INSERT INTO O_OIDA
+	VALUES ("bdbaeb3a-a2fe-4a4d-aa08-6a42b4bbdeff",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	0,
+	'Inst_ID');
+INSERT INTO O_OIDA
+	VALUES ("070c6a58-c1eb-40bc-ad4e-4b7247a587ea",
+	"926570ad-da94-4216-9905-d82b5c680af2",
+	0,
+	'Attr_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"926570ad-da94-4216-9905-d82b5c680af2");
+INSERT INTO O_ID
+	VALUES (2,
+	"926570ad-da94-4216-9905-d82b5c680af2");
+INSERT INTO PE_PE
+	VALUES ("926570ad-da94-4216-9905-d82b5c680af2",
+	1,
+	"7b924115-e9f0-4229-8534-5eb4ea221f03",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("7b924115-e9f0-4229-8534-5eb4ea221f03",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Instance',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+Persistent:false
+Import: java.util.concurrent.locks.ReentrantLock',
+	900,
+	'../Instance.xtuml');

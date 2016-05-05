@@ -1,0 +1,389 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'Return Message',
+	1011,
+	'MSG_R',
+	'This class is used to represent a return message.  The return message is never
+formal.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("02bebf5c-b559-420a-a314-67f6ea9fbe51",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// dispose supertype
+select one msg related by self->MSG_M[R1018];
+if(not_empty msg)
+  unrelate self from msg across R1018;
+  msg.dispose();
+end if;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("ba199349-c043-417d-a158-eb59ea71d9b1",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.Name = "Unnamed Return";',
+	1,
+	'',
+	"95ce3648-c088-45d1-9284-69782e532562");
+INSERT INTO O_TFR
+	VALUES ("8ea541ab-508f-4002-bd1f-e6f83ebbe258",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Msg_ID;',
+	1,
+	'',
+	"ff0686ef-60a3-4848-b5ad-ceb506368c11");
+INSERT INTO O_TFR
+	VALUES ("95ce3648-c088-45d1-9284-69782e532562",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'if(param.at == End::End)
+  return Style::OpenArrow;
+else
+  return Style::Broken;
+end if;',
+	1,
+	'',
+	"8ea541ab-508f-4002-bd1f-e6f83ebbe258");
+INSERT INTO O_TPARM
+	VALUES ("c5a04c46-4fff-4d86-b821-df505e940973",
+	"95ce3648-c088-45d1-9284-69782e532562",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f9390a28-d78e-4364-b005-bcf6767b5871",
+	"00000000-0000-0000-0000-000000000000",
+	'End',
+	'Text is positioned at a user adjustable offset from the Start, Middle and End of a connector. Start_Fixed and End_Fixed specify fixed position text found at the start and end of some connectors.
+-------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("ff0686ef-60a3-4848-b5ad-ceb506368c11",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'get_connector_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'if(param.at == End::Middle)
+  result = self.Name;
+  if(self.ResultTarget != "")
+    if(result == "")
+      result = self.ResultTarget;
+    else
+      result = self.ResultTarget + " = " + result;
+    end if;
+  end if;
+  if(self.SequenceNumb != "")
+    if(result == "")
+      result = self.SequenceNumb;
+    else
+      result = self.SequenceNumb + ": " + result;
+    end if;
+  end if;
+  select many args related by self->MSG_M[R1018]->MSG_A[R1001];
+  if(empty args)
+    select many args related by self->MSG_M[R1018]->MSG_A[R1000];
+  end if;
+  if(not_empty args)
+    result = result + " (";
+    count = 0;
+    for each arg in args
+      count = count + 1;
+      result = result + arg.Label;
+      if(count != cardinality args)
+        result = result + ", ";
+      end if;
+    end for;  
+    result = result + ")";
+  end if;
+  if(self.ReturnValue != "")
+    if(result == "")
+      result = self.ReturnValue;
+    else
+      result = result + ":" + self.ReturnValue;
+    end if;
+  end if;
+  return result;
+elif(param.at == End::Start)
+  if(self.GuardCondition != "")
+    return "[" + self.GuardCondition + "]";
+  end if;
+  return "";
+else
+  return "";
+end if;',
+	1,
+	'',
+	"02bebf5c-b559-420a-a314-67f6ea9fbe51");
+INSERT INTO O_TPARM
+	VALUES ("99111f7c-1dc7-4bb5-a6e4-c75af06f105c",
+	"ff0686ef-60a3-4848-b5ad-ceb506368c11",
+	'Obj_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5ea957ef-bd34-47c6-b020-84e206cfb928",
+	"ff0686ef-60a3-4848-b5ad-ceb506368c11",
+	'Obj_TypeIsImported',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"99111f7c-1dc7-4bb5-a6e4-c75af06f105c",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("1b2c28aa-e7d2-4855-91e7-1fd188431faf",
+	"ff0686ef-60a3-4848-b5ad-ceb506368c11",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"5ea957ef-bd34-47c6-b020-84e206cfb928",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("035360fc-40f8-4469-8916-cebeae549736",
+	"ff0686ef-60a3-4848-b5ad-ceb506368c11",
+	'parent_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"1b2c28aa-e7d2-4855-91e7-1fd188431faf",
+	'');
+INSERT INTO O_TFR
+	VALUES ("8667b979-3bd0-442d-b9a2-c9fd88877ba1",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	'newArgument',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// have the supertype create the argument
+select one msg related by self->MSG_M[R1018];
+if(not_empty msg)
+  msg.newArgument();
+end if;',
+	1,
+	'',
+	"ba199349-c043-417d-a158-eb59ea71d9b1");
+INSERT INTO O_NBATTR
+	VALUES ("9a59e28c-38de-4053-a8b4-21b42f9d5cda",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_BATTR
+	VALUES ("9a59e28c-38de-4053-a8b4-21b42f9d5cda",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ATTR
+	VALUES ("9a59e28c-38de-4053-a8b4-21b42f9d5cda",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"03fec4b5-ba8a-4e38-9527-5616d3d18c46",
+	'ReturnValue',
+	'Full Name: Return Value',
+	'',
+	'ReturnValue',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("03fec4b5-ba8a-4e38-9527-5616d3d18c46",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_BATTR
+	VALUES ("03fec4b5-ba8a-4e38-9527-5616d3d18c46",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ATTR
+	VALUES ("03fec4b5-ba8a-4e38-9527-5616d3d18c46",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"707e581e-9858-490c-8680-306aa637bd7f",
+	'ResultTarget',
+	'Full Name: Result Target',
+	'',
+	'ResultTarget',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("707e581e-9858-490c-8680-306aa637bd7f",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_BATTR
+	VALUES ("707e581e-9858-490c-8680-306aa637bd7f",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ATTR
+	VALUES ("707e581e-9858-490c-8680-306aa637bd7f",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"4fb68ed1-cfc8-4d7a-9435-695a534f4318",
+	'GuardCondition',
+	'Full Name: Guard Condition',
+	'',
+	'GuardCondition',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("4fb68ed1-cfc8-4d7a-9435-695a534f4318",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_BATTR
+	VALUES ("4fb68ed1-cfc8-4d7a-9435-695a534f4318",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ATTR
+	VALUES ("4fb68ed1-cfc8-4d7a-9435-695a534f4318",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"893fb6e9-eb1f-4784-89eb-b6a7d9aaeca3",
+	'Descrip',
+	'Full Name: Message Description
+Description: A textual description of this message.',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("893fb6e9-eb1f-4784-89eb-b6a7d9aaeca3",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_BATTR
+	VALUES ("893fb6e9-eb1f-4784-89eb-b6a7d9aaeca3",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ATTR
+	VALUES ("893fb6e9-eb1f-4784-89eb-b6a7d9aaeca3",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"7a6a4515-a399-4145-bc4b-358fdda8a010",
+	'Name',
+	'Full Name: Name',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("89b52bda-4611-4d42-bd4b-e42d2b7a3791",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_BATTR
+	VALUES ("89b52bda-4611-4d42-bd4b-e42d2b7a3791",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ATTR
+	VALUES ("89b52bda-4611-4d42-bd4b-e42d2b7a3791",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"9a59e28c-38de-4053-a8b4-21b42f9d5cda",
+	'SequenceNumb',
+	'Full Name: Sequence Number',
+	'',
+	'SequenceNumb',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"1efcafbb-c79d-4ade-8ed4-a39d2679686c",
+	0,
+	"d4cb1c26-ff58-4bb2-a7f3-ecd7cb8f9cb5",
+	"c83efff0-ba4f-4df8-af2a-54c522ee6032",
+	"0f25bf3b-9e7b-4694-a290-2036bdd3d2cf",
+	"3966a321-400f-4323-b07a-039435d2f104",
+	"7a6a4515-a399-4145-bc4b-358fdda8a010",
+	"e5aa486b-5602-4631-a975-f4283fadeb74",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Message',
+	'Msg_ID',
+	'R1018');
+INSERT INTO R_RGO_PROXY
+	VALUES ("56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"c83efff0-ba4f-4df8-af2a-54c522ee6032",
+	"0f25bf3b-9e7b-4694-a290-2036bdd3d2cf",
+	'../Message.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("d4cb1c26-ff58-4bb2-a7f3-ecd7cb8f9cb5",
+	"1efcafbb-c79d-4ade-8ed4-a39d2679686c",
+	0,
+	"c83efff0-ba4f-4df8-af2a-54c522ee6032",
+	"3966a321-400f-4323-b07a-039435d2f104",
+	'../Message.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("7a6a4515-a399-4145-bc4b-358fdda8a010",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("7a6a4515-a399-4145-bc4b-358fdda8a010",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	"00000000-0000-0000-0000-000000000000",
+	'Msg_ID',
+	'',
+	'',
+	'Msg_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_OIDA
+	VALUES ("7a6a4515-a399-4145-bc4b-358fdda8a010",
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	0,
+	'Msg_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO O_ID
+	VALUES (2,
+	"56e5e3e3-218f-4b8e-a348-df770804e3ea");
+INSERT INTO PE_PE
+	VALUES ("56e5e3e3-218f-4b8e-a348-df770804e3ea",
+	1,
+	"9e35749c-1d54-4f67-99a2-2ffc0008bb08",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9e35749c-1d54-4f67-99a2-2ffc0008bb08",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Message',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE',
+	1000,
+	'../Message.xtuml');

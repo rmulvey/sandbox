@@ -1,0 +1,618 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'Variable',
+	815,
+	'V_VAR',
+	'This class represents a temporary variable or an instance.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("38ad68eb-c403-438d-ae55-d149b902dcea",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one trn related by self->V_TRN[R814];
+if ( not_empty trn )
+  select many dims related by trn->S_DIM[R844];
+  for each dim in dims
+    unrelate trn from dim across R844;
+    delete object instance dim;
+  end for;
+  select one trn_dt related by trn->S_DT[R821];
+  if ( not_empty trn_dt )
+    unrelate trn from trn_dt across R821;
+  end if;
+  unrelate trn from self across R814;
+  delete object instance trn;
+
+  select many t_val_set related by self->V_TVL[R805]->V_VAL[R801];
+  for each t_val in t_val_set
+    t_val.dispose();
+  end for;
+  
+  select many lcl_vals related by trn->L_LVL[R3005];
+  for each lcl_val in lcl_vals
+    unrelate trn from lcl_val across R3005;
+    lcl_val.dispose();
+  end for;
+end if;
+
+select one irv related by self->V_INT[R814];
+if ( not_empty irv )
+  unrelate irv from self across R814;
+  irv.dispose();
+end if;
+
+select one irs related by self->V_INS[R814];
+if ( not_empty irs )
+  unrelate irs from self across R814;
+  irs.dispose();
+end if;
+
+select many dims related by self->S_DIM[R849];
+for each dim in dims
+  unrelate dim from self across R849;
+  delete object instance dim;
+end for;
+
+select one var_dt related by self->S_DT[R848];
+if ( not_empty var_dt )
+  unrelate var_dt from self across R848;
+end if;
+
+select many locs related by self->V_LOC[R835];
+for each loc in locs
+  unrelate self from loc across R835;
+  delete object instance loc;
+end for;
+
+// Body subsystem
+select many loop_vars related by self->ACT_FOR[R614];
+for each loop_var in loop_vars
+  unrelate self from loop_var across R614;
+end for;
+select many set_vars related by self->ACT_FOR[R652];
+for each set_var in set_vars
+  unrelate self from set_var across R652;
+end for;
+
+// Value subsystem
+select one blk related by self->ACT_BLK[R823];
+if ( not_empty blk )
+  unrelate self from blk across R823;
+end if;
+
+select many tvls related by self->V_TVL[R805];
+for each tvl in tvls
+  unrelate self from tvl across R805;
+end for;
+select many irfs related by self->V_IRF[R808];
+for each irf in irfs
+  unrelate self from irf across R808;
+end for;
+select many isrs related by self->V_ISR[R809];
+for each isr in isrs
+  unrelate self from isr across R809;
+end for;
+select many trvs related by self->V_TRV[R830];
+for each trv in trvs
+  unrelate self from trv across R830;
+end for;
+
+// Event subsystem
+select many cess related by self->E_CES[R710];
+for each ces in cess
+  unrelate self from ces across R710;
+end for;
+select many ceis related by self->E_CEI[R711];
+for each cei in ceis
+  unrelate self from cei across R711;
+end for;
+select many gens related by self->E_GEN[R712];
+for each gen in gens
+  unrelate self from gen across R712;
+end for;
+
+// Instance Access subsystem
+select many crs related by self->ACT_CR[R633];
+for each cr in crs
+  unrelate self from cr across R633;
+end for;
+select many dels related by self->ACT_DEL[R634];
+for each del in dels
+  unrelate self from del across R634;
+end for;
+
+// Relate and Unrelate subsystem
+select many rels related by self->ACT_REL[R615];
+for each rel in rels
+  unrelate self from rel across R615;
+end for;
+select many rels related by self->ACT_REL[R616];
+for each rel in rels
+  unrelate self from rel across R616;
+end for;
+select many rus related by self->ACT_RU[R617];
+for each ru in rus
+  unrelate self from ru across R617;
+end for;
+select many rus related by self->ACT_RU[R618];
+for each ru in rus
+  unrelate self from ru across R618;
+end for;
+select many rus related by self->ACT_RU[R619];
+for each ru in rus
+  unrelate self from ru across R619;
+end for;
+select many unrs related by self->ACT_UNR[R620];
+for each unr in unrs
+  unrelate self from unr across R620;
+end for;
+select many unrs related by self->ACT_UNR[R621];
+for each unr in unrs
+  unrelate self from unr across R621;
+end for;
+select many urus related by self->ACT_URU[R622];
+for each uru in urus
+  unrelate self from uru across R622;
+end for;
+select many urus related by self->ACT_URU[R623];
+for each uru in urus
+  unrelate self from uru across R623;
+end for;
+select many urus related by self->ACT_URU[R624];
+for each uru in urus
+  unrelate self from uru across R624;
+end for;
+
+// Selection subsystem
+select many sels related by self->ACT_SEL[R638];
+for each sel in sels
+  unrelate self from sel across R638;
+end for;
+select many fios related by self->ACT_FIO[R639];
+for each fio in fios
+  unrelate self from fio across R639;
+end for;
+select many fiws related by self->ACT_FIW[R665];
+for each fiw in fiws
+  unrelate self from fiw across R665;
+end for;
+
+// Invocation subsystem
+select many tfms related by self->ACT_TFM[R667];
+for each tfm in tfms
+  unrelate self from tfm across R667;
+end for;
+delete object instance self;
+',
+	1,
+	'',
+	"30c7741f-babf-40c1-a7ca-697d18f019f3");
+INSERT INTO O_TFR
+	VALUES ("1a73cf74-39f0-47cb-bb7e-5b4fd9b7d18f",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'migrate_to_int',
+	'During parsing, all variables are initially created with a Transient Var (V_TRN) subtype.  If it is determined at a later point the Variable instance should have a subtype of Instance (V_INT), this function is called to migrate the V_TRN subtype instance to a V_INT instance.
+--------------------------------------------------------------------------------
+Bridge:ALS',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one trn related by self->V_TRN[R814];
+if ( not_empty trn )
+  // need to migrate to V_INT
+  unrelate self from trn across R814;
+  delete object instance trn;
+  create object instance inst_ref of V_INT;
+  relate inst_ref to self across R814;
+end if;
+',
+	1,
+	'',
+	"47aea7bc-6373-4dd6-a18f-b9d6eb413661");
+INSERT INTO O_TFR
+	VALUES ("47aea7bc-6373-4dd6-a18f-b9d6eb413661",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'migrate_to_ins',
+	'During parsing, all variables are initially created with a Transient Var (V_TRN) subtype.  If it is determined at a later point the Variable instance should have a subtype of Instance Set (V_INS), this function is called to migrate the V_TRN subtype instance to a V_INS instance.
+--------------------------------------------------------------------------------
+Bridge:ALS',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one trn related by self->V_TRN[R814];
+if ( not_empty trn )
+  // need to migrate to V_INS
+  unrelate self from trn across R814;
+  delete object instance trn;
+  create object instance inst_ref of V_INS;
+  relate inst_ref to self across R814;
+end if;
+',
+	1,
+	'',
+	"bee69c84-692a-4808-94ac-4e66a1ace61c");
+INSERT INTO O_TFR
+	VALUES ("96b75d64-8725-4601-8b5a-ea3ca9cf635a",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'addLocation',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'create object instance loc of V_LOC;
+loc.LineNumber = param.line;
+loc.StartPosition = param.col;
+loc.EndPosition = loc.StartPosition + GD::strlen(s: self.Name) - 1;
+relate loc to self across R835;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("bf277803-e0a8-4a0f-a7d4-7df1744a9d3d",
+	"96b75d64-8725-4601-8b5a-ea3ca9cf635a",
+	'line',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"c84b0aba-bc61-42d8-9ff1-4ad618f20372",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("c84b0aba-bc61-42d8-9ff1-4ad618f20372",
+	"96b75d64-8725-4601-8b5a-ea3ca9cf635a",
+	'col',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("617207d3-c19f-44bc-ac79-1befeec5579f",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'getDimensionsCnt',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many dims related by self->S_DIM[R849];
+dimensions = cardinality dims;
+return dimensions;',
+	1,
+	'',
+	"38ad68eb-c403-438d-ae55-d149b902dcea");
+INSERT INTO O_TFR
+	VALUES ("cd14d5e6-c4f7-4ccb-b346-8423541a837f",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'resizeDimensions',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// If the number of dimensions has increased then add dimensions
+while (param.numDimensions > self.getDimensionsCnt())
+  create object instance dim of S_DIM;
+  dim.dimensionCount = self.getDimensionsCnt();
+  relate dim to self across R849;
+end while;
+
+// If the number of dimensions has decreased then remove dimensions
+while (param.numDimensions < self.getDimensionsCnt())
+  select any dim related by self->S_DIM[R849] where (selected.dimensionCount == (self.getDimensionsCnt()-1));
+  unrelate dim from self across R849;
+  delete object instance dim;
+end while;
+
+// Update the specific dimension that was passed-in if its elementCount has
+// changed.
+if (param.numDimensions > 0)
+  select any dim related by self->S_DIM[R849] where (selected.dimensionCount == param.dimension);
+  if (dim.elementCount != param.elementCount)
+    dim.elementCount = param.elementCount;
+  end if;
+end if;',
+	1,
+	'',
+	"1a73cf74-39f0-47cb-bb7e-5b4fd9b7d18f");
+INSERT INTO O_TPARM
+	VALUES ("d99c4e44-9122-4065-beb5-b6d006a74a1b",
+	"cd14d5e6-c4f7-4ccb-b346-8423541a837f",
+	'dimension',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("f1189d59-cad0-4b8d-b06c-ec0be069d748",
+	"cd14d5e6-c4f7-4ccb-b346-8423541a837f",
+	'elementCount',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"d99c4e44-9122-4065-beb5-b6d006a74a1b",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("f5f15867-a676-495f-a26d-203679e4c213",
+	"cd14d5e6-c4f7-4ccb-b346-8423541a837f",
+	'numDimensions',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"f1189d59-cad0-4b8d-b06c-ec0be069d748",
+	'');
+INSERT INTO O_TFR
+	VALUES ("bee69c84-692a-4808-94ac-4e66a1ace61c",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'isReferringToDefaultDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one dt related by self->S_DT[R848];
+elementType = Util::getSimpleClassName(element:self.convertToInstance());
+if(dt.Name == S_DT::getDefaultDataTypeName(elementType:elementType))
+  return true;
+end if;
+return false;',
+	1,
+	'',
+	"617207d3-c19f-44bc-ac79-1befeec5579f");
+INSERT INTO O_TFR
+	VALUES ("30c7741f-babf-40c1-a7ca-697d18f019f3",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'convertToInstance',
+	'Translate:native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"0e3309bf-0103-4e70-9708-56aa19fe6df6");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("0e3309bf-0103-4e70-9708-56aa19fe6df6",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'canReferToDataType',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one body related by self->ACT_BLK[R823]->ACT_ACT[R601];
+isInGenericPackage = body.associateWithContainer();
+if isInGenericPackage
+  select one dt related by self->S_DT[R848];
+  if (not_empty dt)
+    select one containingElem related by body->ACT_BIE[R640]->PE_PE[R640];
+    return containingElem.canReferToDataType(dtID:dt.DT_ID, dtName:dt.Name);
+  end if;
+  return false;
+else
+  select one dt related by self->S_DT[R848];
+  if(not_empty dt)
+    body.associateWithOwningComponent();
+    select one component related by body->ACT_BIC[R694]->C_C[R694];
+    if(not_empty component)
+      select one reqSig related by body->ACT_RSB[R698];
+      select one reqOp related by body->ACT_ROB[R698];
+      select one proSig related by body->ACT_PSB[R698];
+      select one proOp related by body->ACT_POB[R698];
+      // if any of the following is not empty
+      // then the dt must live at the system level
+      if(not_empty reqSig)
+          return true;
+      elif(not_empty reqOp)
+          return true;
+      elif(not_empty proSig)
+          return true;
+      elif(not_empty proOp)
+          return true;
+      end if;
+    else
+        return true;
+    end if;
+  end if;
+  return false;
+end if;',
+	1,
+	'',
+	"96b75d64-8725-4601-8b5a-ea3ca9cf635a");
+INSERT INTO O_NBATTR
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_BATTR
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_ATTR
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"00000000-0000-0000-0000-000000000000",
+	'Var_ID',
+	'
+
+',
+	'',
+	'Var_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	0,
+	"d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"9fcc4f48-b9b0-41c4-b81c-10418bb1f299",
+	"713d1cbe-2c0e-4e6d-96c7-aa0c46d81f76",
+	"f88cdb09-58e8-4519-9d89-ee95a1fe3854",
+	"df60c829-54c7-4e73-a68f-0bc9e4dc6398",
+	"fb57a75a-961a-48b3-8b7e-730eea96f6a0",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Block',
+	'Block_ID',
+	'R823');
+INSERT INTO R_RGO_PROXY
+	VALUES ("f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"9fcc4f48-b9b0-41c4-b81c-10418bb1f299",
+	"713d1cbe-2c0e-4e6d-96c7-aa0c46d81f76",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	0,
+	"9fcc4f48-b9b0-41c4-b81c-10418bb1f299",
+	"f88cdb09-58e8-4519-9d89-ee95a1fe3854",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("df60c829-54c7-4e73-a68f-0bc9e4dc6398",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	1,
+	'Block_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("d99d21d2-81d8-403b-9806-b4620234cdcc",
+	"70a3e88d-3ee9-4e76-93d3-c4f447e317f4",
+	'../../Body/Block/Block.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("df60c829-54c7-4e73-a68f-0bc9e4dc6398",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	'Block_ID',
+	'
+
+',
+	'',
+	'Block_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("817947e0-db92-4992-bbf6-fddf9deb7cb1",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_BATTR
+	VALUES ("817947e0-db92-4992-bbf6-fddf9deb7cb1",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_ATTR
+	VALUES ("817947e0-db92-4992-bbf6-fddf9deb7cb1",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"df60c829-54c7-4e73-a68f-0bc9e4dc6398",
+	'Name',
+	'This string represents the name a variable.',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("43f56f77-4899-4fa8-abd3-6c224345146d",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_BATTR
+	VALUES ("43f56f77-4899-4fa8-abd3-6c224345146d",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_ATTR
+	VALUES ("43f56f77-4899-4fa8-abd3-6c224345146d",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"817947e0-db92-4992-bbf6-fddf9deb7cb1",
+	'Declared',
+	'This attribute is true if the variable has been fully declared. During parsing, there is a span of time between when the variable is first parsed and when we know what the data type of the variable is.  During this time Declared is false.  Once the type of the variable is assigned, Declared is set to true.
+--------------------------------------------------------------------------------
+Bridge:ALS',
+	'',
+	'Declared',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"35133802-1b64-4470-b677-760b79f4e5da",
+	"4c637128-dc54-4cc1-aa05-f8e78b80992c",
+	"d8b94b66-c4d7-43dc-a960-72908ae23285",
+	"756565cb-c022-423c-aca3-5dbcbaa17072",
+	"f5670153-7fd4-499b-8b69-3dab67c88cf8",
+	"06cdf9ee-f6d4-4ae8-9530-654ffb4ecebb",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Data Type',
+	'DT_ID',
+	'R848.''has''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"4c637128-dc54-4cc1-aa05-f8e78b80992c",
+	"d8b94b66-c4d7-43dc-a960-72908ae23285",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("35133802-1b64-4470-b677-760b79f4e5da",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"4c637128-dc54-4cc1-aa05-f8e78b80992c",
+	"756565cb-c022-423c-aca3-5dbcbaa17072",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("f5670153-7fd4-499b-8b69-3dab67c88cf8",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("f5670153-7fd4-499b-8b69-3dab67c88cf8",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	"43f56f77-4899-4fa8-abd3-6c224345146d",
+	'DT_ID',
+	'',
+	'',
+	'Element_ID',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_OIDA
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	'Var_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO O_ID
+	VALUES (2,
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7");
+INSERT INTO PE_PE
+	VALUES ("f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

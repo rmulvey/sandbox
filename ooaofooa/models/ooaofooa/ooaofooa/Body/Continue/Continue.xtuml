@@ -1,0 +1,187 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("a956d010-8e70-427e-8417-f90d2d41dde3",
+	'Continue',
+	630,
+	'ACT_CON',
+	'This class generates a continue statement within a block.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d6e27751-93da-4873-807b-2967c20cd136",
+	"a956d010-8e70-427e-8417-f90d2d41dde3",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// do nothing
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("2a7de003-e35b-4bc0-ba47-b8d1fccbb666",
+	"a956d010-8e70-427e-8417-f90d2d41dde3",
+	'execute',
+	'This operation will cause all blocks to stop executing until the originating for each or while loop is found.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Body:Continue.execute()
+
+// WARNING: This function assumes that break and continue statements can only
+//          exist within a for each or while loop. If a break or continue
+//          statement exists somewhere else, an infinite loop will occur.
+
+// Find the potentially nested block that is controlled by a for each or a
+// while loop
+
+found_loop_block = FALSE;
+select one containing_block related by self->ACT_SMT[R603]->ACT_BLK[R602];
+
+while (found_loop_block == FALSE)
+
+  // Tell each block of OAL to stop executing up to the originating for each
+  // or while loop containing_block.exitBlock();  
+
+  // Test if break was called within a for loop
+  select one for_statement related by containing_block->ACT_FOR[R605];
+  if (not_empty for_statement)
+    select one containing_block related by for_statement->
+                                                   ACT_SMT[R603]->ACT_BLK[R602];
+    found_loop_block = TRUE;  
+  else
+    // See if break was called within a while loop
+    select one while_statement related by containing_block->ACT_WHL[R608];
+    if (not_empty while_statement)
+      select one containing_block related by while_statement->
+                                                   ACT_SMT[R603]->ACT_BLK[R602];
+      found_loop_block = TRUE;
+    else 
+  
+      // This block isn''t the source of the while or for loop.
+      //  Find a nested control structure block.
+      select one if_statement related by containing_block->ACT_IF[R607];
+      select one elif_statement related by containing_block->ACT_EL[R658];
+      select one else_statement related by containing_block->ACT_E[R606];
+    
+      if (not_empty if_statement)
+        select one containing_block related by if_statement->
+                                                   ACT_SMT[R603]->ACT_BLK[R602];
+      elif (not_empty elif_statement)
+        select one containing_block related by elif_statement->
+                                                   ACT_SMT[R603]->ACT_BLK[R602];
+      elif (not_empty else_statement)
+        select one containing_block related by else_statement->
+                                                   ACT_SMT[R603]->ACT_BLK[R602];
+      end if;
+    end if;
+  end if;
+end while;
+
+// Abandon all processing in all blocks below the loop block
+select one statement related by self->ACT_SMT[R603];
+statement.popUpToBlock(block_id:containing_block.Block_ID,
+                                           stack_frame_id:param.stack_frame_id);
+',
+	1,
+	'',
+	"d6e27751-93da-4873-807b-2967c20cd136");
+INSERT INTO O_TPARM
+	VALUES ("2d3af983-2b45-4b71-886d-84a0197acc8c",
+	"2a7de003-e35b-4bc0-ba47-b8d1fccbb666",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("a956d010-8e70-427e-8417-f90d2d41dde3",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	0,
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"a505cf96-ce6a-47cb-89eb-56f6b03654fb",
+	"7558839e-e4fb-46e4-97b0-decfec373abb",
+	"813bdc02-97cd-4d01-93cf-8da92f0083cf",
+	"9f52393f-4a8a-4fc7-84f2-0f0eb78a33c6",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Statement',
+	'Statement_ID',
+	'R603');
+INSERT INTO R_RGO_PROXY
+	VALUES ("a956d010-8e70-427e-8417-f90d2d41dde3",
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"a505cf96-ce6a-47cb-89eb-56f6b03654fb",
+	'../Body.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	0,
+	"df5d83da-30d6-4d47-b2e9-e0558c45efd8",
+	"7558839e-e4fb-46e4-97b0-decfec373abb",
+	'../Body.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("813bdc02-97cd-4d01-93cf-8da92f0083cf",
+	"a956d010-8e70-427e-8417-f90d2d41dde3",
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	1,
+	'Statement_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	'../Statement/Statement.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("813bdc02-97cd-4d01-93cf-8da92f0083cf",
+	"a956d010-8e70-427e-8417-f90d2d41dde3",
+	"00000000-0000-0000-0000-000000000000",
+	'Statement_ID',
+	'
+
+',
+	'',
+	'Statement_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"a956d010-8e70-427e-8417-f90d2d41dde3");
+INSERT INTO O_OIDA
+	VALUES ("813bdc02-97cd-4d01-93cf-8da92f0083cf",
+	"a956d010-8e70-427e-8417-f90d2d41dde3",
+	0,
+	'Statement_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"a956d010-8e70-427e-8417-f90d2d41dde3");
+INSERT INTO O_ID
+	VALUES (2,
+	"a956d010-8e70-427e-8417-f90d2d41dde3");
+INSERT INTO PE_PE
+	VALUES ("a956d010-8e70-427e-8417-f90d2d41dde3",
+	1,
+	"5375dd69-33aa-4887-8270-296340adc334",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("5375dd69-33aa-4887-8270-296340adc334",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Body',
+	'This subsystem abstracts the action itself, the blocks and statements
+it contains together with the flow of control statements such as ''while'',
+''for each'' and ''if''.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	600,
+	'../Body.xtuml');

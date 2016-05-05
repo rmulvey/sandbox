@@ -1,0 +1,650 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'Symbolic Constant',
+	1501,
+	'CNST_SYC',
+	'A constant with a name as opposed to a literal constant that has a value only.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("c2fa3cff-1592-44ec-b290-0c1a3b341568",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'actionFilter',
+	'Returns whether or not a given context menu entry item should be available.',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'if (param.name == "can" )
+  if ( param.value == "move up" )
+    select one prev_attr related by self->CNST_SYC[R1505.''succeeds''];
+    return not_empty prev_attr;
+  elif ( param.value == "move down" )
+    select one next_attr related by self->CNST_SYC[R1505.''precedes''];
+    return not_empty next_attr;
+  end if;
+end if;
+return false;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("7d7466f7-8a8d-4a74-9980-d37893f36e82",
+	"c2fa3cff-1592-44ec-b290-0c1a3b341568",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("99fcb895-09ac-4a7f-b0d9-6502128fceb5",
+	"c2fa3cff-1592-44ec-b290-0c1a3b341568",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"7d7466f7-8a8d-4a74-9980-d37893f36e82",
+	'');
+INSERT INTO O_TFR
+	VALUES ("6fe9a99a-6a02-4d8c-b57c-43bf829b7fb5",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'convertToInstance',
+	'A utility operation to get an instance of this class.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// just return this instance as an Object
+return this;',
+	0,
+	'',
+	"c2fa3cff-1592-44ec-b290-0c1a3b341568");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("965ac971-c16f-4ea9-a2bb-aa433a4ed6ed",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Symbolic Constant (CNST_SYC) dispose operation
+
+// Remove the associated subtype chain
+select one lfsc related by self->CNST_LFSC[R1502];
+if not_empty lfsc
+  lfsc.dispose();
+end if;
+
+
+
+
+
+// Remove self from the list of chained symbolic constants by making the
+// preceding element point to the succeeding element
+select one owningSpec related by self->CNST_CSP[R1504];
+select one nextConst related by self->CNST_SYC[R1505.''precedes''];
+::changeNotificationEnablement(enabled:false);
+if(not_empty nextConst)
+  if (self.Previous_Const_ID == GD::NULL_UNIQUE_ID())
+    // this attribute is at the top of the list
+    unrelate self from nextConst across R1505.''precedes'';
+  else
+    // otherwise this attribute is somewhere in the middle
+    // or at the end
+    select many consts related by owningSpec->CNST_SYC[R1504];
+    for each const in consts
+      select one thisconst related by const->CNST_SYC[R1505.''precedes''];
+      if (self == thisconst)
+        // now tell the next const that this is not
+        // the const that it succeeds anymore
+        unrelate self from nextConst across R1505.''precedes'';
+        // and tell this const that it no longer succeeds
+        // any const. 
+        // *NOTE* this is not really required for deletion but
+        // more for restoration
+        unrelate self from const across R1505.''succeeds'';
+        // finally connect the two const that this
+        // const was between
+        relate nextConst to const across R1505.''succeeds'';
+        break;
+      end if;
+    end for;
+  end if;
+else
+  // we are at the end of the list
+  select one priorCost related by self->CNST_SYC[R1505.''succeeds''];
+  if ( not_empty priorCost )
+    unrelate self from priorCost across R1505.''succeeds'';
+  end if;
+end if;
+::changeNotificationEnablement(enabled:true);
+
+// Unrelate from the associated datatype
+select one dt related by self->S_DT[R1500];
+unrelate self from dt across R1500;
+
+// Unrelate from constant specification
+select one csp related by self->CNST_CSP[R1504];
+unrelate self from csp across R1504;
+
+// Clean up Value Subsystem ties
+select many scvs related by self->V_SCV[R850];
+for each scv in scvs
+  unrelate self from scv across R850;
+end for;
+
+delete object instance self;',
+	1,
+	'',
+	"6fe9a99a-6a02-4d8c-b57c-43bf829b7fb5");
+INSERT INTO O_TFR
+	VALUES ("2bd5c565-f4c4-4e2a-b5e0-03db91bc82f2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'initialize',
+	'The initialization operation for this class.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Symbolic Constant (CNST_SYC) initialize operation
+select many peers related by self->CNST_CSP[R1504]->CNST_SYC[R1504];
+for each peer in peers
+  select one nextConst related by peer->CNST_SYC[R1505.''precedes''];
+  if (empty nextConst)
+    break;
+  end if;
+end for;
+if (not_empty peer)
+  //
+  // If there was a previous last attribute link this one to the end . . .
+  // We need to disable the listeners because the ordering change
+  // causes a NPE 
+  ::changeNotificationEnablement(enabled:false);
+  relate peer to self across R1505.''precedes'';
+  ::changeNotificationEnablement(enabled:true);
+end if;
+::changeNotificationEnablement(enabled:true);
+name = ::getUniqueInitialName(
+    instance: self.convertToInstance(),
+    candidateName: "Unnamed Constant");    
+success = ::getNewElementName(name:name,instance: self.convertToInstance(),validateName:true);    
+if ( success!="") 
+ self.Name=success;
+else 
+ self.dispose();
+end if;        
+
+ ',
+	1,
+	'',
+	"965ac971-c16f-4ea9-a2bb-aa433a4ed6ed");
+INSERT INTO O_TFR
+	VALUES ("1b70f794-19ee-479a-a9e7-beab2866b7a0",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'moveDown',
+	'Move this Symbolic Constant down in the list of CNST_SYCs in this Constant
+Specification Package.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'::changeNotificationEnablement(enabled:false);
+select one next_attr related by self->CNST_SYC[R1505.''precedes''];
+select one prev_attr related by self->CNST_SYC[R1505.''succeeds''];
+select one next_next_attr related by next_attr->CNST_SYC[R1505.''precedes''];
+
+if ( not_empty next_next_attr )
+  unrelate next_next_attr from next_attr across R1505.''succeeds'';
+end if;
+if ( not_empty prev_attr )
+  unrelate self from prev_attr across R1505.''succeeds'';
+end if;
+unrelate next_attr from self across R1505.''succeeds'';
+
+if ( not_empty prev_attr )
+  relate next_attr to prev_attr across R1505.''succeeds'';
+end if;
+
+// want to enable listeners at the last possible moment
+if ( empty next_next_attr )
+  ::changeNotificationEnablement(enabled:true);
+end if;
+relate self to next_attr across R1505.''succeeds'';
+if ( not_empty next_next_attr )
+  ::changeNotificationEnablement(enabled:true);
+  relate next_next_attr to self across R1505.''succeeds'';
+end if;',
+	1,
+	'',
+	"2bd5c565-f4c4-4e2a-b5e0-03db91bc82f2");
+INSERT INTO O_TFR
+	VALUES ("8a1bbd5c-34fe-4ee3-9705-be18ce550d4c",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'moveUp',
+	'Move this Symbolic Constant up in the list of CNST_SYCs in this Constant
+Specification Package.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'::changeNotificationEnablement(enabled:false);
+select one prev_attr related by self->CNST_SYC[R1505.''succeeds''];
+select one prev_prev_attr related by prev_attr->CNST_SYC[R1505.''succeeds''];
+select one next_attr related by self->CNST_SYC[R1505.''precedes''];
+
+if ( not_empty prev_prev_attr )
+  unrelate prev_attr from prev_prev_attr across R1505.''succeeds'';
+end if;
+if ( not_empty next_attr )
+  unrelate next_attr from self across R1505.''succeeds'';
+end if;
+unrelate self from prev_attr across R1505.''succeeds'';
+
+if ( not_empty prev_prev_attr )
+  relate self to prev_prev_attr across R1505.''succeeds'';
+end if;
+// want to enable listeners at the last possible moment
+if ( empty next_attr )
+  ::changeNotificationEnablement(enabled:true);
+end if;
+relate prev_attr to self across R1505.''succeeds'';
+if ( not_empty next_attr )
+  ::changeNotificationEnablement(enabled:true);
+  relate next_attr to prev_attr across R1505.''succeeds'';
+end if;',
+	1,
+	'',
+	"1b70f794-19ee-479a-a9e7-beab2866b7a0");
+INSERT INTO O_TFR
+	VALUES ("b3ffb6cb-ca08-4e8e-9e56-56b5dc29bb00",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'setToDefaultDatatype',
+	'This function is called when the datatype associated with this constant needs to
+be set to the default "integer".  This is needed during initialization and when
+the previously associated datatype is disposed.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Symbolic Constant (CNST_SYC) setToDefaultDatatype operation
+
+
+// if empty we may be in a generic package
+select one sys related by self->CNST_CSP[R1504]->PE_PE[R8001]->EP_PKG[R8000]->S_SYS[R1405];
+int_dt_id = GD::NULL_UNIQUE_ID();
+if not_empty sys
+  int_dt_id = sys.getCoreTypeId(name:"integer");
+end if;
+select any pe from instances of PE_PE where selected.Element_ID == int_dt_id;
+select one int_dt related by pe->S_DT[R8001];
+if (empty int_dt)
+  // TBD Why is this here?
+  select any int_dt related by sys->EP_PKG[R1405]->PE_PE[R8000]->S_DT[R8001] where (selected.Name == "integer");
+end if;
+
+if(not_empty sys)
+  intdt_id = GD::NULL_UNIQUE_ID();
+  if not_empty sys
+    intdt_id = sys.getCoreTypeId(name:"integer");
+  end if;
+  select any pe from instances of PE_PE where selected.Element_ID == intdt_id;
+  select one intdt related by pe->S_DT[R8001]; 
+end if;
+
+// Now that we have the integer datatype, clean up the CNST_SYC->S_DT
+// association and reset them to the integer. Set the value of the constant to 0.
+select one dt related by self->S_DT[R1500];
+unrelate self from dt across R1500;
+relate self to int_dt across R1500;
+select one lsc related by self->CNST_LFSC[R1502]->CNST_LSC[R1503];
+if (not_empty lsc)
+  lsc.Value = "0";
+end if;',
+	1,
+	'',
+	"0e446fdf-114d-4be9-b441-ec29e81291e1");
+INSERT INTO O_TFR
+	VALUES ("0e446fdf-114d-4be9-b441-ec29e81291e1",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'resolveDatatype',
+	'This operation is called automatically by the paste infrastructure to fix up
+datatype relationships for pasted elements.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'//
+// Symbolic Constant.resolveDatatype()
+//
+select one dtProxy related by self->S_DT[R1500];
+if(not_empty dtProxy and not Util::isProxy(element:self.convertToInstance()))
+  name = dtProxy.Name;
+  unrelate dtProxy from self across R1500;
+  
+  select one packageableElem related by self->CNST_CSP[R1504]->PE_PE[R8001];
+  select one package related by packageableElem->EP_PKG[R8000];
+  select one component related by packageableElem->C_C[R8003];
+    id = packageableElem.resolveDataTypeRelativeToSelf(default_name:"integer",
+                                                            expected_name:name);                                                          
+    select any resolvedDt related by package->PE_VIS[R8002]->
+                         PE_PE[R8002]->S_DT[R8001] where selected.DT_ID == id;
+    if (empty resolvedDt)
+      select any resolvedDt related by component->PE_CVS[R8004]->
+                       PE_PE[R8004]->S_DT[R8001] where selected.DT_ID == id;
+    end if;	
+    if not_empty resolvedDt
+      relate resolvedDt to self across R1500;
+    end if;
+
+end if;',
+	1,
+	'',
+	"8a1bbd5c-34fe-4ee3-9705-be18ce550d4c");
+INSERT INTO O_TFR
+	VALUES ("a12da090-3466-4a89-8d88-a21c0e9f57a4",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	'checkIntegrity',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  Create an integrity issue if there are any other constants in the same
+ *  specification with a matching name
+ */
+select one spec related by self->CNST_CSP[R1504];
+select one package related by spec->PE_PE[R8001]->EP_PKG[R8000];
+select one system related by package->S_SYS[R1405];
+sys_id = GD::NULL_UNIQUE_ID();
+if(not_empty system)
+  sys_id = system.Sys_ID;
+end if;
+select many constants related by package->PE_PE[R8000]->CNST_CSP[R8001]
+                                                              ->CNST_SYC[R1504];
+for each constant in constants
+  if(constant != self and constant.Name == self.Name)
+    MI_IM::createIssue(sys_id:sys_id, description:
+         "Found another constant under the same specification with a " +
+                                                          "matching name.",
+                                      severity:Severity::Error, name:self.Name,
+                                         path:package.getPath(path:"") + "::" +
+                                      spec.InformalGroupName + "::" + self.Name,
+                    id:self.Const_ID, element:self.convertToInstance());
+  end if;
+end for;',
+	1,
+	'',
+	"b3ffb6cb-ca08-4e8e-9e56-56b5dc29bb00");
+INSERT INTO O_NBATTR
+	VALUES ("2835a969-97b9-452b-9787-54ac3898e6b2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_BATTR
+	VALUES ("2835a969-97b9-452b-9787-54ac3898e6b2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_ATTR
+	VALUES ("2835a969-97b9-452b-9787-54ac3898e6b2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"00000000-0000-0000-0000-000000000000",
+	'Const_ID',
+	'',
+	'',
+	'Const_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c97aeb9a-c166-4c64-98a0-3082e32d24f2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_BATTR
+	VALUES ("c97aeb9a-c166-4c64-98a0-3082e32d24f2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_ATTR
+	VALUES ("c97aeb9a-c166-4c64-98a0-3082e32d24f2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"2835a969-97b9-452b-9787-54ac3898e6b2",
+	'Name',
+	'Full Name: Name
+Description: The name of this constant',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("0e409e9e-2598-495d-8086-29bd3d7790dd",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_BATTR
+	VALUES ("0e409e9e-2598-495d-8086-29bd3d7790dd",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_ATTR
+	VALUES ("0e409e9e-2598-495d-8086-29bd3d7790dd",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"c97aeb9a-c166-4c64-98a0-3082e32d24f2",
+	'Descrip',
+	'Full Name: Description
+Description:  A textual description of the symbolic constant as specified in the application analysis domain.',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	0,
+	"2835a969-97b9-452b-9787-54ac3898e6b2",
+	"cbf1de9e-1eb7-4e87-b358-d654453b66ba",
+	"ab3dbfd4-5d6e-4d93-be9e-96b0d736e8a1",
+	"3f2d9f0e-8a12-4726-b947-f2fc38bdd02a",
+	"ae63cd14-5031-48c8-ae60-5d7d0be60d7f",
+	"934b64fc-fd49-4d3a-adab-0c38ea2ce9a6",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Symbolic Constant',
+	'Const_ID',
+	'R1505.''succeeds''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"cbf1de9e-1eb7-4e87-b358-d654453b66ba",
+	"ab3dbfd4-5d6e-4d93-be9e-96b0d736e8a1",
+	'../Constants.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("2835a969-97b9-452b-9787-54ac3898e6b2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	0,
+	"cbf1de9e-1eb7-4e87-b358-d654453b66ba",
+	"3f2d9f0e-8a12-4726-b947-f2fc38bdd02a",
+	'../Constants.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ae63cd14-5031-48c8-ae60-5d7d0be60d7f",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"2835a969-97b9-452b-9787-54ac3898e6b2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	1,
+	'Const_ID');
+INSERT INTO O_ATTR
+	VALUES ("ae63cd14-5031-48c8-ae60-5d7d0be60d7f",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"be0d1cbc-655c-49df-a640-7ba9b378bed2",
+	'Previous_Const_ID',
+	'',
+	'Previous_',
+	'Const_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"35133802-1b64-4470-b677-760b79f4e5da",
+	"2f9f077e-34e9-4942-97a6-42e1ae65ceab",
+	"c9588a80-8787-45ee-a8da-65f0a7654a63",
+	"608eb33f-785d-4401-a2e5-c119668ff2e9",
+	"50b0b877-329b-4532-952b-59e68b43c0bb",
+	"144342a3-d162-44b1-ae9c-d0031a57dc30",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Data Type',
+	'DT_ID',
+	'R1500.''is defined by''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"2f9f077e-34e9-4942-97a6-42e1ae65ceab",
+	"c9588a80-8787-45ee-a8da-65f0a7654a63",
+	'../Constants.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("35133802-1b64-4470-b677-760b79f4e5da",
+	"8e4aa370-0206-4cf0-a81e-edaf0e37466e",
+	0,
+	"2f9f077e-34e9-4942-97a6-42e1ae65ceab",
+	"608eb33f-785d-4401-a2e5-c119668ff2e9",
+	'../Constants.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("50b0b877-329b-4532-952b-59e68b43c0bb",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("50b0b877-329b-4532-952b-59e68b43c0bb",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"0e409e9e-2598-495d-8086-29bd3d7790dd",
+	'DT_ID',
+	'',
+	'',
+	'Element_ID',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	0,
+	"50b0b877-329b-4532-952b-59e68b43c0bb",
+	"cbf1de9e-1eb7-4e87-b358-d654453b66ba",
+	"ab3dbfd4-5d6e-4d93-be9e-96b0d736e8a1",
+	"3f2d9f0e-8a12-4726-b947-f2fc38bdd02a",
+	"32ecfb63-72bb-4e35-8cf7-d287cdebaca1",
+	"9c33e84f-8e71-4344-9ee2-d2d1d0cd5c0a",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Symbolic Constant',
+	'DT_ID',
+	'R1505.''succeeds''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("50b0b877-329b-4532-952b-59e68b43c0bb",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	0,
+	"cbf1de9e-1eb7-4e87-b358-d654453b66ba",
+	"3f2d9f0e-8a12-4726-b947-f2fc38bdd02a",
+	'../Constants.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("32ecfb63-72bb-4e35-8cf7-d287cdebaca1",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("32ecfb63-72bb-4e35-8cf7-d287cdebaca1",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"ae63cd14-5031-48c8-ae60-5d7d0be60d7f",
+	'Previous_DT_DT_ID',
+	'',
+	'Previous_DT_',
+	'DT_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"4626ffd0-bf74-4c8f-8217-3469da2626ed",
+	0,
+	"fe9077a2-e458-48bb-b32c-e045397f8d12",
+	"914a3b1a-9de0-4054-9ec3-32fdb1ec32ff",
+	"b48da92a-69a8-478b-9408-9fc617006f64",
+	"c29a1ddf-c3a3-4166-9142-556d73b1b818",
+	"be0d1cbc-655c-49df-a640-7ba9b378bed2",
+	"94aaa5b7-dc56-4fd8-9bab-78ab89b11380",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Constant Specification',
+	'Constant_Spec_ID',
+	'R1504.''is contained by''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"914a3b1a-9de0-4054-9ec3-32fdb1ec32ff",
+	"b48da92a-69a8-478b-9408-9fc617006f64",
+	'../Constants.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("fe9077a2-e458-48bb-b32c-e045397f8d12",
+	"4626ffd0-bf74-4c8f-8217-3469da2626ed",
+	0,
+	"914a3b1a-9de0-4054-9ec3-32fdb1ec32ff",
+	"c29a1ddf-c3a3-4166-9142-556d73b1b818",
+	'../Constants.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("be0d1cbc-655c-49df-a640-7ba9b378bed2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("be0d1cbc-655c-49df-a640-7ba9b378bed2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	"50b0b877-329b-4532-952b-59e68b43c0bb",
+	'Constant_Spec_ID',
+	'',
+	'',
+	'Constant_Spec_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_OIDA
+	VALUES ("2835a969-97b9-452b-9787-54ac3898e6b2",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	0,
+	'Const_ID');
+INSERT INTO O_OIDA
+	VALUES ("50b0b877-329b-4532-952b-59e68b43c0bb",
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	0,
+	'DT_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO O_ID
+	VALUES (2,
+	"89b2ffc1-d1bd-4385-b633-552d0019d9ec");
+INSERT INTO PE_PE
+	VALUES ("89b2ffc1-d1bd-4385-b633-552d0019d9ec",
+	1,
+	"c87aad3c-15d6-4ea7-993e-98e839455538",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c87aad3c-15d6-4ea7-993e-98e839455538",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Constants',
+	'This subsystem contains the metamodel support for constants.  Individual
+constants are contained inside a constant specification on the datatypes
+diagram.',
+	1500,
+	'../Constants.xtuml');

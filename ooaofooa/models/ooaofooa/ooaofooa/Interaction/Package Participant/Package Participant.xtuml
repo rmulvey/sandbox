@@ -1,0 +1,726 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'Package Participant',
+	931,
+	'SQ_PP',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("d4b69b43-be10-4a38-a1b8-9ffbeeed554d",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'actionFilter',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// PE_PE navigation is present (isInGenericPackage).  Do not remove this comment.
+if(param.name == "can")
+  // if the current action is one which requires
+  // this element to be selected along with a
+  // synchronous message
+  if(param.value == "formCommPackageFunc")
+    // no formalization support yet at system level
+    if(self.definedAtSystemLevel())
+      return false;
+    end if;
+    // if the selection count is not equal two return false, this
+    // prevents the menu entries from existing while only one of the
+    // elements is selected
+    if(Sel::getCurrentSelectionCount() != 2)
+      return false;
+    end if;
+    // return true if this participant represents
+    // a function package which contains at least
+    // one function
+    return self.formalPKGHasFunctions();
+  end if;
+  if(param.value == "formPkg")
+    count = Util::getElementCountInSystem(
+                                      elementType:ElementTypeConstants::PACKAGE,
+                                        askingElement:self.convertToInstance());
+    if(count == 1 and self.isFormal)
+      return false;
+    end if;
+    return count != 0;
+  end if;
+  if(param.value == "unform")
+    return self.isFormal;
+  end if;
+end if;
+return false;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("5a52f3d0-d4c0-44cf-a5e8-5950f46240d7",
+	"d4b69b43-be10-4a38-a1b8-9ffbeeed554d",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("944413bd-80c6-426d-9998-0d92c7caaa67",
+	"d4b69b43-be10-4a38-a1b8-9ffbeeed554d",
+	'value',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"5a52f3d0-d4c0-44cf-a5e8-5950f46240d7",
+	'');
+INSERT INTO O_TFR
+	VALUES ("566dc27f-b23c-406a-a7bc-f210bafd7123",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'canRename',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'return not self.isFormal;',
+	1,
+	'',
+	"d4b69b43-be10-4a38-a1b8-9ffbeeed554d");
+INSERT INTO O_TFR
+	VALUES ("92eae61a-c51a-4fba-ab9c-6e651624757c",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'definedAtSystemLevel',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one part related by self->SQ_P[R930];
+return part.definedAtSystemLevel();',
+	1,
+	'',
+	"566dc27f-b23c-406a-a7bc-f210bafd7123");
+INSERT INTO O_TFR
+	VALUES ("ac450260-de9c-4d44-8062-98330384e662",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// PE_PE navigation is present (isInGenericPackage).  Do not remove this comment.
+select one participant related by self->SQ_P[R930];
+if(not_empty participant)
+  participant.dispose();
+else
+  select one fp related by self->EP_PKG[R956];
+  if(not_empty fp)
+    unrelate fp from self across R956;
+  end if;
+  delete object instance self;
+end if;',
+	1,
+	'',
+	"92eae61a-c51a-4fba-ab9c-6e651624757c");
+INSERT INTO O_TFR
+	VALUES ("a41c691b-92af-4858-b8c5-506ccd82899c",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'formalPKGHasFunctions',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'  select one pkg related by self->EP_PKG[R956];
+  if(not_empty pkg)
+    select many funcs related by pkg->PE_PE[R8000]->S_SYNC[R8001];
+    return not_empty funcs;
+  end if;
+  return false;
+',
+	1,
+	'',
+	"ac450260-de9c-4d44-8062-98330384e662");
+INSERT INTO O_TFR
+	VALUES ("bcee9aa8-0f51-4a48-8853-f7c9ea11ae7f",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'formalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any pe from instances of PE_PE where (selected.Element_ID == param.fpId);
+select one pkg related by pe->EP_PKG[R8001];
+if(self.isFormal)
+  self.unformalize();
+end if;
+if (not_empty pkg)
+  relate self to pkg across R956;
+end if;',
+	1,
+	'',
+	"a41c691b-92af-4858-b8c5-506ccd82899c");
+INSERT INTO O_TPARM
+	VALUES ("90a982c1-e477-4cf9-a5c0-61af3faf1f7a",
+	"bcee9aa8-0f51-4a48-8853-f7c9ea11ae7f",
+	'fpId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("da9160c8-420c-44d3-b394-e305c4101e48",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_compartment_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'result = "";
+
+  select one pkg related by self->EP_PKG[R956];
+  result = "";
+  if (param.at == Justification::Center_in_X)
+      result = "«package»";
+  end if;
+  if(not_empty pkg)
+    if(param.at == Justification::Center)
+      result = pkg.getPath(path:"");
+    end if;
+  else
+    if (param.at == Justification::Center)
+      result = self.InformalName;
+    end if;
+  end if;
+
+return result;',
+	1,
+	'',
+	"bcee9aa8-0f51-4a48-8853-f7c9ea11ae7f");
+INSERT INTO O_TPARM
+	VALUES ("caebbf6b-cf71-400b-b6a2-31728c337d55",
+	"da9160c8-420c-44d3-b394-e305c4101e48",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	"00000000-0000-0000-0000-000000000000",
+	'Justification',
+	'The Justification data type is used to specify text at a given location in a compartment.
+------------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("01882ff3-3f18-45dc-841e-6c80a37863ae",
+	"da9160c8-420c-44d3-b394-e305c4101e48",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"caebbf6b-cf71-400b-b6a2-31728c337d55",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("bad123dc-5abf-4b8e-91b7-aa2e50068cfe",
+	"da9160c8-420c-44d3-b394-e305c4101e48",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"01882ff3-3f18-45dc-841e-6c80a37863ae",
+	'');
+INSERT INTO O_TFR
+	VALUES ("7455db5f-80df-4239-81c6-db5bd53525af",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_compartments',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 1;',
+	1,
+	'',
+	"da9160c8-420c-44d3-b394-e305c4101e48");
+INSERT INTO O_TFR
+	VALUES ("1aa8cb91-07b7-4fcd-bc25-302840f1ae5f",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_entries',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 1;',
+	1,
+	'',
+	"7455db5f-80df-4239-81c6-db5bd53525af");
+INSERT INTO O_TPARM
+	VALUES ("33dc7d48-b05d-4ea9-b311-c3a4b230ebb4",
+	"1aa8cb91-07b7-4fcd-bc25-302840f1ae5f",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("a85cb766-8238-40c6-be21-1c988c59838a",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_name',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'return self.Label;',
+	1,
+	'',
+	"1aa8cb91-07b7-4fcd-bc25-302840f1ae5f");
+INSERT INTO O_TFR
+	VALUES ("49386e0e-1fc2-481c-a3a2-b0705137f128",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Part_ID;',
+	1,
+	'',
+	"a85cb766-8238-40c6-be21-1c988c59838a");
+INSERT INTO O_TFR
+	VALUES ("6449bd75-d4ef-44b8-a7e9-fa27a07077fa",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::Folder;',
+	1,
+	'',
+	"49386e0e-1fc2-481c-a3a2-b0705137f128");
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("d2757c91-88c2-4ca6-b917-55c911354486",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'get_text_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::None;',
+	1,
+	'',
+	"6449bd75-d4ef-44b8-a7e9-fa27a07077fa");
+INSERT INTO O_TPARM
+	VALUES ("d51631b5-8d4c-4fae-a015-50f92450652c",
+	"d2757c91-88c2-4ca6-b917-55c911354486",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b3185829-e17e-4f84-967c-ecde4a56b258",
+	"d2757c91-88c2-4ca6-b917-55c911354486",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"d51631b5-8d4c-4fae-a015-50f92450652c",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("e7032795-6b37-4f6f-a9da-2f6b946d8a7f",
+	"d2757c91-88c2-4ca6-b917-55c911354486",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"b3185829-e17e-4f84-967c-ecde4a56b258",
+	'');
+INSERT INTO O_TFR
+	VALUES ("3da13e24-218b-41f2-9d54-103ba69707c8",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'unformalize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one part related by self->SQ_P[R930];
+
+  select one pkg related by self ->EP_PKG[R956];
+  if(not_empty pkg)
+    unrelate self from pkg across R956;
+  end if;
+
+select many messages related by part->MSG_M[R1007];
+for each message in messages
+  message.unformalize();
+end for;
+// unformalize any communication links connected
+// to this instance
+select many links related by part->COMM_LNK[R1133];
+for each link in links
+  link.unformalize();
+end for;',
+	1,
+	'',
+	"f84dceb1-31d4-4fd4-abaa-60ba16ed9436");
+INSERT INTO O_TFR
+	VALUES ("f84dceb1-31d4-4fd4-abaa-60ba16ed9436",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'name = "Informal Package";
+success = ::getNewElementName(name:name,instance: self.convertToInstance(),validateName:false);     
+if ( success!="") 
+self.InformalName =success;
+else 
+ self.dispose();
+end if;  ',
+	1,
+	'',
+	"d2757c91-88c2-4ca6-b917-55c911354486");
+INSERT INTO O_TFR
+	VALUES ("561394f3-87f9-482e-9939-54b3aab90d0e",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'getFunctionCount',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'select many funcs related by self->EP_PKG[R956]->PE_PE[R8000]->S_SYNC[R8001];
+return cardinality funcs;',
+	1,
+	'',
+	"3da13e24-218b-41f2-9d54-103ba69707c8");
+INSERT INTO O_TFR
+	VALUES ("b0bc493d-4877-49a7-9b61-3060eb4b086d",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'resolvePackage',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one proxyPkg related by self->EP_PKG[R956];
+if(not_empty proxyPkg and not Util::isProxy(element:self.convertToInstance()))
+  select one packageableElem related by self->SQ_P[R930]->PE_PE[R8001];
+  select one package related by packageableElem->EP_PKG[R8000];
+  select one component related by packageableElem->C_C[R8003];
+  if (empty package)
+    select one package related by component->PE_PE[R8001]->EP_PKG[R8000]; 
+  end if;
+  // try to resolve the package by name
+  id = packageableElem
+                     .resolvePackageRelativeToSelf(expected_name:proxyPkg.Name);
+  select any resolvedPe from instances of PE_PE
+                                            where (selected.Element_ID == id);
+  if(not_empty resolvedPe)
+    select one pkg related by resolvedPe->EP_PKG[R8001];
+    relate self to pkg across R956;
+    self.resolveMessageFormalizations();
+  else
+    // unformalize this PP
+    self.unformalize();
+  end if;
+end if;',
+	1,
+	'',
+	"561394f3-87f9-482e-9939-54b3aab90d0e");
+INSERT INTO O_TFR
+	VALUES ("fbb9b53d-7ac2-4bc2-b77f-488419fae89d",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'convertToInstance',
+	'Translate:native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"b0bc493d-4877-49a7-9b61-3060eb4b086d");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("ddda0629-ccf6-4784-99c4-61c2c08856a6",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'resolveMessageFormalizations',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// first resolve those messages drawn directly to
+// self
+select many messages related by self->SQ_P[R930]->MSG_M[R1007];
+for each message in messages
+  select one syncMessage related by message->MSG_SM[R1018];
+  if(not_empty syncMessage)
+    // skip if informal
+    if(not syncMessage.isFormal)
+      continue;
+    end if;
+    select one funcMsg related by syncMessage->MSG_F[R1020];
+    select one funcProxy related by funcMsg->S_SYNC[R1010];
+    // we match by name
+    select any function related by self->EP_PKG[R956]->PE_PE[R8000]
+                        ->S_SYNC[R8001] where (selected.Name == funcProxy.Name);
+    if(not_empty function)
+      syncMessage.formalizeWithFunction(functionId:function.Sync_ID);
+    else
+      // otherwise unformalize the message
+      syncMessage.unformalize();
+    end if;
+  end if;
+end for;
+// now process all messages that go to our lifespan
+select one ls related by self->SQ_P[R930]->SQ_LS[R940];
+if(not_empty ls)
+  select many messages related by ls->SQ_P[R930]->MSG_M[R1007];
+  for each message in messages
+    select one syncMessage related by message->MSG_SM[R1018];
+    if(not_empty syncMessage)
+      // skip if informal
+      if(not syncMessage.isFormal)
+        continue;
+      end if;
+      select one funcMsg related by syncMessage->MSG_F[R1020];
+      select one funcProxy related by funcMsg->S_SYNC[R1010];
+      // we match by name
+      select any function related by self->EP_PKG[R956]->PE_PE[R8000]
+                        ->S_SYNC[R8001] where (selected.Name == funcProxy.Name);
+      if(not_empty function)
+        syncMessage.formalizeWithFunction(functionId:function.Sync_ID);
+      else
+        // otherwise unformalize the message
+        syncMessage.unformalize();
+      end if;
+    end if;
+  end for;
+end if;',
+	1,
+	'',
+	"fbb9b53d-7ac2-4bc2-b77f-488419fae89d");
+INSERT INTO O_TFR
+	VALUES ("1724c7c0-05b7-4367-a0d1-4331a9eb06c1",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'getConfigurationInheritanceElementId',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'select one pkg related by self->EP_PKG[R956];
+if(not_empty pkg)
+  return pkg.convertToInstance();
+end if;
+return self.convertToInstance();',
+	1,
+	'',
+	"ddda0629-ccf6-4784-99c4-61c2c08856a6");
+INSERT INTO O_REF
+	VALUES ("95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"b2f69942-4d57-4188-ae8f-a8e85433e8f8",
+	0,
+	"a93af252-2c79-4c81-9bd2-1e987ce13070",
+	"cd776756-1a60-4640-a49c-d7a01624c3b9",
+	"9f8481b9-3633-48df-b8f4-ca4faabf30ed",
+	"e39dc064-f30e-438b-a83c-8b4c0cfbd9a9",
+	"d96649ba-2a4a-4b35-a3d7-bb7c14591015",
+	"52ce95cb-5910-489a-8e76-b1302dc87d07",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Interaction Participant',
+	'Part_ID',
+	'R930');
+INSERT INTO R_RGO_PROXY
+	VALUES ("95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"cd776756-1a60-4640-a49c-d7a01624c3b9",
+	"9f8481b9-3633-48df-b8f4-ca4faabf30ed",
+	'../Interaction.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("a93af252-2c79-4c81-9bd2-1e987ce13070",
+	"b2f69942-4d57-4188-ae8f-a8e85433e8f8",
+	0,
+	"cd776756-1a60-4640-a49c-d7a01624c3b9",
+	"e39dc064-f30e-438b-a83c-8b4c0cfbd9a9",
+	'../Interaction.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("d96649ba-2a4a-4b35-a3d7-bb7c14591015",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("d96649ba-2a4a-4b35-a3d7-bb7c14591015",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"00000000-0000-0000-0000-000000000000",
+	'Part_ID',
+	'',
+	'',
+	'Part_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"2c739d45-638b-4513-84f2-e93bd74294ef",
+	0,
+	"0265124e-b530-4013-a9e0-f29de24024e1",
+	"e8ed81d0-29c7-4f70-8b95-3d1ad6f47448",
+	"e36e21b2-c742-49be-9ea7-aea278d369f8",
+	"6b433105-ec77-464b-aa23-bb4e81df76e5",
+	"aff18739-ac4f-4a9c-abe6-ee3ea059e286",
+	"961b485e-3f51-40c4-a73d-3bf816c8bedd",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Package',
+	'Package_ID',
+	'R956.''represents''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"e8ed81d0-29c7-4f70-8b95-3d1ad6f47448",
+	"e36e21b2-c742-49be-9ea7-aea278d369f8",
+	'../Interaction.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("0265124e-b530-4013-a9e0-f29de24024e1",
+	"2c739d45-638b-4513-84f2-e93bd74294ef",
+	0,
+	"e8ed81d0-29c7-4f70-8b95-3d1ad6f47448",
+	"6b433105-ec77-464b-aa23-bb4e81df76e5",
+	'../Interaction.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("aff18739-ac4f-4a9c-abe6-ee3ea059e286",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("aff18739-ac4f-4a9c-abe6-ee3ea059e286",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"d96649ba-2a4a-4b35-a3d7-bb7c14591015",
+	'Package_ID',
+	'',
+	'',
+	'Package_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("f6ec5889-b4a6-4348-83ad-eb360425c497",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'  select one pkg related by self->EP_PKG[R956];
+  if(not_empty pkg)
+    self.Label = pkg.Name;
+  else
+    self.Label = self.InformalName;
+  end if;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("f6ec5889-b4a6-4348-83ad-eb360425c497",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_ATTR
+	VALUES ("f6ec5889-b4a6-4348-83ad-eb360425c497",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"aff18739-ac4f-4a9c-abe6-ee3ea059e286",
+	'Label',
+	'User_Visible:false',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("18778cdc-019b-4005-813e-e47a538d7c47",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_BATTR
+	VALUES ("18778cdc-019b-4005-813e-e47a538d7c47",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_ATTR
+	VALUES ("18778cdc-019b-4005-813e-e47a538d7c47",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"f6ec5889-b4a6-4348-83ad-eb360425c497",
+	'InformalName',
+	'Full Name: Informal Function Package Name',
+	'',
+	'InformalName',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("cce8a75b-8cb5-4501-bc62-63202dd06dbc",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_BATTR
+	VALUES ("cce8a75b-8cb5-4501-bc62-63202dd06dbc",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_ATTR
+	VALUES ("cce8a75b-8cb5-4501-bc62-63202dd06dbc",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"18778cdc-019b-4005-813e-e47a538d7c47",
+	'Descrip',
+	'Full Name: Package Participant
+Description: A textual description of this package.',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("00060699-3623-4d8c-89a9-e90dc5e0f589",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	'  select one pkg related by self->EP_PKG[R956];
+  self.isFormal = not empty pkg;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("00060699-3623-4d8c-89a9-e90dc5e0f589",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_ATTR
+	VALUES ("00060699-3623-4d8c-89a9-e90dc5e0f589",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	"cce8a75b-8cb5-4501-bc62-63202dd06dbc",
+	'isFormal',
+	'Full Name: Is Formal',
+	'',
+	'isFormal',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_OIDA
+	VALUES ("d96649ba-2a4a-4b35-a3d7-bb7c14591015",
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	0,
+	'Part_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO O_ID
+	VALUES (2,
+	"95d09ae6-2e43-4d7b-9e49-c45639065d0a");
+INSERT INTO PE_PE
+	VALUES ("95d09ae6-2e43-4d7b-9e49-c45639065d0a",
+	1,
+	"7cbd3d78-c01a-4abf-bc50-bdf47bcaef10",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("7cbd3d78-c01a-4abf-bc50-bdf47bcaef10",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Interaction',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE',
+	930,
+	'../Interaction.xtuml');

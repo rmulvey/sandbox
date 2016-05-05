@@ -1,0 +1,161 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("cc362b26-e76c-48f3-a65d-03511fb26125",
+	'Literal String',
+	810,
+	'V_LST',
+	'This class represents a literal string, may take any sequence of characters as a value.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("e870ecc2-9d25-42c1-9c81-50f6be1d459f",
+	"cc362b26-e76c-48f3-a65d-03511fb26125",
+	'getString',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'return self.Value;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("b5cb9608-4f3e-4800-b72c-2772e636120f",
+	"cc362b26-e76c-48f3-a65d-03511fb26125",
+	'removeQuotes',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'//  Value:Literal String.removeQuotes(s: string)
+
+String out = p_S;
+
+//  Remove the beginning and ending quotes
+if (out.startsWith("\"")) {
+	out = out.substring(1);
+}
+if (out.endsWith("\"")) {
+	out = out.substring(0, out.length() - 1);
+}
+
+//  Now replace all double double quotes in the string with single double quotes
+out = out.replaceAll("\"\"", "\"");
+
+return out;
+
+',
+	0,
+	'',
+	"e870ecc2-9d25-42c1-9c81-50f6be1d459f");
+INSERT INTO O_TPARM
+	VALUES ("d78e538d-5b39-4ed1-b397-a32fc4097323",
+	"b5cb9608-4f3e-4800-b72c-2772e636120f",
+	's',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("cc362b26-e76c-48f3-a65d-03511fb26125",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"1d953c9c-1eb4-4e11-b758-562a1b4e4315",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	"2c8e2915-a566-4935-a648-dbc109b8af20",
+	"d44cc24a-fed7-49b5-b74e-aa99625f08b1",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R801');
+INSERT INTO R_RGO_PROXY
+	VALUES ("cc362b26-e76c-48f3-a65d-03511fb26125",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"1d953c9c-1eb4-4e11-b758-562a1b4e4315",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("2c8e2915-a566-4935-a648-dbc109b8af20",
+	"cc362b26-e76c-48f3-a65d-03511fb26125",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("2c8e2915-a566-4935-a648-dbc109b8af20",
+	"cc362b26-e76c-48f3-a65d-03511fb26125",
+	"00000000-0000-0000-0000-000000000000",
+	'Value_ID',
+	'',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1e23cd0c-8cb2-47a9-8afd-6ce3ac339317",
+	"cc362b26-e76c-48f3-a65d-03511fb26125");
+INSERT INTO O_BATTR
+	VALUES ("1e23cd0c-8cb2-47a9-8afd-6ce3ac339317",
+	"cc362b26-e76c-48f3-a65d-03511fb26125");
+INSERT INTO O_ATTR
+	VALUES ("1e23cd0c-8cb2-47a9-8afd-6ce3ac339317",
+	"cc362b26-e76c-48f3-a65d-03511fb26125",
+	"2c8e2915-a566-4935-a648-dbc109b8af20",
+	'Value',
+	'Full Name: Literal String Value
+The actual value of the literal.',
+	'',
+	'Value',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"cc362b26-e76c-48f3-a65d-03511fb26125");
+INSERT INTO O_OIDA
+	VALUES ("2c8e2915-a566-4935-a648-dbc109b8af20",
+	"cc362b26-e76c-48f3-a65d-03511fb26125",
+	0,
+	'Value_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"cc362b26-e76c-48f3-a65d-03511fb26125");
+INSERT INTO O_ID
+	VALUES (2,
+	"cc362b26-e76c-48f3-a65d-03511fb26125");
+INSERT INTO PE_PE
+	VALUES ("cc362b26-e76c-48f3-a65d-03511fb26125",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

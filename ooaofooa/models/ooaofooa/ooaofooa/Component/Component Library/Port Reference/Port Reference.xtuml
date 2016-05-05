@@ -1,0 +1,297 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("82442011-66a4-4413-85c4-3872758b893d",
+	'Port Reference',
+	4705,
+	'CL_POR',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("9eb7788c-9901-4a5a-ad66-896dfd635436",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one compRef related by self ->CL_IC[R4707];
+if (not_empty compRef)
+unrelate self from compRef across R4707;
+end if;
+
+select one port related by self ->C_PO[R4709];
+if (not_empty port)
+unrelate self from port across R4709;
+end if;
+
+select many importedRefs related by self->CL_IIR[R4708];
+for each importedRef in importedRefs
+unrelate self from importedRef across R4708;
+end for;
+
+delete object instance self; ',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("2d09d204-8b9b-476e-91c9-60fc55d10580",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance this.
+
+Translate: native ',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this; ',
+	0,
+	'',
+	"9eb7788c-9901-4a5a-ad66-896dfd635436");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("29b4c77b-e7b3-4419-8e0f-9b3e054c548a",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'isReferringToDefaultPort',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one port related by self->C_PO[R4709];
+if(not_empty port)
+  return Util::isProxy(element:port.convertToInstance());
+end if;
+return true; ',
+	1,
+	'',
+	"2d09d204-8b9b-476e-91c9-60fc55d10580");
+INSERT INTO O_TFR
+	VALUES ("2ef075ec-9ad6-4c39-81a8-a39fd581078d",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'canReferToPort',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one componentReference related by self->CL_IC[R4707];
+result = componentReference.canReferToComponent();
+return result;',
+	1,
+	'',
+	"29b4c77b-e7b3-4419-8e0f-9b3e054c548a");
+INSERT INTO O_TFR
+	VALUES ("29786c45-7f84-4896-9169-86ef3225e9fa",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'getCachedName',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'	return m_name;  ',
+	0,
+	'',
+	"2ef075ec-9ad6-4c39-81a8-a39fd581078d");
+INSERT INTO O_TFR
+	VALUES ("047eb47d-6248-4d4a-942e-7e62aa4ea161",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'setCachedName',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'	m_name = p_Name; ',
+	0,
+	'',
+	"29786c45-7f84-4896-9169-86ef3225e9fa");
+INSERT INTO O_TPARM
+	VALUES ("3e90ed6d-9257-4fdf-a0cd-d3b32d3f971d",
+	"047eb47d-6248-4d4a-942e-7e62aa4ea161",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("fc64b96f-ca8d-47c7-aaf7-6222a72579d3",
+	"82442011-66a4-4413-85c4-3872758b893d");
+INSERT INTO O_BATTR
+	VALUES ("fc64b96f-ca8d-47c7-aaf7-6222a72579d3",
+	"82442011-66a4-4413-85c4-3872758b893d");
+INSERT INTO O_ATTR
+	VALUES ("fc64b96f-ca8d-47c7-aaf7-6222a72579d3",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	"c201b8a9-74cd-4236-8d1d-4e0eef31786a",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("82442011-66a4-4413-85c4-3872758b893d",
+	"f1e98764-328b-424c-9f63-1aec01d70b20",
+	0,
+	"0e87d28d-a1e8-4326-80ba-f4f8c3a2a985",
+	"d28a2f08-0654-4f2e-8fa8-c14052bef7d1",
+	"077f0f8e-0555-4e0c-ba92-aaa27729fc54",
+	"c5c39f27-49d8-4cee-9089-b80118640c5c",
+	"92fd97d8-6917-4d01-ad03-1f1a7d4a03cd",
+	"c2e325e2-561b-41e6-9e2b-f8f5ff1aeb83",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Component Reference',
+	'Id',
+	'R4707.''orginates from''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("82442011-66a4-4413-85c4-3872758b893d",
+	"d28a2f08-0654-4f2e-8fa8-c14052bef7d1",
+	"077f0f8e-0555-4e0c-ba92-aaa27729fc54",
+	'../Component Library.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("0e87d28d-a1e8-4326-80ba-f4f8c3a2a985",
+	"f1e98764-328b-424c-9f63-1aec01d70b20",
+	0,
+	"d28a2f08-0654-4f2e-8fa8-c14052bef7d1",
+	"c5c39f27-49d8-4cee-9089-b80118640c5c",
+	'../Component Library.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("92fd97d8-6917-4d01-ad03-1f1a7d4a03cd",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("92fd97d8-6917-4d01-ad03-1f1a7d4a03cd",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	"00000000-0000-0000-0000-000000000000",
+	'CL_IC_Id',
+	'',
+	'CL_IC_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("82442011-66a4-4413-85c4-3872758b893d",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	0,
+	"e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"4e7a958e-b180-4141-a224-afec43d4c1fc",
+	"70fe0dce-8ce5-4111-936e-5875674b07df",
+	"b75f2b31-a4a6-4d73-92b2-bdcd7a4164b3",
+	"09e9679b-c8fa-4159-bb8d-32b946bb7f5e",
+	"85586821-8805-411b-939c-b92b47ec2ad0",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Port',
+	'Id',
+	'R4709.''references''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("82442011-66a4-4413-85c4-3872758b893d",
+	"4e7a958e-b180-4141-a224-afec43d4c1fc",
+	"70fe0dce-8ce5-4111-936e-5875674b07df",
+	'../Component Library.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	0,
+	"4e7a958e-b180-4141-a224-afec43d4c1fc",
+	"b75f2b31-a4a6-4d73-92b2-bdcd7a4164b3",
+	'../Component Library.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("09e9679b-c8fa-4159-bb8d-32b946bb7f5e",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	"e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'../../Port/Port.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("09e9679b-c8fa-4159-bb8d-32b946bb7f5e",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	"92fd97d8-6917-4d01-ad03-1f1a7d4a03cd",
+	'C_PO_Id',
+	'',
+	'C_PO_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("c201b8a9-74cd-4236-8d1d-4e0eef31786a",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	'result= self.getCachedName();
+select one port related by self->C_PO[R4709];
+if (not_empty port)
+ if(not Util::isProxy(element:port.convertToInstance()))
+   result = port.Name;
+ else 
+   result = self.getCachedName();
+ end if;
+else  
+ result = "";
+end if;
+
+self.setCachedName(name:result);
+self.Name = result;
+',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("c201b8a9-74cd-4236-8d1d-4e0eef31786a",
+	"82442011-66a4-4413-85c4-3872758b893d");
+INSERT INTO O_ATTR
+	VALUES ("c201b8a9-74cd-4236-8d1d-4e0eef31786a",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	"09e9679b-c8fa-4159-bb8d-32b946bb7f5e",
+	'Name',
+	'',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"82442011-66a4-4413-85c4-3872758b893d");
+INSERT INTO O_OIDA
+	VALUES ("fc64b96f-ca8d-47c7-aaf7-6222a72579d3",
+	"82442011-66a4-4413-85c4-3872758b893d",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"82442011-66a4-4413-85c4-3872758b893d");
+INSERT INTO O_ID
+	VALUES (2,
+	"82442011-66a4-4413-85c4-3872758b893d");
+INSERT INTO PE_PE
+	VALUES ("82442011-66a4-4413-85c4-3872758b893d",
+	1,
+	"e03e8363-19c3-465a-a0ee-6d35d800e63b",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("e03e8363-19c3-465a-a0ee-6d35d800e63b",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Component Library',
+	'',
+	4700,
+	'../Component Library.xtuml');

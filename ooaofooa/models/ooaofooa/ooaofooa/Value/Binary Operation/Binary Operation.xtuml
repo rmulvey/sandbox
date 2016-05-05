@@ -1,0 +1,969 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'Binary Operation',
+	802,
+	'V_BIN',
+	'Values are yielded by simple or compound expressions. Compound expressions are made up of nested binary operations. This class represents such as binary operations. The operator attribute contains the string identifier of the operation to be carried out.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("9f7813c6-d638-4e29-8698-7299c5b05271",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one lop related by self->V_VAL[R802];
+if ( not_empty lop )
+  unrelate lop from self across R802;
+  lop.dispose();
+end if;
+select one rop related by self->V_VAL[R803];
+if ( not_empty rop )
+  unrelate rop from self across R803;
+  rop.dispose();
+end if;
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("7d0c6e12-e951-4a54-a432-782f6ab65dec",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'getValue',
+	'Performs Binary Operation and returns the value.
+',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'//Value: Binary Operation.getValue()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select one dt related by self->V_VAL[R801]->S_DT[R820];
+coreDataTypeName = dt.getCoreDataTypeName();
+if (coreDataTypeName == "boolean")
+  return GD::boolean_to_instance(value:self.getBoolean(stack_frame_id: param.stack_frame_id));
+elif (coreDataTypeName == "integer")
+  return GD::int_to_instance(value:self.getInteger(stack_frame_id: param.stack_frame_id));
+elif (coreDataTypeName == "real")
+  return GD::real_to_instance(value:self.getReal(stack_frame_id: param.stack_frame_id));
+elif (coreDataTypeName == "string")
+  return GD::string_to_instance(value:self.getString(stack_frame_id: param.stack_frame_id));
+else
+  error_message = "Error: Did not find a supported data type " + coreDataTypeName + " in attempt to retrieve value in binary operation.";
+  USER::logError(msg:error_message,path:body.getPath());
+end if;
+
+return GD::string_to_instance(value:"Error");',
+	1,
+	'',
+	"2d32a39f-5dd7-44d6-ae98-b90792e0b954");
+INSERT INTO O_TPARM
+	VALUES ("e621dc0b-c02a-4244-8c07-bab3f0627bf6",
+	"7d0c6e12-e951-4a54-a432-782f6ab65dec",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("3d20e82c-756a-4d4a-8956-08c977ff79cd",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'getBoolean',
+	'Performs Binary Operation and returns the boolean value.',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// Value: Binary Operation.getBoolean()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select any stack_frame related by self->V_VAL[R801]->I_VSF[R2978]->
+             I_STF[R2951] where selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftOperand related by self->V_VAL[R802];
+select any leftResult related by leftOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftRtVal related by leftResult->RV_RVL[R3305];
+select one rightOperand related by self->V_VAL[R803];
+select any rightResult related by rightOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one rightRtVal related by rightResult->RV_RVL[R3305];
+stack_frame.popValue(value_id:leftOperand.Value_ID);
+stack_frame.popValue(value_id:rightOperand.Value_ID);
+if (self.Operator == "and")
+  return (GD::instance_to_boolean(value:leftRtVal.getValue())
+  		and GD::instance_to_boolean(value:rightRtVal.getValue())); 
+elif (self.Operator == "or")
+  return (GD::instance_to_boolean(value:leftRtVal.getValue())
+  		or GD::instance_to_boolean(value:rightRtVal.getValue()));
+elif (self.Operator == "==" or self.Operator == "!=")
+
+  //Used to determine if the boolean binary operations contains a combination of real or int operands 
+  select one dtLeft related by leftOperand->S_DT[R820];
+  select one irdtLeft related by dtLeft->S_IRDT[R17];
+  dtName = dtLeft.Name;
+  
+  // Check if this is an operation on strings  
+  if (not_empty dtLeft)
+    select one sdt related by dtLeft->S_SDT[R17];
+    if not_empty sdt or leftOperand.getDimensions() != 0
+      if self.Operator == "=="
+        return leftRtVal.isEqual(to:rightRtVal.RuntimeValue_ID);
+      else
+        return not leftRtVal.isEqual(to:rightRtVal.RuntimeValue_ID);
+      end if;
+    else
+      select one edt related by dtLeft->S_EDT[R17];
+      if (self.Operator == "==")
+        if (dtLeft.getCoreDataTypeName() == "string" or not_empty edt)
+          return (GD::instance_to_string(value:leftRtVal.getValue())
+                        == GD::instance_to_string(value:rightRtVal.getValue()));
+        elif (dtLeft.getCoreDataTypeName() == "unique_id")
+          return (GD::instance_to_string(value:leftRtVal.getValue()) 
+                        == GD::instance_to_string(value:rightRtVal.getValue()));
+        end if;
+      else
+        if (dtLeft.getCoreDataTypeName() == "string" or not_empty edt)
+          return (GD::instance_to_string(value:leftRtVal.getValue())
+                        != GD::instance_to_string(value:rightRtVal.getValue()));
+        elif (dtLeft.getCoreDataTypeName() == "unique_id")
+          return (GD::instance_to_string(value:leftRtVal.getValue())
+                        != GD::instance_to_string(value:rightRtVal.getValue()));
+        end if;
+      end if;
+    end if;    
+  end if;    
+  
+  // Check if this is an operation on integers or reals
+  dtLeftRealorInt = false;
+  isTimestamp = false;
+  isDate = false;
+  isComponentRef = false;
+  if (not_empty dtLeft)
+    dtLeftRealorInt = ((dtLeft.getCoreDataTypeName() == "integer") or (dtLeft.getCoreDataTypeName() == "real"));    
+    isTimestamp = dtLeft.Name == "timestamp" ;
+    isDate = dtLeft.Name == "date";
+    isComponentRef = dtLeft.Name == "component_ref";
+  end if;
+
+  if (dtLeftRealorInt)    
+    if (self.Operator == "==")  
+
+      //Assuming the boolean binary operations contains real and/or int operands
+      select one dtRight related by rightOperand->S_DT[R820];
+      leftDataTypeName = dtLeft.getCoreDataTypeName();
+      rightDataTypeName = dtRight.getCoreDataTypeName();
+     
+      if (leftDataTypeName == "integer")
+        if (rightDataTypeName == "integer")
+          return (GD::instance_to_int(value:leftRtVal.getValue())
+          		== GD::instance_to_int(value:rightRtVal.getValue()));
+        else
+          return (GD::instance_to_int(value:leftRtVal.getValue())
+          		== GD::instance_to_real(value:rightRtVal.getValue())); 
+        end if;
+      else //assuming leftReal is valid
+        if (rightDataTypeName == "integer")
+          return (GD::instance_to_real(value:leftRtVal.getValue())
+          		== GD::instance_to_int(value:rightRtVal.getValue()));
+        else
+          return (GD::instance_to_real(value:leftRtVal.getValue())
+          		== GD::instance_to_real(value:rightRtVal.getValue()));
+        end if;
+      end if;    	
+    else // we know that (self.Operator == "!=")
+
+      //Assuming the boolean binary operations contains real and/or int operands
+      select one dtRight related by rightOperand->S_DT[R820];
+      leftDataTypeName = dtLeft.getCoreDataTypeName();
+      rightDataTypeName = dtRight.getCoreDataTypeName();
+     
+      if (leftDataTypeName == "integer")
+        if (rightDataTypeName == "integer")
+          return GD::instance_to_int(value:leftRtVal.getValue())
+          		!= GD::instance_to_int(value:rightRtVal.getValue());
+        else
+          return GD::instance_to_int(value:leftRtVal.getValue())
+          		!= GD::instance_to_real(value:rightRtVal.getValue());
+        end if;
+      else //assuming leftReal is valid
+        if (rightDataTypeName == "integer")
+          return GD::instance_to_real(value:leftRtVal.getValue())
+          		!= GD::instance_to_int(value:rightRtVal.getValue());
+        else
+           return GD::instance_to_real(value:leftRtVal.getValue())
+           		!= GD::instance_to_real(value:rightRtVal.getValue());
+       end if;
+      end if; 
+
+    end if;
+  elif (isDate)
+    if (self.Operator == "==")
+      if (GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 0)
+        return true;
+      else
+        return false;
+      end if;
+    else  // we know that (self.Operator == "!=")
+      if (GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 0)
+        return false;
+      else
+        return true;
+      end if;
+    end if;
+  elif (isTimestamp)
+    if (self.Operator == "==")
+      if (GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 0)
+        return true;
+      else
+        return false;
+      end if;
+    else  // we know that (self.Operator == "!=")
+      if (GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 0)
+        return false;
+      else
+        return true;
+      end if;
+    end if;
+  elif (isComponentRef)
+    if (self.Operator == "==")
+      if (GD::instance_to_string(value:leftRtVal.getValue()) == GD::instance_to_string(value:rightRtVal.getValue()))
+        return true;
+      else
+        return false;
+      end if;
+    else  // we know that (self.Operator == "!=")
+      if (GD::instance_to_string(value:leftRtVal.getValue()) == GD::instance_to_string(value:rightRtVal.getValue()))
+        return false;
+      else
+        return true;
+      end if;
+    end if;
+  elif (not_empty irdtLeft or (dtName == "inst_ref<Object>") or ( dtName == "inst_ref_set<Object>"))
+	// The operands are either Instance Reference or Instance Reference Set
+	// The RuntimeValue instance will be queried for both Left and Right 
+	// value and compare them using compareInstRefSets()
+
+    // Instance Reference and Instance Reference Set are handled in the same way
+    lVal_ID = leftOperand.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+    if lVal_ID != GD::NULL_UNIQUE_ID()
+	  rVal_ID = rightOperand.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+	  if rVal_ID != GD::NULL_UNIQUE_ID()
+		// The two RuntimeValue instances for both operands are found	    
+          result = self.compareInstRefSets(rRtVal:rVal_ID,lRtVal: lVal_ID);
+          if (self.Operator == "==")
+            return result;
+          else
+            return not result;
+          end if;
+      end if;                                            
+    end if;                                              
+  else
+      // There is no real, int, instance handle, or instance set, so just compare as a boolean
+      if (self.Operator == "==")
+        return (GD::instance_to_boolean(value:leftRtVal.getValue())
+        		== GD::instance_to_boolean(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_boolean(value:leftRtVal.getValue())
+        		!= GD::instance_to_boolean(value:rightRtVal.getValue()));
+      end if;
+  end if;  // end if (dtLeftRealorInt)
+// end elif (self.Operator == "==" or self.Operator == "!=")
+
+elif (self.Operator == "<")
+  //Used to determine if the boolean binary operations contains a combination of real or int operands 
+  select one dtLeft related by leftOperand->S_DT[R820];
+  dtLeftRealorInt = false;
+  isTimestamp = false;
+  isDate = false;
+  if (not_empty dtLeft)
+    dtLeftRealorInt = ((dtLeft.getCoreDataTypeName() == "integer") or (dtLeft.getCoreDataTypeName() == "real"));
+    isTimestamp = dtLeft.Name == "timestamp" ;
+    isDate = dtLeft.Name == "date";
+  end if;
+  
+  if (dtLeftRealorInt)  
+    //Assuming the boolean binary operations contains real and/or int operands
+    select one dtRight related by rightOperand->S_DT[R820];
+    leftDataTypeName = dtLeft.getCoreDataTypeName();
+    rightDataTypeName = dtRight.getCoreDataTypeName();
+     
+    if (leftDataTypeName == "integer")
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		< GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		< GD::instance_to_real(value:rightRtVal.getValue()));        
+      end if;
+    else //assuming leftReal is valid
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		< GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		< GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    end if; 	    
+  elif (isDate)
+    if (GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 1)
+      return true;
+    else
+      return false;
+    end if;
+  elif (isTimestamp)
+    if (GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 1)
+      return true;
+    else
+      return false;
+    end if;
+  else
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getBoolean error: operator <, unhandled operand type - returning default value, false",path:pathMsg);
+    return false;
+  end if;
+ 
+elif (self.Operator == ">")
+  //Used to determine if the boolean binary operations contains a combination of real or int operands 
+  select one dtLeft related by leftOperand->S_DT[R820];
+  dtLeftRealorInt = false;
+  isTimestamp = false;
+  isDate = false;
+  if (not_empty dtLeft)
+    dtLeftRealorInt = ((dtLeft.getCoreDataTypeName() == "integer") or (dtLeft.getCoreDataTypeName() == "real"));
+    isTimestamp = dtLeft.Name == "timestamp" ;
+    isDate = dtLeft.Name == "date";
+  end if;
+  
+  if (dtLeftRealorInt)  
+    //Assuming the boolean binary operations contains real and/or int operands
+    select one dtRight related by rightOperand->S_DT[R820];
+    leftDataTypeName = dtLeft.getCoreDataTypeName();
+    rightDataTypeName = dtRight.getCoreDataTypeName();
+     
+    if (leftDataTypeName == "integer")
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		> GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		> GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    else //assuming leftReal is valid
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		> GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		> GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    end if;  
+  elif (isDate)
+    if (GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 2)
+      return true;
+    else
+      return false;
+    end if;
+  elif (isTimestamp)
+    if (GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 2)
+      return true;
+    else
+      return false;
+    end if;
+  else
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getBoolean error: operator >, unhandled operand type - returning default value, false",path:pathMsg);
+    return false;  	
+  end if;
+elif (self.Operator == "<=")
+   //Used to determine if the boolean binary operations contains a combination of real or int operands 
+  select one dtLeft related by leftOperand->S_DT[R820];
+  dtLeftRealorInt = false;
+  isTimestamp = false;
+  isDate = false;
+  if (not_empty dtLeft)
+    dtLeftRealorInt = ((dtLeft.getCoreDataTypeName() == "integer") or (dtLeft.getCoreDataTypeName() == "real"));
+    isTimestamp = dtLeft.Name == "timestamp" ;
+    isDate = dtLeft.Name == "date";
+  end if;
+  
+  if (dtLeftRealorInt)  
+    //Assuming the boolean binary operations contains real and/or int operands
+    select one dtRight related by rightOperand->S_DT[R820];
+    leftDataTypeName = dtLeft.getCoreDataTypeName();
+    rightDataTypeName = dtRight.getCoreDataTypeName();
+     
+    if (leftDataTypeName == "integer")
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		<= GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		<= GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    else //assuming leftReal is valid
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		<= GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		<= GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    end if;  
+  elif (isDate)
+    if ((GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 0)
+      or (GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 1))
+      return true;
+    else
+      return false;
+    end if;
+  elif (isTimestamp)
+    if ((GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 0)
+      or (GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 1))
+      return true;
+    else
+      return false;
+    end if;
+  else
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getBoolean error: operator <=, unhandled operand type - returning default value, false",path:pathMsg);
+    return false; 	
+  end if;
+elif (self.Operator == ">=")
+   //Used to determine if the boolean binary operations contains a combination of real or int operands 
+  select one dtLeft related by leftOperand->S_DT[R820];
+  dtLeftRealorInt = false;
+  isTimestamp = false;
+  isDate = false;
+  if (not_empty dtLeft)
+    dtLeftRealorInt = ((dtLeft.getCoreDataTypeName() == "integer") or (dtLeft.getCoreDataTypeName() == "real"));
+    isTimestamp = dtLeft.Name == "timestamp" ;
+    isDate = dtLeft.Name == "date";
+  end if;
+  
+  if (dtLeftRealorInt)  
+    //Assuming the boolean binary operations contains real and/or int operands
+    select one dtRight related by rightOperand->S_DT[R820];
+    leftDataTypeName = dtLeft.getCoreDataTypeName();
+    rightDataTypeName = dtRight.getCoreDataTypeName();
+     
+    if (leftDataTypeName == "integer")
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		>= GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_int(value:leftRtVal.getValue())
+        		>= GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    else //assuming leftReal is valid
+      if (rightDataTypeName == "integer")
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		>= GD::instance_to_int(value:rightRtVal.getValue()));
+      else
+        return (GD::instance_to_real(value:leftRtVal.getValue())
+        		>= GD::instance_to_real(value:rightRtVal.getValue()));
+      end if;
+    end if; 
+  elif (isDate)
+    if ((GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 0)
+      or (GD::compare_dates(d1:leftRtVal.getValue(),d2:rightRtVal.getValue()) == 2))
+      return true;
+    else
+      return false;
+    end if;
+  elif (isTimestamp)
+    if ((GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 0)
+      or (GD::compare_times(t1:leftRtVal.getValue(),t2:rightRtVal.getValue()) == 2))
+      return true;
+    else
+      return false;
+    end if;
+  else
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getBoolean error: operator >=, unhandled operand type - returning default value, false",path:pathMsg);
+    return false;  	
+  end if;
+end if;
+
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getBoolean error: operator unknown - returning default value, false",path:pathMsg);
+return false;',
+	1,
+	'',
+	"9f7813c6-d638-4e29-8698-7299c5b05271");
+INSERT INTO O_TPARM
+	VALUES ("5d75785a-dfa3-4fae-b680-eea2a9e069a1",
+	"3d20e82c-756a-4d4a-8956-08c977ff79cd",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("2d32a39f-5dd7-44d6-ae98-b90792e0b954",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'getString',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'// Value: Binary Operation.getString()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select any stack_frame related by self->V_VAL[R801]->I_VSF[R2978]->
+             I_STF[R2951] where selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftOperand related by self->V_VAL[R802];
+select any leftResult related by leftOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftRtVal related by leftResult->RV_RVL[R3305];
+select one rightOperand related by self->V_VAL[R803];
+select any rightResult related by rightOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one rightRtVal related by rightResult->RV_RVL[R3305];
+stack_frame.popValue(value_id:leftOperand.Value_ID);
+stack_frame.popValue(value_id:rightOperand.Value_ID);
+if (self.Operator == "+")
+  return (GD::instance_to_string(value:leftRtVal.getValue())
+  		+ GD::instance_to_string(value:rightRtVal.getValue()));
+end if;
+
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getString error: returning default value, empty string",path:pathMsg);
+return "";
+',
+	1,
+	'',
+	"552561d4-9c4a-4e8b-9970-cb7ed3b120c1");
+INSERT INTO O_TPARM
+	VALUES ("af96c96a-b065-4d98-876b-9a42d02612a5",
+	"2d32a39f-5dd7-44d6-ae98-b90792e0b954",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("2439ec92-46bf-4c9d-a802-23f7b6fd38b0",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'getInteger',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'// Value: Binary Operation.getInteger()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select any stack_frame related by self->V_VAL[R801]->I_VSF[R2978]->
+             I_STF[R2951] where selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftOperand related by self->V_VAL[R802];
+select any leftResult related by leftOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftRtVal related by leftResult->RV_RVL[R3305];
+select one rightOperand related by self->V_VAL[R803];
+select any rightResult related by rightOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one rightRtVal related by rightResult->RV_RVL[R3305];
+stack_frame.popValue(value_id:leftOperand.Value_ID);
+stack_frame.popValue(value_id:rightOperand.Value_ID);
+if (self.Operator == "+")
+  return (GD::instance_to_int(value:leftRtVal.getValue())
+  		+ GD::instance_to_int(value:rightRtVal.getValue()));
+elif (self.Operator == "-")
+  return (GD::instance_to_int(value:leftRtVal.getValue())
+  		- GD::instance_to_int(value:rightRtVal.getValue()));
+elif (self.Operator == "*")
+  return (GD::instance_to_int(value:leftRtVal.getValue())
+  		* GD::instance_to_int(value:rightRtVal.getValue()));
+elif (self.Operator == "/")
+  return (GD::instance_to_int(value:leftRtVal.getValue())
+  		/ GD::instance_to_int(value:rightRtVal.getValue()));
+elif (self.Operator == "%")
+  return (GD::instance_to_int(value:leftRtVal.getValue())
+  		% GD::instance_to_int(value:rightRtVal.getValue()));
+end if;
+
+
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getInteger error: returning default value, 0",path:pathMsg);
+return 0;
+
+',
+	1,
+	'',
+	"3d20e82c-756a-4d4a-8956-08c977ff79cd");
+INSERT INTO O_TPARM
+	VALUES ("45c84a2a-e056-4c86-b4d4-29301b510195",
+	"2439ec92-46bf-4c9d-a802-23f7b6fd38b0",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("552561d4-9c4a-4e8b-9970-cb7ed3b120c1",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'getReal',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	'// Value: Binary Operation.getReal()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select any stack_frame related by self->V_VAL[R801]->I_VSF[R2978]->
+             I_STF[R2951] where selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftOperand related by self->V_VAL[R802];
+select any leftResult related by leftOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one leftRtVal related by leftResult->RV_RVL[R3305];
+select one rightOperand related by self->V_VAL[R803];
+select any rightResult related by rightOperand->I_VSF[R2978] where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+select one rightRtVal related by rightResult->RV_RVL[R3305];
+stack_frame.popValue(value_id:leftOperand.Value_ID);
+stack_frame.popValue(value_id:rightOperand.Value_ID);
+// Need to check if either of the operands are actually integers
+select one leftInt related by leftOperand->V_LIN[R801];
+select one rightInt related by rightOperand->V_LIN[R801];
+leftValue = 0.0;
+rightValue = 0.0;
+
+// Check if the left operand is an integer and get the value
+if (not_empty leftInt)
+  leftValue = GD::instance_to_int(value:leftRtVal.getValue());
+else
+  leftValue = GD::instance_to_real(value:leftRtVal.getValue());
+end if;
+
+// Check if the right operand is an integer and get the value
+if (not_empty rightInt)
+  rightValue = GD::instance_to_int(value:rightRtVal.getValue());
+else
+  rightValue = GD::instance_to_real(value:rightRtVal.getValue());
+end if;
+
+// Perform the arithmatic operation
+if (self.Operator == "+")
+  return (leftValue + rightValue);
+elif (self.Operator == "-")
+  return (leftValue - rightValue);
+elif (self.Operator == "*")
+  return (leftValue * rightValue);
+elif (self.Operator == "/")
+  return (leftValue / rightValue);
+elif (self.Operator == "%")
+  return (leftValue % rightValue);
+end if;
+
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Binary Operation.getReal error: returning default value, 0",path:pathMsg);
+return 0;',
+	1,
+	'',
+	"2439ec92-46bf-4c9d-a802-23f7b6fd38b0");
+INSERT INTO O_TPARM
+	VALUES ("d9290364-4a93-4acf-8798-27c7bcaa5163",
+	"552561d4-9c4a-4e8b-9970-cb7ed3b120c1",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("6233f96e-3b52-4f9a-9a25-2faae547adf5",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	'compareInstRefSets',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'Ooaofooa.log.println(ILogger.OPERATION, "Binary Operation",
+		" Operation entered: BinaryOperation::compareInstRefSets");
+final ModelRoot modelRoot = getModelRoot();
+RuntimeValue_c v_lRtVal = (RuntimeValue_c) modelRoot.getInstanceList(
+		RuntimeValue_c.class).getGlobal(p_Lrtval);
+Instance_c[] v_instancesLeft = Instance_c
+		.getManyI_INSsOnR3013(InstanceInReference_c
+				.getManyL_IIRsOnR3311(InstanceReferenceValue_c
+						.getManyRV_IRVsOnR3308(SimpleValue_c
+								.getManyRV_SMVsOnR3300(v_lRtVal))));
+
+RuntimeValue_c v_rRtVal = (RuntimeValue_c) modelRoot.getInstanceList(
+		RuntimeValue_c.class).getGlobal(p_Rrtval);
+
+Instance_c[] v_instancesRight = Instance_c
+		.getManyI_INSsOnR3013(InstanceInReference_c
+				.getManyL_IIRsOnR3311(InstanceReferenceValue_c
+						.getManyRV_IRVsOnR3308(SimpleValue_c
+								.getManyRV_SMVsOnR3300(v_rRtVal))));
+								
+if (v_instancesLeft.length != v_instancesRight.length) {
+	return false;
+}
+int rightIndex;
+int leftIndex;
+// find a match for each instance in the right set with another one in the left set.
+boolean[] matched = new boolean[v_instancesLeft.length];
+for (rightIndex = 0; rightIndex < v_instancesRight.length; rightIndex++) {
+	for (leftIndex = 0; leftIndex < v_instancesLeft.length; leftIndex++) {
+		if (matched[leftIndex] == false) {
+			if (v_instancesLeft[leftIndex] == v_instancesRight[rightIndex]) {
+				// mark the left instance as matched so it is not used in matching again.
+				matched[leftIndex] = true;
+				break;
+			}
+		}
+	}
+
+	if (leftIndex == v_instancesLeft.length) {
+		// failed to find matched instance in left set for selected instance from right set
+		return false;
+	}
+}
+return true;',
+	0,
+	'',
+	"7d0c6e12-e951-4a54-a432-782f6ab65dec");
+INSERT INTO O_TPARM
+	VALUES ("253ab7b0-f220-4424-bf9b-7e206bc2d7d8",
+	"6233f96e-3b52-4f9a-9a25-2faae547adf5",
+	'rRtVal',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a10e6d91-32e1-4550-951f-ccca48432fae",
+	"6233f96e-3b52-4f9a-9a25-2faae547adf5",
+	'lRtVal',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"253ab7b0-f220-4424-bf9b-7e206bc2d7d8",
+	'');
+INSERT INTO O_REF
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"d9ab3366-507d-4070-bbf7-c59a4ae94fec",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	"622cd9ce-b244-4c84-9570-1087d807935c",
+	"29449632-8224-4d93-ba46-1e6e4bc45e6e",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R801');
+INSERT INTO R_RGO_PROXY
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"d9ab3366-507d-4070-bbf7-c59a4ae94fec",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("622cd9ce-b244-4c84-9570-1087d807935c",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("622cd9ce-b244-4c84-9570-1087d807935c",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"00000000-0000-0000-0000-000000000000",
+	'Value_ID',
+	'',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"6ff12c54-65a4-42fa-aab2-0dcb63b72246",
+	"d1f6c34a-48ce-42a9-90bf-2e19f816d33f",
+	"49fef6a2-9a64-4d7f-ad3a-d7a3064baccd",
+	"8c412a23-ce35-4079-a36c-0f3aa72640e2",
+	"2e6533b3-3828-4794-9e75-79941f7ce86b",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R803.''has right''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"6ff12c54-65a4-42fa-aab2-0dcb63b72246",
+	"d1f6c34a-48ce-42a9-90bf-2e19f816d33f",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6ff12c54-65a4-42fa-aab2-0dcb63b72246",
+	"49fef6a2-9a64-4d7f-ad3a-d7a3064baccd",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("8c412a23-ce35-4079-a36c-0f3aa72640e2",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_ATTR
+	VALUES ("8c412a23-ce35-4079-a36c-0f3aa72640e2",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"622cd9ce-b244-4c84-9570-1087d807935c",
+	'Right_Value_ID',
+	'',
+	'Right_',
+	'Value_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"720fda4d-58dd-4e97-9c96-a9abd1ef6910",
+	"bd80d8d3-0a8c-4f2e-a291-d46b2ce89ac4",
+	"2bff14b1-7613-4b67-81d6-280fb08ded4f",
+	"90dca08d-60ce-4d9d-8104-0df502773297",
+	"0f6124ce-dc37-4206-a120-7a574c896862",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R802.''has left''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"720fda4d-58dd-4e97-9c96-a9abd1ef6910",
+	"bd80d8d3-0a8c-4f2e-a291-d46b2ce89ac4",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"720fda4d-58dd-4e97-9c96-a9abd1ef6910",
+	"2bff14b1-7613-4b67-81d6-280fb08ded4f",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("90dca08d-60ce-4d9d-8104-0df502773297",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_ATTR
+	VALUES ("90dca08d-60ce-4d9d-8104-0df502773297",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"8c412a23-ce35-4079-a36c-0f3aa72640e2",
+	'Left_Value_ID',
+	'',
+	'Left_',
+	'Value_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("5e9a5a20-c48d-41ef-8bd2-0a5b41867d04",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4");
+INSERT INTO O_BATTR
+	VALUES ("5e9a5a20-c48d-41ef-8bd2-0a5b41867d04",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4");
+INSERT INTO O_ATTR
+	VALUES ("5e9a5a20-c48d-41ef-8bd2-0a5b41867d04",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	"90dca08d-60ce-4d9d-8104-0df502773297",
+	'Operator',
+	'Full Name: Mathematical Operator
+Data Domain: The character or string representing the operation. These include but are not limited to +, -, / and *.',
+	'',
+	'Operator',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4");
+INSERT INTO O_OIDA
+	VALUES ("622cd9ce-b244-4c84-9570-1087d807935c",
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	0,
+	'Value_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4");
+INSERT INTO O_ID
+	VALUES (2,
+	"3308e831-7854-40c6-ac8a-ba38037e9bc4");
+INSERT INTO PE_PE
+	VALUES ("3308e831-7854-40c6-ac8a-ba38037e9bc4",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

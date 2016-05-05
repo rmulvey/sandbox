@@ -1,0 +1,694 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'Class In Engine',
+	2960,
+	'CSME_CIE',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6fdd77f8-e633-4a94-b752-2c7903ddf337",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one clazz related by self->O_OBJ[R2961];
+if(not_empty clazz)
+  unrelate self from clazz across R2961;
+end if;
+select one engine related by self->I_EXE[R2960];
+if(not_empty engine)
+  unrelate self from engine across R2960;
+end if;
+select one monitor related by self->CSME_CLM[R2950];
+if(not_empty monitor)
+  monitor.dispose();
+end if;
+select one classInState related by self->CSME_CIS[R2932];
+if(not_empty classInState)
+  classInState.dispose();
+end if;
+select many pendingEvts related by self->I_EVI[R2938];
+for each pendingEvt in pendingEvts
+  unrelate self from pendingEvt across R2938;
+  pendingEvt.dispose();
+end for;
+select many pendingEvts related by self->I_EVI[R2931];
+for each pendingEvt in pendingEvts
+  unrelate self from pendingEvt across R2931;
+  pendingEvt.dispose();
+end for;
+select many insts related by self->I_INS[R2962];
+for each inst in insts
+  unrelate self from inst across R2962;
+  inst.dispose();
+end for;
+select one package related by self->EP_PKG[R2971];
+if not_empty package
+  unrelate self from package across R2971;
+end if;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("46fb106d-bed9-4d7d-a511-6b8fba76d596",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'takeEvent',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Subsystem:Model Class.takeEvent()
+select one modelClass related by self->O_OBJ[R2961];
+select any evtInst related by self->I_EVI[R2931]
+                              where (selected.Event_ID == GD::NULL_UNIQUE_ID());
+select one exEng related by self->I_EXE[R2960];
+exEng.lockQueue(queue_name:"I_EQE");
+select any evtQueueEntry related by self->I_EVI[R2931]->I_EQE[R2944] where
+                  (selected.Event_Queue_Entry_ID == param.event_queue_entry_id);
+if (not_empty evtQueueEntry)
+  select one evtInst related by evtQueueEntry->I_EVI[R2944];
+  if (empty evtInst)
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Error in Class.takeEvent: " +
+                                "Failed to find Event from Event Queue Entry.",path:pathMsg);
+  end if;
+else
+  select any selfQueueEntry related by self->I_EVI[R2931]->I_SQE[R2946] where
+                   (selected.Self_Queue_Entry_ID == param.event_queue_entry_id);
+  if (not_empty selfQueueEntry)
+    select one evtInst related by selfQueueEntry->I_EVI[R2946];
+    if (empty evtInst)
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Error in Class.takeEvent: " + 
+                                "Failed to find Event from Event Queue Entry.",path:pathMsg);
+    end if;
+  else
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Error in Class.takeEvent: " +
+                                           "Failed to find Event Queue Entry.",path:pathMsg);
+  end if;
+end if;
+if (not_empty evtInst)
+  message = self.Label + " dequeueing. Event: " + evtInst.Label;
+  USER::logInfo(msg:message);
+  select one evt related by evtInst->SM_EVT[R2906];
+  // If the event is a creation event, create an instance and poll it
+  if (evtInst.isCreation == TRUE)
+    // Create the new instance, relate it to its class, and process the event
+    evtInst.createInstance(stack_id:param.stack_id, step_in:param.step_in);
+    exEng.unlockQueue(queue_name:"I_EQE");
+    return;
+  end if;
+  // Mark this event as the one currently being processed
+  evtInst.isExecuting = true;
+  // Grab the stack
+  select any stack from instances of I_STACK
+                                    where (selected.Stack_ID == param.stack_id);
+  if (empty stack)
+    //Invalid stack ID!
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Error in Instance.takeEvent: Failure to retieve stack."
+                                                      + " Using random stack.",path:pathMsg);
+    select any stack from instances of I_STACK;
+    select one new_stack_frame related by stack->I_STF[R2929];
+  end if;      
+  // Find the next state
+  select one os related by self->SM_STATE[R2932];
+  if (not_empty os)
+    select any seme related by os->SM_SEME[R503] where
+                                        (selected.SMevt_ID == evtInst.SMevt_ID);
+    select one ns related by seme->SM_NSTXN[R504]->SM_TXN[R507]->SM_STATE[R506];
+    if (not_empty ns)
+      message = self.Label + " transition. New State: " + ns.Name;
+                              message = message + " Previous State: " + os.Name;
+      USER::logInfo(msg:message);
+      select one cis related by self->CSME_CIS[R2932];
+      unrelate os from self across R2932 using cis;
+      relate ns to self across R2932 using cis;
+      // Execute the state action
+      select one action related by ns->SM_MOAH[R511]->SM_AH[R513]->
+                                     SM_ACT[R514]->ACT_SAB[R691]->ACT_ACT[R698];
+      select many statements related by action->ACT_BLK[R601]->ACT_SMT[R602];
+      select one originatingComponent related by evtInst->I_EXE[R2976];
+      originatingCompId = GD::NULL_UNIQUE_ID();
+      if not_empty originatingComponent
+        originatingCompId = originatingComponent.Execution_Engine_ID;
+      end if;
+      if (not_empty action and not_empty statements)
+        // Create a stack frame and relate it to the the action
+        sf_id = action.createStackFrame(stack_id: param.stack_id,
+                     enqueue: false,
+                        invoking_stack_frame_or_component_id:originatingCompId);
+      end if;
+      // Execute the transition action
+      // Note this is done after initializing the state action so that
+      // it is at the top of the stack and will be executed first.
+      select one transition related by seme->SM_NSTXN[R504]->SM_TXN[R507];
+      if (empty transition)
+        select one transition related by evtInst->SM_EVT[R2906]->
+                     SM_SEVT[R525]->SM_LEVT[R526]->SM_CRTXN[R509]->SM_TXN[R507];
+      end if;
+      select one trns_act related by transition->SM_TAH[R530]->SM_AH[R513]->
+        SM_ACT[R514]->ACT_TAB[R688]->ACT_ACT[R698];
+      select many trns_stmts related by trns_act->ACT_BLK[R601]->ACT_SMT[R602];
+      if (not_empty trns_act and not_empty trns_stmts)
+        // Create a stack frame and relate it to the the action
+        sf_id = trns_act.createStackFrame(stack_id: stack.Stack_ID,
+                  enqueue: false, 
+                        invoking_stack_frame_or_component_id:originatingCompId);
+      end if;
+      if ((empty action or empty statements) and
+                                           (empty trns_act or empty trns_stmts))
+        // Normally we need to keep the event around so that executing OAL can
+        // access event argument values, but here action is empty, we can
+        // dispose the event immediately
+        evtInst.dispose();
+      end if; 
+      // Update last transition
+      select one transition related by seme->SM_NSTXN[R504]->SM_TXN[R507];
+      if (not_empty transition)
+        select one prevTxn related by cis->SM_TXN[R2952];
+        if (not_empty prevTxn)
+          unrelate cis from prevTxn across R2952;
+        end if;
+        relate cis to transition across R2952;
+      end if;
+      // Suspend if event dequeue breakpoint is set
+      if (evt.checkBreakpoint(processType:EventProcessType::Dequeued))
+        select one stack related by exEng->I_STACK[R2930];
+        stack.suspendReason = "Break on event dequeue: " + evtInst.Label;
+        stack.runState = RunStateType::Suspended;
+      end if;
+      // Suspend if a state breakpoint is set
+      if (os.checkBreakpoint(changeType:StateChangeType::Exit))
+        select one stack related by exEng->I_STACK[R2930];
+        stack.suspendReason = "Break on state exit: " + os.Name;
+        stack.runState = RunStateType::Suspended;
+      end if;
+      if (ns.checkBreakpoint(changeType:StateChangeType::Entry))
+        select one stack related by exEng->I_STACK[R2930];
+        stack.suspendReason = "Break on state entry: " + ns.Name;
+        stack.runState = RunStateType::Suspended;
+      end if;
+    else
+      // Cannot transition to a new state because the event is marked as either
+      // can''t happen or event ignored.
+      // Report that a can''t happen or event ignored event has been processed
+      select one is_event_ignored related by seme->SM_EIGN[R504];
+      select one is_cant_happen related by seme->SM_CH[R504];
+      select one sm_evt related by evtInst->SM_EVT[R2906];
+      if (not_empty is_event_ignored)
+        message = "Event Ignored: " + sm_evt.get_name() +
+                                           " in state " + os.getNameWithClass();
+        if (is_event_ignored.Descrip != "")
+          message = message + " Description: " + is_event_ignored.Descrip;
+        end if;
+        USER::logInfo(msg: message );
+        // Suspend if event ignored breakpoint is set
+        if (evt.checkBreakpoint(processType:EventProcessType::Ignored))
+          select one stack related by exEng->I_STACK[R2930];
+          stack.suspendReason = "Break on event ignored: " + evtInst.Label;
+          stack.runState = RunStateType::Suspended;
+        end if;
+      elif (not_empty is_cant_happen)
+        select one cant_happen_state related by is_cant_happen->
+                                                  SM_SEME[R504]->SM_STATE[R503];
+        select one cant_happen_class related by cant_happen_state->
+                                         SM_SM[R501]->SM_ASM[R517]->O_OBJ[R519];
+        message = "ERROR: In " + cant_happen_class.Name +
+                           " class state machine. " + sm_evt.get_name() +
+                             " CANT HAPPEN in state "  + cant_happen_state.Name;
+        if (is_cant_happen.Descrip != "")
+          message = message + " Description: " + is_cant_happen.Descrip;
+        end if;
+        USER::logError(msg: message,path:modelClass.getPath(path:self.Label,includeSelf:true));
+        // Suspend if event can''t happen breakpoint is set
+        if (evt.checkBreakpoint(processType:EventProcessType::CantHappen))
+          select one stack related by exEng->I_STACK[R2930];
+          stack.suspendReason = "Break on event cant happen: " + evtInst.Label;
+          stack.runState = RunStateType::Suspended;
+        end if;
+      else
+        	pathMsg = "<No Path Available - Empty instance>";
+			if (not_empty modelClass)
+	  		  pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+			end if;
+			USER::logError(msg:"Class.takeEvent: Failure in the state event matrix."
+                                        + " This event is neither a transition,"
+                                         + " event ignored, or a cant happen.",path:pathMsg);
+      end if;
+      // Suspend if event dequeue breakpoint is set
+      if (evt.checkBreakpoint(processType:EventProcessType::Dequeued))
+        select one stack related by exEng->I_STACK[R2930];
+        stack.suspendReason = "Break on event dequeue: " + evtInst.Label;
+        stack.runState = RunStateType::Suspended;
+      end if;
+      // Consume the ignored/illegal event
+      evtInst.dispose();
+    end if;
+  end if;
+else
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Class.takeEvent: " + 
+                                     "Did not find event for passed event id.",path:pathMsg);
+end if;
+exEng.unlockQueue(queue_name:"I_EQE");',
+	1,
+	'',
+	"fde9016e-ea02-497e-b941-514880afbf8d");
+INSERT INTO O_TPARM
+	VALUES ("09b480e5-9ddc-4277-be97-6f7742f8d0ea",
+	"46fb106d-bed9-4d7d-a511-6b8fba76d596",
+	'stack_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"34c74fc3-ac66-4f69-b5aa-3c5d911f0bd2",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("34c74fc3-ac66-4f69-b5aa-3c5d911f0bd2",
+	"46fb106d-bed9-4d7d-a511-6b8fba76d596",
+	'event_queue_entry_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a49721ff-0b1f-4c7d-9413-1884b50417f9",
+	"46fb106d-bed9-4d7d-a511-6b8fba76d596",
+	'step_in',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"09b480e5-9ddc-4277-be97-6f7742f8d0ea",
+	'');
+INSERT INTO O_TFR
+	VALUES ("2b75d4ee-7e0c-43ee-8967-940fb7a8e957",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'reset',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'//  Set the initial class state machine state if a class state machine exists for this class
+select one csm related by self->O_OBJ[R2961]->SM_ASM[R519]->SM_SM[R517];
+if (not_empty csm)
+  select many states related by csm->SM_STATE[R501];
+  stateFound = false;
+  stateNum = 0;
+  while (stateFound == false and cardinality states > 0)
+    select any state related by csm->SM_STATE[R501] where selected.Numb == stateNum;
+    if (not_empty state)
+      select one cis related by self->CSME_CIS[R2932];
+      if (empty cis)
+        create object instance cis of CSME_CIS;
+      end if;
+      relate state to self across R2932 using cis;
+      break;
+    end if;
+    stateNum = stateNum + 1;
+  end while;
+end if;',
+	1,
+	'',
+	"6fdd77f8-e633-4a94-b752-2c7903ddf337");
+INSERT INTO O_TFR
+	VALUES ("3e69c373-c86c-41fd-aad1-bd82d673df33",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'takeNextEvent',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Model Class.takeNextEvent()
+// Are there any events to self pending for this class?
+// If so, process events to self first
+select one modelClass related by self->O_OBJ[R2961];
+select many evts_to_self related by self->I_EVI[R2931] where 
+                                         selected.Sent_By_CIE_ID == self.CIE_ID;
+select one exEng related by self->I_EXE[R2960];
+if (not_empty evts_to_self)
+  exEng.lockQueue(queue_name:"I_SQE");
+  for each qdEvt in evts_to_self
+    select one nEvt related by qdEvt->I_EVI[R2939.''will be processed before''];
+    if (empty nEvt)
+      select one evtQEntry related by qdEvt->I_SQE[R2946];
+      if (not_empty evtQEntry)
+        self.takeEvent(stack_id:param.stack_id, step_in:param.step_in,
+                            event_queue_entry_id:evtQEntry.Self_Queue_Entry_ID);
+      else
+        pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Event on Class self queue not found in system queue",path:pathMsg);
+      end if;
+      break;
+    end if;
+  end for;
+  exEng.unlockQueue(queue_name:"I_SQE");
+else
+  exEng.lockQueue(queue_name:"I_EQE");
+  // There are no events to self pending for this class
+  // Process the next event in the standard queue
+  select many evts related by self->I_EVI[R2931] where 
+                                         selected.Sent_By_CIE_ID != self.CIE_ID;
+  for each qdEvt in evts
+    select one nEvt related by qdEvt->I_EVI[R2908.''will be processed before''];
+    if (empty nEvt)
+      select one evtQEntry related by qdEvt->I_EQE[R2944];
+      if (not_empty evtQEntry)
+        self.takeEvent(stack_id:param.stack_id, step_in:param.step_in,
+                           event_queue_entry_id:evtQEntry.Event_Queue_Entry_ID);
+      else
+        pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty modelClass)
+      pathMsg = modelClass.getPath(path:self.Label,includeSelf:true);
+    end if;
+	USER::logError(msg:"Event on Class event queue not found in system queue",path:pathMsg);
+      end if;
+      break;
+    end if;
+  end for;
+  exEng.unlockQueue(queue_name:"I_EQE");
+end if;',
+	1,
+	'',
+	"46fb106d-bed9-4d7d-a511-6b8fba76d596");
+INSERT INTO O_TPARM
+	VALUES ("a336a56c-d4e0-4e19-9462-6500540038c6",
+	"3e69c373-c86c-41fd-aad1-bd82d673df33",
+	'stack_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("0b216158-7bd4-4304-b284-888e36b8d510",
+	"3e69c373-c86c-41fd-aad1-bd82d673df33",
+	'step_in',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"a336a56c-d4e0-4e19-9462-6500540038c6",
+	'');
+INSERT INTO O_TFR
+	VALUES ("485d4d72-d3d7-45df-a91a-64795094b0cf",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'stepIn',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Model Class.stepIn()
+// Step over selected event in class''s event queue
+select one stack related by self->I_EXE[R2960]->I_STACK[R2930] where
+                                   selected.runState == RunStateType::Suspended; 
+if (not_empty stack)
+  // Make sure no halted stack frames exist on the stack
+  select one top_stack_frame related by stack->I_STF[R2929]; 
+  if (empty top_stack_frame)
+    stack.runState = RunStateType::Running; 
+    self.takeNextEvent(step_in:true, stack_id:stack.Stack_ID);
+    stack.runState = RunStateType::Suspended; 
+  end if; 
+end if;',
+	1,
+	'',
+	"2b75d4ee-7e0c-43ee-8967-940fb7a8e957");
+INSERT INTO O_TFR
+	VALUES ("fde9016e-ea02-497e-b941-514880afbf8d",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'stepOver',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Model Class.stepIn()
+// Step over selected event in class''s event queue
+select one stack related by self->I_EXE[R2960]->I_STACK[R2930]
+                             where selected.runState == RunStateType::Suspended; 
+if (not_empty stack)
+  // Make sure no halted stack frames exist on the stack
+  select one top_stack_frame related by stack->I_STF[R2929]; 
+  if (empty top_stack_frame)
+    stack.runState = RunStateType::Running; 
+    self.takeNextEvent(step_in:true, stack_id:stack.Stack_ID);
+    stack.runState = RunStateType::Suspended; 
+  end if; 
+end if;',
+	1,
+	'',
+	"485d4d72-d3d7-45df-a91a-64795094b0cf");
+INSERT INTO O_TFR
+	VALUES ("28422c83-5d11-4c9c-ace9-851699d8d9d1",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'isInGenericPackage',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'//Class In Engine.isInGenericPackage()
+select one pkg related by self->EP_PKG[R2971];
+return not_empty pkg;',
+	1,
+	'',
+	"3e69c373-c86c-41fd-aad1-bd82d673df33");
+INSERT INTO O_NBATTR
+	VALUES ("98089fd3-5381-4a18-be45-e176d1cf6d2f",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327");
+INSERT INTO O_BATTR
+	VALUES ("98089fd3-5381-4a18-be45-e176d1cf6d2f",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327");
+INSERT INTO O_ATTR
+	VALUES ("98089fd3-5381-4a18-be45-e176d1cf6d2f",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"00000000-0000-0000-0000-000000000000",
+	'CIE_ID',
+	'',
+	'',
+	'CIE_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("54150134-2281-468d-a359-735c80f8c6e7",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	'result = "Orphaned Class";
+select one clazz related by self->O_OBJ[R2961];
+if(not_empty clazz)
+  result = clazz.Name;
+end if;
+self.Label = result;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("54150134-2281-468d-a359-735c80f8c6e7",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327");
+INSERT INTO O_ATTR
+	VALUES ("54150134-2281-468d-a359-735c80f8c6e7",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"0b6984c1-5eab-461a-b571-4c4517befa79",
+	'Label',
+	'',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"17d86b5f-0053-47ae-8312-48e5145617f0",
+	"6e9503dc-e360-4e01-b61b-03aa887cfe8e",
+	"073c8ff3-df8b-47f3-86b5-4a1fa701c03b",
+	"15f4b963-a4e8-4704-be9b-0fec25961a8b",
+	"f15a6abb-d3d7-486b-9e68-8aa31dc8197e",
+	"2501f9d3-68fb-4521-a669-a7d9d14243d3",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Model Class',
+	'Obj_ID',
+	'R2961.''represents class in engine''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"6e9503dc-e360-4e01-b61b-03aa887cfe8e",
+	"073c8ff3-df8b-47f3-86b5-4a1fa701c03b",
+	'../Class State Machine Execution.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("17d86b5f-0053-47ae-8312-48e5145617f0",
+	"62b192ed-f270-47e4-8624-0b8083c5e152",
+	0,
+	"6e9503dc-e360-4e01-b61b-03aa887cfe8e",
+	"15f4b963-a4e8-4704-be9b-0fec25961a8b",
+	'../Class State Machine Execution.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("f15a6abb-d3d7-486b-9e68-8aa31dc8197e",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("f15a6abb-d3d7-486b-9e68-8aa31dc8197e",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"10bfeaf9-926a-4643-93ab-f4d56e026b6f",
+	'Obj_ID',
+	'',
+	'',
+	'Obj_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"2c739d45-638b-4513-84f2-e93bd74294ef",
+	0,
+	"0265124e-b530-4013-a9e0-f29de24024e1",
+	"36dde54c-9b9e-457b-803e-e14ae2f1a974",
+	"9cadae3d-3863-46ad-bfc2-3b74020c77f4",
+	"61edbdbc-76fc-4a03-98d6-a369a86d20a9",
+	"0b6984c1-5eab-461a-b571-4c4517befa79",
+	"114d0f5c-cd22-4f6e-8690-b37f0327d9f8",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Package',
+	'Package_ID',
+	'R2971.''executes in context of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"36dde54c-9b9e-457b-803e-e14ae2f1a974",
+	"9cadae3d-3863-46ad-bfc2-3b74020c77f4",
+	'../Class State Machine Execution.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("0265124e-b530-4013-a9e0-f29de24024e1",
+	"2c739d45-638b-4513-84f2-e93bd74294ef",
+	0,
+	"36dde54c-9b9e-457b-803e-e14ae2f1a974",
+	"61edbdbc-76fc-4a03-98d6-a369a86d20a9",
+	'../Class State Machine Execution.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("0b6984c1-5eab-461a-b571-4c4517befa79",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_ATTR
+	VALUES ("0b6984c1-5eab-461a-b571-4c4517befa79",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"f15a6abb-d3d7-486b-9e68-8aa31dc8197e",
+	'Package_ID',
+	'',
+	'',
+	'Package_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"7e45ee45-6a73-41bb-9135-189c5ce8a010",
+	0,
+	"8737e339-840c-4a57-a139-d2dae6d1b3ad",
+	"e5bf2bcd-0012-499a-a395-0eb57a63adae",
+	"cdef709d-0f68-4ff6-ac61-e449ab35fc1f",
+	"fbea02ca-16f2-4e19-9ae2-5790bb523b65",
+	"10bfeaf9-926a-4643-93ab-f4d56e026b6f",
+	"58e8fcd9-9d54-47f6-b0f7-b80fb04e5ec3",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Component Instance',
+	'Execution_Engine_ID',
+	'R2960.''is executed by''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"e5bf2bcd-0012-499a-a395-0eb57a63adae",
+	"cdef709d-0f68-4ff6-ac61-e449ab35fc1f",
+	'../Class State Machine Execution.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("8737e339-840c-4a57-a139-d2dae6d1b3ad",
+	"7e45ee45-6a73-41bb-9135-189c5ce8a010",
+	0,
+	"e5bf2bcd-0012-499a-a395-0eb57a63adae",
+	"fbea02ca-16f2-4e19-9ae2-5790bb523b65",
+	'../Class State Machine Execution.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("10bfeaf9-926a-4643-93ab-f4d56e026b6f",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"8737e339-840c-4a57-a139-d2dae6d1b3ad",
+	"7e45ee45-6a73-41bb-9135-189c5ce8a010",
+	1,
+	'Execution_Engine_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("8737e339-840c-4a57-a139-d2dae6d1b3ad",
+	"7e45ee45-6a73-41bb-9135-189c5ce8a010",
+	'../../../Instance/Component Instance/Component Instance.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("10bfeaf9-926a-4643-93ab-f4d56e026b6f",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	"98089fd3-5381-4a18-be45-e176d1cf6d2f",
+	'Execution_Engine_ID',
+	'',
+	'',
+	'Execution_Engine_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327");
+INSERT INTO O_OIDA
+	VALUES ("98089fd3-5381-4a18-be45-e176d1cf6d2f",
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	0,
+	'CIE_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327");
+INSERT INTO O_ID
+	VALUES (2,
+	"c39dc7f7-1fa8-4893-9ea8-724233d99327");
+INSERT INTO PE_PE
+	VALUES ("c39dc7f7-1fa8-4893-9ea8-724233d99327",
+	1,
+	"2d22f8d4-7247-4c35-b3bc-02b86a559630",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2d22f8d4-7247-4c35-b3bc-02b86a559630",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Class State Machine Execution',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+Persistent:false
+Import: java.util.concurrent.locks.ReentrantLock',
+	2960,
+	'../Class State Machine Execution.xtuml');

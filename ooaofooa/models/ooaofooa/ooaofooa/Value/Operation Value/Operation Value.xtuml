@@ -1,0 +1,506 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	'Operation Value',
+	808,
+	'V_TRV',
+	'This class represents the value returned by an operation invocation.
+--------------------------------------------------------------------------------
+Bridge:ALS',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("94737111-0e35-4254-a716-ba8103b597d1",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one tfr related by self->O_TFR[R829];
+if ( not_empty tfr )
+  unrelate self from tfr across R829;
+end if;
+
+select one var related by self->V_VAR[R830];
+if ( not_empty var )
+  unrelate self from var across R830;
+end if;
+
+select many parm_set related by self->V_PAR[R811];
+for each parm in parm_set 
+  unrelate self from parm across R811;
+  parm.dispose();
+end for;
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6ea9a91d-1c63-4214-98f8-a4ab186a410c",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	'getValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// (V_TRV) Value:Operation Value.getValue()
+
+// Execute the function
+select one body related by self->O_TFR[R829]->ACT_OPB[R696]->ACT_ACT[R698];
+select any statement related by body->ACT_BLK[R666]->ACT_SMT[R602];
+if (not_empty statement)
+  // Setup the parameter values within the newly created stack frame
+  discard = self.setupParameterValues(stack_frame_id: param.stack_frame_id);  
+
+else
+  select one op related by self->O_TFR[R829];
+  select one clazz related by op->O_OBJ[R115];
+  	pathMsg = "<No Path Available - Empty instance>";
+	if (not_empty body)
+	  pathMsg = body.getPath();
+	end if;
+	USER::logError(msg:"Error executing Operation: " +
+						clazz.Name + "::" + op.Name +
+						  ". No operation OAL found, returning default value.",path:pathMsg);
+  select one dt related by op->S_DT[R116];
+  select any stack_frame from instances of I_STF where
+                                selected.Stack_Frame_ID == param.stack_frame_id; 
+  if empty stack_frame
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Internal error in Operation Invocation.execute: " +
+                                                  "Could not get stack frame.",path:pathMsg);
+  else
+    select one stack related by stack_frame->I_STACK[R2943]; 
+    select any result related by stack_frame->I_VSF[R2951] where
+                                             selected.Value_ID == self.Value_ID;
+    // Return the default result
+    select one rtVal related by result->RV_RVL[R3305];
+    rtVal.setValue(value:dt.getDefaultValue());
+  end if;
+end if;',
+	1,
+	'',
+	"94737111-0e35-4254-a716-ba8103b597d1");
+INSERT INTO O_TPARM
+	VALUES ("c5349bc0-87e7-413c-9366-9ece39530bf7",
+	"6ea9a91d-1c63-4214-98f8-a4ab186a410c",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("525ffb01-fcfc-4024-9992-e4ee2638924d",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	'setupParameterValues',
+	'Create a new local value for each parameter within the stack frame of the operation we are going to execute.',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'// Invocation:Operation Value.setupParameterValues()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select one operation related by self->O_TFR[R829];
+select many operation_parameters related by operation->O_TPARM[R117];
+select many args related by self->V_PAR[R811];
+// Grab the stack frame(should be the new top stack frame)
+select any stack_frame from instances of I_STF where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+if empty stack_frame
+  //Invalid stack frame ID!
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Operation Value.setupParameterValues: " +
+                  "Invalid stack frame id used. Using random top stack frame.",path:pathMsg);
+  select any stack from instances of I_STACK;
+  select one stack_frame related by stack->I_STF[R2929];
+end if;
+// Grab the stack as well
+select one stack related by stack_frame->I_STACK[R2929];
+if empty stack
+  //Invalid stack frame ID!
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Operation Value.setupParameterValues: " +
+                               "Failure to retieve stack. Using random stack.",path:pathMsg);
+  select any stack from instances of I_STACK;
+  select one new_stack_frame related by stack->I_STF[R2929];
+end if;
+select one outer_block related by operation->ACT_OPB[R696]->
+                                                   ACT_ACT[R698]->ACT_BLK[R666];
+if not_empty outer_block
+  for each actual_parameter in args
+    // Seach for a operation parameter with same name as the actual parameter
+    select any operation_param related by operation->O_TPARM[R117] where
+                                         selected.Name == actual_parameter.Name;
+    if (empty operation_param)
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Operation Value.setupParameterValues: " +
+                            "did not find a corresponding operation parameter",path:pathMsg);
+    else
+      // We have found the matching operation parameter and actual parameter
+      // Now set the value of the parameter value related to the operation
+      // parameter to the actual parameter''s value
+      if (operation_param.By_Ref == 0)  // by value
+        select one act_val related by actual_parameter->V_VAL[R800];
+        act_val.computeValue(stack_frame_id: stack_frame.Stack_Frame_ID);
+        select any result related by stack_frame->I_VSF[R2951] where
+                                          selected.Value_ID == act_val.Value_ID;
+        select one rtVal related by result->RV_RVL[R3305];
+        if (empty rtVal)
+          // result requires computation.
+          return false;
+        end if;
+      end if;
+    end if;
+  end for;
+  // If we get here, all computation of arguments was completed,
+  //  prepare for execution of the bridge
+  select one body related by operation->ACT_OPB[R696]->ACT_ACT[R698];
+  sf = body.createStackFrame(stack_id:stack.Stack_ID,
+                 invoking_stack_frame_or_component_id: GD::NULL_UNIQUE_ID(),
+                                                                enqueue: false);
+  select any new_stack_frame from instances of I_STF where
+                                                  selected.Stack_Frame_ID == sf;
+  // Create a self operator if needed
+  select many self_ih_vars related by outer_block->V_VAR[R823] where
+                                     GD::toLower(value:selected.Name) == "self";
+  if (not_empty self_ih_vars)
+    // The self operator is used in the executing block,
+    // so find it and relate it to the newly created local
+    // Create a local reference for the self operator
+    select one target_var related by self->V_VAR[R830];
+    if (not_empty target_var)
+      // The operation must be instance based, find the local instance . . . .
+      select any target_local related by target_var->V_INT[R814]->
+                                        L_LCR[R3004]->L_LCL[R3001] where
+                          selected.Stack_Frame_ID == stack_frame.Stack_Frame_ID;
+      select any target_inst related by target_local->L_LCR[R3001]->
+                                            L_LCL[R3001]->RV_RVL[R3306]->
+                       RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311]->I_INS[R3013];
+      for each self_ih_var in self_ih_vars
+        // Create a new local reference
+        loc_id = outer_block.newLocalReference(stack_frame_id: sf);
+        select any local_ref related by outer_block->I_BSF[R2923]->
+                   L_LCL[R3000]->L_LCR[R3001] where selected.Local_ID == loc_id;
+        if (not_empty target_inst)
+          local_ref.addInstance(inst_id:target_inst.Inst_ID);
+        end if;
+        // Now relate the local reference to the ''self'' instance handle
+        select one self_ih related by self_ih_var->V_INT[R814];
+        relate self_ih to local_ref across R3004;
+      end for;
+      relate new_stack_frame to target_inst across R2954;
+    else
+      pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Operation Value.setupParameterValues: " +
+                                      "Could not find a target self variable.",path:pathMsg);
+    end if;
+  end if;
+  for each arg in args
+    select any operation_param related by operation->O_TPARM[R117] where
+                                         selected.Name == arg.Name;
+    // Create a new local value in the new stack frame for each argument
+    loc_id = outer_block.newLocalValue(stack_frame_id: sf);
+    // Find the new local value and set it with the actual parameter value
+    select any local related by outer_block->I_BSF[R2923]->
+                                 L_LCL[R3000] where selected.Local_ID == loc_id;
+    select one lvl related by local->L_LVL[R3001];
+    select one act_val related by arg->V_VAL[R800];
+    if not_empty operation_param and operation_param.By_Ref == 0
+      select any result related by stack_frame->I_VSF[R2951] where
+                                          selected.Value_ID == act_val.Value_ID;
+      select one rtVal related by result->RV_RVL[R3305];
+      create object instance lrtVal of RV_RVL;
+      relate lrtVal to local across R3306;
+      select one dt related by operation_param->S_DT[R118];
+      relate lrtVal to dt across R3307;
+      lrtVal.copyValue(from:rtVal.RuntimeValue_ID);
+    else  // assuming by ref
+      relate lvl to act_val across R3010;
+    end if;
+    // Relate the new local value to the operation parameter so that
+    // it can be found when the parameter value is referenced.
+    relate operation_param to local across R3008;
+    stack_frame.popValue(value_id:arg.Value_ID);
+  end for;
+else
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Operation Value.setupParameterValues: " +
+                                       "did not find an outer operation block",path:pathMsg);
+end if;
+return true;',
+	1,
+	'',
+	"6ea9a91d-1c63-4214-98f8-a4ab186a410c");
+INSERT INTO O_TPARM
+	VALUES ("764a4d2f-043f-4bda-b318-8d35804b9bbd",
+	"525ffb01-fcfc-4024-9992-e4ee2638924d",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"9c03a833-f0e7-4120-875b-abc67b891a1e",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	"606b22c1-4642-40f7-ba85-ca7ce1b622c6",
+	"6c157d3b-9e82-4b0b-9e1d-6316ce928973",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R801');
+INSERT INTO R_RGO_PROXY
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"9c03a833-f0e7-4120-875b-abc67b891a1e",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("606b22c1-4642-40f7-ba85-ca7ce1b622c6",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("606b22c1-4642-40f7-ba85-ca7ce1b622c6",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"00000000-0000-0000-0000-000000000000",
+	'Value_ID',
+	'',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"eda0f844-9fbe-4167-889a-dbc2dd0a0367",
+	0,
+	"e6f13665-c41d-4165-98d5-43a46662d5f2",
+	"a411908d-5005-45e9-9a89-cfd8056de871",
+	"168bdbe3-d82b-4691-bc72-66c00b10c9f0",
+	"0244701b-2d5d-4873-962f-2859ef9d15f1",
+	"443f3b9e-49d8-47c0-86ad-c3c48a6569c1",
+	"6af01f38-1bfa-4587-baa4-d3c9ab3e4a07",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Operation',
+	'Tfr_ID',
+	'R829');
+INSERT INTO R_RGO_PROXY
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"a411908d-5005-45e9-9a89-cfd8056de871",
+	"168bdbe3-d82b-4691-bc72-66c00b10c9f0",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("e6f13665-c41d-4165-98d5-43a46662d5f2",
+	"eda0f844-9fbe-4167-889a-dbc2dd0a0367",
+	0,
+	"a411908d-5005-45e9-9a89-cfd8056de871",
+	"0244701b-2d5d-4873-962f-2859ef9d15f1",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("443f3b9e-49d8-47c0-86ad-c3c48a6569c1",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"e6f13665-c41d-4165-98d5-43a46662d5f2",
+	"eda0f844-9fbe-4167-889a-dbc2dd0a0367",
+	1,
+	'Tfr_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("e6f13665-c41d-4165-98d5-43a46662d5f2",
+	"eda0f844-9fbe-4167-889a-dbc2dd0a0367",
+	'../../Subsystem/Operation/Operation.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("443f3b9e-49d8-47c0-86ad-c3c48a6569c1",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"606b22c1-4642-40f7-ba85-ca7ce1b622c6",
+	'Tfr_ID',
+	'
+',
+	'',
+	'Tfr_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"8f158a54-f4f6-49c8-be9a-30615e1b61c5",
+	"85cc1ef7-6fae-4036-8607-8ec625958076",
+	"f08cceb2-5dcc-4609-827e-2635a52d5456",
+	"351e2558-7690-466e-9797-45048e378faf",
+	"ee41e38c-fe4d-49db-b7c8-fdf094b7223a",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Variable',
+	'Var_ID',
+	'R830');
+INSERT INTO R_RGO_PROXY
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"8f158a54-f4f6-49c8-be9a-30615e1b61c5",
+	"85cc1ef7-6fae-4036-8607-8ec625958076",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"8f158a54-f4f6-49c8-be9a-30615e1b61c5",
+	"f08cceb2-5dcc-4609-827e-2635a52d5456",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("351e2558-7690-466e-9797-45048e378faf",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	'Var_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'../Variable/Variable.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("351e2558-7690-466e-9797-45048e378faf",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"443f3b9e-49d8-47c0-86ad-c3c48a6569c1",
+	'Var_ID',
+	'
+
+',
+	'',
+	'Var_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("4ac267a8-3385-49c8-8b33-bc1d845f037c",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_BATTR
+	VALUES ("4ac267a8-3385-49c8-8b33-bc1d845f037c",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_ATTR
+	VALUES ("4ac267a8-3385-49c8-8b33-bc1d845f037c",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"351e2558-7690-466e-9797-45048e378faf",
+	'ParmListOK',
+	'This attribute is true if there were no errors in parsing the operation invocation''s parameter list.
+---------------------------------------------------------------------
+Bridge:ALS',
+	'',
+	'ParmListOK',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("d03e69fa-c345-48b8-8443-ba5aab199327",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_BATTR
+	VALUES ("d03e69fa-c345-48b8-8443-ba5aab199327",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_ATTR
+	VALUES ("d03e69fa-c345-48b8-8443-ba5aab199327",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"4ac267a8-3385-49c8-8b33-bc1d845f037c",
+	'modelClassKeyLettersLineNumber',
+	'',
+	'',
+	'modelClassKeyLettersLineNumber',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("cefe6e0e-e7e5-495e-bdb6-f4d66e3d8193",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_BATTR
+	VALUES ("cefe6e0e-e7e5-495e-bdb6-f4d66e3d8193",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_ATTR
+	VALUES ("cefe6e0e-e7e5-495e-bdb6-f4d66e3d8193",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	"d03e69fa-c345-48b8-8443-ba5aab199327",
+	'modelClassKeyLettersColumn',
+	'',
+	'',
+	'modelClassKeyLettersColumn',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_OIDA
+	VALUES ("606b22c1-4642-40f7-ba85-ca7ce1b622c6",
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	0,
+	'Value_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO O_ID
+	VALUES (2,
+	"88ddd168-4c52-4afd-a41b-4b8d8e64feb7");
+INSERT INTO PE_PE
+	VALUES ("88ddd168-4c52-4afd-a41b-4b8d8e64feb7",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

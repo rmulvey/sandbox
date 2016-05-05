@@ -1,0 +1,833 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	'Attribute Value Reference',
+	812,
+	'V_AVL',
+	'This class represents a value held in an attribute of an instance being used on the right hand side of an assignment or an expression.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("f7d75a37-d31a-4dca-9f9f-5c13126d2c29",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one attr related by self->O_ATTR[R806];
+if ( not_empty attr )
+  unrelate self from attr across R806;
+end if;
+
+select one instRef related by self->V_VAL[R807];
+if ( not_empty instRef )
+  unrelate self from instRef across R807;
+end if;
+                    
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6544024a-ccc2-426b-8eec-1e3fc641b086",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	'getValue',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+// Attribute Value Reference.getValue
+// TODO This is now virtually duplicated in getRuntimeValue().
+// Need to call getRuntimeValue() and return the value from the ID obtained . .
+rootInst_ID = GD::NULL_UNIQUE_ID();
+select one instHandle related by self->V_VAL[R807]->V_IRF[R801]->
+                                                       V_VAR[R808]->V_INT[R814];
+if (not_empty instHandle)
+  rootInst_ID = instHandle.Var_ID;
+end if;
+// Grab the stack frame
+select any stack_frame from instances of I_STF where
+                              (selected.Stack_Frame_ID == param.stack_frame_id);
+if (empty stack_frame)
+  //Invalid stack frame ID!
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Attribute Reference.getValue: Invalid stack frame handle used. Suspending.",path:pathMsg);
+  select any stack from instances of I_STACK;
+  stack.runState = RunStateType::Suspended;
+  select one stack_frame related by stack->I_STF[R2929];
+end if;
+select one stack related by stack_frame->I_STACK[R2943];
+select many block_in_stack_frames related by stack_frame->I_BSF[R2923];
+select one target related by self->O_ATTR[R806];
+if (empty target)
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Internal Error: Attribute not found for reference, Suspending.",path:pathMsg);
+  stack.runState = RunStateType::Suspended;
+  return GD::NULL_INSTANCE();
+else
+  select any instRef related by block_in_stack_frames->L_LCL[R3000]->
+                              L_LCR[R3001] where selected.Var_ID == rootInst_ID;
+  select any inst related by instRef->
+                   L_LCL[R3001]->RV_RVL[R3306]->RV_SMV[R3300]->
+                                      RV_IRV[R3308]->L_IIR[R3311]->I_INS[R3013];
+  if (empty inst)
+    select one selHandle related by self->V_VAL[R807]->V_SLR[R801];
+    if (not_empty selHandle)
+      select any sel_ref related by stack_frame->I_BSF[R2923]->
+                                                     L_LCL[R3000]->L_LSR[R3001];
+      if (not_empty sel_ref)
+        // Get the instance to use in order to evaluate this selected reference
+        select one inst related by sel_ref->L_IWC[R3006]->I_INS[R3014];
+      end if;
+    end if;
+  end if; // empty instance
+  if (empty inst)
+    pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Null instance access, Suspending.",path:pathMsg);
+    stack.runState = RunStateType::Suspended;
+  else
+    // Get the values related to the instance that
+    // exists within this block in stack frame
+    select many values related by inst->I_AVL[R2909];
+    select one derivedTarget related by target->O_BATTR[R106]->O_DBATTR[R107];
+    if (not_empty derivedTarget)
+      // Execute the derived OAL body
+      select one body related by derivedTarget->ACT_DAB[R693]->ACT_ACT[R698];
+      select any statement related by body->ACT_BLK[R666]->ACT_SMT[R602];
+      if (not_empty statement)
+        for each value in values
+          select one attr related by value->O_ATTR[R2910];
+          if (attr == target)
+            select one rtVal related by value->RV_RVL[R3304];
+            if (rtVal.getValue() == GD::NULL_INSTANCE())
+              // Computation required
+              sf_id = body.createStackFrame(stack_id: stack.Stack_ID,
+                  enqueue: false, 
+                     invoking_stack_frame_or_component_id:GD::NULL_UNIQUE_ID());
+              self.setupSelf(body_id:body.Action_ID, stack_frame_id:sf_id);
+              return GD::NULL_INSTANCE();
+            else
+              // Computation complete
+              result = rtVal.getValue();
+              // Unrelate the Runtime Value instance so that the value
+              // will be re-computed in an iteration context.
+              unrelate rtVal from value across R3304;
+              return result;
+            end if;
+          end if;
+        end for;
+      else
+        select one clazz related by target->O_OBJ[R102];
+        	pathMsg = "<No Path Available - Empty instance>";
+	if (not_empty body)
+	  pathMsg = body.getPath();
+	end if;
+	USER::logError(msg:"Error calculating derived attribute: " +
+                                        clazz.Name + "." + target.Name +
+                                    ". No OAL found, returning default value.",path:pathMsg);
+        select one dt related by target->S_DT[R114];
+        select one top_stack_frame related by stack->I_STF[R2929];
+        if (empty top_stack_frame)
+          pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Internal error in Attribute Value Reference.getValue: Could not get stack frame.",path:pathMsg);
+        end if;
+        // Return the default result
+        return dt.getDefaultValue();
+      end if;
+    else
+      select any existing_attribute related by values->O_ATTR[R2910] where
+                                             selected.Attr_ID == target.Attr_ID;
+      if (empty existing_attribute)
+        // No attribute related to this instance matches our target attribute
+        // because the attribute has not been set. (* see below).
+        pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Uninitialized attribute value access: " +
+                           inst.Label + "." + target.Name + ", using default.",path:pathMsg);
+        // drop through to error case handler
+      else
+        // An attribute value exists for this instance. Return its value.
+        for each value in values
+          select one attr related by value->O_ATTR[R2910];
+          if (attr == target)
+            if (value.getValue() != GD::NULL_INSTANCE())
+              return value.getValue();
+            else
+              // This case can occur when an uninitialized attribute value
+              // appears on both the left and right hand sides of an assignment.
+              // The attribute value instance is created by the lValue
+              // processing to hold the result of the value computation, but not
+              // initialized to a value (it holds null). We need to behave and
+              // the same way as if we didn''t find the attribute value instance
+              // (see * above).
+              pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Uninitialized attribute value access: " +
+                           inst.Label + "." + target.Name + ", using default.",path:pathMsg);
+              // drop through to error case handler
+            end if;
+            break;
+          end if;
+        end for;
+      end if; // attribute value found
+    end if; // attribute is not derived
+  end if; // empty instance
+  select one dt related by target->S_DT[R114];
+  select one baseTarget related by target->O_RATTR[R106]->O_BATTR[R113]->
+                                                                   O_ATTR[R106];
+  if (not_empty baseTarget)
+    select one dt related by baseTarget->S_DT[R114];
+  end if;
+  return dt.getDefaultValue();
+end if;',
+	1,
+	'',
+	"2e51c056-8d1c-43e3-a504-381d082116de");
+INSERT INTO O_TPARM
+	VALUES ("933d5b5b-e9ef-437e-b393-98c2254764d3",
+	"6544024a-ccc2-426b-8eec-1e3fc641b086",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("bd91fd0f-2f84-4bef-b3f4-55d795d6ef8e",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	'setValue',
+	'Attempts to find the Local Value created for the attribute reference and
+assigns the passed in value to it.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Attribute Value Reference.setValue
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+
+
+select one val related by self->V_VAL[R807];
+select one instReference related by val->V_IRF[R801];
+select one paramValue related by val->V_PVL[R801];
+
+// get the attribute instance which represnet the left hand side of assigment expr
+select one target related by self->O_ATTR[R806];
+if not_empty instReference
+    instReference.setValue(stack_frame_id: param.stack_frame_id,
+                                  value: param.value, member_id:target.Attr_ID);   
+    return;
+elif not_empty paramValue
+    paramValue.setValue(stack_frame_id: param.stack_frame_id,
+                                  value: param.value, member_id:target.Attr_ID);
+    return;
+end if; 
+
+
+// Did not find a supported value data type.
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Value:AttributeValueReference.setValue() error, data type not supported.",path:pathMsg);',
+	1,
+	'',
+	"6544024a-ccc2-426b-8eec-1e3fc641b086");
+INSERT INTO O_TPARM
+	VALUES ("1aec492a-95d9-4b22-91f5-a39dcc15f275",
+	"bd91fd0f-2f84-4bef-b3f4-55d795d6ef8e",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("0fe957e7-2589-4163-8ee0-cbc67f404c7a",
+	"bd91fd0f-2f84-4bef-b3f4-55d795d6ef8e",
+	'value',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"1aec492a-95d9-4b22-91f5-a39dcc15f275",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("447fbe03-824d-4aeb-9c89-a169588a254c",
+	"bd91fd0f-2f84-4bef-b3f4-55d795d6ef8e",
+	'member_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"0fe957e7-2589-4163-8ee0-cbc67f404c7a",
+	'');
+INSERT INTO O_TFR
+	VALUES ("ab31dd04-b56f-4633-b3d6-f87b817ec826",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	'setupSelf',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Attribute Value Reference.setUpSelf()
+select any body from instances of ACT_ACT where
+                                          (selected.Action_ID == param.body_id);
+select one outer_block related by body->ACT_BLK[R666];
+select many self_ih_vars related by outer_block->V_VAR[R823] where
+                                   (GD::toLower(value:selected.Name) == "self");
+// Get the stack frame information for where we are currently executing
+if (not_empty self_ih_vars)
+  // The self operator is used in the executing block,
+  // so find it and relate it to the newly created local
+  select any new_stack_frame from instances of I_STF where
+                              (selected.Stack_Frame_ID == param.stack_frame_id);
+  select one current_stack_frame related by new_stack_frame->I_STF[R2928.''previous context''];
+  select one instHandle related by self->V_VAL[R807]->V_IRF[R801]->
+                                                       V_VAR[R808]->V_INT[R814];
+  select many block_in_stack_frames related by
+                                              current_stack_frame->I_BSF[R2923];
+  select any instRef related by block_in_stack_frames->L_LCL[R3000]->
+                        L_LCR[R3001] where selected.Var_ID == instHandle.Var_ID;
+  select any inst related by instRef->L_LCL[R3001]->RV_RVL[R3306]->
+                       RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311]->I_INS[R3013];
+  for each self_ih_var in self_ih_vars
+    // Create a new local reference 
+    loc_id = outer_block.newLocalReference(stack_frame_id:
+                                            new_stack_frame.Stack_Frame_ID);
+    select any local_ref related by outer_block->I_BSF[R2923]->
+                 L_LCL[R3000]->L_LCR[R3001] where (selected.Local_ID == loc_id); 
+    if (not_empty inst)
+      local_ref.addInstance(inst_id:inst.Inst_ID);
+    end if;
+    // Now relate the local reference to the ''self'' instance handle
+    select one self_ih related by self_ih_var->V_INT[R814];
+    relate self_ih to local_ref across R3004;
+  end for;
+else 
+  USER::logError(msg:
+       "Error in Attribute Value.setUpSelf: Could not find a target variable.",path:body.getPath());  
+end if;
+',
+	1,
+	'',
+	"bd91fd0f-2f84-4bef-b3f4-55d795d6ef8e");
+INSERT INTO O_TPARM
+	VALUES ("59b9d032-1d3b-4285-8fb7-b1de0a9db92a",
+	"ab31dd04-b56f-4633-b3d6-f87b817ec826",
+	'body_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("3a316f21-9be7-41d2-9a32-fd157c9d18cf",
+	"ab31dd04-b56f-4633-b3d6-f87b817ec826",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"59b9d032-1d3b-4285-8fb7-b1de0a9db92a",
+	'');
+INSERT INTO O_TFR
+	VALUES ("2e51c056-8d1c-43e3-a504-381d082116de",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	'getRuntimeValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// Attribute Value Reference.getRuntimeValue()
+select one rootVal related by self->V_VAL[R807];
+
+select one attrVal related by rootVal->V_AVL[R801];
+select one tranVal related by rootVal->V_TVL[R801];
+select one membVal related by rootVal->V_MVL[R801];
+select one parmVal related by rootVal->V_PVL[R801];
+select one evtVal related by rootVal->V_EDV[R801];
+select one arrVal related by rootVal->V_AER[R801];
+select one instRef related by rootVal->V_IRF[R801];
+select one instSetRef related by rootVal->V_ISR[R801];
+rtVal_ID = GD::NULL_UNIQUE_ID();
+if (not_empty attrVal)
+  rtVal_ID = attrVal.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty tranVal
+  rtVal_ID = tranVal.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty membVal
+  rtVal_ID = membVal.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty parmVal
+  rtVal_ID = parmVal.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty evtVal
+  rtVal_ID = evtVal.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty arrVal
+  rtVal_ID = arrVal.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty instRef
+  rtVal_ID = instRef.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+elif not_empty instSetRef
+  rtVal_ID = instSetRef.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+end if;
+
+select any runtimeValue from instances of RV_RVL where
+									   selected.RuntimeValue_ID == rtVal_ID;
+
+// Grab the stack frame							  
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+select any stack_frame from instances of I_STF where
+							  (selected.Stack_Frame_ID == param.stack_frame_id);
+if (empty stack_frame)
+  //Invalid stack frame ID!
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Attribute Value Reference.getRuntimeValue: " +
+								"Invalid stack frame handle used. Suspending.",path:pathMsg);
+  select any stack from instances of I_STACK;
+  stack.runState = RunStateType::Suspended;
+  select one stack_frame related by stack->I_STF[R2929];
+end if;
+select one stack related by stack_frame->I_STACK[R2943];
+select many block_in_stack_frames related by stack_frame->I_BSF[R2923];
+select one target related by self->O_ATTR[R806];
+if (empty target)
+  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Internal Error: Attribute not found for reference, Suspending.",path:pathMsg);
+  stack.runState = RunStateType::Suspended;
+  return GD::NULL_UNIQUE_ID();
+else
+  select any inst related by runtimeValue->
+			   RV_SMV[R3300]->RV_IRV[R3308]->L_IIR[R3311]->I_INS[R3013];
+  if (empty inst)
+	select one selHandle related by self->V_VAL[R807]->V_SLR[R801];
+	if (not_empty selHandle)
+	  select any sel_ref related by stack_frame->I_BSF[R2923]->
+													 L_LCL[R3000]->L_LSR[R3001];
+	  if (not_empty sel_ref)
+		// Get the instance to use in order to evaluate this selected reference
+		select one inst related by sel_ref->L_IWC[R3006]->I_INS[R3014];
+	  end if;
+	end if;
+  end if; // empty instance
+  if (empty inst)
+	pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Null instance access, Suspending.",path:pathMsg);
+	stack.runState = RunStateType::Suspended;
+    return GD::NULL_UNIQUE_ID();
+  else
+	// Get the values related to the instance that
+	// exists within this block in stack frame
+	select many values related by inst->I_AVL[R2909];
+	select one derivedTarget related by target->O_BATTR[R106]->O_DBATTR[R107];
+	if (not_empty derivedTarget)
+	  // Execute the derived OAL body
+	  select one body related by derivedTarget->ACT_DAB[R693]->ACT_ACT[R698];
+	  select any statement related by body->ACT_BLK[R666]->ACT_SMT[R602];
+	  if (not_empty statement)
+		for each value in values
+		  select one attr related by value->O_ATTR[R2910];
+		  if (attr == target)
+			select one rtVal related by value->RV_RVL[R3312];
+			if (empty rtVal)
+			  // Computation required
+			  sf_id = body.createStackFrame(stack_id: stack.Stack_ID,
+				  enqueue: false,
+                     invoking_stack_frame_or_component_id:GD::NULL_UNIQUE_ID());
+			  self.setupSelf(body_id:body.Action_ID, stack_frame_id:sf_id);
+			  return GD::NULL_UNIQUE_ID();
+			else
+			  // Computation complete
+			  // Remove and dispose the old attribute value
+			  select one oldRtVal related by value->RV_RVL[R3304];
+			  if oldRtVal != rtVal
+			    if not_empty oldRtVal
+			      unrelate value from oldRtVal across R3304;
+			      oldRtVal.dispose();
+			    end if;
+			    // Set the newly computed value as the attribute value
+			    relate value to rtVal across R3304;
+			  end if;
+			  return rtVal.RuntimeValue_ID;
+			end if;
+		  end if;
+		end for;
+	  else
+		select one clazz related by target->O_OBJ[R102];
+			pathMsg = "<No Path Available - Empty instance>";
+	if (not_empty body)
+	  pathMsg = body.getPath();
+	end if;
+	USER::logError(msg:"Error calculating derived attribute: " +
+										clazz.Name + "." + target.Name +
+									". No OAL found, returning default value.",path:pathMsg);
+		select one dt related by target->S_DT[R114];
+		select one top_stack_frame related by stack->I_STF[R2929];
+		if (empty top_stack_frame)
+		  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Internal error in Attribute Value Reference.getValue: Could not get stack frame.",path:pathMsg);
+		end if;
+		create object instance rtVal of RV_RVL;
+		rtVal.setDefault(dimensions:target.getDimensionsCnt());
+		// Return the default result
+		return rtVal.RuntimeValue_ID;
+	  end if;
+	else
+	  select one val related by self->V_VAL[R801];
+	  select any existing_attribute related by values->O_ATTR[R2910] where
+											 selected.Attr_ID == target.Attr_ID;
+	  if (empty existing_attribute)
+		// No attribute related to this instance matches our target attribute
+		// because the attribute has never been set before.
+		create object instance value of I_AVL;
+		relate inst to value across R2909;
+		relate value to target across R2910;
+		create object instance rtVal of RV_RVL;
+		relate value to rtVal across R3304;
+		select one dt related by target->S_DT[R114];
+		select one baseTarget related by target->O_RATTR[R106]->
+													O_BATTR[R113]->O_ATTR[R106];
+		if not_empty baseTarget
+		  select one dt related by baseTarget->S_DT[R114];
+		end if;
+		relate rtVal to dt across R3307;
+		if target.getDimensionsCnt() != 0
+		  // Create an array value
+		  create object instance avl of RV_AVL;
+		  relate rtVal to avl across R3300;
+		else
+		  select one sdt related by dt->S_SDT[R17];
+		  if empty sdt
+			rtVal.createSimpleValue();
+			if not val.isLValue
+			  rtVal.setValue(value:dt.getDefaultValue());
+			  // This as an error if the value is an rValue, report it.
+			  pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Uninitialized attribute value access: " +
+						   inst.Label + "." + target.Name + ", using default.",path:pathMsg);
+			end if;
+		  else
+			// Accessing a non existent structure member as an rValue is also an
+			// error, but we only want to report the error once, so leave it to
+			// the leaf member access (which will pass through the empty sdt
+			// case immediately above) to report the error and create a default.
+			create object instance structVal of RV_SVL;
+			relate rtVal to structVal across R3300;
+		  end if;
+		end if;
+		return rtVal.RuntimeValue_ID;
+	  else
+		// An attribute value exists for this instance. Return its id.
+		for each value in values
+		  select one attr related by value->O_ATTR[R2910];
+		  if (attr == target)
+			rtValue_ID = value.getRuntimeValue();
+			select any rtVal from instances of RV_RVL where
+										 selected.RuntimeValue_ID == rtValue_ID;
+			if (not_empty rtVal)
+			  return rtVal.RuntimeValue_ID;
+			else
+			  // This case used to occur when an uninitialized attribute value
+			  // appeared on both the left and right hand sides of an
+			  // assignment. The attribute value instance was created by the
+			  // lValue processing to hold the result of the value
+			  // computation, but not initialized to a value (it holds null).
+			  // Now that lValue and rValue handling is symmetrical, this
+			  // can no longer happen.
+			  	pathMsg = "<No Path Available - Empty instance>";
+	if (not_empty body)
+	  pathMsg = body.getPath();
+	end if;
+	USER::logError(msg:"Internal error. " +
+			   "Attribute Value Reference.getRuntimeValue(): Attribute value " +
+				   "without associated runtime value encountered, Suspending.",path:pathMsg);
+			  stack.runState = RunStateType::Suspended;
+			  return GD::NULL_UNIQUE_ID();
+			end if;
+		  end if;
+		end for;
+	  end if; // attribute value found
+	end if; // derived or simple
+  end if; // empty instance
+  	pathMsg = "<No Path Available - Empty instance>";
+	if (not_empty body)
+	  pathMsg = body.getPath();
+	end if;
+	USER::logError(msg:"Internal error. " +
+			   "Attribute Value Reference.getRuntimeValue(): Unexpected " +
+									"execution state encountered, Suspending.",path:pathMsg);
+  stack.runState = RunStateType::Suspended;
+  return GD::NULL_UNIQUE_ID();
+end if;',
+	1,
+	'',
+	"f7d75a37-d31a-4dca-9f9f-5c13126d2c29");
+INSERT INTO O_TPARM
+	VALUES ("d79e0bb8-e17f-4173-a1c8-c4d2e4effa4f",
+	"2e51c056-8d1c-43e3-a504-381d082116de",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"a9c65a3a-4b62-4d71-ac2b-6225adc34044",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	"8be1bb28-1f4b-400e-ab2f-73717b4e681e",
+	"e7f42bb7-2510-418a-804b-1606dac70f70",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R801');
+INSERT INTO R_RGO_PROXY
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"a9c65a3a-4b62-4d71-ac2b-6225adc34044",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("8be1bb28-1f4b-400e-ab2f-73717b4e681e",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("8be1bb28-1f4b-400e-ab2f-73717b4e681e",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"00000000-0000-0000-0000-000000000000",
+	'Value_ID',
+	'',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"7f6a133c-d467-4762-9203-74a2eb1a4f1e",
+	"ad851383-b56e-449a-a8c4-6604849fed6e",
+	"f9230378-bd03-42a1-a1e5-e2010d03987b",
+	"afc6f6ec-834c-4209-bea5-02137c60d0d4",
+	"306842c1-ce55-40a5-a17c-1365ce551030",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Attribute',
+	'Attr_ID',
+	'R806.''is value of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"7f6a133c-d467-4762-9203-74a2eb1a4f1e",
+	"ad851383-b56e-449a-a8c4-6604849fed6e",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"7f6a133c-d467-4762-9203-74a2eb1a4f1e",
+	"f9230378-bd03-42a1-a1e5-e2010d03987b",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("afc6f6ec-834c-4209-bea5-02137c60d0d4",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	1,
+	'Attr_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("505ac1bd-f5b7-437c-b3e4-168ac4b6bff5",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	'../../Subsystem/Attribute/Attribute.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("afc6f6ec-834c-4209-bea5-02137c60d0d4",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"ddd3a793-0239-40aa-98cb-318ec0d94fd7",
+	'Attr_ID',
+	'
+
+',
+	'',
+	'Attr_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"cb6c83f8-3858-451a-a0c7-8a9adc9683fc",
+	"7fa15779-7e96-4e5f-b9dd-c0d042c4ccf5",
+	"03f1a1df-d141-4f55-b316-c54da97bb8c7",
+	"6e7499fd-e70c-423c-8a12-63b2975f358f",
+	"1452b552-cf9f-41ab-9f61-b2c8f4cd21d3",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R807.''has root''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"cb6c83f8-3858-451a-a0c7-8a9adc9683fc",
+	"7fa15779-7e96-4e5f-b9dd-c0d042c4ccf5",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"cb6c83f8-3858-451a-a0c7-8a9adc9683fc",
+	"03f1a1df-d141-4f55-b316-c54da97bb8c7",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("6e7499fd-e70c-423c-8a12-63b2975f358f",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_ATTR
+	VALUES ("6e7499fd-e70c-423c-8a12-63b2975f358f",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"8be1bb28-1f4b-400e-ab2f-73717b4e681e",
+	'Root_Value_ID',
+	'',
+	'Root_',
+	'Value_ID',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"7f6a133c-d467-4762-9203-74a2eb1a4f1e",
+	"ad851383-b56e-449a-a8c4-6604849fed6e",
+	"f9230378-bd03-42a1-a1e5-e2010d03987b",
+	"ddd3a793-0239-40aa-98cb-318ec0d94fd7",
+	"c59f5ff6-8016-4515-a7ca-c559a76acf7e",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Attribute',
+	'Obj_ID',
+	'R806.''is value of''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("2453df3d-17a4-4fff-98a9-f1c4266dc366",
+	"fd352c4f-1255-4579-b497-90365ef7aa0d",
+	0,
+	"7f6a133c-d467-4762-9203-74a2eb1a4f1e",
+	"f9230378-bd03-42a1-a1e5-e2010d03987b",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ddd3a793-0239-40aa-98cb-318ec0d94fd7",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("ddd3a793-0239-40aa-98cb-318ec0d94fd7",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	"6e7499fd-e70c-423c-8a12-63b2975f358f",
+	'Obj_ID',
+	'',
+	'',
+	'Obj_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb");
+INSERT INTO O_OIDA
+	VALUES ("8be1bb28-1f4b-400e-ab2f-73717b4e681e",
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	0,
+	'Value_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb");
+INSERT INTO O_ID
+	VALUES (2,
+	"1980d48f-afb3-4244-bbb5-dd5aa51184fb");
+INSERT INTO PE_PE
+	VALUES ("1980d48f-afb3-4244-bbb5-dd5aa51184fb",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

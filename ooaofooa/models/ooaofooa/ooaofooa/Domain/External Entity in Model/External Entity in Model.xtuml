@@ -1,0 +1,175 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	'External Entity in Model',
+	4,
+	'S_EEM',
+	'The external entity in model (S_EEM) represents the presence of an external entity (S_EE)  in a model such as the Communication Diagram or Synchronous Communication Diagram. The same external entity can be represented by more than one external entity in model in the same model to enhance model layout.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("e0df84f9-1c1d-4ba6-b706-b8cfba5035ff",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	'dispose',
+	'The dispose operation for this class.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one ee related by self->S_EE[R9];
+unrelate self from ee across R9;
+select many eesmcs related by self->CA_EESMC[R402];
+for each eesmc in eesmcs
+  eesmc.dispose();
+end for;
+select many smeecs related by self->CA_SMEEC[R411];
+for each smeec in smeecs
+  smeec.dispose();
+end for;
+select many accpaths related by self->CA_SMEEA[R421]->CA_ACC[R415];
+for each  accpath in accpaths
+  accpath.dispose();
+end for;
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("35a64879-3fcb-4424-9525-9f50413ff25a",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_BATTR
+	VALUES ("35a64879-3fcb-4424-9525-9f50413ff25a",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_ATTR
+	VALUES ("35a64879-3fcb-4424-9525-9f50413ff25a",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"00000000-0000-0000-0000-000000000000",
+	'EEmod_ID',
+	'Full Name: External Entity In Model Identifier',
+	'',
+	'EEmod_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a7174230-307a-4f2c-931c-e8dea4dd5b73",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_BATTR
+	VALUES ("a7174230-307a-4f2c-931c-e8dea4dd5b73",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_ATTR
+	VALUES ("a7174230-307a-4f2c-931c-e8dea4dd5b73",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"af03312f-ea4a-4a8f-b347-89b017326c3c",
+	'Modl_Typ',
+	'Full Name: Model Type Indicator
+Description: Indicates in which  type of model the External Entity resides.
+Data Domain: 6 = Communication Diagram, 7 = Synchronous Communication Diagram',
+	'',
+	'Modl_Typ',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	0,
+	"ac9a372b-873b-4103-b7ab-1478c5780b61",
+	"37d8e343-488d-4eec-8bce-e32f9b3a404a",
+	"7a37c82b-c488-4a6a-9ab8-bd83825ad82e",
+	"0c9c4fcf-e964-4012-b284-027942d2d8c2",
+	"af03312f-ea4a-4a8f-b347-89b017326c3c",
+	"d5b92d57-d517-41a6-8c46-1de00797fddd",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'External Entity',
+	'EE_ID',
+	'R9.''is a presence in subsystem model of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"37d8e343-488d-4eec-8bce-e32f9b3a404a",
+	"7a37c82b-c488-4a6a-9ab8-bd83825ad82e",
+	'../Domain.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("ac9a372b-873b-4103-b7ab-1478c5780b61",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	0,
+	"37d8e343-488d-4eec-8bce-e32f9b3a404a",
+	"0c9c4fcf-e964-4012-b284-027942d2d8c2",
+	'../Domain.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("af03312f-ea4a-4a8f-b347-89b017326c3c",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("af03312f-ea4a-4a8f-b347-89b017326c3c",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"35a64879-3fcb-4424-9525-9f50413ff25a",
+	'EE_ID',
+	'',
+	'',
+	'EE_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("b3fc89c5-8f19-403d-b969-6d8f1f66215e",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_BATTR
+	VALUES ("b3fc89c5-8f19-403d-b969-6d8f1f66215e",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_ATTR
+	VALUES ("b3fc89c5-8f19-403d-b969-6d8f1f66215e",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	"a7174230-307a-4f2c-931c-e8dea4dd5b73",
+	'SS_ID',
+	'',
+	'',
+	'SS_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_OIDA
+	VALUES ("35a64879-3fcb-4424-9525-9f50413ff25a",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	0,
+	'EEmod_ID');
+INSERT INTO O_OIDA
+	VALUES ("af03312f-ea4a-4a8f-b347-89b017326c3c",
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	0,
+	'EE_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO O_ID
+	VALUES (2,
+	"dcf5402e-b7ee-4ad5-ae47-e3613e4cd351");
+INSERT INTO PE_PE
+	VALUES ("dcf5402e-b7ee-4ad5-ae47-e3613e4cd351",
+	1,
+	"b308feec-d790-479d-b13b-24dc13bbb084",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b308feec-d790-479d-b13b-24dc13bbb084",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Domain',
+	'A domain (S_DOM) consists of one or more subsystems (S_SS) that each contain an information model that abstracts a portion of the data for the domain: classes (O_OBJ), associations (R_REL), etc.  Breaking a domain into subsystems allows the complexity of the domain to be more easily managed: 1) subsystems are components and can be checked out individually allowing parallelism in development of the models and 2) breaking up a domain into smaller units is easier to understand.  A subsystem is composed of classes that tend to cluster, i.e., they have few associations that span subsystem boundaries.  Inter-subsystem associations, communications, and accesses are captured in the Subsystem Relationship Model (SRM), Subsystem Communication Model (SCM), and Subsystem Access Model (SAM) respectively.',
+	1,
+	'../Domain.xtuml');

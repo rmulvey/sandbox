@@ -1,0 +1,88 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	'Mealy State Machine',
+	512,
+	'SM_MEALY',
+	'A Mealy state machine is one in which actions (SM_ACT) are assigned to transitions (SM_TXN).  The action is executed during the transition from one state to another.  Support for mealy state machines is currently absent from the tool.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	0,
+	"918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"099a7326-2773-4939-af14-2a9d5a7d839b",
+	"ae5709a9-1c3d-4d6d-a65f-8515cbecd062",
+	"c6c61cae-0b85-49b0-b68c-d02c8fa01356",
+	"6a0c3e5f-b667-4c72-a9f4-88d71639e1b0",
+	"e605cc9c-d438-4afb-baf7-a695618ba1c1",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'State Machine',
+	'SM_ID',
+	'R510');
+INSERT INTO R_RGO_PROXY
+	VALUES ("bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	"099a7326-2773-4939-af14-2a9d5a7d839b",
+	"ae5709a9-1c3d-4d6d-a65f-8515cbecd062",
+	'../State Machine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	0,
+	"099a7326-2773-4939-af14-2a9d5a7d839b",
+	"c6c61cae-0b85-49b0-b68c-d02c8fa01356",
+	'../State Machine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("6a0c3e5f-b667-4c72-a9f4-88d71639e1b0",
+	"bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	"918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	1,
+	'SM_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("918c8926-3597-4f97-bdc4-a65cf9de1666",
+	"a1150e32-8c3e-4e21-8295-75b0c795b02d",
+	'../State Machine/State Machine.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("6a0c3e5f-b667-4c72-a9f4-88d71639e1b0",
+	"bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	"00000000-0000-0000-0000-000000000000",
+	'SM_ID',
+	'',
+	'',
+	'SM_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"bbe0968a-26c1-4a87-af60-2a718cd51b66");
+INSERT INTO O_OIDA
+	VALUES ("6a0c3e5f-b667-4c72-a9f4-88d71639e1b0",
+	"bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	0,
+	'SM_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"bbe0968a-26c1-4a87-af60-2a718cd51b66");
+INSERT INTO O_ID
+	VALUES (2,
+	"bbe0968a-26c1-4a87-af60-2a718cd51b66");
+INSERT INTO PE_PE
+	VALUES ("bbe0968a-26c1-4a87-af60-2a718cd51b66",
+	1,
+	"3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3314c083-3e42-4dfd-8a60-9305d01957ef",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'State Machine',
+	'Classes (O_OBJ) that have interesting behavior are given lifecycles. These lifecycles are described using state machines (SM_SM). A state machine consists of states, events, transitions and state actions. The state machine exists for each instance of the class for which it has been modeled (SM_ISM). A state machine can also be an assigner state machine (SM_ASM) of which only one can exists for all class instances. The purpose of the assigner state machine is to act as a single point of control through which competing requests are serialized.',
+	501,
+	'../State Machine.xtuml');

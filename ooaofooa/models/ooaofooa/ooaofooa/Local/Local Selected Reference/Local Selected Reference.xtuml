@@ -1,0 +1,119 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	'Local Selected Reference',
+	3004,
+	'L_LSR',
+	'The Local Selected Reference class only exists when a "select related by where" or a "select from instances where" statement is executed.
+
+This local will exist within the block in stack frame of the executing block, and the selected reference call will be able to determine 
+what instance to use when evaluating the where selected.<attribute> clause.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("781cb266-af73-48af-90ee-5204ad59cd56",
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Local: Local Selected Reference.dispose()
+
+// Get all the instances related to this local reference
+select one sel_ref related by self->L_IWC[R3006];
+if (not_empty sel_ref)
+  unrelate self from sel_ref across R3006;
+  sel_ref.dispose();
+end if;
+
+select one lcl related by self->L_LCL[R3001];
+if ( not_empty lcl )
+  unrelate self from lcl across R3001;
+  lcl.dispose();
+end if;
+
+// Delete this local selected reference
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	0,
+	"ffdff308-0931-48ad-a530-0ca912369a86",
+	"4992a5a6-5e58-41a6-91d1-936486d66bd1",
+	"a8418dda-f9fb-4a9e-b38d-320994729a26",
+	"9262fc43-9b02-49ae-a3d1-ce0c8e89c380",
+	"266588d9-d884-46ca-a784-4f243501e37f",
+	"aa8bf5ab-9c60-49d2-9640-61110b8a657c",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Local',
+	'Local_ID',
+	'R3001');
+INSERT INTO R_RGO_PROXY
+	VALUES ("b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	"4992a5a6-5e58-41a6-91d1-936486d66bd1",
+	"a8418dda-f9fb-4a9e-b38d-320994729a26",
+	'../Local.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("ffdff308-0931-48ad-a530-0ca912369a86",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	0,
+	"4992a5a6-5e58-41a6-91d1-936486d66bd1",
+	"9262fc43-9b02-49ae-a3d1-ce0c8e89c380",
+	'../Local.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("266588d9-d884-46ca-a784-4f243501e37f",
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	"ffdff308-0931-48ad-a530-0ca912369a86",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	1,
+	'Local_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("ffdff308-0931-48ad-a530-0ca912369a86",
+	"52884995-5576-40fc-86d0-ea925fa92803",
+	'../Local/Local.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("266588d9-d884-46ca-a784-4f243501e37f",
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	"00000000-0000-0000-0000-000000000000",
+	'Local_ID',
+	'',
+	'',
+	'Local_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3");
+INSERT INTO O_OIDA
+	VALUES ("266588d9-d884-46ca-a784-4f243501e37f",
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	0,
+	'Local_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3");
+INSERT INTO O_ID
+	VALUES (2,
+	"b877f7c1-7461-4650-9a10-1951dae1ebe3");
+INSERT INTO PE_PE
+	VALUES ("b877f7c1-7461-4650-9a10-1951dae1ebe3",
+	1,
+	"8d2918c3-90d8-4eb4-8db2-b149b2318f2c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8d2918c3-90d8-4eb4-8db2-b149b2318f2c",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Local',
+	'Persistent:false
+',
+	0,
+	'../Local.xtuml');

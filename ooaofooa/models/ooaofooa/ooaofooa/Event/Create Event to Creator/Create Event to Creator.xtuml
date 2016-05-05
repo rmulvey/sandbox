@@ -1,0 +1,159 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	'Create Event to Creator',
+	708,
+	'E_CEC',
+	'This class specifies the precreation of a creation event to a class for later delivery. Uses the same concepts as Generate to Creator but does not actually generate the event. It instead yields an event instance that can be generated later using Generate Preexisting Event.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("427a1f3f-ac7d-479a-815b-bcd096d01faa",
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	'dispose',
+	'This operation disconnects an instance, and all instances it is 
+responsible for, from the model.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// do nothing
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("3b3298ff-511d-45e9-99d9-b15e8fb9459a",
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	'execute',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Event: Create Event to Creator.execute()
+
+// Create a pending event for this event
+select one evt related by self->E_CSME[R704]->SM_EVT[R706];
+create object instance evtInst of I_EVI;
+relate evt to evtInst across R2906;
+
+// The instance for this creation transition will be created when the event
+// is generated.  So mark this pending event as a creation transition.
+evtInst.isCreation = true;
+
+// Hook up event data
+select one evt_spec_stmt related by self->E_CSME[R704]->
+                                                       E_CES[R702]->E_ESS[R701];
+valueComputationComplete =
+                      evt_spec_stmt.hookUpEventData(evtInst_ID:evtInst.Event_ID,
+                                          stack_frame_id: param.stack_frame_id);
+if (valueComputationComplete)
+  // Hook up the event instance to the result instance handle
+  select one createEvtStmt related by self->E_CSME[R704]->E_CES[R702];
+  createEvtStmt.hookUpEvtInstToHandle(evtInst_ID:evtInst.Event_ID,
+                                          stack_frame_id: param.stack_frame_id);
+
+  // Find the originating instance for this event and relate this event to it
+  evt_spec_stmt.relateToOriginatingInst(evtInst_ID:evtInst.Event_ID,
+                                          stack_frame_id: param.stack_frame_id);
+end if;',
+	1,
+	'',
+	"427a1f3f-ac7d-479a-815b-bcd096d01faa");
+INSERT INTO O_TPARM
+	VALUES ("a3be31e5-11ba-4123-a105-24d13d0d8e56",
+	"3b3298ff-511d-45e9-99d9-b15e8fb9459a",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	"01038250-cff6-4839-a055-7ab85181ea61",
+	0,
+	"43156361-d0e4-4f52-a852-cf1d6116f115",
+	"251b325e-0006-41e3-add6-56dc758deb1a",
+	"dacc445f-f865-4d2e-bb06-81be35367242",
+	"3ebb07a7-ce22-457b-b5d6-c13b0d88a750",
+	"7d9bd382-33ca-4ca8-b401-99d967b53a51",
+	"bbae92fa-1934-496a-9f56-8b3d6b68b6be",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Create SM Event Statement',
+	'Statement_ID',
+	'R704');
+INSERT INTO R_RGO_PROXY
+	VALUES ("fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	"251b325e-0006-41e3-add6-56dc758deb1a",
+	"dacc445f-f865-4d2e-bb06-81be35367242",
+	'../Event.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("43156361-d0e4-4f52-a852-cf1d6116f115",
+	"01038250-cff6-4839-a055-7ab85181ea61",
+	0,
+	"251b325e-0006-41e3-add6-56dc758deb1a",
+	"3ebb07a7-ce22-457b-b5d6-c13b0d88a750",
+	'../Event.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("7d9bd382-33ca-4ca8-b401-99d967b53a51",
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	"9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	1,
+	'Statement_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("9bdc49e0-583c-4741-ad6c-fa52d80977a5",
+	"4f42b756-0c2e-4a87-b40f-87291682433c",
+	'../../Body/Statement/Statement.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("7d9bd382-33ca-4ca8-b401-99d967b53a51",
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	"00000000-0000-0000-0000-000000000000",
+	'Statement_ID',
+	'
+
+',
+	'',
+	'Statement_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0");
+INSERT INTO O_OIDA
+	VALUES ("7d9bd382-33ca-4ca8-b401-99d967b53a51",
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	0,
+	'Statement_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0");
+INSERT INTO O_ID
+	VALUES (2,
+	"fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0");
+INSERT INTO PE_PE
+	VALUES ("fd5c78db-15f9-46ba-bfcc-cc33dbc9a3f0",
+	1,
+	"cae93765-eec1-4086-915a-d3082fb48fa7",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("cae93765-eec1-4086-915a-d3082fb48fa7",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Event',
+	'This subsystem focuses on the creation and generation
+of events. Events to instances, class, creators and
+external entities are covered, as well as the creation of
+event instances of those types. Finally the generation
+of pre-existing event instances are also covered.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	700,
+	'../Event.xtuml');

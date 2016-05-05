@@ -1,0 +1,181 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	'Description Engine',
+	9502,
+	'SEN_DE',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("29bc7c6a-9d34-4d1b-8195-5375710bdee0",
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	'processQuery',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// for each participant associated we apply the given pattern
+// for any matches we create the necessary results
+select any query from instances of SQU_Q where (selected.Id == param.queryId);
+select one engine related by self->SEN_E[R9501];
+select many participants related by engine->SP_SP[R9502];
+for each participant in participants
+  select one descriptionParticipant related by participant->SP_SE[R9700]
+                                                                 ->SP_DS[R9702];
+  if(not_empty descriptionParticipant)
+    // cache a variable for the singleton result
+    // used for this participant
+    select any searchResult from instances of SR_SR 
+                                    where (selected.Id == GD::NULL_UNIQUE_ID());
+    // should not be empty, but no harm in checking
+    contents = descriptionParticipant.searchableValue;
+    // process this call in a while loop, the call will return
+    // a negative value when no more matches exist
+    result = 0;
+    while(result >= 0)
+      matchResultId = Search::locateContentResults(pattern:query.pattern,
+                        contents:contents, isCaseSensitive:query.caseSensitive);
+      select any matchResult from instances of SR_CMR
+                                           where (selected.Id == matchResultId);
+      if(not_empty matchResult)
+        result = matchResult.startPosition;
+        if(result >= 0)
+          // create a search result
+          if(empty searchResult)
+            create object instance searchResult of SR_SR;
+            relate searchResult to engine across R9503;
+            relate searchResult to participant across R9802;
+          end if;
+          // create a match
+          create object instance match of SR_M;
+          create object instance contentMatch of SR_CM;
+          relate match to contentMatch across R9801;
+          relate searchResult to match across R9800;
+          contentMatch.startPosition = matchResult.startPosition;
+          contentMatch.matchLength = matchResult.length;
+          delete object instance matchResult;
+          // send creation notification
+          Search::matchCreated(match:match.convertToInstance());
+        end if;
+      else
+        // no match found set result to -1
+        result = -1;
+      end if;
+      // if the passed in progress monitor indicates
+      // that the user has cancelled this search, then
+      // end all processing
+      if(Search::monitorCanceled(monitor:param.monitor))
+        Search::clearQueryData();
+        return;
+      end if;
+    end while;
+    Search::clearQueryData();
+  end if;
+end for;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("7a36b662-5f8e-4135-9ea8-6d1c0d059e3c",
+	"29bc7c6a-9d34-4d1b-8195-5375710bdee0",
+	'queryId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("f0eaaee0-b0c2-4377-96fe-5cc0f5f4b80c",
+	"29bc7c6a-9d34-4d1b-8195-5375710bdee0",
+	'monitor',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"7a36b662-5f8e-4135-9ea8-6d1c0d059e3c",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_REF
+	VALUES ("9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	"06e79e8f-eeae-474d-902b-14c7e6d59fd5",
+	0,
+	"85b09010-dd3d-40e9-a7ba-53eb65a53aaf",
+	"5f6d217f-2958-40bd-8988-990cf2dec37f",
+	"4e5c2733-da15-403c-8ef0-7c521a2589b2",
+	"2a5d445b-2af3-49ea-ba4e-0231839a7ae3",
+	"eae9a3ad-fe2a-4e6d-b171-39aa8afc57cc",
+	"07c066b0-fe78-4e0f-b7ee-438f990da94b",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Search Engine',
+	'Id',
+	'R9501');
+INSERT INTO R_RGO_PROXY
+	VALUES ("9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	"5f6d217f-2958-40bd-8988-990cf2dec37f",
+	"4e5c2733-da15-403c-8ef0-7c521a2589b2",
+	'../Engine.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("85b09010-dd3d-40e9-a7ba-53eb65a53aaf",
+	"06e79e8f-eeae-474d-902b-14c7e6d59fd5",
+	0,
+	"5f6d217f-2958-40bd-8988-990cf2dec37f",
+	"2a5d445b-2af3-49ea-ba4e-0231839a7ae3",
+	'../Engine.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("eae9a3ad-fe2a-4e6d-b171-39aa8afc57cc",
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	"85b09010-dd3d-40e9-a7ba-53eb65a53aaf",
+	"06e79e8f-eeae-474d-902b-14c7e6d59fd5",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("85b09010-dd3d-40e9-a7ba-53eb65a53aaf",
+	"06e79e8f-eeae-474d-902b-14c7e6d59fd5",
+	'../Search Engine/Search Engine.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("eae9a3ad-fe2a-4e6d-b171-39aa8afc57cc",
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85");
+INSERT INTO O_OIDA
+	VALUES ("eae9a3ad-fe2a-4e6d-b171-39aa8afc57cc",
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85");
+INSERT INTO O_ID
+	VALUES (2,
+	"9a3bc093-1db3-42e2-81b9-25bb6e8aea85");
+INSERT INTO PE_PE
+	VALUES ("9a3bc093-1db3-42e2-81b9-25bb6e8aea85",
+	1,
+	"3f875493-bba5-4247-aa6a-3f757827542b",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("3f875493-bba5-4247-aa6a-3f757827542b",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Engine',
+	'',
+	9500,
+	'../Engine.xtuml');

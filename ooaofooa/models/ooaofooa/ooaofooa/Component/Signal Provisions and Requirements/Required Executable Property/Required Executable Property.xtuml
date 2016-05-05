@@ -1,0 +1,329 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'Required Executable Property',
+	4500,
+	'SPR_REP',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("18402655-7e3a-4ba4-88d0-99541f03ae31",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one req_signal related by self->SPR_RS[R4502];
+select one req_operation related by self->SPR_RO[R4502];
+if(not_empty req_signal)
+  unrelate self from req_signal across R4502;
+  req_signal.dispose();
+end if;
+if(not_empty req_operation)
+  unrelate self from req_operation across R4502;
+  req_operation.dispose();
+end if;
+select one requirement related by self->C_R[R4500];
+select one ep related by self->C_EP[R4500];
+if(not_empty requirement and not_empty ep)
+  unrelate requirement from ep across R4500 using self;
+end if;
+select many messageVals related by self->V_MSV[R845];
+for each msv in messageVals
+  unrelate self from msv across R845;
+end for;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("5ae88bc5-2562-4d10-8da1-8f86ebf97bdf",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'getComponentId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'select one requirement related by self->C_R[R4500];
+return requirement.getComponentId();',
+	1,
+	'',
+	"18402655-7e3a-4ba4-88d0-99541f03ae31");
+INSERT INTO O_TFR
+	VALUES ("04fa0be1-aa6e-4ccc-a81a-a68f3327b187",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'isSynchronized',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'/**
+ * A Required Executable Property is synchronized if the associated Executable
+ * Property exists and is not a proxy
+ */
+select one ep related by self->C_EP[R4500];
+if(empty ep or Util::isProxy(element:ep.convertToInstance()))
+  return false;
+end if;
+// if the ep is not null or not a proxy, then check for an interface
+// if that is null or a proxy the EP has been disposed
+select one iface related by ep->C_I[R4003];
+if(empty iface or Util::isProxy(element:iface.convertToInstance()))
+  return false;
+end if;
+return true;',
+	1,
+	'',
+	"5ae88bc5-2562-4d10-8da1-8f86ebf97bdf");
+INSERT INTO O_TFR
+	VALUES ("18c6f81d-e4ec-4020-b3b5-dab5d4210024",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'migrateExecutableProperty',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// we can migrate an executable property if the name matches and the subtypes
+// are the same.
+select one epProxy related by self->C_EP[R4500];
+if(Util::isProxy(element:epProxy.convertToInstance()))
+  select one sig related by self->SPR_RS[R4502];
+  isSig = not_empty sig;
+  select one requirement related by self->C_R[R4500];
+  select one interface related by requirement->C_IR[R4009]->C_I[R4012];
+  if(not_empty interface)
+    select many eps related by interface->C_EP[R4003]
+                               where (selected.Name == epProxy.getCachedName());
+    for each ep in eps
+      if(isSig)
+        select one interfaceSig related by ep->C_AS[R4004];
+        if(not_empty interfaceSig)
+          unrelate requirement from epProxy across R4500 using self;
+          relate requirement to ep across R4500 using self;
+          return;
+        end if;
+      else
+        select one interfaceOp related by ep->C_IO[R4004];
+        if(not_empty interfaceOp)
+          unrelate requirement from epProxy across R4500 using self;
+          relate requirement to ep across R4500 using self;
+          return;         
+        end if;
+      end if;
+    end for;
+  end if;
+end if;',
+	1,
+	'',
+	"04fa0be1-aa6e-4ccc-a81a-a68f3327b187");
+INSERT INTO O_TFR
+	VALUES ("c963a112-6a3d-4c4e-b2ac-32efc09184df",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"18c6f81d-e4ec-4020-b3b5-dab5d4210024");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("c643a96f-fe51-49a0-a7d3-4ca413d9074c",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'isReferringToDefaultExecutableProperty',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one ep related by self->C_EP[R4500];
+if(empty ep or Util::isProxy(element:ep.convertToInstance()))
+  return true;
+end if;
+return false;',
+	1,
+	'',
+	"c963a112-6a3d-4c4e-b2ac-32efc09184df");
+INSERT INTO O_TFR
+	VALUES ("080f473d-27da-4768-b681-e2cf4a85d1eb",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	'canReferToExecutableProperty',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'select one interface related by self->C_EP[R4500]->C_I[R4003];
+select one reference related by self->C_R[R4500]->C_IR[R4009];
+select one ourInterface related by reference->C_I[R4012];
+if(interface == ourInterface)
+  return true;
+end if;
+if(Util::isProxy(element:ourInterface.convertToInstance()))
+  // we must associate the EPs interface with our reference
+  // then ask if it can be used
+  unrelate ourInterface from reference across R4012;
+  relate interface to reference across R4012;
+  result = false;
+  if(reference.canReferToInterface())
+    result = true;
+  end if;
+  unrelate reference from interface across R4012;
+  relate reference to ourInterface across R4012;
+  return result;
+end if;
+return false;',
+	1,
+	'',
+	"c643a96f-fe51-49a0-a7d3-4ca413d9074c");
+INSERT INTO O_REF
+	VALUES ("a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"9af30d7e-243a-4d46-9ed2-7a34670c9580",
+	0,
+	"deb6b460-b1f4-4a5f-911e-9295d4ddb535",
+	"bf7c9428-ab7c-4865-a96c-602ceaa4e6c8",
+	"1d77060b-366a-42ae-88e3-3d82115ef3ca",
+	"64a80aab-14d9-4d99-a540-8f4296e81ce4",
+	"538d77d2-6d37-4875-a5b2-79c96cea4302",
+	"f945e13b-6564-4be3-afe6-f7fcc1786d9d",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Executable Property',
+	'Id',
+	'R4500.''implements''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"bf7c9428-ab7c-4865-a96c-602ceaa4e6c8",
+	"1d77060b-366a-42ae-88e3-3d82115ef3ca",
+	'../Signal Provisions and Requirements.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("deb6b460-b1f4-4a5f-911e-9295d4ddb535",
+	"9af30d7e-243a-4d46-9ed2-7a34670c9580",
+	0,
+	"bf7c9428-ab7c-4865-a96c-602ceaa4e6c8",
+	"64a80aab-14d9-4d99-a540-8f4296e81ce4",
+	'../Signal Provisions and Requirements.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("538d77d2-6d37-4875-a5b2-79c96cea4302",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"deb6b460-b1f4-4a5f-911e-9295d4ddb535",
+	"9af30d7e-243a-4d46-9ed2-7a34670c9580",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("deb6b460-b1f4-4a5f-911e-9295d4ddb535",
+	"9af30d7e-243a-4d46-9ed2-7a34670c9580",
+	'../../Executable Property/Executable Property.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("538d77d2-6d37-4875-a5b2-79c96cea4302",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"ebd14632-fee4-4368-8f7b-a06b91d25922",
+	'ExecutableProperty_Id',
+	'',
+	'ExecutableProperty_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ebd14632-fee4-4368-8f7b-a06b91d25922",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0");
+INSERT INTO O_BATTR
+	VALUES ("ebd14632-fee4-4368-8f7b-a06b91d25922",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0");
+INSERT INTO O_ATTR
+	VALUES ("ebd14632-fee4-4368-8f7b-a06b91d25922",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"69df8a1e-09ce-4b97-98f3-1775aedb1f4d",
+	0,
+	"cc4fa13e-646c-4707-9c49-e5eac9ad1e0d",
+	"bf7c9428-ab7c-4865-a96c-602ceaa4e6c8",
+	"1d77060b-366a-42ae-88e3-3d82115ef3ca",
+	"819bf811-1d81-49e7-bc8e-b5d33877be2b",
+	"7d4984cd-a414-48f7-be34-3035d9d8b930",
+	"69d816c9-60bf-4dca-9db1-c35be841ee23",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Requirement',
+	'Requirement_Id',
+	'R4500.''is implemented by''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("cc4fa13e-646c-4707-9c49-e5eac9ad1e0d",
+	"69df8a1e-09ce-4b97-98f3-1775aedb1f4d",
+	0,
+	"bf7c9428-ab7c-4865-a96c-602ceaa4e6c8",
+	"819bf811-1d81-49e7-bc8e-b5d33877be2b",
+	'../Signal Provisions and Requirements.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("7d4984cd-a414-48f7-be34-3035d9d8b930",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("7d4984cd-a414-48f7-be34-3035d9d8b930",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	"538d77d2-6d37-4875-a5b2-79c96cea4302",
+	'Requirement_Id',
+	'',
+	'',
+	'Requirement_Id',
+	2,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"a658788b-fa78-452e-99f0-44c7c426f4b0");
+INSERT INTO O_OIDA
+	VALUES ("ebd14632-fee4-4368-8f7b-a06b91d25922",
+	"a658788b-fa78-452e-99f0-44c7c426f4b0",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"a658788b-fa78-452e-99f0-44c7c426f4b0");
+INSERT INTO O_ID
+	VALUES (2,
+	"a658788b-fa78-452e-99f0-44c7c426f4b0");
+INSERT INTO PE_PE
+	VALUES ("a658788b-fa78-452e-99f0-44c7c426f4b0",
+	1,
+	"793f574c-50ba-49cc-8b61-058d01e62df9",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("793f574c-50ba-49cc-8b61-058d01e62df9",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Signal Provisions and Requirements',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+
+The Signal Provisions and Requirements subsystem captures data which will be
+used to define the implementation of provided and required interfaces.',
+	4500,
+	'../Signal Provisions and Requirements.xtuml');

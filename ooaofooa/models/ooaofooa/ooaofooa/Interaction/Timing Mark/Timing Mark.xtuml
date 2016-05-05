@@ -1,0 +1,266 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	'Timing Mark',
+	904,
+	'SQ_TM',
+	'This class represents a mark somewhere on a lifespan.  They are used to capture
+a point in time during an instance''s life.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("ca6981c5-7a3b-45e8-bb7f-deaec0efa147",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::None;',
+	1,
+	'',
+	"799e048c-30e4-4167-82f3-2338959d2c70");
+INSERT INTO O_TPARM
+	VALUES ("66af85e8-6744-46bd-ab0c-94efae976792",
+	"ca6981c5-7a3b-45e8-bb7f-deaec0efa147",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("f9390a28-d78e-4364-b005-bcf6767b5871",
+	"00000000-0000-0000-0000-000000000000",
+	'End',
+	'Text is positioned at a user adjustable offset from the Start, Middle and End of a connector. Start_Fixed and End_Fixed specify fixed position text found at the start and end of some connectors.
+-------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("e9bc922f-2c61-42df-b087-15cec87742e0",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	'get_connector_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'if(param.at == End::End)
+  return self.Name;
+end if;
+return "";',
+	1,
+	'',
+	"ad7a76fa-d496-47f8-ab19-2fab36728ced");
+INSERT INTO O_TPARM
+	VALUES ("a59a9ffb-174b-4c3e-8ab3-7ecc2fb006f4",
+	"e9bc922f-2c61-42df-b087-15cec87742e0",
+	'Obj_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b7593eed-6b81-43f8-badb-e37f96e97a40",
+	"e9bc922f-2c61-42df-b087-15cec87742e0",
+	'Obj_TypeIsImported',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"a59a9ffb-174b-4c3e-8ab3-7ecc2fb006f4",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("c362d3f6-3bc0-488a-9abe-c0647023aa33",
+	"e9bc922f-2c61-42df-b087-15cec87742e0",
+	'at',
+	"f9390a28-d78e-4364-b005-bcf6767b5871",
+	0,
+	'',
+	"b7593eed-6b81-43f8-badb-e37f96e97a40",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("b3d70275-8298-46c5-a438-a3db27a02163",
+	"e9bc922f-2c61-42df-b087-15cec87742e0",
+	'parent_ID',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"c362d3f6-3bc0-488a-9abe-c0647023aa33",
+	'');
+INSERT INTO O_TFR
+	VALUES ("ad7a76fa-d496-47f8-ab19-2fab36728ced",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many spans related by self->SQ_TS[R941];
+for each span in spans
+  unrelate self from span across R941;
+  span.dispose();
+end for;
+select many spans related by self->SQ_TS[R942];
+for each span in spans
+  unrelate self from span across R942;
+  span.dispose();
+end for;
+delete object instance self;
+',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("799e048c-30e4-4167-82f3-2338959d2c70",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Mark_ID;',
+	1,
+	'',
+	"e9bc922f-2c61-42df-b087-15cec87742e0");
+INSERT INTO O_NBATTR
+	VALUES ("515c40fa-6aaf-4819-8dd4-18ffba30215b",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_BATTR
+	VALUES ("515c40fa-6aaf-4819-8dd4-18ffba30215b",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_ATTR
+	VALUES ("515c40fa-6aaf-4819-8dd4-18ffba30215b",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"f692b38b-9aa0-4f29-bec0-60a3289faccf",
+	'Name',
+	'Full Name: Timing Mark Label',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("7b9645db-98ad-4a3d-a4be-e1131878e84c",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_BATTR
+	VALUES ("7b9645db-98ad-4a3d-a4be-e1131878e84c",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_ATTR
+	VALUES ("7b9645db-98ad-4a3d-a4be-e1131878e84c",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"ac9025fd-e160-4f11-a51d-f03afd6ed225",
+	'Descrip',
+	'Full Name: Timing Mark Description
+Description: A textual description of this timing mark.',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"ed54e8f9-00a0-41c7-ac7e-0044b2e3d1af",
+	0,
+	"dc228fc6-1817-4256-af47-66620736e084",
+	"15d46d37-d528-43e9-9f18-8ee999119b21",
+	"39f08576-b0d1-489b-ac6d-0394c2492b16",
+	"106fe367-e10d-4d0a-9b05-d9f3ee1cae25",
+	"ac9025fd-e160-4f11-a51d-f03afd6ed225",
+	"3c5bdfa3-6659-4883-a1ba-3d1aafc737d7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Lifespan',
+	'Part_ID',
+	'R931.''marks a point in time''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"15d46d37-d528-43e9-9f18-8ee999119b21",
+	"39f08576-b0d1-489b-ac6d-0394c2492b16",
+	'../Interaction.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("dc228fc6-1817-4256-af47-66620736e084",
+	"ed54e8f9-00a0-41c7-ac7e-0044b2e3d1af",
+	0,
+	"15d46d37-d528-43e9-9f18-8ee999119b21",
+	"106fe367-e10d-4d0a-9b05-d9f3ee1cae25",
+	'../Interaction.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ac9025fd-e160-4f11-a51d-f03afd6ed225",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("ac9025fd-e160-4f11-a51d-f03afd6ed225",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"515c40fa-6aaf-4819-8dd4-18ffba30215b",
+	'Part_ID',
+	'',
+	'',
+	'Part_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f692b38b-9aa0-4f29-bec0-60a3289faccf",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_BATTR
+	VALUES ("f692b38b-9aa0-4f29-bec0-60a3289faccf",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_ATTR
+	VALUES ("f692b38b-9aa0-4f29-bec0-60a3289faccf",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	"00000000-0000-0000-0000-000000000000",
+	'Mark_ID',
+	'',
+	'',
+	'Mark_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_OIDA
+	VALUES ("f692b38b-9aa0-4f29-bec0-60a3289faccf",
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	0,
+	'Mark_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO O_ID
+	VALUES (2,
+	"7f63a64d-03c7-4b75-baaf-30eac902b3b9");
+INSERT INTO PE_PE
+	VALUES ("7f63a64d-03c7-4b75-baaf-30eac902b3b9",
+	1,
+	"7cbd3d78-c01a-4abf-bc50-bdf47bcaef10",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("7cbd3d78-c01a-4abf-bc50-bdf47bcaef10",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Interaction',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE',
+	930,
+	'../Interaction.xtuml');

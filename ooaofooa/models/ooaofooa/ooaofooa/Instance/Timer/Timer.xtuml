@@ -1,0 +1,361 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'Timer',
+	2913,
+	'I_TIM',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("c654dae4-6a5c-4dcd-99a2-50ef54db4e78",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'tick',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'if (self.running)
+  select one pendingEvt related by self->I_EVI[R2940];
+  select one ee related by pendingEvt->I_EXE[R2964];
+  
+  select one stack related by ee->I_STACK[R2930];
+  if (not_empty ee and ee.Running and not_empty stack and
+                                        stack.runState == RunStateType::Running)
+  	if (self.expiration <= self.currentTime())
+      self.fire();
+    end if;
+  end if;
+end if;',
+	1,
+	'',
+	"25266695-acb0-485e-baff-c4048163c703");
+INSERT INTO O_TFR
+	VALUES ("faff6cf7-ea46-40fb-8174-f6b6f5545f34",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'fire',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Timer.fire()
+select one evt related by self->I_EVI[R2940];
+self.removeTimer();
+if (not_empty evt)
+  if (self.recurring == true)
+    self.expiration = Util::addIntToLong(longVar:self.currentTime(), intVar:self.delay);
+    evt_ID = evt.clone();
+    select any newEvt from instances of I_EVI where selected.Event_ID == evt_ID;
+    unrelate self from evt across R2940;
+    relate self to newEvt across R2940;
+    select one comptInst related by evt ->I_EXE[R2964];
+    self.insertTimer(componentInstanceId:comptInst.Execution_Engine_ID);
+  end if;
+  evt.fire();
+end if;
+if (self.recurring == false)
+  discard = self.dispose();
+end if;',
+	1,
+	'',
+	"11b529c3-83bc-4928-9bc8-21026e3112ce");
+INSERT INTO O_TFR
+	VALUES ("11b529c3-83bc-4928-9bc8-21026e3112ce",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'result = false;
+select one evt related by self->I_EVI[R2940];
+if (not_empty evt)
+  unrelate self from evt across R2940;
+  // If the event has not been delivered, dispose it too.
+  select one recipient related by evt->I_INS[R2907];
+  select one clazz related by evt->CSME_CIE[R2931];
+  if (empty recipient and empty clazz)
+    evt.dispose();
+    result = true;
+  end if;
+end if;
+self.removeTimer();
+delete object instance self;
+return result;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("25266695-acb0-485e-baff-c4048163c703",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'set',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.running = false;
+self.recurring = false;
+self.delay = param.delay;
+self.expiration = Util::addIntToLong(longVar:self.currentTime(), intVar:self.delay);',
+	1,
+	'',
+	"faff6cf7-ea46-40fb-8174-f6b6f5545f34");
+INSERT INTO O_TPARM
+	VALUES ("31b1432d-d4e6-4afd-8f0d-2a1d1cf40dfb",
+	"25266695-acb0-485e-baff-c4048163c703",
+	'delay',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("775328e7-18d6-44b4-925f-cc8aefba1e08",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'currentTime',
+	'Translate:native',
+	"827e6910-86fc-4d33-b524-9635d6685412",
+	1,
+	'return lib.TIM.getCurrentTime();',
+	0,
+	'',
+	"c654dae4-6a5c-4dcd-99a2-50ef54db4e78");
+INSERT INTO S_DT_PROXY
+	VALUES ("827e6910-86fc-4d33-b524-9635d6685412",
+	"00000000-0000-0000-0000-000000000000",
+	'long',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("d8099cf7-4e81-4b38-9288-3ee3eefd7157",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'removeTimer',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'lib.TIM.removeTimer(this);',
+	0,
+	'',
+	"775328e7-18d6-44b4-925f-cc8aefba1e08");
+INSERT INTO O_TFR
+	VALUES ("15db7a83-df05-4f01-a4c6-a6937df174dd",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'insertTimer',
+	'Translate:native',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'ModelRoot modelRoot = getModelRoot();
+		ComponentInstance_c ee = (ComponentInstance_c) modelRoot
+				.getInstanceList(ComponentInstance_c.class).getGlobal(
+						p_Componentinstanceid);
+lib.TIM.insertTimer(this, ee);
+',
+	0,
+	'',
+	"d8099cf7-4e81-4b38-9288-3ee3eefd7157");
+INSERT INTO O_TPARM
+	VALUES ("1e8bdcbc-7579-4169-bbac-417366eeed9f",
+	"15db7a83-df05-4f01-a4c6-a6937df174dd",
+	'componentInstanceId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("bc51bf15-3371-41fb-a14a-ea733b918f08",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_BATTR
+	VALUES ("bc51bf15-3371-41fb-a14a-ea733b918f08",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ATTR
+	VALUES ("bc51bf15-3371-41fb-a14a-ea733b918f08",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"00000000-0000-0000-0000-000000000000",
+	'Timer_ID',
+	'',
+	'',
+	'Timer_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c391e7d2-53eb-4f51-9edf-8275b3d26cd7",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_BATTR
+	VALUES ("c391e7d2-53eb-4f51-9edf-8275b3d26cd7",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ATTR
+	VALUES ("c391e7d2-53eb-4f51-9edf-8275b3d26cd7",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"bc51bf15-3371-41fb-a14a-ea733b918f08",
+	'delay',
+	'',
+	'',
+	'delay',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("82cd07be-4b64-45f0-a2fd-75f6e375b8af",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_BATTR
+	VALUES ("82cd07be-4b64-45f0-a2fd-75f6e375b8af",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ATTR
+	VALUES ("82cd07be-4b64-45f0-a2fd-75f6e375b8af",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"c391e7d2-53eb-4f51-9edf-8275b3d26cd7",
+	'running',
+	'',
+	'',
+	'running',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("71ab3365-ebe7-4907-b632-162921d16c1f",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_BATTR
+	VALUES ("71ab3365-ebe7-4907-b632-162921d16c1f",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ATTR
+	VALUES ("71ab3365-ebe7-4907-b632-162921d16c1f",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"82cd07be-4b64-45f0-a2fd-75f6e375b8af",
+	'recurring',
+	'',
+	'',
+	'recurring',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"b67a36cd-414f-401a-a340-40d48cbb4049",
+	0,
+	"07d2cf78-1ca0-4f0b-8513-596b0a9b62d8",
+	"d983a79e-6cb1-406c-8842-a738086ce361",
+	"8689a2db-9cbb-4585-981d-5e8c62ccbace",
+	"aa940dec-5d07-4462-a042-7b70bdcbd63b",
+	"2642d9d6-a71f-4356-be9f-5ede34bdda03",
+	"a92b278d-abf8-4915-8f56-1b1acacd1e01",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Pending Event',
+	'Event_ID',
+	'R2940.''provides delayed delivery of''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"d983a79e-6cb1-406c-8842-a738086ce361",
+	"8689a2db-9cbb-4585-981d-5e8c62ccbace",
+	'../Instance.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("07d2cf78-1ca0-4f0b-8513-596b0a9b62d8",
+	"b67a36cd-414f-401a-a340-40d48cbb4049",
+	0,
+	"d983a79e-6cb1-406c-8842-a738086ce361",
+	"aa940dec-5d07-4462-a042-7b70bdcbd63b",
+	'../Instance.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("2642d9d6-a71f-4356-be9f-5ede34bdda03",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"07d2cf78-1ca0-4f0b-8513-596b0a9b62d8",
+	"b67a36cd-414f-401a-a340-40d48cbb4049",
+	1,
+	'Event_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("07d2cf78-1ca0-4f0b-8513-596b0a9b62d8",
+	"b67a36cd-414f-401a-a340-40d48cbb4049",
+	'../Pending Event/Pending Event.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("2642d9d6-a71f-4356-be9f-5ede34bdda03",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"71ab3365-ebe7-4907-b632-162921d16c1f",
+	'Event_ID',
+	'',
+	'',
+	'Event_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("5ec3ecf3-bb3e-4e66-98a8-974954ee2608",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	'timeLeft = Util::diffLongsToInt(v1:self.expiration, v2:self.currentTime());
+result = GD::int_to_string(value:timeLeft) + " uS remaining";
+select one evt related by self->I_EVI[R2940];
+if (timeLeft < 0 or empty evt)
+  result = "not running";
+else
+  result = result + ", " + evt.Label;
+end if;
+self.Label = result;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("5ec3ecf3-bb3e-4e66-98a8-974954ee2608",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ATTR
+	VALUES ("5ec3ecf3-bb3e-4e66-98a8-974954ee2608",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"2642d9d6-a71f-4356-be9f-5ede34bdda03",
+	'Label',
+	'',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ea90deee-9ed0-4b96-9366-a7834e06868f",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_BATTR
+	VALUES ("ea90deee-9ed0-4b96-9366-a7834e06868f",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ATTR
+	VALUES ("ea90deee-9ed0-4b96-9366-a7834e06868f",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	"5ec3ecf3-bb3e-4e66-98a8-974954ee2608",
+	'expiration',
+	'',
+	'',
+	'expiration',
+	0,
+	"827e6910-86fc-4d33-b524-9635d6685412",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_OIDA
+	VALUES ("bc51bf15-3371-41fb-a14a-ea733b918f08",
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	0,
+	'Timer_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO O_ID
+	VALUES (2,
+	"308ee204-3f46-4dec-86f3-c7cb5a7b454c");
+INSERT INTO PE_PE
+	VALUES ("308ee204-3f46-4dec-86f3-c7cb5a7b454c",
+	1,
+	"7b924115-e9f0-4229-8534-5eb4ea221f03",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("7b924115-e9f0-4229-8534-5eb4ea221f03",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Instance',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+Persistent:false
+Import: java.util.concurrent.locks.ReentrantLock',
+	900,
+	'../Instance.xtuml');

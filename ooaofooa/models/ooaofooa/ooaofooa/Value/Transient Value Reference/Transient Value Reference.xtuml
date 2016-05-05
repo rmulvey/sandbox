@@ -1,0 +1,368 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("8093418a-00a0-4824-beb4-d73feceaf555",
+	'Transient Value Reference',
+	805,
+	'V_TVL',
+	'This class represents a value held in a local variable being used on the right hand side of an assignment or an expression.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("44d2d033-3968-4d8b-9dbb-bcadefc60b97",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	'getValue',
+	'',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// Transient Value Reference.getValue()
+
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+// Get the transient variable
+select one transient_var related by self->V_VAR[R805]->V_TRN[R814];
+
+select any stack_frame from instances of I_STF where (selected.Stack_Frame_ID == param.stack_frame_id);
+if (empty stack_frame)
+	//Invalid stack frame ID!
+	pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Transient Value Reference.getValue: Invalid stack frame handle used. Using random top stack frame.",path:pathMsg);
+	select any stack from instances of I_STACK;
+	select one stack_frame related by stack->I_STF[R2929];
+end if;
+
+// Set value to this block with the right type so we can use it later.  The value here is useless.
+select any value from instances of L_LVL;
+
+// Find the one local value that matches the block in stack frame where we are executing for the transient variable we want to assign
+select many block_in_stack_frames related by stack_frame->I_BSF[R2923];
+select any value related by block_in_stack_frames->L_LCL[R3000]->L_LVL[R3001] where selected.Var_ID == transient_var.Var_ID;
+
+// Set an empty error message string that will hold any reported errors
+error_message = "";
+
+if (not_empty value)
+  // The value exists, find it and return its value(in Object form via setting itself).
+  return value.getValue(stack_frame_id: stack_frame.Stack_Frame_ID); 
+else
+  // No transient value related to this instance matches our target attribute because the attribute has not been set.
+  error_message = error_message + ":Value not found.";
+end if;
+
+// Did not find the transient value and type to use.  Return error to object.
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Transient Value Reference.getValue error - " + error_message + " Returning error value",path:pathMsg);
+return GD::string_to_instance(value:"Error");',
+	1,
+	'',
+	"58c90b3f-0e05-47dc-a554-a0176b8cb9b9");
+INSERT INTO O_TPARM
+	VALUES ("a09774d6-7c72-4004-906d-8530674bba16",
+	"44d2d033-3968-4d8b-9dbb-bcadefc60b97",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("bf60ebc8-c6ad-4895-90d0-ba7b1bdd5d74",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	'setValue',
+	'Attempts to find the Local Value created for the transient reference and
+assigns the passed in value to it.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'// Transient Value Reference.setValue()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+// Get the transient variable
+select one transient_var related by self->V_VAR[R805]->V_TRN[R814];
+select any stack_frame from instances of I_STF where
+                                selected.Stack_Frame_ID == param.stack_frame_id;
+if (empty stack_frame)
+	//Invalid stack frame ID!
+	pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Transient Value Reference.getValue:" +
+             " Invalid stack frame handle used. Using random top stack frame.",path:pathMsg);
+	select any stack from instances of I_STACK;
+	select one stack_frame related by stack->I_STF[R2929];
+else
+  // Find the one local value in the stack frame that corresponds
+  // to the transient variable we want to assign.
+  select many block_in_stack_frames related by stack_frame->I_BSF[R2923];
+  select any lvalue related by block_in_stack_frames->L_LCL[R3000]->
+                     L_LVL[R3001] where selected.Var_ID == transient_var.Var_ID;
+  if (empty lvalue)
+    select one blk related by self->V_VAL[R801]->ACT_BLK[R826];
+    ref_ID = blk.newLocalValue(stack_frame_id:param.stack_frame_id);
+    select any lvalue related by blk->I_BSF[R2923]->L_LCL[R3000]->
+                                 L_LVL[R3001] where selected.Local_ID == ref_ID;
+    relate transient_var to lvalue across R3005;
+  end if;
+  lvalue.setValue(
+                stack_frame_id: stack_frame.Stack_Frame_ID,
+                                 value: param.value, member_id:param.member_id); 
+end if;
+',
+	1,
+	'',
+	"44d2d033-3968-4d8b-9dbb-bcadefc60b97");
+INSERT INTO O_TPARM
+	VALUES ("d9940344-cacf-4b85-9433-e004bac90943",
+	"bf60ebc8-c6ad-4895-90d0-ba7b1bdd5d74",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("ba1dc5ce-05f4-4731-8c5b-c22b98fcd614",
+	"bf60ebc8-c6ad-4895-90d0-ba7b1bdd5d74",
+	'value',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"d9940344-cacf-4b85-9433-e004bac90943",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("d078d7e0-17b3-4172-a6ab-17d708552531",
+	"bf60ebc8-c6ad-4895-90d0-ba7b1bdd5d74",
+	'member_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"ba1dc5ce-05f4-4731-8c5b-c22b98fcd614",
+	'');
+INSERT INTO O_TFR
+	VALUES ("58c90b3f-0e05-47dc-a554-a0176b8cb9b9",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	'getRuntimeValue',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// Transient Value Reference.getRuntimeValue()
+select one body related by self->V_VAL[R801]->ACT_BLK[R826]->ACT_ACT[R601];
+// Get the transient variable
+select one transient_var related by self->V_VAR[R805]->V_TRN[R814];
+
+select any stack_frame from instances of I_STF where (selected.Stack_Frame_ID == param.stack_frame_id);
+if (empty stack_frame)
+	//Invalid stack frame ID!
+	pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Error in Transient Value Reference.getRuntimeValue: Invalid stack frame handle used. Using random top stack frame.",path:pathMsg);
+	select any stack from instances of I_STACK;
+	select one stack_frame related by stack->I_STF[R2929];
+end if;
+
+// Set value to this block with the right type so we can use it later.  The value here is useless.
+select any value from instances of L_LVL;
+
+// Find the one local value that matches the block in stack frame where we are executing for the transient variable we want to assign
+select many block_in_stack_frames related by stack_frame->I_BSF[R2923];
+select any value related by block_in_stack_frames->L_LCL[R3000]->L_LVL[R3001] where selected.Var_ID == transient_var.Var_ID;
+
+// Set an empty error message string that will hold any reported errors
+error_message = "";
+
+if (not_empty value)
+  // The value exists, find it and return its value(in Object form via setting itself).
+  return value.getRuntimeValue(stack_frame_id:param.stack_frame_id);
+else
+  select one val related by self->V_VAL[R801];
+  if val.isLValue
+    select one blk related by self->V_VAL[R801]->ACT_BLK[R826];
+    ref_ID = blk.newLocalValue(stack_frame_id:param.stack_frame_id);
+    select any local related by blk->I_BSF[R2923]->L_LCL[R3000] where
+                                                    selected.Local_ID == ref_ID;
+    select one local_val related by local->L_LVL[R3001];
+    relate transient_var to local_val across R3005;
+    create object instance rtVal of RV_RVL;
+    relate rtVal to local across R3306;
+    select one dt related by val->S_DT[R820];
+    relate rtVal to dt across R3307;
+    if transient_var.getDimensionsCnt() != 0 //Dimension_Type::None;
+      create object instance arrayVal of RV_AVL;
+      relate arrayVal to rtVal across R3300;
+    end if;
+    return rtVal.RuntimeValue_ID;
+  else
+    // No transient value related to this instance matches our target attribute because the attribute has not been set.
+    error_message = error_message + ":Value not found.";
+  end if;
+end if;
+
+// Did not find the transient value and type to use.  Return error to object.
+pathMsg = "<No Path Available - Empty instance>";
+    if (not_empty body)
+      pathMsg = body.getPath();
+    end if;
+	USER::logError(msg:"Transient Value Reference.getRuntimeValue error - " + error_message + " Returning error value",path:pathMsg);
+return GD::NULL_UNIQUE_ID();',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TPARM
+	VALUES ("42859af2-847f-4474-9293-d6f70cedb352",
+	"58c90b3f-0e05-47dc-a554-a0176b8cb9b9",
+	'stack_frame_id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_REF
+	VALUES ("8093418a-00a0-4824-beb4-d73feceaf555",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"20b732ad-233a-4b69-a353-62cd5afff5ca",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	"d904c8f1-6544-4085-b86a-29cbb71738d9",
+	"799c92c3-884b-45b7-988b-bf940f5eafe3",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Value',
+	'Value_ID',
+	'R801');
+INSERT INTO R_RGO_PROXY
+	VALUES ("8093418a-00a0-4824-beb4-d73feceaf555",
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"20b732ad-233a-4b69-a353-62cd5afff5ca",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	0,
+	"06497a90-3e1f-4449-b56c-c0400f566edf",
+	"b8c468d1-d7d3-40b3-85a0-dac116856ce9",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("d904c8f1-6544-4085-b86a-29cbb71738d9",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	"6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	1,
+	'Value_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6e185a42-0dc6-4b9d-9d4b-38cb7c8aa772",
+	"43ea4f47-4fe8-4167-8153-9e199477d0fd",
+	'../Value/Value.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("d904c8f1-6544-4085-b86a-29cbb71738d9",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	"00000000-0000-0000-0000-000000000000",
+	'Value_ID',
+	'',
+	'',
+	'Value_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("8093418a-00a0-4824-beb4-d73feceaf555",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"8faaa2cd-3e85-4203-acfa-e604bf67ac61",
+	"40fd9ab1-6e66-454d-9652-6fecae401271",
+	"2276b425-bcfa-4a52-aae7-aab36f663be8",
+	"17d706ef-58a0-4dd2-b235-1b92cef984ff",
+	"78c19443-bab0-4424-88a7-b8721409bf8b",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Variable',
+	'Var_ID',
+	'R805.''references''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("8093418a-00a0-4824-beb4-d73feceaf555",
+	"8faaa2cd-3e85-4203-acfa-e604bf67ac61",
+	"40fd9ab1-6e66-454d-9652-6fecae401271",
+	'../Value.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	0,
+	"8faaa2cd-3e85-4203-acfa-e604bf67ac61",
+	"2276b425-bcfa-4a52-aae7-aab36f663be8",
+	'../Value.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("17d706ef-58a0-4dd2-b235-1b92cef984ff",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	"5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	1,
+	'Var_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("5b3f451e-a4bf-4d7c-97db-547eae3c84ae",
+	"f8c82d33-e7c5-4fb7-8c3c-77b2a47feca7",
+	'../Variable/Variable.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("17d706ef-58a0-4dd2-b235-1b92cef984ff",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	"d904c8f1-6544-4085-b86a-29cbb71738d9",
+	'Var_ID',
+	'
+
+',
+	'',
+	'Var_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"8093418a-00a0-4824-beb4-d73feceaf555");
+INSERT INTO O_OIDA
+	VALUES ("d904c8f1-6544-4085-b86a-29cbb71738d9",
+	"8093418a-00a0-4824-beb4-d73feceaf555",
+	0,
+	'Value_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"8093418a-00a0-4824-beb4-d73feceaf555");
+INSERT INTO O_ID
+	VALUES (2,
+	"8093418a-00a0-4824-beb4-d73feceaf555");
+INSERT INTO PE_PE
+	VALUES ("8093418a-00a0-4824-beb4-d73feceaf555",
+	1,
+	"8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("8b9e8a8c-7fd0-4ca9-b025-f7949d99c0c5",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Value',
+	'This subsystem formalizes the concepts of values (r-values) and variables 
+(l-values). It also captures the concept of an actual parameter.
+Notify_Changes:false
+Persistent:false
+// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	800,
+	'../Value.xtuml');

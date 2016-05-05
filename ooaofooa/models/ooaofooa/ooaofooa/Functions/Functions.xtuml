@@ -1,0 +1,612 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("9d6cbaa9-e013-43da-961e-6fb5075e79d6",
+	112,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	4548,
+	3426,
+	0,
+	0,
+	0,
+	'',
+	'ooaofooa::ooaofooa::Functions');
+INSERT INTO GD_GE
+	VALUES ("b3592d44-6eb2-4598-97c2-3c66268c94fc",
+	"9d6cbaa9-e013-43da-961e-6fb5075e79d6",
+	"8e707ac3-27e0-471b-9960-762722043ef2",
+	108,
+	0,
+	'ooaofooa::ooaofooa::Functions::Context Menu Entry Functions');
+INSERT INTO GD_SHP
+	VALUES ("b3592d44-6eb2-4598-97c2-3c66268c94fc");
+INSERT INTO GD_NCS
+	VALUES ("b3592d44-6eb2-4598-97c2-3c66268c94fc");
+INSERT INTO DIM_ND
+	VALUES (240.000000,
+	144.000000,
+	"b3592d44-6eb2-4598-97c2-3c66268c94fc");
+INSERT INTO DIM_GE
+	VALUES (4032.000000,
+	3096.000000,
+	"b3592d44-6eb2-4598-97c2-3c66268c94fc",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b3592d44-6eb2-4598-97c2-3c66268c94fc",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("94352d86-6ae3-413a-bd25-ebc10345e5dc",
+	"9d6cbaa9-e013-43da-961e-6fb5075e79d6",
+	"1fa794fb-723d-4a99-91a8-38a179e18be1",
+	108,
+	0,
+	'ooaofooa::ooaofooa::Functions::OAL Validation Functions');
+INSERT INTO GD_SHP
+	VALUES ("94352d86-6ae3-413a-bd25-ebc10345e5dc");
+INSERT INTO GD_NCS
+	VALUES ("94352d86-6ae3-413a-bd25-ebc10345e5dc");
+INSERT INTO DIM_ND
+	VALUES (276.000000,
+	156.000000,
+	"94352d86-6ae3-413a-bd25-ebc10345e5dc");
+INSERT INTO DIM_GE
+	VALUES (4164.000000,
+	3288.000000,
+	"94352d86-6ae3-413a-bd25-ebc10345e5dc",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("94352d86-6ae3-413a-bd25-ebc10345e5dc",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("160e344e-b067-4a78-a756-55bf1933f837",
+	"9d6cbaa9-e013-43da-961e-6fb5075e79d6",
+	"450168ab-9d16-43a8-b639-cec5c575e13e",
+	108,
+	0,
+	'ooaofooa::ooaofooa::Functions::OAL Validation Utility Functions');
+INSERT INTO GD_SHP
+	VALUES ("160e344e-b067-4a78-a756-55bf1933f837");
+INSERT INTO GD_NCS
+	VALUES ("160e344e-b067-4a78-a756-55bf1933f837");
+INSERT INTO DIM_ND
+	VALUES (240.000000,
+	144.000000,
+	"160e344e-b067-4a78-a756-55bf1933f837");
+INSERT INTO DIM_GE
+	VALUES (4320.000000,
+	3096.000000,
+	"160e344e-b067-4a78-a756-55bf1933f837",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("160e344e-b067-4a78-a756-55bf1933f837",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("9d6cbaa9-e013-43da-961e-6fb5075e79d6",
+	'',
+	0.834211,
+	3938.000000,
+	2945.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("b8f038e6-173f-4f70-a7de-5bd2fd573ede",
+	"00000000-0000-0000-0000-000000000000",
+	'enableModelChangeListenersFor',
+	'Set the value of the model change listener enable mask to the value passed in.
+The function returns the previous value logically ORed of both the masks.
+
+The return value then shall be sent in both parameters in the succeeding calls 
+to the function.
+
+Translate: native
+',
+	'int ret_val = enabledEventsMask | enabledDeltaMask;
+if ((p_Eventmask & Modeleventnotification_c.MODEL_ELEMENT_CHANGED) != 0) {
+   	enabledDeltaMask = (p_Deltamask & Modeleventnotification_c.MASK_ALL_DELTAS);
+}
+enabledEventsMask = (p_Eventmask & Modeleventnotification_c.MASK_ALL_EVENTS);		
+return ret_val;',
+	"8a859da5-9866-443a-adf3-5b5d181772c5",
+	0,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("0cfff4b6-64ae-41d3-b8bd-50012fc501ae",
+	"b8f038e6-173f-4f70-a7de-5bd2fd573ede",
+	'eventMask',
+	"8a859da5-9866-443a-adf3-5b5d181772c5",
+	0,
+	'',
+	"1a0b8c6d-723a-42cb-80a6-983355ee5cbe",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("8a859da5-9866-443a-adf3-5b5d181772c5",
+	"00000000-0000-0000-0000-000000000000",
+	'ModelEventNotification',
+	'This enumeration defines all possible changes that can occur to a model.  
+The ALL_EVENTS enumerator is the sum of all values. 
+It also defines the delta kinds in case of a MODEL_ELEMENT_CHANGED event type. ',
+	'',
+	'../Datatypes/Datatypes.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("1a0b8c6d-723a-42cb-80a6-983355ee5cbe",
+	"b8f038e6-173f-4f70-a7de-5bd2fd573ede",
+	'deltaMask',
+	"8a859da5-9866-443a-adf3-5b5d181772c5",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("b8f038e6-173f-4f70-a7de-5bd2fd573ede",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("125f08c0-623a-4180-8908-88bcd945cf6b",
+	"00000000-0000-0000-0000-000000000000",
+	'getOrphanedElementName',
+	'',
+	'return "Orphaned";
+',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("125f08c0-623a-4180-8908-88bcd945cf6b",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("77599b67-8756-48f0-b437-52597e74ba02",
+	"00000000-0000-0000-0000-000000000000",
+	'getOrphanedElementKL',
+	'',
+	'return "ORPH";
+',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("77599b67-8756-48f0-b437-52597e74ba02",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	"00000000-0000-0000-0000-000000000000",
+	'canStateIgnoreOrSayEventCantHappen',
+	'',
+	'/* ::canStateIgnoreOrSayEventCantHappen()
+This is merely a pass-through function, meant as a workaround to a generator 
+bug where method calls made on object instances in the ''where'' clause of a 
+select statement are not generated correctly (BZ issue 278).  In some cases (but
+not all), a call to this function may be made to access the desired operation
+indirectly.
+*/
+select any state from instances of SM_STATE
+	where selected.SMstt_ID == param.stateId 
+		and selected.SM_ID == param.stateStateMachineId;
+return state.canIgnoreOrSayEventCantHappen(
+	eventId:param.eventId, eventStateMachineId:param.eventStateMachineId, 
+	considerCantHappen:param.considerCantHappen);
+	',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("5027f9ed-1c30-4189-8b9e-c12e73190fa5",
+	"be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	'eventId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"d5331393-771a-4946-ad45-d3a4b01616e8",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("5d1d997f-f69f-46c4-8fb6-f340254078bb",
+	"be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	'eventStateMachineId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"5027f9ed-1c30-4189-8b9e-c12e73190fa5",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("3830a4dd-cda7-40ea-aab1-20e9781c236a",
+	"be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	'stateId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"5d1d997f-f69f-46c4-8fb6-f340254078bb",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("7cc9d05d-db1e-44d6-9596-023724ac28b7",
+	"be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	'stateStateMachineId',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"3830a4dd-cda7-40ea-aab1-20e9781c236a",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("d5331393-771a-4946-ad45-d3a4b01616e8",
+	"be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	'considerCantHappen',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("be4e37d7-4fac-4391-afc1-0aebba1241dc",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a11cd384-d391-4e71-89c0-f124b17102f7",
+	"00000000-0000-0000-0000-000000000000",
+	'convertRelocatableTags',
+	'Translate: native',
+	'return org.xtuml.bp.core.relocatables.RelocatableTagConversionUtil.convertRelocatableTags(modelRoot, p_In);
+',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("0276df8f-3783-42bf-b1c5-9b1058cd62bd",
+	"a11cd384-d391-4e71-89c0-f124b17102f7",
+	'in',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("a11cd384-d391-4e71-89c0-f124b17102f7",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a983b6f5-ff51-46c8-a1fd-2146f3723b72",
+	"00000000-0000-0000-0000-000000000000",
+	'getUniqueInitialName',
+	'Translate: native',
+	'return PersistenceManager.getDefaultInstance().getUniqueNameForComponent(
+	(NonRootModelElement)p_Instance, p_Candidatename);',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("6408ad43-07b7-4ca2-9e33-a60bb27d68c8",
+	"a983b6f5-ff51-46c8-a1fd-2146f3723b72",
+	'instance',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"e77da8be-0b6a-40f8-9c02-b2a315793999",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../Datatypes/Datatypes.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("e77da8be-0b6a-40f8-9c02-b2a315793999",
+	"a983b6f5-ff51-46c8-a1fd-2146f3723b72",
+	'candidateName',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("a983b6f5-ff51-46c8-a1fd-2146f3723b72",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("8541be01-03e8-4498-8143-dddadc10c807",
+	"00000000-0000-0000-0000-000000000000",
+	'getCoreDatatypesPackageName',
+	'',
+	'return "Datatypes";',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("8541be01-03e8-4498-8143-dddadc10c807",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("71d7b731-6e8c-43d9-baed-8645c5a43107",
+	"00000000-0000-0000-0000-000000000000",
+	'getUniqueInitialNameInParent',
+	'Translate: native',
+	'return PersistenceManager.getDefaultInstance().getUniqueNameForComponent(
+	(NonRootModelElement)p_Instance, (NonRootModelElement) p_Parent, p_Name);',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("d615aa5a-2886-44e1-aeb0-e1389f18c788",
+	"71d7b731-6e8c-43d9-baed-8645c5a43107",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"46315823-851d-458d-9d2d-242ab8285029",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("46315823-851d-458d-9d2d-242ab8285029",
+	"71d7b731-6e8c-43d9-baed-8645c5a43107",
+	'instance',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("19a99807-6bc9-4ab1-909c-83e185025833",
+	"71d7b731-6e8c-43d9-baed-8645c5a43107",
+	'parent',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"d615aa5a-2886-44e1-aeb0-e1389f18c788",
+	'');
+INSERT INTO PE_PE
+	VALUES ("71d7b731-6e8c-43d9-baed-8645c5a43107",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("d394a9b5-36aa-4c7a-828e-19f9a1ceadb4",
+	"00000000-0000-0000-0000-000000000000",
+	'getMissingInheritedEventMessage',
+	'',
+	'if(not param.missingInheritedEvent)
+  return "Some transitions that were pasted rely on inherited events that are not available in the destination state model.  Resulting transitions will have no events assigned.";
+else
+  return "Pasted state models rely on inherited events that are not included on the clipboard.  Resulting state models will be incomplete.";
+end if;',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("8f24d420-0484-4562-a5e1-8abfa3555c8b",
+	"d394a9b5-36aa-4c7a-828e-19f9a1ceadb4",
+	'missingInheritedEvent',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("d394a9b5-36aa-4c7a-828e-19f9a1ceadb4",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("607b9223-02f4-4d54-bf29-471cd94f4ffe",
+	"00000000-0000-0000-0000-000000000000",
+	'removeInconsistentNonLocalEvents',
+	'',
+	'select many nlevts from instances of SM_NLEVT;
+for each nlevt in nlevts
+  // when importing 6.1 we need to fix up non-local event''s
+  // such that the event consumption rules of today are
+  // honored, the rules for event consumption state that
+  // an event is consumed if a state says that it is ignored,
+  // or can''t happen, or if it has assignment to a transition
+  // for remove any that do not fulfill the above
+  select one poly related by nlevt->SM_PEVT[R527];
+  if(empty poly)
+    continue;
+  end if;
+  select one evt related by nlevt->SM_SEVT[R526]->SM_EVT[R525];
+  select one thisMachine related by nlevt->SM_SEVT[R526]->SM_EVT[R525]->SM_SM[R502];
+  select many transitions related by nlevt->SM_SEVT[R526]->SM_SEME[R503]->SM_NSTXN[R504];
+  select any ignored related by nlevt->SM_SEVT[R526]->SM_SEME[R503]->SM_EIGN[R504];
+  select any ch related by nlevt->SM_SEVT[R526]->SM_SEME[R503]->SM_CH[R504];
+  if(empty transitions and empty ignored and empty ch and not_empty evt)
+    evt.dispose();
+    continue;
+  end if;
+  // then check for non-local events that are assigned to
+  // a transition, and make sure they are not consumed else
+  // where
+  if(not_empty transitions)
+    select many otherNLEs related by poly->SM_NLEVT[R527];
+    for each otherNLE in otherNLEs
+      select one nleEvt related by otherNLE->SM_SEVT[R526]->SM_EVT[R525];
+      select one machine related by nleEvt->SM_SM[R502];
+      select one thisClass related by thisMachine->SM_ISM[R517]->O_OBJ[R518];
+      select one nleClass related by machine->SM_ISM[R517]->O_OBJ[R518];
+      if(machine != thisMachine) and ((thisClass.isSupertypeOf(classId:nleClass.Obj_ID)) or (nleClass.isSupertypeOf(classId:thisClass.Obj_ID)))
+        nleEvt.dispose();
+      end if;
+    end for;
+  else
+    // if there is only can''t happens we dispose this
+    // non-local event
+    if(empty ignored and not_empty ch)
+      evt.dispose();
+    end if;
+  end if;
+end for;
+// now clean up all event ignores, these will only exist if the
+// above code did not remove them
+select many clazzes from instances of O_OBJ;
+for each clazz in clazzes
+  clazz.removeInconsistentSubtypeIgnores();
+end for;',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("607b9223-02f4-4d54-bf29-471cd94f4ffe",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("6f7c921c-64a7-45ea-8c38-41201be5a783",
+	"00000000-0000-0000-0000-000000000000",
+	'changeNotificationEnablement',
+	'Translate: native
+',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("361ae3c5-a23f-49dc-87f5-71f9afc86135",
+	"6f7c921c-64a7-45ea-8c38-41201be5a783",
+	'enabled',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("6f7c921c-64a7-45ea-8c38-41201be5a783",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("6f9d320c-7ed8-46dd-b8cc-599115d6874e",
+	"00000000-0000-0000-0000-000000000000",
+	'getNewElementName',
+	'Translate: native',
+	'  return p_Name;
+',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("ec103fd9-c33f-47de-81c9-53ab0b088afa",
+	"6f9d320c-7ed8-46dd-b8cc-599115d6874e",
+	'name',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("34047bf8-d9d1-44de-8336-0bea81413403",
+	"6f9d320c-7ed8-46dd-b8cc-599115d6874e",
+	'instance',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"ec103fd9-c33f-47de-81c9-53ab0b088afa",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("0be41a90-f74e-4df8-8ecc-5c935baaf354",
+	"6f9d320c-7ed8-46dd-b8cc-599115d6874e",
+	'validateName',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'',
+	"34047bf8-d9d1-44de-8336-0bea81413403",
+	'');
+INSERT INTO PE_PE
+	VALUES ("6f9d320c-7ed8-46dd-b8cc-599115d6874e",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("fdf3b28d-0dbc-434d-9543-3750f423b700",
+	"00000000-0000-0000-0000-000000000000",
+	'getMissingClassMessage',
+	'',
+	'return "Pasted imported classes could not have their classes resolved.";',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("fdf3b28d-0dbc-434d-9543-3750f423b700",
+	1,
+	"384b28cc-c6ad-40df-8458-61079e0f04f0",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("384b28cc-c6ad-40df-8458-61079e0f04f0",
+	1,
+	"64b6fd8e-5a26-406c-b82d-93b60aa31358",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("64b6fd8e-5a26-406c-b82d-93b60aa31358",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'ooaofooa',
+	'========================================================================
+
+File:          $RCSfile: ooaofooa.xtuml,v $
+Version:   $Revision: 1.127 $
+Modified:  $Date: 2006/09/26 15:10:20 $
+
+(c) Copyright 2004-2014 by Mentor Graphics Corp. All rights reserved.
+
+========================================================================
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License.  You may obtain a copy
+of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   See the
+License for the specific language governing permissions and limitations under
+the License.
+========================================================================
+
+This is the application domain for the Tiger project.
+
+The processing in this model describes the activities
+for model capture.
+
+
+
+',
+	0,
+	'../ooaofooa.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'ooaofooa',
+	1,
+	'../../ooaofooa.xtuml');

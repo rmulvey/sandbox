@@ -1,0 +1,143 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e9d93f9a-15b0-4a39-80f3-dca500268525",
+	'Interface Reference In Delegation',
+	4014,
+	'C_RID',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	0,
+	"dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"4dbfe81e-831b-4d01-907f-3955576b175b",
+	"6f3e1805-cb73-45ae-b5a8-17d978f1526b",
+	"005cdd73-1725-441a-b5ee-8ac110c50cc8",
+	"33c3ff54-9571-423d-9ec5-07cf74b6c2e1",
+	"3485e664-caab-4a15-aed0-34769d0e89a0",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Interface Reference',
+	'Id',
+	'R4013.''handles delegation for''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"4dbfe81e-831b-4d01-907f-3955576b175b",
+	"6f3e1805-cb73-45ae-b5a8-17d978f1526b",
+	'../Component.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	0,
+	"4dbfe81e-831b-4d01-907f-3955576b175b",
+	"005cdd73-1725-441a-b5ee-8ac110c50cc8",
+	'../Component.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("33c3ff54-9571-423d-9ec5-07cf74b6c2e1",
+	"e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("dc489e92-b0c1-499f-b301-5c9ea6a9b95c",
+	"d5ea1473-5027-42a0-98e8-35deb3074829",
+	'../Interface Reference/Interface Reference.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("33c3ff54-9571-423d-9ec5-07cf74b6c2e1",
+	"e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"00000000-0000-0000-0000-000000000000",
+	'Reference_Id',
+	'',
+	'Reference_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"2ced4820-99b5-4830-8c9b-acceb705b93a",
+	0,
+	"fd507d5d-b3d5-4408-93ca-351c52060a06",
+	"4dbfe81e-831b-4d01-907f-3955576b175b",
+	"6f3e1805-cb73-45ae-b5a8-17d978f1526b",
+	"8f972efb-19e1-464b-bb64-0c586ca83f4a",
+	"1b4a3c9c-88e3-4d4a-93c8-6ce5a001b742",
+	"103f4299-d36c-4519-b98f-1acf23b30380",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Delegation',
+	'Id',
+	'R4013.''may delegate through''');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("fd507d5d-b3d5-4408-93ca-351c52060a06",
+	"2ced4820-99b5-4830-8c9b-acceb705b93a",
+	0,
+	"4dbfe81e-831b-4d01-907f-3955576b175b",
+	"8f972efb-19e1-464b-bb64-0c586ca83f4a",
+	'../Component.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("1b4a3c9c-88e3-4d4a-93c8-6ce5a001b742",
+	"e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("1b4a3c9c-88e3-4d4a-93c8-6ce5a001b742",
+	"e9d93f9a-15b0-4a39-80f3-dca500268525",
+	"33c3ff54-9571-423d-9ec5-07cf74b6c2e1",
+	'Delegation_Id',
+	'',
+	'Delegation_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e9d93f9a-15b0-4a39-80f3-dca500268525");
+INSERT INTO O_OIDA
+	VALUES ("33c3ff54-9571-423d-9ec5-07cf74b6c2e1",
+	"e9d93f9a-15b0-4a39-80f3-dca500268525",
+	0,
+	'Reference_Id');
+INSERT INTO O_OIDA
+	VALUES ("1b4a3c9c-88e3-4d4a-93c8-6ce5a001b742",
+	"e9d93f9a-15b0-4a39-80f3-dca500268525",
+	0,
+	'Delegation_Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"e9d93f9a-15b0-4a39-80f3-dca500268525");
+INSERT INTO O_ID
+	VALUES (2,
+	"e9d93f9a-15b0-4a39-80f3-dca500268525");
+INSERT INTO PE_PE
+	VALUES ("e9d93f9a-15b0-4a39-80f3-dca500268525",
+	1,
+	"c2aef6af-89fe-4e4a-a894-da16c0b6f512",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c2aef6af-89fe-4e4a-a894-da16c0b6f512",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Component',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+
+The component subsystem contains the classes necessary to capture the data
+required for modeling components.',
+	4000,
+	'../Component.xtuml');

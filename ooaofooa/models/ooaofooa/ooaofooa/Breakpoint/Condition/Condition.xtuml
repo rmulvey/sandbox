@@ -1,0 +1,121 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	'Condition',
+	3103,
+	'BP_CON',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("51ca89c3-4f7c-4ef4-9ed9-708bf848676f",
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one breakpoint related by self->BP_BP[R3100];
+if(not_empty breakpoint)
+  unrelate self from breakpoint across R3100; 
+end if;  
+     
+delete object instance self; ',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	"d29ec57e-6edd-41ca-a9e5-df3d04209f39",
+	0,
+	"8a13e880-c48a-486e-a819-54f182f42b2d",
+	"5902e087-e265-4238-be9c-88f2a062bb87",
+	"b526f3d9-cff5-40d5-a884-5bf092737e2f",
+	"6d5a0936-f2df-4d46-ae77-ca6d9b170e38",
+	"4a39edac-65b1-47ed-8485-b626478fd5f2",
+	"4692931a-929b-4044-82ee-30855e45b605",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Breakpoint',
+	'Breakpoint_ID',
+	'R3100.''sets halt criteria for''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	"5902e087-e265-4238-be9c-88f2a062bb87",
+	"b526f3d9-cff5-40d5-a884-5bf092737e2f",
+	'../Breakpoint.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("8a13e880-c48a-486e-a819-54f182f42b2d",
+	"d29ec57e-6edd-41ca-a9e5-df3d04209f39",
+	0,
+	"5902e087-e265-4238-be9c-88f2a062bb87",
+	"6d5a0936-f2df-4d46-ae77-ca6d9b170e38",
+	'../Breakpoint.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("4a39edac-65b1-47ed-8485-b626478fd5f2",
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	"8a13e880-c48a-486e-a819-54f182f42b2d",
+	"d29ec57e-6edd-41ca-a9e5-df3d04209f39",
+	1,
+	'Breakpoint_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("8a13e880-c48a-486e-a819-54f182f42b2d",
+	"d29ec57e-6edd-41ca-a9e5-df3d04209f39",
+	'../Breakpoint/Breakpoint.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("4a39edac-65b1-47ed-8485-b626478fd5f2",
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	"00000000-0000-0000-0000-000000000000",
+	'Breakpoint_ID',
+	'',
+	'',
+	'Breakpoint_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("e3a0087a-ebf4-46de-96b5-648ab8e8ca5a",
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245");
+INSERT INTO O_BATTR
+	VALUES ("e3a0087a-ebf4-46de-96b5-648ab8e8ca5a",
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245");
+INSERT INTO O_ATTR
+	VALUES ("e3a0087a-ebf4-46de-96b5-648ab8e8ca5a",
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	"4a39edac-65b1-47ed-8485-b626478fd5f2",
+	'Expression',
+	'',
+	'',
+	'Expression',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245");
+INSERT INTO O_ID
+	VALUES (1,
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245");
+INSERT INTO O_ID
+	VALUES (2,
+	"8a6807cb-d8ea-4168-b785-1ae6eaf4a245");
+INSERT INTO PE_PE
+	VALUES ("8a6807cb-d8ea-4168-b785-1ae6eaf4a245",
+	1,
+	"ff6e0ad8-c508-46ac-a6a7-caefe9ebfdab",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("ff6e0ad8-c508-46ac-a6a7-caefe9ebfdab",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Breakpoint',
+	'This subsystem provides breakpoints that can be used in Model Verifier and Model Debugger.
+// This is used by schema_gen to ignore this subsystem (for publication)
+Persistent:false
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+',
+	1100,
+	'../Breakpoint.xtuml');

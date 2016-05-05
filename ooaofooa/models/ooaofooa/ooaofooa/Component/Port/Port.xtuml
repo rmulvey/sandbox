@@ -1,0 +1,355 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("308801fe-4f95-477c-a219-7cc0d87e261d",
+	'Port',
+	4013,
+	'C_PO',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("65330d15-4248-4485-a7b7-8afe79983a81",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select many irs related by self->C_IR[R4016];
+for each ir in irs
+  unrelate self from ir across R4016;
+  ir.dispose();
+end for;
+select one component related by self->C_C[R4010];
+if(not_empty component)
+  unrelate self from component across R4010;
+end if;
+delete object instance self;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("8afa1164-56a7-464d-a549-592b9a516af2",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'self.DoNotShowPortOnCanvas = false;
+select many ports related by self->C_C[R4010]->C_PO[R4010];
+count = 1;
+for each port in ports
+  potentialName = "Port" + GD::int_to_string(value:count);
+  select any otherPort related by self->C_C[R4010]->C_PO[R4010]
+  			where (selected.Name == potentialName);
+  if(empty otherPort)
+    break;
+  end if;
+  count = count + 1;
+end for;
+self.Name = "Port" + GD::int_to_string(value:count);',
+	1,
+	'',
+	"94644b6e-bcb8-481f-b344-dcbdaff77a6e");
+INSERT INTO O_TFR
+	VALUES ("94644b6e-bcb8-481f-b344-dcbdaff77a6e",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'getPortText',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'// Always return an empty string for this bridge operation.  When the port
+// name is displayed on the canvas, it makes looked cluttered.  However, we
+// need the port name in ME.  Returning an empty string here instead of the 
+// port name keeps the name off the canvas.
+portName = "";
+return portName;',
+	1,
+	'',
+	"efa6be3b-7d06-4c30-a292-6694ad34a3b8");
+INSERT INTO O_TFR
+	VALUES ("dcc323e4-1c8b-48c8-9e56-e59cf12c147d",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'manyMultAllowed',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	'return true;',
+	1,
+	'',
+	"8afa1164-56a7-464d-a549-592b9a516af2");
+INSERT INTO O_TFR
+	VALUES ("efa6be3b-7d06-4c30-a292-6694ad34a3b8",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'getComponentId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'select one component related by self->C_C[R4010];
+return component.Id;',
+	1,
+	'',
+	"65330d15-4248-4485-a7b7-8afe79983a81");
+INSERT INTO O_TFR
+	VALUES ("0e40e4b9-9156-4441-8842-2234051f447b",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'collectReferencesForSynchronization',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  Collect all children required for synchronization, this will be interface
+ *  references
+ */
+if(param.syncType == SynchronizationType::Pull)
+  // recursively call for all children
+  select many interfaceReferences related by self->C_IR[R4016];
+  for each interfaceReference in interfaceReferences
+    interfaceReference.collectReferencesForSynchronization(
+                   referenceList:param.referenceList, syncType: param.syncType);
+  end for;
+end if;',
+	1,
+	'',
+	"dcc323e4-1c8b-48c8-9e56-e59cf12c147d");
+INSERT INTO O_TPARM
+	VALUES ("4a7b4cf4-b18a-4ef1-84bb-ab0d0f3b84f8",
+	"0e40e4b9-9156-4441-8842-2234051f447b",
+	'referenceList',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TPARM
+	VALUES ("855d54d3-dcd5-49b9-84fe-08796601aadb",
+	"0e40e4b9-9156-4441-8842-2234051f447b",
+	'syncType',
+	"4f33ba55-5c9d-455a-b1bc-43ab2c076b7f",
+	0,
+	'',
+	"4a7b4cf4-b18a-4ef1-84bb-ab0d0f3b84f8",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("4f33ba55-5c9d-455a-b1bc-43ab2c076b7f",
+	"00000000-0000-0000-0000-000000000000",
+	'SynchronizationType',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("6bdafe02-6e53-434c-906f-053609367995",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'checkIntegrity',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'/**
+ *  Create an integrity issue if there are any other ports on this compoenent
+ *  with a matching name
+ */
+select one component related by self->C_C[R4010];
+pkgId = component.getPackageId();
+select any package from instances of EP_PKG
+                                           where (selected.Package_ID == pkgId);
+select one system related by package->S_SYS[R1405];
+sys_id = GD::NULL_UNIQUE_ID();
+if(not_empty system)
+  sys_id = system.Sys_ID;
+end if;
+select many ports related by component->C_PO[R4010];
+for each port in ports
+  if(port != self and port.Name == self.Name)
+    MI_IM::createIssue(sys_id:sys_id, description:
+                    "Found another port under the same component with a " +
+                                                          "matching name.",
+                                       severity:Severity::Error, name:self.Name,
+                       path:component.getPath(path:self.Name, includeSelf:true),
+                              id:self.Id, element:self.convertToInstance());
+  end if;
+end for;',
+	1,
+	'',
+	"0e40e4b9-9156-4441-8842-2234051f447b");
+INSERT INTO O_TFR
+	VALUES ("0f38729c-a85e-4e73-b09f-584656ec6cb0",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+Translate: native
+',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// just return this instance as an Object
+return this;
+',
+	0,
+	'',
+	"6bdafe02-6e53-434c-906f-053609367995");
+INSERT INTO O_NBATTR
+	VALUES ("4af22d91-23fe-4262-9a11-380c4fd9a7ce",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_BATTR
+	VALUES ("4af22d91-23fe-4262-9a11-380c4fd9a7ce",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_ATTR
+	VALUES ("4af22d91-23fe-4262-9a11-380c4fd9a7ce",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	"4b464ef5-50a5-47f5-8884-b5a337928c42",
+	'Name',
+	'Full Name: Port Name',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("dc64a517-9210-4693-9719-9e5609eae2b4",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_BATTR
+	VALUES ("dc64a517-9210-4693-9719-9e5609eae2b4",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_ATTR
+	VALUES ("dc64a517-9210-4693-9719-9e5609eae2b4",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	"ee42b143-f5d3-4f7d-8660-87faf9a36740",
+	'DoNotShowPortOnCanvas',
+	'This value is used to determine if port will be displayed or not.
+Full Name: Hide Port Graphic',
+	'',
+	'DoNotShowPortOnCanvas',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ee42b143-f5d3-4f7d-8660-87faf9a36740",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_BATTR
+	VALUES ("ee42b143-f5d3-4f7d-8660-87faf9a36740",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_ATTR
+	VALUES ("ee42b143-f5d3-4f7d-8660-87faf9a36740",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	"4af22d91-23fe-4262-9a11-380c4fd9a7ce",
+	'Mult',
+	'Full Name: Multiplicity
+Description: Multiplicity of the port.  Indicates how many instances of the port may exist.
+Data Domain: 0 = one, 1 = many
+enum0: One
+enum1: Many',
+	'',
+	'Mult',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_BATTR
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_ATTR
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("308801fe-4f95-477c-a219-7cc0d87e261d",
+	"635d3b9b-edc6-456d-888d-7375eef81516",
+	0,
+	"60a1905f-e390-4af7-8e38-ce84e413b25d",
+	"d2dcc36b-1a83-4f4a-a0c6-7c8e86d28efc",
+	"732a317c-600e-41eb-a17c-9b4fcb53c557",
+	"c0b06201-5cd5-4a7d-bea4-f6a016b04f29",
+	"4b464ef5-50a5-47f5-8884-b5a337928c42",
+	"0eed989f-cbe0-4d89-b544-172d2343caf7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Component',
+	'Id',
+	'R4010.''appears in''');
+INSERT INTO R_RGO_PROXY
+	VALUES ("308801fe-4f95-477c-a219-7cc0d87e261d",
+	"d2dcc36b-1a83-4f4a-a0c6-7c8e86d28efc",
+	"732a317c-600e-41eb-a17c-9b4fcb53c557",
+	'../Component.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("60a1905f-e390-4af7-8e38-ce84e413b25d",
+	"635d3b9b-edc6-456d-888d-7375eef81516",
+	0,
+	"d2dcc36b-1a83-4f4a-a0c6-7c8e86d28efc",
+	"c0b06201-5cd5-4a7d-bea4-f6a016b04f29",
+	'../Component.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("4b464ef5-50a5-47f5-8884-b5a337928c42",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("4b464ef5-50a5-47f5-8884-b5a337928c42",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	"e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	'Component_Id',
+	'',
+	'Component_',
+	'Id',
+	1,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_OIDA
+	VALUES ("e6eb99d9-404e-42f7-aefe-7f43697d9cfc",
+	"308801fe-4f95-477c-a219-7cc0d87e261d",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO O_ID
+	VALUES (2,
+	"308801fe-4f95-477c-a219-7cc0d87e261d");
+INSERT INTO PE_PE
+	VALUES ("308801fe-4f95-477c-a219-7cc0d87e261d",
+	1,
+	"c2aef6af-89fe-4e4a-a894-da16c0b6f512",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c2aef6af-89fe-4e4a-a894-da16c0b6f512",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Component',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE
+
+The component subsystem contains the classes necessary to capture the data
+required for modeling components.',
+	4000,
+	'../Component.xtuml');

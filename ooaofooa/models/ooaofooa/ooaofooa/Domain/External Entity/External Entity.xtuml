@@ -1,0 +1,680 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'External Entity',
+	3,
+	'S_EE',
+	'An external entity (S_EE) represents something outside of the domain (S_DOM) being modeled that interacts with classes (O_OBJ) within the domain. The interactions are shown by event communication paths on the Communication Diagrams and data access paths on the Synchronous Communication Diagrams. Each external entity is given a unique name and keyletters within a domain.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("8f62e3cf-1eb6-4ddc-8b47-0eee2e8f6a6e",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'get_compartments',
+	'An External Entity is shown as a package that has only one compartment.
+-----------------------------------------------------------------------------------
+Bridge:GD',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 3;',
+	1,
+	'',
+	"a22ffa1d-a857-40ed-97b2-a7bcf28088e4");
+INSERT INTO O_TFR
+	VALUES ("cdd98962-232b-4e96-83b8-92f828485276",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'get_style',
+	'An External Entity is shown as a Package (called a Folder in the
+Graphics Domain).
+-----------------------------------------------------------------------------------
+Bridge:GD',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::Box;',
+	1,
+	'',
+	"e2ec5538-56da-491f-9f8b-df852c8f764b");
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("a22ffa1d-a857-40ed-97b2-a7bcf28088e4",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'get_compartment_text',
+	'An External Entity shows only it''s name.
+-----------------------------------------------------------------------------------
+Bridge:GD',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'result = "";
+if (param.comp_num == 1)
+  if (param.ent_num == 1)
+    if (param.at == Justification::Center_in_X)
+      result = "«external entity»";
+      result = result + GD::newline();
+      result = result + self.Label;
+    end if;
+  end if;
+elif (param.comp_num == 2)
+  if (param.at == Justification::Left)
+    cursor = 1;
+    select many eedis related by self->S_EEDI[R11];
+    for each eedi in eedis
+      if (cursor == param.ent_num)
+        result = eedi.Name + " : ";
+        select one ddt related by eedi->S_DT[R15];
+        if ( not_empty ddt )
+          result = result + ddt.Name;
+        else
+          result = result + ::getOrphanedElementName();
+        end if;
+        break;
+      end if;
+      cursor = cursor + 1;
+    end for;
+  end if;
+elif (param.comp_num == 3)
+  if (param.at == Justification::Left)
+    cursor = 1;
+    select many brs related by self->S_BRG[R19];
+    if (not_empty brs and param.ent_num == 1)
+      result = "«operation»";
+      result = result + GD::newline();
+    end if;
+    for each br in brs
+      if (cursor == param.ent_num)
+        result = result + br.Name;
+        select any bparm related by br->S_BPARM[R21] where (selected.Previous_BParm_ID == GD::NULL_UNIQUE_ID());
+        if (not_empty bparm)
+          result = result + "(";
+          parm_separator = "";
+          while (not_empty bparm)
+            result = result + parm_separator;
+            result = result + bparm.Name;
+            result = result + bparm.Dimensions;
+            result = result + " : ";
+            select one pdt related by bparm->S_DT[R22];
+            if ( not_empty pdt )
+              result = result + pdt.Name;
+            else
+              result = result + ::getOrphanedElementName();
+            end if;
+            parm_separator = ", ";
+            select one bparm related by bparm->S_BPARM[R55.''precedes''];
+          end while;
+
+          result = result + ")";
+        end if;
+        break;
+      end if;
+      cursor = cursor + 1;
+    end for;
+    result = result + " : ";
+    select one rt related by br->S_DT[R20];
+    if ( not_empty rt )
+	  result = result + rt.Name;
+	else
+	  result = result + ::getOrphanedElementName();	  
+	end if;
+    if(not_empty rt and rt.Name != "void")
+      result = result + br.Return_Dimensions;
+    end if;
+  end if;
+end if;
+return result;',
+	1,
+	'',
+	"07f3a302-31af-4f05-a940-8670d833c558");
+INSERT INTO O_TPARM
+	VALUES ("7bbc7e77-1589-42a8-974c-33cd0800c8b2",
+	"a22ffa1d-a857-40ed-97b2-a7bcf28088e4",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"79621e3b-579d-4e3e-91b5-f01a6e7093df",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("a60fa4f9-2311-4a0d-b5c3-44827518698e",
+	"a22ffa1d-a857-40ed-97b2-a7bcf28088e4",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"7bbc7e77-1589-42a8-974c-33cd0800c8b2",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("79621e3b-579d-4e3e-91b5-f01a6e7093df",
+	"a22ffa1d-a857-40ed-97b2-a7bcf28088e4",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	"00000000-0000-0000-0000-000000000000",
+	'Justification',
+	'The Justification data type is used to specify text at a given location in a compartment.
+------------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("82734cbc-67b7-43a7-967d-220876cb2fc3",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'get_entries',
+	'An External Entity has only one entry, its name.
+-----------------------------------------------------------------------------------
+Bridge:GD',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'if (param.comp_num == 1)
+  return 1;
+elif (param.comp_num ==2)
+  select many eedis related by self->S_EEDI[R11];
+  return cardinality eedis;
+elif (param.comp_num == 3)
+  select many brs related by self->S_BRG[R19];
+  return cardinality brs;
+else
+  return 0;
+end if;',
+	1,
+	'',
+	"8f62e3cf-1eb6-4ddc-8b47-0eee2e8f6a6e");
+INSERT INTO O_TPARM
+	VALUES ("22060d97-ca9f-4b0a-88f8-3412f9757852",
+	"82734cbc-67b7-43a7-967d-220876cb2fc3",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("9c951727-a138-467b-bfcb-97467553ec5d",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'get_text_style',
+	'An External Entity requires no special text style for its label.
+-----------------------------------------------------------------------------------
+Bridge:GD',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::None;',
+	1,
+	'',
+	"cdd98962-232b-4e96-83b8-92f828485276");
+INSERT INTO O_TPARM
+	VALUES ("6bcb70d6-2b04-4ee8-94d0-d0a119c431cb",
+	"9c951727-a138-467b-bfcb-97467553ec5d",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"8cb8a91e-c30f-465c-8a87-186c82c5c626",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("4440774a-6b2b-4d3d-9e9c-1498e18f07af",
+	"9c951727-a138-467b-bfcb-97467553ec5d",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"6bcb70d6-2b04-4ee8-94d0-d0a119c431cb",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("8cb8a91e-c30f-465c-8a87-186c82c5c626",
+	"9c951727-a138-467b-bfcb-97467553ec5d",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("753c5008-bf4b-4805-94a1-139515e384ee",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'initialize',
+	'Initialize a new External Entity instance.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'name = ::getUniqueInitialName( 
+    instance: self.convertToInstance(), 
+    candidateName: "Unnamed External Entity");
+success = ::getNewElementName(name:name,instance: self.convertToInstance(),validateName:true);    
+if ( success!="") 
+ self.Name=success;
+ self.isRealized = true;
+else 
+ self.dispose();
+end if;        ',
+	1,
+	'',
+	"9c951727-a138-467b-bfcb-97467553ec5d");
+INSERT INTO O_TFR
+	VALUES ("2c2c250c-84af-44dd-a712-6727ed2e95e0",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'dispose',
+	'The dispose operation for this class.',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one pe related by self->PE_PE[R8001];
+if(not_empty pe)
+  // PE_PE.dispose() will call back into this function at which time the
+  // rest of the activity will execute.
+  pe.dispose();
+  return;
+end if;
+select many eedis related by self->S_EEDI[R11];
+for each eedi in eedis
+  eedi.dispose();
+end for;
+select many brgs related by self->S_BRG[R19];
+for each brg in brgs
+  brg.dispose();
+end for;
+
+select many eeevts related by self->S_EEEVT[R10];
+for each eeevt in eeevts
+  eeevt.dispose();
+end for;
+select many eeedis related by self->S_EEEDI[R12];
+for each eeedi in eeedis
+  eeedi.dispose();
+end for;
+
+select many eems related by self->S_EEM[R9];
+  for each eem in eems
+    eem.dispose();
+  end for;
+  
+select many eeps related by self->SQ_EEP[R933];
+for each eep in eeps
+  // unformalize the participant
+  eep.unformalize();
+end for;
+// for each sequence participant that is associated with
+// this External Entity
+select many eeps related by self->SQ_EEP[R933];
+for each eep in eeps
+  // unformalize the participant
+  eep.unformalize();
+end for;
+// check other subsystems
+delete object instance self;',
+	1,
+	'',
+	"60264e69-9926-4ad8-98d6-b5754a9e6194");
+INSERT INTO O_TFR
+	VALUES ("34e2532d-3a1b-4a1c-94ac-2c51a84306e1",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'newBridgeOperation',
+	'Create a new bridge for this external entity.
+',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'create object instance brg of S_BRG;
+relate self to brg across R19;
+brg.initialize();',
+	1,
+	'',
+	"753c5008-bf4b-4805-94a1-139515e384ee");
+INSERT INTO O_TFR
+	VALUES ("e2ec5538-56da-491f-9f8b-df852c8f764b",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'get_ooa_id',
+	'The ooa_id of an External Entity is its EE_ID
+-----------------------------------------------------------
+Bridge:GD',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.EE_ID;',
+	1,
+	'',
+	"82734cbc-67b7-43a7-967d-220876cb2fc3");
+INSERT INTO O_TFR
+	VALUES ("07f3a302-31af-4f05-a940-8670d833c558",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'getPath',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'select one packageableElem related by self->PE_PE[R8001];
+select one package related by packageableElem->EP_PKG[R8000];
+select one component related by packageableElem->C_C[R8003];
+
+result="";
+  if (not_empty package)
+    result=package.getPath(path:self.Name);
+  else
+    result=component.getPath(path:self.Name, includeSelf:true);
+  end if;
+
+return result;',
+	1,
+	'',
+	"2c2c250c-84af-44dd-a712-6727ed2e95e0");
+INSERT INTO O_TFR
+	VALUES ("60264e69-9926-4ad8-98d6-b5754a9e6194",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'// just return this instance as an Object
+return this;',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("0ac0068b-099b-4d86-9e9a-1e398f8d702a",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'getContainingComponentId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// External Entity.getContainingComponentId()
+  select one package related by self->PE_PE[R8001]->EP_PKG[R8000];
+  select one component related by self->PE_PE[R8001]->C_C[R8003];
+  if not_empty package
+    return package.getContainingComponentId();
+  end if;
+  if not_empty component
+    return component.Id;
+  end if;
+  USER::logError(msg:"External Entity has no parent in External Entity.getContainingComponentId()",path:self.getPath());
+  return GD::NULL_UNIQUE_ID();
+',
+	1,
+	'',
+	"34e2532d-3a1b-4a1c-94ac-2c51a84306e1");
+INSERT INTO O_TFR
+	VALUES ("e3ccf87b-2fb1-4dab-b3ed-d08ea5b0b41d",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'getContainerId',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'// External Entity.getContainerId()
+select one component related by self->PE_PE[R8001]->C_C[R8003];
+if not_empty component
+  return component.Id;
+else
+  select one package related by self->PE_PE[R8001]->EP_PKG[R8000];
+  if not_empty package
+    return package.Package_ID;
+  end if;
+end if;
+return GD::NULL_UNIQUE_ID();
+',
+	1,
+	'',
+	"0ac0068b-099b-4d86-9e9a-1e398f8d702a");
+INSERT INTO O_TFR
+	VALUES ("cbd87e06-a234-4c8a-a742-2d39c1d2c0da",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'pasteBridge',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any operation from instances of S_BRG
+                                            where (selected.Brg_ID == param.id);
+if(not_empty operation)
+  select one ee related by operation->S_EE[R19];
+  if(not_empty ee)
+    unrelate operation from ee across R19;
+  end if;
+  relate operation to self across R19;
+  operation.Name = ::getUniqueInitialNameInParent(
+                                         instance:operation.convertToInstance(),
+  						  name:operation.Name, parent:self.convertToInstance());
+end if;',
+	1,
+	'',
+	"e3ccf87b-2fb1-4dab-b3ed-d08ea5b0b41d");
+INSERT INTO O_TPARM
+	VALUES ("0f99c387-4336-4a0c-8278-bfeb8b4b8a9d",
+	"cbd87e06-a234-4c8a-a742-2d39c1d2c0da",
+	'id',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("c587562b-8fd9-4380-b89e-977d06eb05e2",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_BATTR
+	VALUES ("c587562b-8fd9-4380-b89e-977d06eb05e2",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("c587562b-8fd9-4380-b89e-977d06eb05e2",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"ac9a372b-873b-4103-b7ab-1478c5780b61",
+	'Name',
+	'Full Name: External Entity Name
+Description: Provides a name for the external entity.',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("abc8ffd2-8e31-4d37-8a74-d56972024fc7",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_BATTR
+	VALUES ("abc8ffd2-8e31-4d37-8a74-d56972024fc7",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("abc8ffd2-8e31-4d37-8a74-d56972024fc7",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"c587562b-8fd9-4380-b89e-977d06eb05e2",
+	'Descrip',
+	'Full Name: External Entity Description
+Description: A textual description of the external entity which appears in a domains Subsystem Partition Model (SPM).',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("a40a1eeb-c5c3-4d8e-a749-dc4aaa1fbee0",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_BATTR
+	VALUES ("a40a1eeb-c5c3-4d8e-a749-dc4aaa1fbee0",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("a40a1eeb-c5c3-4d8e-a749-dc4aaa1fbee0",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"abc8ffd2-8e31-4d37-8a74-d56972024fc7",
+	'Key_Lett',
+	'Full Name: External Entity Key Letters
+The key letters assigned to an external entity on a domains SPM.',
+	'',
+	'Key_Lett',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	0,
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"4cc3d8f8-81ab-4a0d-9f5f-70222d3d6371",
+	"2ba4c4e6-2f54-4ed7-8473-fc1ec8e8c91d",
+	"05fa1d91-2479-4e4d-97fd-25a6c7afe5b8",
+	"ac9a372b-873b-4103-b7ab-1478c5780b61",
+	"a4294741-11f3-49d6-8d21-642c54858f5c",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Packageable Element',
+	'Element_ID',
+	'R8001');
+INSERT INTO R_RGO_PROXY
+	VALUES ("d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"4cc3d8f8-81ab-4a0d-9f5f-70222d3d6371",
+	"2ba4c4e6-2f54-4ed7-8473-fc1ec8e8c91d",
+	'../../Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	0,
+	"4cc3d8f8-81ab-4a0d-9f5f-70222d3d6371",
+	"05fa1d91-2479-4e4d-97fd-25a6c7afe5b8",
+	'../../Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("ac9a372b-873b-4103-b7ab-1478c5780b61",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	0,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("ac9a372b-873b-4103-b7ab-1478c5780b61",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"00000000-0000-0000-0000-000000000000",
+	'EE_ID',
+	'Full Name: External Entity Identifier
+Description: Uniquely identifies the external entity in the domain.',
+	'',
+	'EE_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("734d95ad-9396-4ef3-9835-0faaa43dd639",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_BATTR
+	VALUES ("734d95ad-9396-4ef3-9835-0faaa43dd639",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("734d95ad-9396-4ef3-9835-0faaa43dd639",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"4dcd2149-5ab6-4e21-8d43-955dd5562adc",
+	'Realized_Class_Path',
+	'Full Name: Realized External Entity Path',
+	'',
+	'Realized_Class_Path',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_DBATTR
+	VALUES ("23e967a7-f199-4132-bf7c-0dab3fd82990",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	'extension = "";
+if(self.isRealized)
+  if(self.Realized_Class_Path != "")
+    extension = " realized by " +
+                     Util::getLastSegmentForPath(path:self.Realized_Class_Path);
+  end if;
+end if;
+self.Label = self.Name + extension;',
+	1);
+INSERT INTO O_BATTR
+	VALUES ("23e967a7-f199-4132-bf7c-0dab3fd82990",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("23e967a7-f199-4132-bf7c-0dab3fd82990",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"734d95ad-9396-4ef3-9835-0faaa43dd639",
+	'Label',
+	'Full Name: External Entity Label',
+	'',
+	'Label',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("11a1751d-1288-4877-b010-d5c450c19054",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_BATTR
+	VALUES ("11a1751d-1288-4877-b010-d5c450c19054",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("11a1751d-1288-4877-b010-d5c450c19054",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"23e967a7-f199-4132-bf7c-0dab3fd82990",
+	'isRealized',
+	'Full Name: Realized External Entity
+Description: If true, Verifier will bind to an externally supplied implementation.',
+	'',
+	'isRealized',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000001",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("4dcd2149-5ab6-4e21-8d43-955dd5562adc",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_BATTR
+	VALUES ("4dcd2149-5ab6-4e21-8d43-955dd5562adc",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ATTR
+	VALUES ("4dcd2149-5ab6-4e21-8d43-955dd5562adc",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	"a40a1eeb-c5c3-4d8e-a749-dc4aaa1fbee0",
+	'Dom_ID',
+	'',
+	'',
+	'Dom_ID',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000005",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_OIDA
+	VALUES ("ac9a372b-873b-4103-b7ab-1478c5780b61",
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	0,
+	'EE_ID');
+INSERT INTO O_ID
+	VALUES (1,
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO O_ID
+	VALUES (2,
+	"d35d25d5-e6be-41f6-a742-a5cd8c3ea181");
+INSERT INTO PE_PE
+	VALUES ("d35d25d5-e6be-41f6-a742-a5cd8c3ea181",
+	1,
+	"b308feec-d790-479d-b13b-24dc13bbb084",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b308feec-d790-479d-b13b-24dc13bbb084",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Domain',
+	'A domain (S_DOM) consists of one or more subsystems (S_SS) that each contain an information model that abstracts a portion of the data for the domain: classes (O_OBJ), associations (R_REL), etc.  Breaking a domain into subsystems allows the complexity of the domain to be more easily managed: 1) subsystems are components and can be checked out individually allowing parallelism in development of the models and 2) breaking up a domain into smaller units is easier to understand.  A subsystem is composed of classes that tend to cluster, i.e., they have few associations that span subsystem boundaries.  Inter-subsystem associations, communications, and accesses are captured in the Subsystem Relationship Model (SRM), Subsystem Communication Model (SCM), and Subsystem Access Model (SAM) respectively.',
+	1,
+	'../Domain.xtuml');

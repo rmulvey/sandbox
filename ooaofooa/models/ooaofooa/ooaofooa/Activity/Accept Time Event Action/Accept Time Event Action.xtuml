@@ -1,0 +1,329 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("6251900c-a056-4e8d-8339-36098d1d97a9",
+	'Accept Time Event Action',
+	1302,
+	'A_ATE',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("466f850f-59b3-445a-a7ca-ac12d4e9b2c1",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'dispose',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select one ae related by self->A_AE[R1112];
+if(not_empty ae)
+  ae.dispose();
+else
+  delete object instance self;
+end if;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("6211b92c-84c9-415d-ba35-e6a3d12f616f",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'get_ooa_id',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	'return self.Id;',
+	1,
+	'',
+	"a3fead2c-c104-458d-93c3-3ecea47cd2eb");
+INSERT INTO O_TFR
+	VALUES ("c7d87db7-8fbd-4418-9ac9-3bbf1d5b7d16",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'get_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::Hourglass;',
+	1,
+	'',
+	"6211b92c-84c9-415d-ba35-e6a3d12f616f");
+INSERT INTO S_DT_PROXY
+	VALUES ("05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	"00000000-0000-0000-0000-000000000000",
+	'Style',
+	'The Style data type specifies the precise form a graphical element will take when drawn.
+--------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("70fe07bf-9d0c-4802-a835-20528e24559f",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'get_text_style',
+	'',
+	"05be3a7b-3886-4857-8a5e-5c08c37293ab",
+	1,
+	'return Style::None;',
+	1,
+	'',
+	"c7d87db7-8fbd-4418-9ac9-3bbf1d5b7d16");
+INSERT INTO O_TPARM
+	VALUES ("1cb2d784-0c61-49db-86e3-337442c58df0",
+	"70fe07bf-9d0c-4802-a835-20528e24559f",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"469755d4-cd29-4102-925f-aa48ca3613c0",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("84bce3f7-6c53-4d7d-a63e-3e3fe26eb3b6",
+	"70fe07bf-9d0c-4802-a835-20528e24559f",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"1cb2d784-0c61-49db-86e3-337442c58df0",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("469755d4-cd29-4102-925f-aa48ca3613c0",
+	"70fe07bf-9d0c-4802-a835-20528e24559f",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	"00000000-0000-0000-0000-000000000000",
+	'Justification',
+	'The Justification data type is used to specify text at a given location in a compartment.
+------------------------------------------------------------------------------
+Bridge:GD',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_TFR
+	VALUES ("ced09a6f-1ece-4612-a8ec-a6f55de4e070",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'get_compartments',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 0;',
+	1,
+	'',
+	"7a695c54-7a5c-4e03-8540-22eee61bbce4");
+INSERT INTO O_TFR
+	VALUES ("a3fead2c-c104-458d-93c3-3ecea47cd2eb",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'get_entries',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	'return 0;',
+	1,
+	'',
+	"ced09a6f-1ece-4612-a8ec-a6f55de4e070");
+INSERT INTO O_TPARM
+	VALUES ("e49f9647-661b-403d-a827-a43fc6126818",
+	"a3fead2c-c104-458d-93c3-3ecea47cd2eb",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("7a695c54-7a5c-4e03-8540-22eee61bbce4",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'get_compartment_text',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	'if (param.at == Justification::Floating)
+  return self.Name;
+end if;
+return "";',
+	1,
+	'',
+	"466f850f-59b3-445a-a7ca-ac12d4e9b2c1");
+INSERT INTO O_TPARM
+	VALUES ("ac075b12-130c-4870-b083-0f9261676220",
+	"7a695c54-7a5c-4e03-8540-22eee61bbce4",
+	'comp_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"5ac4fc3e-2a3a-46ea-a071-5418f84a301a",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("6557e3a4-a272-4771-af6a-bd3b87604003",
+	"7a695c54-7a5c-4e03-8540-22eee61bbce4",
+	'ent_num',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'',
+	"ac075b12-130c-4870-b083-0f9261676220",
+	'');
+INSERT INTO O_TPARM
+	VALUES ("5ac4fc3e-2a3a-46ea-a071-5418f84a301a",
+	"7a695c54-7a5c-4e03-8540-22eee61bbce4",
+	'at',
+	"4d57997c-962f-4b4f-bc4f-65d0bbf9936e",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO O_TFR
+	VALUES ("e1dc7b64-db7c-41e6-9769-ddffcf88262d",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'initialize',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'name = "Unnamed Accept Time Event";
+success = ::getNewElementName(name:name,instance: self.convertToInstance(),validateName:false);    
+if ( success!="") 
+ self.Name=success;
+else 
+ self.dispose();
+end if;   ',
+	1,
+	'',
+	"70fe07bf-9d0c-4802-a835-20528e24559f");
+INSERT INTO O_TFR
+	VALUES ("d0c12074-465a-4f9d-bda9-781644cf10bb",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	'convertToInstance',
+	'A utility operation to cast an instance of this type to the
+instance datatype.
+
+Translate: native',
+	"a5d8b590-a627-4af4-afdf-152c889769b6",
+	1,
+	'return this;',
+	0,
+	'',
+	"e1dc7b64-db7c-41e6-9769-ddffcf88262d");
+INSERT INTO S_DT_PROXY
+	VALUES ("a5d8b590-a627-4af4-afdf-152c889769b6",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'',
+	'../../Datatypes/Datatypes.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("b2c6e6a0-0c00-414b-9537-791483ef7778",
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO O_BATTR
+	VALUES ("b2c6e6a0-0c00-414b-9537-791483ef7778",
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO O_ATTR
+	VALUES ("b2c6e6a0-0c00-414b-9537-791483ef7778",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	"c661433c-e5aa-48f2-81a2-f0646158d8db",
+	'Name',
+	'Full Name: Accept Time Event Name',
+	'',
+	'Name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("5c893d53-2731-41e4-bc23-779f372db341",
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO O_BATTR
+	VALUES ("5c893d53-2731-41e4-bc23-779f372db341",
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO O_ATTR
+	VALUES ("5c893d53-2731-41e4-bc23-779f372db341",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	"b2c6e6a0-0c00-414b-9537-791483ef7778",
+	'Descrip',
+	'Full Name: Accept Time Event Description',
+	'',
+	'Descrip',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000004",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("6251900c-a056-4e8d-8339-36098d1d97a9",
+	"fa8553ce-a7d1-4859-a8e5-c83590cfa9fe",
+	0,
+	"7772cbed-17ea-41e0-ad8a-0309f3c59731",
+	"27d85a42-f061-4ddf-8810-7a621d55e764",
+	"60c18479-33f7-4e9c-958b-30dd2e903026",
+	"5a9b3298-6f7d-4703-a556-f628d2d796a8",
+	"c661433c-e5aa-48f2-81a2-f0646158d8db",
+	"efaa0caa-c04f-4b74-a351-adb1b72dcbb1",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Accept Event',
+	'Id',
+	'R1112');
+INSERT INTO R_RGO_PROXY
+	VALUES ("6251900c-a056-4e8d-8339-36098d1d97a9",
+	"27d85a42-f061-4ddf-8810-7a621d55e764",
+	"60c18479-33f7-4e9c-958b-30dd2e903026",
+	'../Activity.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("7772cbed-17ea-41e0-ad8a-0309f3c59731",
+	"fa8553ce-a7d1-4859-a8e5-c83590cfa9fe",
+	0,
+	"27d85a42-f061-4ddf-8810-7a621d55e764",
+	"5a9b3298-6f7d-4703-a556-f628d2d796a8",
+	'../Activity.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("c661433c-e5aa-48f2-81a2-f0646158d8db",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	"6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	1,
+	'Element_ID');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("6c0ac341-1d88-4650-b3fe-2c344b920ed1",
+	"6af35b2a-8145-4e12-9330-bfc209409bb6",
+	'../../Packageable Element/Packageable Element/Packageable Element.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("c661433c-e5aa-48f2-81a2-f0646158d8db",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO O_OIDA
+	VALUES ("c661433c-e5aa-48f2-81a2-f0646158d8db",
+	"6251900c-a056-4e8d-8339-36098d1d97a9",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO O_ID
+	VALUES (2,
+	"6251900c-a056-4e8d-8339-36098d1d97a9");
+INSERT INTO PE_PE
+	VALUES ("6251900c-a056-4e8d-8339-36098d1d97a9",
+	1,
+	"435ad109-5b37-4b3d-a77c-4488ddde63c6",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("435ad109-5b37-4b3d-a77c-4488ddde63c6",
+	"00000000-0000-0000-0000-000000000000",
+	"2f3ea6a7-20e9-405c-b68c-7fba041e7daf",
+	'Activity',
+	'// This is used by schema_gen to ignore this subsystem (for publication)
+TRANSLATE_FOR_EXTERNAL_USE:FALSE',
+	1100,
+	'../Activity.xtuml');
