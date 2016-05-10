@@ -1,0 +1,78 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("39f4f235-1045-447c-884a-c8967f2c3973",
+	"4feb0656-605c-4745-a455-70584bd25185",
+	"4feb0656-605c-4745-a455-70584bd25185",
+	'destination',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("6a9ac685-3052-46b6-aa89-ca4ce5d68992",
+	112,
+	"39f4f235-1045-447c-884a-c8967f2c3973",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'source::destination');
+INSERT INTO DIM_DIA
+	VALUES ("6a9ac685-3052-46b6-aa89-ca4ce5d68992",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("cefadc8c-50c1-461b-b290-1cf79fdc5239",
+	"00000000-0000-0000-0000-000000000000",
+	'checkcardinality',
+	'',
+	'select many classes from instances of Class1;
+cardinalitycheck = 0;
+for each c in classes
+  test = c.a1;
+  cardinalitycheck = cardinalitycheck + 1;
+end for;
+if (cardinalitycheck == (cardinality classes));
+  return CardinalityKeywordTest::Pass;
+else
+  return CardinalityKeywordTest::Fail;
+end if;',
+	"bb82cd75-b8f6-4f6c-bedc-53de460782a5",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("cefadc8c-50c1-461b-b290-1cf79fdc5239",
+	1,
+	"39f4f235-1045-447c-884a-c8967f2c3973",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_DT_PROXY
+	VALUES ("bb82cd75-b8f6-4f6c-bedc-53de460782a5",
+	"00000000-0000-0000-0000-000000000000",
+	'CardinalityKeywordTest',
+	'',
+	'',
+	'../datatypes/datatypes.xtuml');
+INSERT INTO PE_PE
+	VALUES ("39f4f235-1045-447c-884a-c8967f2c3973",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("4feb0656-605c-4745-a455-70584bd25185",
+	'source',
+	1,
+	'../source.xtuml');

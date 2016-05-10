@@ -1,0 +1,165 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("4a5d28ca-8532-486f-a62a-2b113ecfd605",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'LocationDataTypes',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("06c96fb6-5111-4296-a0a2-3d2f8a84ac66",
+	112,
+	"4a5d28ca-8532-486f-a62a-2b113ecfd605",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::LocationDataTypes');
+INSERT INTO GD_GE
+	VALUES ("bde79f5c-7665-49d3-a79f-505596dfe504",
+	"06c96fb6-5111-4296-a0a2-3d2f8a84ac66",
+	"89c65d46-fa0d-4589-9413-55c9aa229d1b",
+	109,
+	0,
+	'EmptyClassDiagramTest::LocationDataTypes::Speed');
+INSERT INTO GD_SHP
+	VALUES ("bde79f5c-7665-49d3-a79f-505596dfe504");
+INSERT INTO GD_NCS
+	VALUES ("bde79f5c-7665-49d3-a79f-505596dfe504");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"bde79f5c-7665-49d3-a79f-505596dfe504");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"bde79f5c-7665-49d3-a79f-505596dfe504",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("bde79f5c-7665-49d3-a79f-505596dfe504",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("5e47fef9-78be-490d-9551-dd5b42b9c716",
+	"06c96fb6-5111-4296-a0a2-3d2f8a84ac66",
+	"7de871fb-42ce-46d1-9187-eb4649d2a629",
+	109,
+	0,
+	'EmptyClassDiagramTest::LocationDataTypes::Distance');
+INSERT INTO GD_SHP
+	VALUES ("5e47fef9-78be-490d-9551-dd5b42b9c716");
+INSERT INTO GD_NCS
+	VALUES ("5e47fef9-78be-490d-9551-dd5b42b9c716");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"5e47fef9-78be-490d-9551-dd5b42b9c716");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"5e47fef9-78be-490d-9551-dd5b42b9c716",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("5e47fef9-78be-490d-9551-dd5b42b9c716",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("06c96fb6-5111-4296-a0a2-3d2f8a84ac66",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("89c65d46-fa0d-4589-9413-55c9aa229d1b",
+	'Speed',
+	'SpeedAveragingWindow is the number of track points used to calculate the current average speed.
+SecondsPerHour is the number of seconds in one hour.');
+INSERT INTO CNST_SYC
+	VALUES ("ab26dce9-8800-4175-adf9-fc4213b0c86a",
+	'SpeedAveragingWindow',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"89c65d46-fa0d-4589-9413-55c9aa229d1b",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("ab26dce9-8800-4175-adf9-fc4213b0c86a",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("ab26dce9-8800-4175-adf9-fc4213b0c86a",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'5');
+INSERT INTO CNST_SYC
+	VALUES ("4cd6c6be-9b42-4dc9-8767-4187a667c30f",
+	'SecondsPerHour',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"89c65d46-fa0d-4589-9413-55c9aa229d1b",
+	"ab26dce9-8800-4175-adf9-fc4213b0c86a",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LFSC
+	VALUES ("4cd6c6be-9b42-4dc9-8767-4187a667c30f",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("4cd6c6be-9b42-4dc9-8767-4187a667c30f",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'3600');
+INSERT INTO PE_PE
+	VALUES ("89c65d46-fa0d-4589-9413-55c9aa229d1b",
+	1,
+	"4a5d28ca-8532-486f-a62a-2b113ecfd605",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO CNST_CSP
+	VALUES ("7de871fb-42ce-46d1-9187-eb4649d2a629",
+	'Distance',
+	'kmPerDegree is a rough conversion figure valid for most latitude figures (except where 
+the irregular shape of the earth perturbs the value) and for longitude figures
+away from the poles (where the distance between longitude lines decreases to zero).
+
+latitudeIncrement and longitudeIncrement specify the distance traveled by the simulated
+GPS during each interval.');
+INSERT INTO CNST_SYC
+	VALUES ("1f725b93-916e-41d5-8bc0-e4d09d5dee70",
+	'kmPerDegree',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"7de871fb-42ce-46d1-9187-eb4649d2a629",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("1f725b93-916e-41d5-8bc0-e4d09d5dee70",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("1f725b93-916e-41d5-8bc0-e4d09d5dee70",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'111.32');
+INSERT INTO PE_PE
+	VALUES ("7de871fb-42ce-46d1-9187-eb4649d2a629",
+	1,
+	"4a5d28ca-8532-486f-a62a-2b113ecfd605",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("4a5d28ca-8532-486f-a62a-2b113ecfd605",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../EmptyClassDiagramTest.xtuml');

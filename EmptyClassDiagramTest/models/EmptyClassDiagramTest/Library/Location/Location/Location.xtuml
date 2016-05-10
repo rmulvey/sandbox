@@ -1,0 +1,200 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Location',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("10b1a5d8-77d0-4d61-8b6d-7892c21cd831",
+	112,
+	"7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::Library::Location::Location');
+INSERT INTO GD_GE
+	VALUES ("d8787c4a-5ee1-4c58-9704-99cef23e8e2c",
+	"10b1a5d8-77d0-4d61-8b6d-7892c21cd831",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	21,
+	0,
+	'EmptyClassDiagramTest::Library::Location::Location::GPS');
+INSERT INTO GD_SHP
+	VALUES ("d8787c4a-5ee1-4c58-9704-99cef23e8e2c");
+INSERT INTO GD_NCS
+	VALUES ("d8787c4a-5ee1-4c58-9704-99cef23e8e2c");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"d8787c4a-5ee1-4c58-9704-99cef23e8e2c");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"d8787c4a-5ee1-4c58-9704-99cef23e8e2c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("d8787c4a-5ee1-4c58-9704-99cef23e8e2c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("10347c00-1778-40e2-b524-72ecc99e0ed4",
+	"10b1a5d8-77d0-4d61-8b6d-7892c21cd831",
+	"a95ba34c-0376-4b28-943b-f88146120d82",
+	109,
+	0,
+	'EmptyClassDiagramTest::Library::Location::Location::simulatedGPS');
+INSERT INTO GD_SHP
+	VALUES ("10347c00-1778-40e2-b524-72ecc99e0ed4");
+INSERT INTO GD_NCS
+	VALUES ("10347c00-1778-40e2-b524-72ecc99e0ed4");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"10347c00-1778-40e2-b524-72ecc99e0ed4");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"10347c00-1778-40e2-b524-72ecc99e0ed4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("10347c00-1778-40e2-b524-72ecc99e0ed4",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("10b1a5d8-77d0-4d61-8b6d-7892c21cd831",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("a95ba34c-0376-4b28-943b-f88146120d82",
+	'simulatedGPS',
+	'Constants specifying the behavior of the simulated GPS.
+
+initialLatitude and initialLongitude specify, as decimal degrees, 
+the initial location of the simulated GPS.
+
+latitudeIncrement and longitudeIncrement specify, as decimal degrees, 
+the distance the simulated GPS moves during each update period.
+
+updatePeriod specifies, in microseconds, the update period for the
+simulated GPS.  In other words, the simulated GPS updates its location
+once per updatePeriod.');
+INSERT INTO CNST_SYC
+	VALUES ("4d9a9c8a-de3c-45ee-b34f-814e58c61b51",
+	'longitudeIncrement',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"a95ba34c-0376-4b28-943b-f88146120d82",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("4d9a9c8a-de3c-45ee-b34f-814e58c61b51",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("4d9a9c8a-de3c-45ee-b34f-814e58c61b51",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'0.00002');
+INSERT INTO CNST_SYC
+	VALUES ("2e01447c-a97e-4956-a04d-fb52055ac6c0",
+	'latitudeIncrement',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"a95ba34c-0376-4b28-943b-f88146120d82",
+	"4d9a9c8a-de3c-45ee-b34f-814e58c61b51",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LFSC
+	VALUES ("2e01447c-a97e-4956-a04d-fb52055ac6c0",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("2e01447c-a97e-4956-a04d-fb52055ac6c0",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'0.00001');
+INSERT INTO CNST_SYC
+	VALUES ("a5b98458-0734-4b72-b14f-001dce9a656c",
+	'initialLatitude',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"a95ba34c-0376-4b28-943b-f88146120d82",
+	"2e01447c-a97e-4956-a04d-fb52055ac6c0",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LFSC
+	VALUES ("a5b98458-0734-4b72-b14f-001dce9a656c",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("a5b98458-0734-4b72-b14f-001dce9a656c",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'32.432237');
+INSERT INTO CNST_SYC
+	VALUES ("746999f3-cde3-4b6d-8dc0-a233b5c99623",
+	'initialLongitude',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000003",
+	"a95ba34c-0376-4b28-943b-f88146120d82",
+	"a5b98458-0734-4b72-b14f-001dce9a656c",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LFSC
+	VALUES ("746999f3-cde3-4b6d-8dc0-a233b5c99623",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LSC
+	VALUES ("746999f3-cde3-4b6d-8dc0-a233b5c99623",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'-110.812283');
+INSERT INTO CNST_SYC
+	VALUES ("524043d4-5ee7-43eb-a8b5-5290cab12d84",
+	'updatePeriod',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"a95ba34c-0376-4b28-943b-f88146120d82",
+	"746999f3-cde3-4b6d-8dc0-a233b5c99623",
+	"ba5eda7a-def5-0000-0000-000000000003");
+INSERT INTO CNST_LFSC
+	VALUES ("524043d4-5ee7-43eb-a8b5-5290cab12d84",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("524043d4-5ee7-43eb-a8b5-5290cab12d84",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'1000000');
+INSERT INTO PE_PE
+	VALUES ("a95ba34c-0376-4b28-943b-f88146120d82",
+	1,
+	"7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"44b91172-5262-446e-981e-6c702433b5d7",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("44b91172-5262-446e-981e-6c702433b5d7",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Location',
+	'Simulates a the GPS hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Location.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../../../EmptyClassDiagramTest.xtuml');

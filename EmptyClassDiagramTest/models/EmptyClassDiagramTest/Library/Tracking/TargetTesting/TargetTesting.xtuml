@@ -1,0 +1,125 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("29b592d0-52ee-4d5b-833a-646a0d6bcaee",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'TargetTesting',
+	'Contains facilities for testing generated code.',
+	0);
+INSERT INTO GD_MD
+	VALUES ("ee8ccd16-3497-4588-a598-564f450c1556",
+	112,
+	"29b592d0-52ee-4d5b-833a-646a0d6bcaee",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'EmptyClassDiagramTest::Library::Tracking::TargetTesting');
+INSERT INTO DIM_DIA
+	VALUES ("ee8ccd16-3497-4588-a598-564f450c1556",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("9d6d25c7-196c-4a03-a670-3df14a23e9b7",
+	"00000000-0000-0000-0000-000000000000",
+	'Initialize',
+	'',
+	'// Create a workout session and everything required to support it.
+WorkoutSession::create();',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("9d6d25c7-196c-4a03-a670-3df14a23e9b7",
+	1,
+	"29b592d0-52ee-4d5b-833a-646a0d6bcaee",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("6cff6c94-f89e-4fe9-98db-f9d0beca30ac",
+	"00000000-0000-0000-0000-000000000000",
+	'GoalTest_1',
+	'',
+	'// Initialize the system.
+::Initialize();
+
+// Create some goal specifications.
+send UI::newGoalSpec( 
+  sequenceNumber: 1,
+  minimum: 2.0,
+  maximum: 8.0,
+  span: 150.0,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Distance );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 2,
+  minimum: 60.0,
+  maximum: 80.0,
+  span: 10,
+  criteriaType: GoalCriteria::HeartRate,
+  spanType: GoalSpan::Time );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 3,
+  minimum: 5.0,
+  maximum: 6.0,
+  span: 15,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Time );
+  
+send UI::newGoalSpec( 
+  sequenceNumber: 4,
+  minimum: 1.0,
+  maximum: 2.0,
+  span: 15,
+  criteriaType: GoalCriteria::Pace,
+  spanType: GoalSpan::Time );
+  ',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("6cff6c94-f89e-4fe9-98db-f9d0beca30ac",
+	1,
+	"29b592d0-52ee-4d5b-833a-646a0d6bcaee",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("29b592d0-52ee-4d5b-833a-646a0d6bcaee",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"b961b0b8-5d1e-41cd-a046-99aea37bbf12",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("b961b0b8-5d1e-41cd-a046-99aea37bbf12",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Tracking',
+	'The Tracking component encapsulates the entire application software. This is the 
+only component in the system from which code will be generated for the final 
+product.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Tracking.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../../../EmptyClassDiagramTest.xtuml');

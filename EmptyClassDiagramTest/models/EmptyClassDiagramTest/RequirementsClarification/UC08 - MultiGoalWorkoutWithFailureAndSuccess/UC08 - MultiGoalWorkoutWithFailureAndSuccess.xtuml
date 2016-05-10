@@ -1,0 +1,164 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("34dd0adf-7a6e-4ec7-b793-8d9c7223ec4e",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'UC08 - MultiGoalWorkoutWithFailureAndSuccess',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("64a2ca3f-d013-46e4-87bb-864031d4841e",
+	112,
+	"34dd0adf-7a6e-4ec7-b793-8d9c7223ec4e",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::RequirementsClarification::UC08 - MultiGoalWorkoutWithFailureAndSuccess');
+INSERT INTO GD_GE
+	VALUES ("f583d116-e64d-4444-851e-d21f2ade5e7b",
+	"64a2ca3f-d013-46e4-87bb-864031d4841e",
+	"7c316188-fc06-45d7-991b-db8c51538178",
+	85,
+	0,
+	'EmptyClassDiagramTest::RequirementsClarification::UC08 - MultiGoalWorkoutWithFailureAndSuccess::UC08 - MultiGoalWorkoutWithFailureAndSuccess');
+INSERT INTO GD_SHP
+	VALUES ("f583d116-e64d-4444-851e-d21f2ade5e7b");
+INSERT INTO GD_NCS
+	VALUES ("f583d116-e64d-4444-851e-d21f2ade5e7b");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"f583d116-e64d-4444-851e-d21f2ade5e7b");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"f583d116-e64d-4444-851e-d21f2ade5e7b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("f583d116-e64d-4444-851e-d21f2ade5e7b",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("e5a25d47-c0a3-486e-8c7f-10daeeebf46b",
+	"64a2ca3f-d013-46e4-87bb-864031d4841e",
+	"4eafa393-233b-43c4-a763-e632bee55c94",
+	108,
+	0,
+	'EmptyClassDiagramTest::RequirementsClarification::UC08 - MultiGoalWorkoutWithFailureAndSuccess::ActivityDiagram');
+INSERT INTO GD_SHP
+	VALUES ("e5a25d47-c0a3-486e-8c7f-10daeeebf46b");
+INSERT INTO GD_NCS
+	VALUES ("e5a25d47-c0a3-486e-8c7f-10daeeebf46b");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"e5a25d47-c0a3-486e-8c7f-10daeeebf46b");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"e5a25d47-c0a3-486e-8c7f-10daeeebf46b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("e5a25d47-c0a3-486e-8c7f-10daeeebf46b",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("64a2ca3f-d013-46e4-87bb-864031d4841e",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_P
+	VALUES ("7c316188-fc06-45d7-991b-db8c51538178",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO IA_UCP
+	VALUES ("7c316188-fc06-45d7-991b-db8c51538178",
+	'UC08 - MultiGoalWorkoutWithFailureAndSuccess',
+	'Pre-conditions
+	No Track logs exist on the device.
+	Timer is stopped.
+	Elapsed time is zero. 
+	Accumulated distance is zero.
+	Display shows elapsed time and accumulated distance.
+
+Post-conditions
+	A track log exists on the device.
+	A pace over distance goal exists on the device.
+	A heart rate over time goal exists on the device.
+	A heart rate log exists on the device.
+	An indication of when during the workout the active goal was being met exists on the device.
+	Timer is stopped.
+	Current heart rate and elapsed time are displayed.
+
+Scenario
+	1.  User establishes a goal for maintaining a bounded pace over a certain distance.
+	2.	User establishes a goal for maintaining a bounded heart rate over a certain time period.
+	3.	User pushes the start/stop button and begins moving (walking, running, flying, cycling, etc.).
+	4.	The timer starts.
+	5.  User pushes the Mode button until pace is displayed.
+	6.	The display shows:
+		a.	Current pace
+		b.	Elapsed time
+	7.	Periodically throughout the workout the device stores, in the active track log, 
+	    the current location of the device.
+	8.  Periodically throughout the workout, the device stores, in a log, 
+		the heart rate of the user.
+	9.	User pushes Set Target button.
+	10.	Evaluation of the pace over distance goal starts.
+	11. The device stores an indication of when during the workout the pace goal being met. 
+	12.	The display shows:
+		a.	Current pace
+		b.	Elapsed time
+		c.  An indication of whether the current goal is being met.
+	13. After covering the distance of the pace goal, device switches to heart rate goal.
+	14. Evaluation of the heart rate over time goal starts.
+	15. User pushes the Mode button until heart rate is displayed.
+	16. The display shows:
+	    a.  Current heart rate
+	    b.  Elapsed time
+	    c.  An indication of whether the current goal is being met.
+	15. The device stores an indication of when during the workout the heart rate goal is being met.
+	16. When the specified time for the heart rate goal elapses the device stops evaluating goals.
+	17.	User pushes the start/stop button.
+	18.	The timer stops.
+	19. The elapsed time, distance, and heart rate samples stop accumulating.
+
+	');
+INSERT INTO PE_PE
+	VALUES ("7c316188-fc06-45d7-991b-db8c51538178",
+	1,
+	"34dd0adf-7a6e-4ec7-b793-8d9c7223ec4e",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO PE_PE
+	VALUES ("34dd0adf-7a6e-4ec7-b793-8d9c7223ec4e",
+	1,
+	"436c2c19-1cbb-45a0-9034-132556217a90",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("436c2c19-1cbb-45a0-9034-132556217a90",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'RequirementsClarification',
+	'',
+	0,
+	'../RequirementsClarification.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../../EmptyClassDiagramTest.xtuml');

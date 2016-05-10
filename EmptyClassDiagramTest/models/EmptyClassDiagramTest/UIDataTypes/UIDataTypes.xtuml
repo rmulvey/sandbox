@@ -1,0 +1,212 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("2b5f9bc7-bedb-4cf4-b5ba-cbc1c9e3367b",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'UIDataTypes',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("a77b49b1-5e09-4cb8-a325-06eb47020a5e",
+	112,
+	"2b5f9bc7-bedb-4cf4-b5ba-cbc1c9e3367b",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::UIDataTypes');
+INSERT INTO GD_GE
+	VALUES ("8b845367-02d7-4163-b6cc-efb0deaaa1da",
+	"a77b49b1-5e09-4cb8-a325-06eb47020a5e",
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	52,
+	0,
+	'EmptyClassDiagramTest::UIDataTypes::Unit');
+INSERT INTO GD_SHP
+	VALUES ("8b845367-02d7-4163-b6cc-efb0deaaa1da");
+INSERT INTO GD_NCS
+	VALUES ("8b845367-02d7-4163-b6cc-efb0deaaa1da");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"8b845367-02d7-4163-b6cc-efb0deaaa1da");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"8b845367-02d7-4163-b6cc-efb0deaaa1da",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("8b845367-02d7-4163-b6cc-efb0deaaa1da",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("ad569235-4a94-48bf-a2ad-be30bbf56cc7",
+	"a77b49b1-5e09-4cb8-a325-06eb47020a5e",
+	"a6051bab-97e3-4bee-b099-fae900f38670",
+	52,
+	0,
+	'EmptyClassDiagramTest::UIDataTypes::Indicator');
+INSERT INTO GD_SHP
+	VALUES ("ad569235-4a94-48bf-a2ad-be30bbf56cc7");
+INSERT INTO GD_NCS
+	VALUES ("ad569235-4a94-48bf-a2ad-be30bbf56cc7");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"ad569235-4a94-48bf-a2ad-be30bbf56cc7");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"ad569235-4a94-48bf-a2ad-be30bbf56cc7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("ad569235-4a94-48bf-a2ad-be30bbf56cc7",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("a77b49b1-5e09-4cb8-a325-06eb47020a5e",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT
+	VALUES ("ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"00000000-0000-0000-0000-000000000000",
+	'Unit',
+	'',
+	'');
+INSERT INTO S_EDT
+	VALUES ("ef4f1a8e-53bb-4092-b86b-fd39891d656e");
+INSERT INTO S_ENUM
+	VALUES ("90cb3d4d-6248-497c-9784-29d875cf3ff4",
+	'minPerKm',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"4b536ed5-5554-44c9-87be-28f9e7421374");
+INSERT INTO S_ENUM
+	VALUES ("d94eaa7b-031b-4256-88ff-dc716ab7317f",
+	'km',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_ENUM
+	VALUES ("4b536ed5-5554-44c9-87be-28f9e7421374",
+	'meters',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"d94eaa7b-031b-4256-88ff-dc716ab7317f");
+INSERT INTO S_ENUM
+	VALUES ("c14fdb28-1605-43b0-b765-aec46ecb557e",
+	'kmPerHour',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"90cb3d4d-6248-497c-9784-29d875cf3ff4");
+INSERT INTO S_ENUM
+	VALUES ("3868ed75-06ac-4113-aa5a-862c7ae4806b",
+	'miles',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"c14fdb28-1605-43b0-b765-aec46ecb557e");
+INSERT INTO S_ENUM
+	VALUES ("8ede0b2a-a546-469d-85dc-5e78ba8c595e",
+	'yards',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"3868ed75-06ac-4113-aa5a-862c7ae4806b");
+INSERT INTO S_ENUM
+	VALUES ("64aacf57-a28f-43ee-a983-1e2a340a1053",
+	'feet',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"8ede0b2a-a546-469d-85dc-5e78ba8c595e");
+INSERT INTO S_ENUM
+	VALUES ("a6eb8eb1-d34f-4a11-a1d0-6cdca4348d0e",
+	'minPerMile',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"64aacf57-a28f-43ee-a983-1e2a340a1053");
+INSERT INTO S_ENUM
+	VALUES ("d3e4165a-ba59-4f9a-9616-0dde031fefc0",
+	'mph',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"a6eb8eb1-d34f-4a11-a1d0-6cdca4348d0e");
+INSERT INTO S_ENUM
+	VALUES ("3eed4b52-4444-4ddd-9987-984ef4b39d2a",
+	'bpm',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"d3e4165a-ba59-4f9a-9616-0dde031fefc0");
+INSERT INTO S_ENUM
+	VALUES ("972a992c-f935-4922-b133-875e23866fb9",
+	'laps',
+	'',
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"3eed4b52-4444-4ddd-9987-984ef4b39d2a");
+INSERT INTO PE_PE
+	VALUES ("ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	1,
+	"2b5f9bc7-bedb-4cf4-b5ba-cbc1c9e3367b",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("a6051bab-97e3-4bee-b099-fae900f38670",
+	"00000000-0000-0000-0000-000000000000",
+	'Indicator',
+	'Graphical indicator.',
+	'');
+INSERT INTO S_EDT
+	VALUES ("a6051bab-97e3-4bee-b099-fae900f38670");
+INSERT INTO S_ENUM
+	VALUES ("a6664ebf-6b44-4cc8-a558-be519b21a749",
+	'Down',
+	'A downward indicator:  perhaps an arrow pointing down.',
+	"a6051bab-97e3-4bee-b099-fae900f38670",
+	"929f24da-b521-4ea8-a06f-f120a6faaf6b");
+INSERT INTO S_ENUM
+	VALUES ("208a5ff8-9766-4776-a76e-46468325b7e7",
+	'Flat',
+	'A neutral indicator:  perhaps a horizontal line or dash.',
+	"a6051bab-97e3-4bee-b099-fae900f38670",
+	"a6664ebf-6b44-4cc8-a558-be519b21a749");
+INSERT INTO S_ENUM
+	VALUES ("73224389-03e7-4368-9bff-75a178be3ad4",
+	'Up',
+	'A downward indicator:  perhaps an arrow pointing up.',
+	"a6051bab-97e3-4bee-b099-fae900f38670",
+	"208a5ff8-9766-4776-a76e-46468325b7e7");
+INSERT INTO S_ENUM
+	VALUES ("929f24da-b521-4ea8-a06f-f120a6faaf6b",
+	'Blank',
+	'No indicator at all.',
+	"a6051bab-97e3-4bee-b099-fae900f38670",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("a6051bab-97e3-4bee-b099-fae900f38670",
+	1,
+	"2b5f9bc7-bedb-4cf4-b5ba-cbc1c9e3367b",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO PE_PE
+	VALUES ("2b5f9bc7-bedb-4cf4-b5ba-cbc1c9e3367b",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../EmptyClassDiagramTest.xtuml');

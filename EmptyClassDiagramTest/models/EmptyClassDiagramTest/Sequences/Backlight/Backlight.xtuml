@@ -1,0 +1,276 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Backlight',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("86daf591-9113-40df-bbbb-65cc9c33dee4",
+	112,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::Sequences::Backlight');
+INSERT INTO GD_GE
+	VALUES ("06237cf0-8dc0-4570-8ed1-fc99507fa8d8",
+	"86daf591-9113-40df-bbbb-65cc9c33dee4",
+	"56ccc082-38c3-4743-bc7a-cd042285f78f",
+	65,
+	0,
+	'EmptyClassDiagramTest::Sequences::Backlight::User');
+INSERT INTO GD_SHP
+	VALUES ("06237cf0-8dc0-4570-8ed1-fc99507fa8d8");
+INSERT INTO GD_NCS
+	VALUES ("06237cf0-8dc0-4570-8ed1-fc99507fa8d8");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	200.000000,
+	"06237cf0-8dc0-4570-8ed1-fc99507fa8d8");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"06237cf0-8dc0-4570-8ed1-fc99507fa8d8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("06237cf0-8dc0-4570-8ed1-fc99507fa8d8",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("f791b94d-5abc-49c8-9db3-7ef27fa0510c",
+	"86daf591-9113-40df-bbbb-65cc9c33dee4",
+	"e1fbc33c-f2bd-4386-b266-b62333f428fc",
+	107,
+	0,
+	'EmptyClassDiagramTest::Sequences::Backlight::EmptyClassDiagramTest::Library::UI');
+INSERT INTO GD_SHP
+	VALUES ("f791b94d-5abc-49c8-9db3-7ef27fa0510c");
+INSERT INTO GD_NCS
+	VALUES ("f791b94d-5abc-49c8-9db3-7ef27fa0510c");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"f791b94d-5abc-49c8-9db3-7ef27fa0510c");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"f791b94d-5abc-49c8-9db3-7ef27fa0510c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("f791b94d-5abc-49c8-9db3-7ef27fa0510c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("43fdb4df-3ced-4b1c-bb41-82b346a661a3",
+	"86daf591-9113-40df-bbbb-65cc9c33dee4",
+	"3e5ebd3c-2e7c-4c5d-bfc8-0bd04193c46e",
+	62,
+	0,
+	'EmptyClassDiagramTest::Sequences::Backlight::Graphical User Interface EE');
+INSERT INTO GD_SHP
+	VALUES ("43fdb4df-3ced-4b1c-bb41-82b346a661a3");
+INSERT INTO GD_NCS
+	VALUES ("43fdb4df-3ced-4b1c-bb41-82b346a661a3");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"43fdb4df-3ced-4b1c-bb41-82b346a661a3");
+INSERT INTO DIM_GE
+	VALUES (440.000000,
+	0.000000,
+	"43fdb4df-3ced-4b1c-bb41-82b346a661a3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("43fdb4df-3ced-4b1c-bb41-82b346a661a3",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("86daf591-9113-40df-bbbb-65cc9c33dee4",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_P
+	VALUES ("56ccc082-38c3-4743-bc7a-cd042285f78f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_AP
+	VALUES ("56ccc082-38c3-4743-bc7a-cd042285f78f",
+	'User',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("56ccc082-38c3-4743-bc7a-cd042285f78f",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("e1fbc33c-f2bd-4386-b266-b62333f428fc",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_COP
+	VALUES ("e1fbc33c-f2bd-4386-b266-b62333f428fc",
+	"c8e505e3-67e1-46b0-ac3b-313155380b11",
+	'EmptyClassDiagramTest::Library::UI',
+	'Informal Component',
+	'',
+	1);
+INSERT INTO C_C_PROXY
+	VALUES ("c8e505e3-67e1-46b0-ac3b-313155380b11",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'Simulates the user interface and has the ability to connect an external GUI
+representing the physical watch.
+
+Uses the BridgePoint Java API to connect to an animated version of the watch
+while the models are executing in Verifier.
+
+There is also hand-written C code that implments parts of this component to 
+allow generated code to connect to the exact same animated watch.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../../Library/UI/UI.xtuml');
+INSERT INTO PE_PE
+	VALUES ("e1fbc33c-f2bd-4386-b266-b62333f428fc",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("3e5ebd3c-2e7c-4c5d-bfc8-0bd04193c46e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_EEP
+	VALUES ("3e5ebd3c-2e7c-4c5d-bfc8-0bd04193c46e",
+	"00000000-0000-0000-0000-000000000000",
+	'Graphical User Interface EE',
+	'Graphical User Interface EE',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("3e5ebd3c-2e7c-4c5d-bfc8-0bd04193c46e",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("f34bb77d-f6d0-4a51-a074-03381b39787d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("f34bb77d-f6d0-4a51-a074-03381b39787d",
+	"56ccc082-38c3-4743-bc7a-cd042285f78f",
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("f34bb77d-f6d0-4a51-a074-03381b39787d",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("09ce8efa-bc8f-4d85-a4a1-121e4751aa2b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("09ce8efa-bc8f-4d85-a4a1-121e4751aa2b",
+	"e1fbc33c-f2bd-4386-b266-b62333f428fc",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("2b3e4d1c-4462-4230-b4b5-46d447dfda68",
+	'',
+	"09ce8efa-bc8f-4d85-a4a1-121e4751aa2b",
+	'');
+INSERT INTO PE_PE
+	VALUES ("09ce8efa-bc8f-4d85-a4a1-121e4751aa2b",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO SQ_P
+	VALUES ("33cf73a1-0498-43ab-abc5-53e803657e92",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_LS
+	VALUES ("33cf73a1-0498-43ab-abc5-53e803657e92",
+	"3e5ebd3c-2e7c-4c5d-bfc8-0bd04193c46e",
+	'',
+	0);
+INSERT INTO SQ_TM
+	VALUES ("edb5cc18-2a7c-48b0-a3b3-29380e5d8d6e",
+	'',
+	"33cf73a1-0498-43ab-abc5-53e803657e92",
+	'');
+INSERT INTO SQ_TS
+	VALUES ("d85f29ce-8d32-4190-bfa4-ed39c880b212",
+	"d0208777-03ca-4e16-b82b-35c643b3fb0b",
+	"edb5cc18-2a7c-48b0-a3b3-29380e5d8d6e",
+	'Turns on backlight, sets 5 second timer, when it expires, turns off backlight',
+	'');
+INSERT INTO SQ_TM
+	VALUES ("d0208777-03ca-4e16-b82b-35c643b3fb0b",
+	'',
+	"33cf73a1-0498-43ab-abc5-53e803657e92",
+	'');
+INSERT INTO PE_PE
+	VALUES ("33cf73a1-0498-43ab-abc5-53e803657e92",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO MSG_M
+	VALUES ("238b517b-3002-4dff-ad6c-64eb181c2f78",
+	"09ce8efa-bc8f-4d85-a4a1-121e4751aa2b",
+	"33cf73a1-0498-43ab-abc5-53e803657e92",
+	0);
+INSERT INTO MSG_AM
+	VALUES ("238b517b-3002-4dff-ad6c-64eb181c2f78",
+	'feedLightPressedEvent(evt)',
+	'',
+	'',
+	'',
+	'',
+	0,
+	'feedLightPressedEvent(evt)',
+	'');
+INSERT INTO MSG_IAM
+	VALUES ("238b517b-3002-4dff-ad6c-64eb181c2f78");
+INSERT INTO PE_PE
+	VALUES ("238b517b-3002-4dff-ad6c-64eb181c2f78",
+	1,
+	"6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	"00000000-0000-0000-0000-000000000000",
+	17);
+INSERT INTO PE_PE
+	VALUES ("6abdd0b5-0f77-463e-a129-21d305df3f4b",
+	1,
+	"750659a4-4f2d-4dde-a487-de4e9a5f0c28",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("750659a4-4f2d-4dde-a487-de4e9a5f0c28",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Sequences',
+	'',
+	0,
+	'../Sequences.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../../EmptyClassDiagramTest.xtuml');

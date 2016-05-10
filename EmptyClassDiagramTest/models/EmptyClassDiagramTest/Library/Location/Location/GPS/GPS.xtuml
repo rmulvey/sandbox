@@ -1,0 +1,129 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	'GPS',
+	1,
+	'GPS',
+	'Simulates a GPS.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("a9d4d656-7dba-42d9-ad85-3db349d798ba",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	'activate',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'// The GPS is a singleton instance, so create it if it does not exist.
+
+select any gps from instances of GPS;
+if ( empty gps )
+  // Create and initialize the singleton instance of the GPS.
+  create object instance gps of GPS;
+  gps.motionSegments = 0;
+  gps.currentLatitude  = initialLatitude;
+  gps.currentLongitude = initialLongitude;
+end if;
+
+// Establish recurring timer for periodic position updates.
+create event instance tick of GPS_A1:tick() to GPS class;
+gps.timer = TIM::timer_start_recurring( event_inst: tick, microseconds: updatePeriod );',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("b8fc6b9c-65ec-45e6-a14c-41ca0a033b38",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_BATTR
+	VALUES ("b8fc6b9c-65ec-45e6-a14c-41ca0a033b38",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_ATTR
+	VALUES ("b8fc6b9c-65ec-45e6-a14c-41ca0a033b38",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	"f6b1e70a-f41e-4766-a3b2-f6f7e7c05f3d",
+	'timer',
+	'Handle for underlying timer mechanism enabling the generation 
+of delayed events that drive the GPS simulator.',
+	'',
+	'timer',
+	0,
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("e3cfea81-126f-4585-87ce-7d6b6e9c683f",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_BATTR
+	VALUES ("e3cfea81-126f-4585-87ce-7d6b6e9c683f",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_ATTR
+	VALUES ("e3cfea81-126f-4585-87ce-7d6b6e9c683f",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	"00000000-0000-0000-0000-000000000000",
+	'currentLatitude',
+	'Current latitude, expressed in decimal degrees, of the simulated GPS.',
+	'',
+	'currentLatitude',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("54c3e2e1-d037-498a-9e6c-0628d48f0328",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_BATTR
+	VALUES ("54c3e2e1-d037-498a-9e6c-0628d48f0328",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_ATTR
+	VALUES ("54c3e2e1-d037-498a-9e6c-0628d48f0328",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	"e3cfea81-126f-4585-87ce-7d6b6e9c683f",
+	'currentLongitude',
+	'Current longitude, expressed in decimal degrees, of the simulated GPS.',
+	'',
+	'currentLongitude',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f6b1e70a-f41e-4766-a3b2-f6f7e7c05f3d",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_BATTR
+	VALUES ("f6b1e70a-f41e-4766-a3b2-f6f7e7c05f3d",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_ATTR
+	VALUES ("f6b1e70a-f41e-4766-a3b2-f6f7e7c05f3d",
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	"54c3e2e1-d037-498a-9e6c-0628d48f0328",
+	'motionSegments',
+	'The number of motion segments simulated by the GPS.',
+	'',
+	'motionSegments',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_ID
+	VALUES (1,
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO O_ID
+	VALUES (2,
+	"e14f9c13-3eca-48b5-b4ef-a0bf15e9a100");
+INSERT INTO PE_PE
+	VALUES ("e14f9c13-3eca-48b5-b4ef-a0bf15e9a100",
+	1,
+	"7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Location',
+	'',
+	0,
+	'../Location.xtuml');

@@ -1,0 +1,267 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	"00000000-0000-0000-0000-000000000000",
+	'UI',
+	'');
+INSERT INTO C_EP
+	VALUES ("524ff294-bdf4-44d9-b98d-151e2476340f",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'lapResetPressed',
+	'');
+INSERT INTO C_AS
+	VALUES ("524ff294-bdf4-44d9-b98d-151e2476340f",
+	'lapResetPressed',
+	'',
+	1,
+	"19d1b8ac-246e-4c84-b3d7-b644fe2218bf");
+INSERT INTO C_EP
+	VALUES ("19d1b8ac-246e-4c84-b3d7-b644fe2218bf",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'startStopPressed',
+	'');
+INSERT INTO C_AS
+	VALUES ("19d1b8ac-246e-4c84-b3d7-b644fe2218bf",
+	'startStopPressed',
+	'',
+	1,
+	"bd8ed280-4ea4-42a8-ac84-5d04dd1e4396");
+INSERT INTO C_EP
+	VALUES ("7a644ed8-1a93-4460-8cfe-0408804cd5f0",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'lightPressed',
+	'');
+INSERT INTO C_AS
+	VALUES ("7a644ed8-1a93-4460-8cfe-0408804cd5f0",
+	'lightPressed',
+	'',
+	1,
+	"524ff294-bdf4-44d9-b98d-151e2476340f");
+INSERT INTO C_EP
+	VALUES ("3e384bf2-2a22-4c8b-b842-be227a292344",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'modePressed',
+	'');
+INSERT INTO C_AS
+	VALUES ("3e384bf2-2a22-4c8b-b842-be227a292344",
+	'modePressed',
+	'',
+	1,
+	"7a644ed8-1a93-4460-8cfe-0408804cd5f0");
+INSERT INTO C_EP
+	VALUES ("bd8ed280-4ea4-42a8-ac84-5d04dd1e4396",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'setTargetPressed',
+	'');
+INSERT INTO C_AS
+	VALUES ("bd8ed280-4ea4-42a8-ac84-5d04dd1e4396",
+	'setTargetPressed',
+	'',
+	1,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("526132d5-ce59-4dbb-9140-0989037f6477",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'setTime',
+	'');
+INSERT INTO C_IO
+	VALUES ("526132d5-ce59-4dbb-9140-0989037f6477",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'setTime',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("d08fff35-ed3d-4046-b673-8dc2c6a8188e",
+	"526132d5-ce59-4dbb-9140-0989037f6477",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'time',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("ea9a3ffb-171b-4cf7-b45a-9f738bc19a1a",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'setData',
+	'');
+INSERT INTO C_IO
+	VALUES ("ea9a3ffb-171b-4cf7-b45a-9f738bc19a1a",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'setData',
+	'',
+	0,
+	'',
+	"526132d5-ce59-4dbb-9140-0989037f6477");
+INSERT INTO C_PP
+	VALUES ("98effaf0-1c72-434e-9152-80d5774c916d",
+	"ea9a3ffb-171b-4cf7-b45a-9f738bc19a1a",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'value',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("b7756e00-3de1-436f-b5f8-088f8dc29e44",
+	"ea9a3ffb-171b-4cf7-b45a-9f738bc19a1a",
+	"ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	'unit',
+	'',
+	0,
+	'',
+	"98effaf0-1c72-434e-9152-80d5774c916d");
+INSERT INTO S_DT_PROXY
+	VALUES ("ef4f1a8e-53bb-4092-b86b-fd39891d656e",
+	"00000000-0000-0000-0000-000000000000",
+	'Unit',
+	'',
+	'',
+	'../../UIDataTypes/UIDataTypes.xtuml');
+INSERT INTO C_EP
+	VALUES ("99c8241a-b88e-4c7d-80c4-4708eca24c85",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'startTest',
+	'');
+INSERT INTO C_IO
+	VALUES ("99c8241a-b88e-4c7d-80c4-4708eca24c85",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'startTest',
+	'',
+	0,
+	'',
+	"ea9a3ffb-171b-4cf7-b45a-9f738bc19a1a");
+INSERT INTO C_EP
+	VALUES ("acd8002a-59f9-4d31-a7c0-0a6bc7c6bc35",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'setIndicator',
+	'');
+INSERT INTO C_IO
+	VALUES ("acd8002a-59f9-4d31-a7c0-0a6bc7c6bc35",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'setIndicator',
+	'',
+	0,
+	'',
+	"99c8241a-b88e-4c7d-80c4-4708eca24c85");
+INSERT INTO C_PP
+	VALUES ("f631126e-2d15-45be-a3b2-da06c7d9ab09",
+	"acd8002a-59f9-4d31-a7c0-0a6bc7c6bc35",
+	"a6051bab-97e3-4bee-b099-fae900f38670",
+	'indicator',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("a6051bab-97e3-4bee-b099-fae900f38670",
+	"00000000-0000-0000-0000-000000000000",
+	'Indicator',
+	'Graphical indicator.',
+	'',
+	'../../UIDataTypes/UIDataTypes.xtuml');
+INSERT INTO C_EP
+	VALUES ("eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	-1,
+	'newGoalSpec',
+	'');
+INSERT INTO C_AS
+	VALUES ("eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	'newGoalSpec',
+	'',
+	1,
+	"3e384bf2-2a22-4c8b-b842-be227a292344");
+INSERT INTO C_PP
+	VALUES ("404e6191-41b8-496a-bfcd-fa6f7e220d89",
+	"eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'sequenceNumber',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("e4bd190b-bcd0-4853-a88f-f3f57c78d1d3",
+	"eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'minimum',
+	'',
+	0,
+	'',
+	"404e6191-41b8-496a-bfcd-fa6f7e220d89");
+INSERT INTO C_PP
+	VALUES ("a426d216-9862-41fc-9280-d16415d89993",
+	"eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'maximum',
+	'',
+	0,
+	'',
+	"e4bd190b-bcd0-4853-a88f-f3f57c78d1d3");
+INSERT INTO C_PP
+	VALUES ("258ce084-e2d8-4cd2-b25b-5895cb91a938",
+	"eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	'span',
+	'',
+	0,
+	'',
+	"a426d216-9862-41fc-9280-d16415d89993");
+INSERT INTO C_PP
+	VALUES ("c2354949-b400-405c-9d0f-fa0c4e88c036",
+	"eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"e5a5c300-3abf-4213-b25a-39e219193a32",
+	'criteriaType',
+	'',
+	0,
+	'',
+	"258ce084-e2d8-4cd2-b25b-5895cb91a938");
+INSERT INTO S_DT_PROXY
+	VALUES ("e5a5c300-3abf-4213-b25a-39e219193a32",
+	"00000000-0000-0000-0000-000000000000",
+	'GoalCriteria',
+	'The criteria type for a particular workout goal.  ',
+	'',
+	'../../TrackingDataTypes/TrackingDataTypes.xtuml');
+INSERT INTO C_PP
+	VALUES ("1dc474c5-f1ce-4cad-806e-2bae9f506385",
+	"eb7d062d-6666-477e-841f-6b9e73dfdec9",
+	"2b9325b3-ac52-4cc4-94bf-8bbaa96b6905",
+	'spanType',
+	'',
+	0,
+	'',
+	"c2354949-b400-405c-9d0f-fa0c4e88c036");
+INSERT INTO S_DT_PROXY
+	VALUES ("2b9325b3-ac52-4cc4-94bf-8bbaa96b6905",
+	"00000000-0000-0000-0000-000000000000",
+	'GoalSpan',
+	'',
+	'',
+	'../../TrackingDataTypes/TrackingDataTypes.xtuml');
+INSERT INTO PE_PE
+	VALUES ("f5dffe9a-dd8f-411d-992e-bb7e8c0859c7",
+	1,
+	"545deafa-310c-46df-857b-90cbc599e835",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("545deafa-310c-46df-857b-90cbc599e835",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'UIInterfaces',
+	'',
+	0,
+	'../UIInterfaces.xtuml');

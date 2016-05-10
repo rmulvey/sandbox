@@ -1,0 +1,70 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("31e3f2ad-2951-4418-ba40-aea11d8e00f5",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Analysis',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("f7170140-098f-4ad4-a83e-211640a1963d",
+	112,
+	"31e3f2ad-2951-4418-ba40-aea11d8e00f5",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::Analysis');
+INSERT INTO GD_GE
+	VALUES ("371ed56e-1d3f-486f-a70e-efe06c554daa",
+	"f7170140-098f-4ad4-a83e-211640a1963d",
+	"7d05acce-a3ff-490b-aaab-f50dcac2f7d5",
+	108,
+	0,
+	'EmptyClassDiagramTest::Analysis::Start Stop Reset');
+INSERT INTO GD_SHP
+	VALUES ("371ed56e-1d3f-486f-a70e-efe06c554daa");
+INSERT INTO GD_NCS
+	VALUES ("371ed56e-1d3f-486f-a70e-efe06c554daa");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"371ed56e-1d3f-486f-a70e-efe06c554daa");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"371ed56e-1d3f-486f-a70e-efe06c554daa",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("371ed56e-1d3f-486f-a70e-efe06c554daa",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("f7170140-098f-4ad4-a83e-211640a1963d",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("31e3f2ad-2951-4418-ba40-aea11d8e00f5",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../EmptyClassDiagramTest.xtuml');

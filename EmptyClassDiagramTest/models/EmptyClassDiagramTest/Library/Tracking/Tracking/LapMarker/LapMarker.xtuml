@@ -1,0 +1,50 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("9f02836c-f049-4266-826b-b66b49c280d8",
+	'LapMarker',
+	4,
+	'LapMarker',
+	'Each instance represents a single lap marker.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("fafe0392-0a98-44f6-97f2-516a05cf7d09",
+	"9f02836c-f049-4266-826b-b66b49c280d8");
+INSERT INTO O_BATTR
+	VALUES ("fafe0392-0a98-44f6-97f2-516a05cf7d09",
+	"9f02836c-f049-4266-826b-b66b49c280d8");
+INSERT INTO O_ATTR
+	VALUES ("fafe0392-0a98-44f6-97f2-516a05cf7d09",
+	"9f02836c-f049-4266-826b-b66b49c280d8",
+	"00000000-0000-0000-0000-000000000000",
+	'lapTime',
+	'Number of seconds between start time for the associated workout and this lap marker.',
+	'',
+	'lapTime',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"9f02836c-f049-4266-826b-b66b49c280d8");
+INSERT INTO O_ID
+	VALUES (1,
+	"9f02836c-f049-4266-826b-b66b49c280d8");
+INSERT INTO O_ID
+	VALUES (2,
+	"9f02836c-f049-4266-826b-b66b49c280d8");
+INSERT INTO PE_PE
+	VALUES ("9f02836c-f049-4266-826b-b66b49c280d8",
+	1,
+	"b5bdfd2d-2370-4d36-af96-47b0b1b4f153",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b5bdfd2d-2370-4d36-af96-47b0b1b4f153",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Tracking',
+	'',
+	0,
+	'../Tracking.xtuml');

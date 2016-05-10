@@ -1,0 +1,68 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("ca69d924-35d6-4cb1-bb2c-0711582a33d8",
+	'HeartRateSample',
+	5,
+	'HeartRateSample',
+	'Each instance represents a single heart-rate sample.',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("7568e240-4f15-415a-8cc1-c301d8eabf0b",
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO O_BATTR
+	VALUES ("7568e240-4f15-415a-8cc1-c301d8eabf0b",
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO O_ATTR
+	VALUES ("7568e240-4f15-415a-8cc1-c301d8eabf0b",
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8",
+	"00000000-0000-0000-0000-000000000000",
+	'heartRate',
+	'Heart rate expressed in beats per minute.',
+	'',
+	'heartRate',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("b91ab838-fd67-420a-9602-6c17a5dbf1c5",
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO O_BATTR
+	VALUES ("b91ab838-fd67-420a-9602-6c17a5dbf1c5",
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO O_ATTR
+	VALUES ("b91ab838-fd67-420a-9602-6c17a5dbf1c5",
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8",
+	"7568e240-4f15-415a-8cc1-c301d8eabf0b",
+	'time',
+	'Number of seconds between start time for the associated workout and recording of this heart rate sample.',
+	'',
+	'time',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO O_ID
+	VALUES (1,
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO O_ID
+	VALUES (2,
+	"ca69d924-35d6-4cb1-bb2c-0711582a33d8");
+INSERT INTO PE_PE
+	VALUES ("ca69d924-35d6-4cb1-bb2c-0711582a33d8",
+	1,
+	"b5bdfd2d-2370-4d36-af96-47b0b1b4f153",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("b5bdfd2d-2370-4d36-af96-47b0b1b4f153",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Tracking',
+	'',
+	0,
+	'../Tracking.xtuml');

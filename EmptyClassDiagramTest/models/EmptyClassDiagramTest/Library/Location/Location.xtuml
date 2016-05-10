@@ -1,0 +1,301 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("44b91172-5262-446e-981e-6c702433b5d7",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Location',
+	'Simulates a the GPS hardware/firmware. This component is only behavioral and included for testing purposes.',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO GD_MD
+	VALUES ("be58dacf-2acf-4095-8d3c-68e014ddeb17",
+	111,
+	"44b91172-5262-446e-981e-6c702433b5d7",
+	98,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::Library::Location');
+INSERT INTO GD_GE
+	VALUES ("7fba3e3d-d00d-4936-bf31-932d64f94a90",
+	"be58dacf-2acf-4095-8d3c-68e014ddeb17",
+	"44b91172-5262-446e-981e-6c702433b5d7",
+	103,
+	0,
+	'EmptyClassDiagramTest::Library::Location');
+INSERT INTO GD_SHP
+	VALUES ("7fba3e3d-d00d-4936-bf31-932d64f94a90");
+INSERT INTO GD_CTR
+	VALUES ("7fba3e3d-d00d-4936-bf31-932d64f94a90");
+INSERT INTO DIM_ND
+	VALUES (1032.000000,
+	800.000000,
+	"7fba3e3d-d00d-4936-bf31-932d64f94a90");
+INSERT INTO DIM_GE
+	VALUES (4100.000000,
+	3100.000000,
+	"7fba3e3d-d00d-4936-bf31-932d64f94a90",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("7fba3e3d-d00d-4936-bf31-932d64f94a90",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("38beec41-4a48-4874-b784-f0759930e80a",
+	"be58dacf-2acf-4095-8d3c-68e014ddeb17",
+	"7e19da0d-d0fe-40ec-9d3a-3c31eb443cd6",
+	108,
+	0,
+	'EmptyClassDiagramTest::Library::Location::Location');
+INSERT INTO GD_SHP
+	VALUES ("38beec41-4a48-4874-b784-f0759930e80a");
+INSERT INTO GD_NCS
+	VALUES ("38beec41-4a48-4874-b784-f0759930e80a");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"38beec41-4a48-4874-b784-f0759930e80a");
+INSERT INTO DIM_GE
+	VALUES (4920.000000,
+	3100.000000,
+	"38beec41-4a48-4874-b784-f0759930e80a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("38beec41-4a48-4874-b784-f0759930e80a",
+	0,
+	"7fba3e3d-d00d-4936-bf31-932d64f94a90");
+INSERT INTO DIM_DIA
+	VALUES ("be58dacf-2acf-4095-8d3c-68e014ddeb17",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PO
+	VALUES ("1142f56b-b2c7-4b20-8690-368bb5d33388",
+	"44b91172-5262-446e-981e-6c702433b5d7",
+	'LOC',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("c77bbb9d-a62c-4b3e-9f7b-b8a9a93ec886",
+	"b61d1a73-04c9-4746-aad5-302722a0d60a",
+	"00000000-0000-0000-0000-000000000000",
+	"1142f56b-b2c7-4b20-8690-368bb5d33388");
+INSERT INTO C_P
+	VALUES ("c77bbb9d-a62c-4b3e-9f7b-b8a9a93ec886",
+	'LocationProvider',
+	'Unnamed Interface',
+	'',
+	'Location::LOC::LocationProvider');
+INSERT INTO SPR_PEP
+	VALUES ("6072e2dc-ec7b-4577-8eb9-f76affc02677",
+	"155cdd3e-3034-42cb-9858-f88c0f25508e",
+	"c77bbb9d-a62c-4b3e-9f7b-b8a9a93ec886");
+INSERT INTO SPR_PS
+	VALUES ("6072e2dc-ec7b-4577-8eb9-f76affc02677",
+	'registerListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("155cdd3e-3034-42cb-9858-f88c0f25508e",
+	"b61d1a73-04c9-4746-aad5-302722a0d60a",
+	-1,
+	'registerListener',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("5d31c683-299f-402a-ab7f-a63a2341a921",
+	"61465c9e-c600-458f-819c-c4fcbe3776df",
+	"c77bbb9d-a62c-4b3e-9f7b-b8a9a93ec886");
+INSERT INTO SPR_PS
+	VALUES ("5d31c683-299f-402a-ab7f-a63a2341a921",
+	'unregisterListener',
+	'',
+	'',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("61465c9e-c600-458f-819c-c4fcbe3776df",
+	"b61d1a73-04c9-4746-aad5-302722a0d60a",
+	-1,
+	'unregisterListener',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("ca1a3d83-5efd-435b-860e-fe9dc122211e",
+	"cd5ff86d-cdf4-445c-ad37-1fe249fe728e",
+	"c77bbb9d-a62c-4b3e-9f7b-b8a9a93ec886");
+INSERT INTO SPR_PO
+	VALUES ("ca1a3d83-5efd-435b-860e-fe9dc122211e",
+	'getLocation',
+	'',
+	'// Return, via reference arguments, the current position of the singleton 
+// instance of the simulated GPS.
+
+select any gps from instances of GPS;
+param.latitude = gps.currentLatitude;
+param.longitude = gps.currentLongitude;',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("cd5ff86d-cdf4-445c-ad37-1fe249fe728e",
+	"b61d1a73-04c9-4746-aad5-302722a0d60a",
+	-1,
+	'getLocation',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("b61d1a73-04c9-4746-aad5-302722a0d60a",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationProvider',
+	'',
+	'../../LocationInterfaces/LocationProvider/LocationProvider.xtuml');
+INSERT INTO C_PO
+	VALUES ("6fca76eb-80b9-4679-9096-6d8adf3a5dc2",
+	"44b91172-5262-446e-981e-6c702433b5d7",
+	'UTIL',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("ab6f788f-bc03-454a-aaf5-558b27b59ab5",
+	"730a5fd5-4288-4e5e-ac19-b2c89b2a0371",
+	"00000000-0000-0000-0000-000000000000",
+	"6fca76eb-80b9-4679-9096-6d8adf3a5dc2");
+INSERT INTO C_P
+	VALUES ("ab6f788f-bc03-454a-aaf5-558b27b59ab5",
+	'LocationUtil',
+	'Unnamed Interface',
+	'',
+	'Location::UTIL::LocationUtil');
+INSERT INTO SPR_PEP
+	VALUES ("e2da8c12-770c-4df1-967a-1908b3af1b7f",
+	"509d0786-fab1-4b42-9ad9-dad9ceb22a62",
+	"ab6f788f-bc03-454a-aaf5-558b27b59ab5");
+INSERT INTO SPR_PO
+	VALUES ("e2da8c12-770c-4df1-967a-1908b3af1b7f",
+	'getDistance',
+	'Returns distance, in kilometers, between the "from" and "to" coordinates passed as parameters.
+The coordinates must be passed as decimal degrees.',
+	'// Return the straight-line distance, expressed in meters, between the 
+// two points passed as parameters, expressed in decimal degrees.
+
+deltaLat = param.toLat - param.fromLat;
+deltaLong = param.toLong - param.fromLong;
+sumSquares = (deltaLat * deltaLat) + (deltaLong * deltaLong);
+return ( (MATH::sqrt( x: sumSquares ) * kmPerDegree * 1000 ) );',
+	1);
+INSERT INTO C_EP_PROXY
+	VALUES ("509d0786-fab1-4b42-9ad9-dad9ceb22a62",
+	"730a5fd5-4288-4e5e-ac19-b2c89b2a0371",
+	-1,
+	'getDistance',
+	'Returns distance, in kilometers, between the "from" and "to" coordinates passed as parameters.
+The coordinates must be passed as decimal degrees.',
+	'../../LocationInterfaces/LocationUtil/LocationUtil.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("730a5fd5-4288-4e5e-ac19-b2c89b2a0371",
+	"00000000-0000-0000-0000-000000000000",
+	'LocationUtil',
+	'',
+	'../../LocationInterfaces/LocationUtil/LocationUtil.xtuml');
+INSERT INTO PE_PE
+	VALUES ("44b91172-5262-446e-981e-6c702433b5d7",
+	1,
+	"fb14f1ac-3b38-40d7-b3fe-886f92da3ca2",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("fb14f1ac-3b38-40d7-b3fe-886f92da3ca2",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'Library',
+	'// ########## START OAL_1 ##########
+// always initialize data
+self.currentLocation.longitude = 0.0;
+self.currentLocation.latitude  = 0.0;
+self.currentLocation.speed     = 0.0;
+self.interval                  = 2000000;
+
+LOG::LogInfo(message: "Location listener registered.");
+
+ // start timer based on requested interval
+create event instance timeout of GPS3:timeout() to self;
+self.timer = TIM::timer_start_recurring(event_inst: timeout, microseconds: self.interval);
+// ########### END OAL_1 ###########
+
+
+
+// ########## START OAL_2 ##########
+// prepare signal data with some dummy values that change over time
+self.currentLocation.longitude = self.currentLocation.longitude + 2.0;
+self.currentLocation.latitude  = self.currentLocation.latitude  + 3.0;
+self.currentLocation.speed     = 
+                                (self.currentLocation.latitude - 
+                                 self.currentLocation.longitude) / 5.0;
+
+// pass the new location to client component
+send LocationProvider::locationUpdate(location: self.currentLocation);
+// ########### END OAL_2 ###########
+
+
+
+// ########## START OAL_3 ##########
+res = TIM::timer_cancel(timer_inst_ref: self.timer);
+// ########### END OAL_3 ###########
+
+
+
+// ########## START OAL_4 ##########
+select any gps from instances of GPS;
+if (empty gps)
+  // asynchronously create a new instance of GPS
+  generate GPS1:registerListener() to GPS creator;
+end if;
+// ########### END OAL_4 ###########
+
+
+// ########## START OAL_5 ##########
+// forward message to single instance of GPS
+select any gps from instances of GPS;
+if (not empty gps)
+  generate GPS2:unregisterListener() to gps;
+end if;
+// ########### END OAL_5 ###########
+
+
+// ########## START OAL_6 ##########
+// create an instance of the workout timer if it does not exist
+select any workoutTimer from instances of WorkoutTimer;
+if (empty workoutTimer)
+  create object instance workoutTimer of WorkoutTimer;
+end if;
+
+// forward message to the single instance of WorkoutTimer 
+generate WorkoutTimer1:startStopPressed() to workoutTimer;
+// ########### END OAL_6 ###########
+
+
+
+// ########## START OAL_7 ##########
+// print the new location to the console
+LOG::LogInfo(message: "location updated: ");
+LOG::LogReal(message: "longitude", r: param.location.longitude);
+LOG::LogReal(message: "latitude",  r: param.location.latitude );
+LOG::LogReal(message: "speed",     r: param.location.speed    );
+// ########### END OAL_7 ###########
+',
+	0,
+	'../Library.xtuml');

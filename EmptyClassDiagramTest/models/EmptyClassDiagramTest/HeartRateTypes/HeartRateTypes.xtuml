@@ -1,0 +1,111 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("de15cd56-70d4-4e4e-9a06-011c50a8b7db",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'HeartRateTypes',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("656df0e2-fccb-4c28-b9c3-38dec8018d6c",
+	112,
+	"de15cd56-70d4-4e4e-9a06-011c50a8b7db",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::HeartRateTypes');
+INSERT INTO GD_GE
+	VALUES ("acbdccfd-d660-4d99-ab34-9e55ceb57b10",
+	"656df0e2-fccb-4c28-b9c3-38dec8018d6c",
+	"1f99fd1f-178e-47be-afd2-a060e828e6e3",
+	109,
+	0,
+	'EmptyClassDiagramTest::HeartRateTypes::HeartRateConstants');
+INSERT INTO GD_SHP
+	VALUES ("acbdccfd-d660-4d99-ab34-9e55ceb57b10");
+INSERT INTO GD_NCS
+	VALUES ("acbdccfd-d660-4d99-ab34-9e55ceb57b10");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"acbdccfd-d660-4d99-ab34-9e55ceb57b10");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"acbdccfd-d660-4d99-ab34-9e55ceb57b10",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("acbdccfd-d660-4d99-ab34-9e55ceb57b10",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("656df0e2-fccb-4c28-b9c3-38dec8018d6c",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_CSP
+	VALUES ("1f99fd1f-178e-47be-afd2-a060e828e6e3",
+	'HeartRateConstants',
+	'SamplingPeriod is expressed in seconds and represents the period at which heart-rate samples are recorded.
+AveragingWindow is expressed in samples and represents the number of samples used when calculating the current average.');
+INSERT INTO CNST_SYC
+	VALUES ("75ee096b-e0ca-4940-bb31-dc297bc31433",
+	'HeartRateSamplingPeriod',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"1f99fd1f-178e-47be-afd2-a060e828e6e3",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO CNST_LFSC
+	VALUES ("75ee096b-e0ca-4940-bb31-dc297bc31433",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("75ee096b-e0ca-4940-bb31-dc297bc31433",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'3');
+INSERT INTO CNST_SYC
+	VALUES ("08c0bac9-efbd-418b-abdb-7cbe8e3ab768",
+	'HeartRateAveragingWindow',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000002",
+	"1f99fd1f-178e-47be-afd2-a060e828e6e3",
+	"75ee096b-e0ca-4940-bb31-dc297bc31433",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LFSC
+	VALUES ("08c0bac9-efbd-418b-abdb-7cbe8e3ab768",
+	"ba5eda7a-def5-0000-0000-000000000002");
+INSERT INTO CNST_LSC
+	VALUES ("08c0bac9-efbd-418b-abdb-7cbe8e3ab768",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'5');
+INSERT INTO PE_PE
+	VALUES ("1f99fd1f-178e-47be-afd2-a060e828e6e3",
+	1,
+	"de15cd56-70d4-4e4e-9a06-011c50a8b7db",
+	"00000000-0000-0000-0000-000000000000",
+	10);
+INSERT INTO PE_PE
+	VALUES ("de15cd56-70d4-4e4e-9a06-011c50a8b7db",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../EmptyClassDiagramTest.xtuml');

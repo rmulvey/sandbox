@@ -1,0 +1,1033 @@
+-- BP 7.1.6 content: InstanceStateMachine syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO SM_ISM
+	VALUES ("5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"fcf5de4a-8be2-4787-bfd9-697d3b06bc43");
+INSERT INTO SM_SM
+	VALUES ("5debde44-500b-41e7-b31e-f01c33fad7b7",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_LEVT
+	VALUES ("29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'Completed',
+	0,
+	'',
+	'Goal1',
+	'Indicates that execution of this goal has been completed.  ');
+INSERT INTO SM_LEVT
+	VALUES ("f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'Evaluate',
+	0,
+	'',
+	'Goal2',
+	'Indicates that this goal should be evaluated for completeness and achievement.');
+INSERT INTO SM_LEVT
+	VALUES ("d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	3,
+	'Pause',
+	0,
+	'',
+	'Goal3',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'Executing',
+	1,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'Completed',
+	2,
+	0);
+INSERT INTO SM_EIGN
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_STATE
+	VALUES ("c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'Paused',
+	3,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"f408c764-2c8f-4f93-838e-dacd09877336",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_CH
+	VALUES ("c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("bd6911c2-16a9-46de-ae58-f9b2a1aa6316",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("bd6911c2-16a9-46de-ae58-f9b2a1aa6316",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("943191e7-d157-41c8-bc18-ce0417ba2923",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"f408c764-2c8f-4f93-838e-dacd09877336",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("943191e7-d157-41c8-bc18-ce0417ba2923",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("8cf603df-1351-4b8c-92a9-a1996767a327",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"d2f0a670-ef0c-4bb9-beec-5f871fab0c4a",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("8cf603df-1351-4b8c-92a9-a1996767a327",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("4d44745c-6ced-4ab1-92c8-fdf57507641a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"f408c764-2c8f-4f93-838e-dacd09877336",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("4d44745c-6ced-4ab1-92c8-fdf57507641a",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("499629c2-495d-4cbe-8620-8c8d31bc3e00",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	"29a502f7-fbe6-4823-85e3-ee87511dd157",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TXN
+	VALUES ("499629c2-495d-4cbe-8620-8c8d31bc3e00",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("1ecd8179-0d84-47f7-9795-40fe286267eb",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac");
+INSERT INTO SM_AH
+	VALUES ("1ecd8179-0d84-47f7-9795-40fe286267eb",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("1ecd8179-0d84-47f7-9795-40fe286267eb",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	1,
+	'// Determine whether this goal is currently being achieved.
+disposition = self.evaluateAchievement();
+
+// Update achievement records if necessary.  There are four cases:
+//   0. Still not achieving this goal. 
+//   1. Just started achieving this goal.
+//   2. Just stopped achieving this goal.
+//   3. Still achieving this goal.
+// For cases 0 and 3, there is nothing to be done for achievement records.
+// Case 1 requires the creation of a new achievment record, storing the start time.
+// Case 2 requires the storing of the end time for the open achievement record.
+if ( (self.disposition != GoalDisposition::Achieving) and (disposition == GoalDisposition::Achieving) )
+  // Case 1, create achievement record, store start time, relate it as open record.
+  create object instance achievement of Achievement;
+  relate self to achievement across R14.''has open'';
+  select one workoutTimer related by 
+    self->WorkoutSession[R11.''is currently executing within'']->WorkoutTimer[R8.''is timed by''];
+  achievement.startTime = workoutTimer.time;
+elif ( (self.disposition == GoalDisposition::Achieving) and (disposition != GoalDisposition::Achieving) )
+  // Case 2, store end time, relate as recorded record, unrelate as open record.
+  select one achievement related by self->Achievement[R14.''has open''];
+  achievement.close();
+end if;
+
+// Update disposition of this goal.
+self.disposition = disposition;
+
+// Determine whether execution of this goal is complete, 
+//  and if so, advance to the next one if it exists.
+self.evaluateCompletion();',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("fdc60e75-f03c-45da-86bf-f1ed8e08f981",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"6f0b0b73-7331-4bc4-9441-4c3804aa8d43");
+INSERT INTO SM_AH
+	VALUES ("fdc60e75-f03c-45da-86bf-f1ed8e08f981",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("fdc60e75-f03c-45da-86bf-f1ed8e08f981",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	1,
+	'// Stop executing this goal and begin executing the next one, if there is one.
+
+// Stop the goal-evaluation timer, ignoring the return code which indicates 
+//   whether a timer event was in flight when the timer was cancelled.
+cancelSucceeded = TIM::timer_cancel( timer_inst_ref: self.evaluationTimer );
+
+// If this goal has an open achievement record, close it.
+select one openAchievement related by self->Achievement[R14.''has open''];
+if ( not empty openAchievement )
+  openAchievement.close();
+end if;
+
+// Add this goal to the collection of those that have already executed.
+select one session related by self->WorkoutSession[R11.''is currently executing within''];
+relate self to session across R13.''was executed within'';
+
+// Remove this goal from the collection of currently executing ones.
+unrelate self from session across R11.''is currently executing within'';
+
+// Find the next goal specification in the sequence and start executing it, if it exists.
+select one currentGoalSpec related by self->GoalSpec[R9.''specified by''];
+
+select any nextGoalSpec related by session->GoalSpec[R10.''includes'']
+  where ( selected.sequenceNumber == (currentGoalSpec.sequenceNumber + 1) );
+  
+if ( not empty nextGoalSpec )
+  Goal::create( sequenceNumber: nextGoalSpec.sequenceNumber );
+end if;
+',
+	'');
+INSERT INTO SM_MOAH
+	VALUES ("c433a016-8c5c-4c69-ae23-1550c99d7d67",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"c93e4bc2-bde5-493d-9bfb-1bf57f29cefd");
+INSERT INTO SM_AH
+	VALUES ("c433a016-8c5c-4c69-ae23-1550c99d7d67",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("c433a016-8c5c-4c69-ae23-1550c99d7d67",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	1,
+	'// Deactivate evaluation timer, ignoring the return code because this 
+//   state model ignores any latent timer events.
+cancelSucceeded = TIM::timer_cancel( timer_inst_ref: self.evaluationTimer );',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("9284a075-c00a-4981-a325-c4c4daf8fbb1",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"bd6911c2-16a9-46de-ae58-f9b2a1aa6316");
+INSERT INTO SM_AH
+	VALUES ("9284a075-c00a-4981-a325-c4c4daf8fbb1",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("9284a075-c00a-4981-a325-c4c4daf8fbb1",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("8144583f-29ef-4747-a213-6f802ee6b5a7",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"943191e7-d157-41c8-bc18-ce0417ba2923");
+INSERT INTO SM_AH
+	VALUES ("8144583f-29ef-4747-a213-6f802ee6b5a7",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("8144583f-29ef-4747-a213-6f802ee6b5a7",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	1,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("9f2dff7c-c566-4f02-87ee-bcdde8fd4415",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"8cf603df-1351-4b8c-92a9-a1996767a327");
+INSERT INTO SM_AH
+	VALUES ("9f2dff7c-c566-4f02-87ee-bcdde8fd4415",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("9f2dff7c-c566-4f02-87ee-bcdde8fd4415",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	3,
+	'',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("8fdcc829-b69a-4207-a063-b20626ef5758",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"4d44745c-6ced-4ab1-92c8-fdf57507641a");
+INSERT INTO SM_AH
+	VALUES ("8fdcc829-b69a-4207-a063-b20626ef5758",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("8fdcc829-b69a-4207-a063-b20626ef5758",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	1,
+	'// Start a timer that periodically causes evaluation of goal achievement.
+create event instance evaluateEvent of Goal2:Evaluate to self;
+self.evaluationTimer = TIM::timer_start_recurring( event_inst: evaluateEvent, microseconds: evaluationPeriod );',
+	'');
+INSERT INTO SM_TAH
+	VALUES ("e4a4a499-93ad-40b9-b951-c0001f1dba50",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	"499629c2-495d-4cbe-8620-8c8d31bc3e00");
+INSERT INTO SM_AH
+	VALUES ("e4a4a499-93ad-40b9-b951-c0001f1dba50",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7");
+INSERT INTO SM_ACT
+	VALUES ("e4a4a499-93ad-40b9-b951-c0001f1dba50",
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	3,
+	'',
+	'');
+INSERT INTO GD_MD
+	VALUES ("cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	8,
+	"5debde44-500b-41e7-b31e-f01c33fad7b7",
+	40,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine');
+INSERT INTO GD_GE
+	VALUES ("0625f3c8-aafa-46a0-b1fc-7c6b64c766b7",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"10a9b16f-9193-4cc7-ba1b-0d9f6128a4ac",
+	41,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Executing');
+INSERT INTO GD_SHP
+	VALUES ("0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO GD_NCS
+	VALUES ("0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("0625f3c8-aafa-46a0-b1fc-7c6b64c766b7",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("9c919e92-18e0-4bf1-ba59-473212583029",
+	200.000000,
+	0.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO DIM_CON
+	VALUES ("98920251-c2ca-4d96-8852-0cd634a93602",
+	200.000000,
+	20.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO DIM_CON
+	VALUES ("8a8d8ad0-47d2-4989-ac07-12bf6f49013b",
+	0.000000,
+	75.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO DIM_CON
+	VALUES ("9f4fb885-b61e-4132-99bf-1d5ccb9e56d4",
+	200.000000,
+	95.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO DIM_CON
+	VALUES ("88142ca4-75f2-479a-b848-6079fa9f3394",
+	200.000000,
+	115.000000,
+	"0625f3c8-aafa-46a0-b1fc-7c6b64c766b7");
+INSERT INTO GD_GE
+	VALUES ("ef15f253-4211-4171-bea7-5dae919ba9a2",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"6f0b0b73-7331-4bc4-9441-4c3804aa8d43",
+	41,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Completed');
+INSERT INTO GD_SHP
+	VALUES ("ef15f253-4211-4171-bea7-5dae919ba9a2");
+INSERT INTO GD_NCS
+	VALUES ("ef15f253-4211-4171-bea7-5dae919ba9a2");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"ef15f253-4211-4171-bea7-5dae919ba9a2");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"ef15f253-4211-4171-bea7-5dae919ba9a2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("ef15f253-4211-4171-bea7-5dae919ba9a2",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("40d1df6b-2541-4700-b76b-845e3ba2d882",
+	220.000000,
+	75.000000,
+	"ef15f253-4211-4171-bea7-5dae919ba9a2");
+INSERT INTO DIM_CON
+	VALUES ("c4ee5cc6-5400-4ee9-bd25-0ce04e455f36",
+	420.000000,
+	95.000000,
+	"ef15f253-4211-4171-bea7-5dae919ba9a2");
+INSERT INTO GD_GE
+	VALUES ("1ed9c583-f702-4c4a-b5eb-607479c16066",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"c93e4bc2-bde5-493d-9bfb-1bf57f29cefd",
+	41,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Paused');
+INSERT INTO GD_SHP
+	VALUES ("1ed9c583-f702-4c4a-b5eb-607479c16066");
+INSERT INTO GD_NCS
+	VALUES ("1ed9c583-f702-4c4a-b5eb-607479c16066");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"1ed9c583-f702-4c4a-b5eb-607479c16066");
+INSERT INTO DIM_GE
+	VALUES (440.000000,
+	0.000000,
+	"1ed9c583-f702-4c4a-b5eb-607479c16066",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("1ed9c583-f702-4c4a-b5eb-607479c16066",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("a897a78c-1cc3-4173-aa7e-c676a001a0fc",
+	440.000000,
+	75.000000,
+	"1ed9c583-f702-4c4a-b5eb-607479c16066");
+INSERT INTO DIM_CON
+	VALUES ("14bdcc42-361b-442f-b903-5adf48332598",
+	440.000000,
+	75.000000,
+	"1ed9c583-f702-4c4a-b5eb-607479c16066");
+INSERT INTO DIM_CON
+	VALUES ("1915facb-e77d-4d40-975c-7dd6add2e5c8",
+	440.000000,
+	75.000000,
+	"1ed9c583-f702-4c4a-b5eb-607479c16066");
+INSERT INTO GD_GE
+	VALUES ("a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"bd6911c2-16a9-46de-ae58-f9b2a1aa6316",
+	42,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Executing::Goal1: Completed');
+INSERT INTO GD_CON
+	VALUES ("a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("b5a0d477-313c-4bbf-91cd-dcd4a58922a7",
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"b5a0d477-313c-4bbf-91cd-dcd4a58922a7");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"b5a0d477-313c-4bbf-91cd-dcd4a58922a7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("b5a0d477-313c-4bbf-91cd-dcd4a58922a7",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("724dbfdd-f690-4853-b838-46e7c82db35c",
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	3,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"724dbfdd-f690-4853-b838-46e7c82db35c");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"724dbfdd-f690-4853-b838-46e7c82db35c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("724dbfdd-f690-4853-b838-46e7c82db35c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("feaab003-2120-454b-9e3a-5dd8018dc279",
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"feaab003-2120-454b-9e3a-5dd8018dc279");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"feaab003-2120-454b-9e3a-5dd8018dc279",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("feaab003-2120-454b-9e3a-5dd8018dc279",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("ef52588c-4892-413e-8447-4d07e01a0f0e",
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	"00000000-0000-0000-0000-000000000000",
+	"ff2bf2fc-11ac-4975-a1f2-e992104d818f",
+	"d1e778ae-b7db-4020-8481-872747507934");
+INSERT INTO DIM_WAY
+	VALUES ("ff2bf2fc-11ac-4975-a1f2-e992104d818f",
+	200.000000,
+	0.000000,
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("d1e778ae-b7db-4020-8481-872747507934",
+	220.000000,
+	75.000000,
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	"00000000-0000-0000-0000-000000000000",
+	"ff2bf2fc-11ac-4975-a1f2-e992104d818f");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("a1334289-618f-4a8f-8b5d-36eaf32cf6d1",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("9c919e92-18e0-4bf1-ba59-473212583029",
+	"40d1df6b-2541-4700-b76b-845e3ba2d882",
+	"a1334289-618f-4a8f-8b5d-36eaf32cf6d1");
+INSERT INTO GD_GE
+	VALUES ("8b9d6568-69e9-4615-8831-04a7c04875ed",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"943191e7-d157-41c8-bc18-ce0417ba2923",
+	42,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Executing::Goal2: Evaluate');
+INSERT INTO GD_CON
+	VALUES ("8b9d6568-69e9-4615-8831-04a7c04875ed",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("946b2c23-5dae-4eed-b060-52d1bf9f2faa",
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"946b2c23-5dae-4eed-b060-52d1bf9f2faa");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"946b2c23-5dae-4eed-b060-52d1bf9f2faa",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("946b2c23-5dae-4eed-b060-52d1bf9f2faa",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("07918ca3-d7ca-4455-8f8b-8d2f5e4b0b76",
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	3,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"07918ca3-d7ca-4455-8f8b-8d2f5e4b0b76");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"07918ca3-d7ca-4455-8f8b-8d2f5e4b0b76",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("07918ca3-d7ca-4455-8f8b-8d2f5e4b0b76",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("e036b6fe-1e69-4dab-8c52-b0dcc7b8c3d4",
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"e036b6fe-1e69-4dab-8c52-b0dcc7b8c3d4");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"e036b6fe-1e69-4dab-8c52-b0dcc7b8c3d4",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("e036b6fe-1e69-4dab-8c52-b0dcc7b8c3d4",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("d3d36092-d1e1-4ce2-bac2-66fbc1940473",
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	"00000000-0000-0000-0000-000000000000",
+	"aae1acfb-e527-4382-9608-4a124e2a7ddb",
+	"4813f163-c3ed-4dc3-b3a8-0350f8154428");
+INSERT INTO DIM_WAY
+	VALUES ("aae1acfb-e527-4382-9608-4a124e2a7ddb",
+	200.000000,
+	20.000000,
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("4813f163-c3ed-4dc3-b3a8-0350f8154428",
+	0.000000,
+	75.000000,
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	"00000000-0000-0000-0000-000000000000",
+	"aae1acfb-e527-4382-9608-4a124e2a7ddb");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"8b9d6568-69e9-4615-8831-04a7c04875ed",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("8b9d6568-69e9-4615-8831-04a7c04875ed",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("98920251-c2ca-4d96-8852-0cd634a93602",
+	"8a8d8ad0-47d2-4989-ac07-12bf6f49013b",
+	"8b9d6568-69e9-4615-8831-04a7c04875ed");
+INSERT INTO GD_GE
+	VALUES ("342c6630-b733-46af-a5ef-1f8f596b6d52",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"8cf603df-1351-4b8c-92a9-a1996767a327",
+	42,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Executing::Goal3: Pause');
+INSERT INTO GD_CON
+	VALUES ("342c6630-b733-46af-a5ef-1f8f596b6d52",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("dfbebb3f-2a64-4581-bd24-fd2c0957b80d",
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"dfbebb3f-2a64-4581-bd24-fd2c0957b80d");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"dfbebb3f-2a64-4581-bd24-fd2c0957b80d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("dfbebb3f-2a64-4581-bd24-fd2c0957b80d",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("a4edf6b0-4acd-4eae-a1fd-e352446ece97",
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	3,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"a4edf6b0-4acd-4eae-a1fd-e352446ece97");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"a4edf6b0-4acd-4eae-a1fd-e352446ece97",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("a4edf6b0-4acd-4eae-a1fd-e352446ece97",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("45136025-262d-45ed-a1b2-0a4115badd51",
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"45136025-262d-45ed-a1b2-0a4115badd51");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"45136025-262d-45ed-a1b2-0a4115badd51",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("45136025-262d-45ed-a1b2-0a4115badd51",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("585eac6a-f989-4368-b6e1-976425d03220",
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	"00000000-0000-0000-0000-000000000000",
+	"4ed724c6-39f1-45a4-9c3e-9e8bd41ab561",
+	"a7916bbb-78be-41e3-a186-a46c90514420");
+INSERT INTO DIM_WAY
+	VALUES ("4ed724c6-39f1-45a4-9c3e-9e8bd41ab561",
+	200.000000,
+	95.000000,
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("a7916bbb-78be-41e3-a186-a46c90514420",
+	440.000000,
+	75.000000,
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	"00000000-0000-0000-0000-000000000000",
+	"4ed724c6-39f1-45a4-9c3e-9e8bd41ab561");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"342c6630-b733-46af-a5ef-1f8f596b6d52",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("342c6630-b733-46af-a5ef-1f8f596b6d52",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("9f4fb885-b61e-4132-99bf-1d5ccb9e56d4",
+	"a897a78c-1cc3-4173-aa7e-c676a001a0fc",
+	"342c6630-b733-46af-a5ef-1f8f596b6d52");
+INSERT INTO GD_GE
+	VALUES ("40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"4d44745c-6ced-4ab1-92c8-fdf57507641a",
+	42,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Paused::Goal2: Evaluate');
+INSERT INTO GD_CON
+	VALUES ("40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("3089d108-67fb-4058-91ba-96d2104ba1eb",
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"3089d108-67fb-4058-91ba-96d2104ba1eb");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"3089d108-67fb-4058-91ba-96d2104ba1eb",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("3089d108-67fb-4058-91ba-96d2104ba1eb",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("f5c4f799-8400-412e-bd43-a6c86c309de9",
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	3,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"f5c4f799-8400-412e-bd43-a6c86c309de9");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"f5c4f799-8400-412e-bd43-a6c86c309de9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("f5c4f799-8400-412e-bd43-a6c86c309de9",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("bd079376-792a-4b4b-b789-d5f955e60795",
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"bd079376-792a-4b4b-b789-d5f955e60795");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"bd079376-792a-4b4b-b789-d5f955e60795",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("bd079376-792a-4b4b-b789-d5f955e60795",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("12043279-cf9c-431a-8b83-cdfd8d2923a7",
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	"00000000-0000-0000-0000-000000000000",
+	"435190f1-f90a-499c-bebe-d40e6e295256",
+	"f2c03852-b564-4357-acbc-c893cc3395bb");
+INSERT INTO DIM_WAY
+	VALUES ("435190f1-f90a-499c-bebe-d40e6e295256",
+	200.000000,
+	115.000000,
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("f2c03852-b564-4357-acbc-c893cc3395bb",
+	440.000000,
+	75.000000,
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	"00000000-0000-0000-0000-000000000000",
+	"435190f1-f90a-499c-bebe-d40e6e295256");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("88142ca4-75f2-479a-b848-6079fa9f3394",
+	"14bdcc42-361b-442f-b903-5adf48332598",
+	"40cd6c19-b4bc-4f3f-9884-3bc508ff8f8e");
+INSERT INTO GD_GE
+	VALUES ("fe7047c7-011d-49dd-afd7-0c73837665cd",
+	"cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	"499629c2-495d-4cbe-8620-8c8d31bc3e00",
+	42,
+	0,
+	'EmptyClassDiagramTest::Library::Tracking::Tracking::Goal::Instance State Machine::Paused::Goal1: Completed');
+INSERT INTO GD_CON
+	VALUES ("fe7047c7-011d-49dd-afd7-0c73837665cd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("2d7031a6-56fa-4e82-a65d-80a2210f05d7",
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	1,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"2d7031a6-56fa-4e82-a65d-80a2210f05d7");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"2d7031a6-56fa-4e82-a65d-80a2210f05d7",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("2d7031a6-56fa-4e82-a65d-80a2210f05d7",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("cb9418df-6a61-49d4-ade9-f053eccdb87d",
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	3,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"cb9418df-6a61-49d4-ade9-f053eccdb87d");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"cb9418df-6a61-49d4-ade9-f053eccdb87d",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("cb9418df-6a61-49d4-ade9-f053eccdb87d",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_CTXT
+	VALUES ("de7e505a-a0d7-4b48-9d66-22b8f43258f0",
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	2,
+	0.000000,
+	0.000000);
+INSERT INTO DIM_ND
+	VALUES (0.000000,
+	0.000000,
+	"de7e505a-a0d7-4b48-9d66-22b8f43258f0");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"de7e505a-a0d7-4b48-9d66-22b8f43258f0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("de7e505a-a0d7-4b48-9d66-22b8f43258f0",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_LS
+	VALUES ("afbf4190-fb43-4074-8ab5-12bb06115cad",
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	"00000000-0000-0000-0000-000000000000",
+	"84591ee3-8bb1-4dbb-8c6a-cc122f7fbd2d",
+	"c8f03407-e35d-41ff-9270-2c918822a8ab");
+INSERT INTO DIM_WAY
+	VALUES ("84591ee3-8bb1-4dbb-8c6a-cc122f7fbd2d",
+	420.000000,
+	95.000000,
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_WAY
+	VALUES ("c8f03407-e35d-41ff-9270-2c918822a8ab",
+	440.000000,
+	75.000000,
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	"00000000-0000-0000-0000-000000000000",
+	"84591ee3-8bb1-4dbb-8c6a-cc122f7fbd2d");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"fe7047c7-011d-49dd-afd7-0c73837665cd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("fe7047c7-011d-49dd-afd7-0c73837665cd",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ED
+	VALUES ("c4ee5cc6-5400-4ee9-bd25-0ce04e455f36",
+	"1915facb-e77d-4d40-975c-7dd6add2e5c8",
+	"fe7047c7-011d-49dd-afd7-0c73837665cd");
+INSERT INTO DIM_DIA
+	VALUES ("cb81ee73-1530-446b-8830-5bafdfff5c9a",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_OBJ_PROXY
+	VALUES ("fcf5de4a-8be2-4787-bfd9-697d3b06bc43",
+	'Goal',
+	9,
+	'Goal',
+	'Each instance represents a particular goal as it is executing.
+This class knows how to evaluate whether the goal is being achieved 
+and whether the goal has completed.',
+	"00000000-0000-0000-0000-000000000000",
+	'../Goal.xtuml');

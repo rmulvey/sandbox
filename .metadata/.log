@@ -1,0 +1,19 @@
+!SESSION 2016-03-04 12:26:42.203 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.xtuml.bp.pkg.BridgePoint -application org.xtuml.bp.cli.Build -project GPSWatch-NoGraphics -prebuildOnly   
+Command-line arguments:  -clean -product org.xtuml.bp.pkg.BridgePoint -data /media/psf/Home/git/sandbox -application org.xtuml.bp.cli.Build -project GPSWatch-NoGraphics -prebuildOnly   
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2016-03-04 12:26:54.874
+!MESSAGE Unable to acquire PluginConverter service during generation for: /home/robertmulvey/xtuml/BridgePoint/eclipse/plugins/org.xtuml.bp.sequencecapture_5.2.0.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2016-03-04 12:26:54.974
+!MESSAGE Unable to acquire PluginConverter service during generation for: /home/robertmulvey/xtuml/BridgePoint/eclipse/plugins/org.xtuml.bp.sequencecapture_5.2.0.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2016-03-04 12:26:55.053
+!MESSAGE Unable to acquire PluginConverter service during generation for: /home/robertmulvey/xtuml/BridgePoint/eclipse/plugins/org.xtuml.bp.sequencecapture_5.2.0.
+
+!ENTRY org.eclipse.equinox.p2.publisher.eclipse 4 0 2016-03-04 12:26:55.115
+!MESSAGE Unable to acquire PluginConverter service during generation for: /home/robertmulvey/xtuml/BridgePoint/eclipse/plugins/org.xtuml.bp.sequencecapture_5.2.0.

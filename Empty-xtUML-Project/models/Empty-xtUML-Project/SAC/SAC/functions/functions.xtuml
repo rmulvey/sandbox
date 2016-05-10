@@ -1,0 +1,477 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	"d3624a78-c0af-4956-a558-163d6a0d08ff",
+	'functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("5a554a1a-2ad6-48df-85b9-9b28b09fd5a8",
+	112,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'Empty-xtUML-Project::SAC::SAC::functions');
+INSERT INTO DIM_DIA
+	VALUES ("5a554a1a-2ad6-48df-85b9-9b28b09fd5a8",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	"00000000-0000-0000-0000-000000000000",
+	'user_logon',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("6104fdb9-86df-4d47-87ba-dfef04a063bc",
+	"c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	'user_id',
+	"7c51f0c5-a225-4f9e-9d72-a64ddfe47e19",
+	0,
+	'',
+	"20cd5368-ebe9-4a4e-b440-a47cd6b8c560",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("7c51f0c5-a225-4f9e-9d72-a64ddfe47e19",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("20cd5368-ebe9-4a4e-b440-a47cd6b8c560",
+	"c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	'login_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"e748689e-4224-4ded-a6e5-85b0f42f4095",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("6731100b-40c6-4e86-8011-e202d92abe02",
+	"00000000-0000-0000-0000-000000000000",
+	'string',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO S_SPARM
+	VALUES ("d8cb9a12-0d94-4dfa-9ce5-8ca933ccd8a0",
+	"c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	'user_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"6104fdb9-86df-4d47-87ba-dfef04a063bc",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("1e33d7fa-d85b-473e-a60f-76d0fd2a9532",
+	"c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	'workstation_hostname',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"d8cb9a12-0d94-4dfa-9ce5-8ca933ccd8a0",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("e748689e-4224-4ded-a6e5-85b0f42f4095",
+	"c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	'groups',
+	"347784b7-bed2-4a64-8042-0f42e96e2613",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("347784b7-bed2-4a64-8042-0f42e96e2613",
+	"00000000-0000-0000-0000-000000000000",
+	'sequence of string',
+	'',
+	'',
+	'../../Shared/Shared.xtuml');
+INSERT INTO PE_PE
+	VALUES ("c09a3bad-f709-45fa-b364-8b3bc80e0340",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_DT_PROXY
+	VALUES ("fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO S_SYNC
+	VALUES ("50ccbba0-3960-44c9-be7f-d9f1975af9fc",
+	"00000000-0000-0000-0000-000000000000",
+	'user_logoff',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("59b9cbb0-47f3-47cc-a61f-c483a5128d08",
+	"50ccbba0-3960-44c9-be7f-d9f1975af9fc",
+	'session_id',
+	"7c51f0c5-a225-4f9e-9d72-a64ddfe47e19",
+	0,
+	'',
+	"b1e0376a-0204-4280-b24d-9c7a5cfc66c0",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("7c7ce8ed-fd8f-4cf7-8043-7fb60c517bd4",
+	"50ccbba0-3960-44c9-be7f-d9f1975af9fc",
+	'user_id',
+	"7c51f0c5-a225-4f9e-9d72-a64ddfe47e19",
+	0,
+	'',
+	"59b9cbb0-47f3-47cc-a61f-c483a5128d08",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("b1e0376a-0204-4280-b24d-9c7a5cfc66c0",
+	"50ccbba0-3960-44c9-be7f-d9f1975af9fc",
+	'login_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("50ccbba0-3960-44c9-be7f-d9f1975af9fc",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("71f706d9-20d0-4895-8ce7-863bd17271c3",
+	"00000000-0000-0000-0000-000000000000",
+	'add_group',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("be83650c-3799-4faa-a761-eb3c63b8c48c",
+	"71f706d9-20d0-4895-8ce7-863bd17271c3",
+	'group_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("71f706d9-20d0-4895-8ce7-863bd17271c3",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("b72e9c69-afbe-47af-bb46-c7fff0e9477b",
+	"00000000-0000-0000-0000-000000000000",
+	'add_operation_to_group',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("1859b646-5681-47a4-abc9-efe6f13ae909",
+	"b72e9c69-afbe-47af-bb46-c7fff0e9477b",
+	'group_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("5caa0e42-d5dd-4751-833f-084fd4fe2406",
+	"b72e9c69-afbe-47af-bb46-c7fff0e9477b",
+	'operations',
+	"347784b7-bed2-4a64-8042-0f42e96e2613",
+	0,
+	'',
+	"1859b646-5681-47a4-abc9-efe6f13ae909",
+	'');
+INSERT INTO PE_PE
+	VALUES ("b72e9c69-afbe-47af-bb46-c7fff0e9477b",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("7cf11376-d27c-4cf0-a574-ac9faf9f71ee",
+	"00000000-0000-0000-0000-000000000000",
+	'session_active',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("f49c90ac-82d5-49df-96b8-b3bba3f48081",
+	"7cf11376-d27c-4cf0-a574-ac9faf9f71ee",
+	'session_id',
+	"7c51f0c5-a225-4f9e-9d72-a64ddfe47e19",
+	0,
+	'',
+	"ea5a8fdf-c35f-4eea-88ff-7757da2c576b",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("11b380ae-7c79-4458-8564-b68ae171abc7",
+	"7cf11376-d27c-4cf0-a574-ac9faf9f71ee",
+	'user_id',
+	"7c51f0c5-a225-4f9e-9d72-a64ddfe47e19",
+	0,
+	'',
+	"f49c90ac-82d5-49df-96b8-b3bba3f48081",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("ea5a8fdf-c35f-4eea-88ff-7757da2c576b",
+	"7cf11376-d27c-4cf0-a574-ac9faf9f71ee",
+	'login_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("7cf11376-d27c-4cf0-a574-ac9faf9f71ee",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("48fe2fcb-548c-4978-ac57-92005488aa0d",
+	"00000000-0000-0000-0000-000000000000",
+	'delete_group',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("7a6942f6-3601-47e2-9ef9-d0c8a6e7774e",
+	"48fe2fcb-548c-4978-ac57-92005488aa0d",
+	'group_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("48fe2fcb-548c-4978-ac57-92005488aa0d",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("df5df5ca-33bc-4b9b-8659-011c4cc18a71",
+	"00000000-0000-0000-0000-000000000000",
+	'delete_group_operation',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("a3fee5f9-91bb-49ea-9379-73165e5ff2af",
+	"df5df5ca-33bc-4b9b-8659-011c4cc18a71",
+	'group_name',
+	"6731100b-40c6-4e86-8011-e202d92abe02",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("22326e81-48f3-42a9-a4ed-aea076c2db7f",
+	"df5df5ca-33bc-4b9b-8659-011c4cc18a71",
+	'operations',
+	"347784b7-bed2-4a64-8042-0f42e96e2613",
+	0,
+	'',
+	"a3fee5f9-91bb-49ea-9379-73165e5ff2af",
+	'');
+INSERT INTO PE_PE
+	VALUES ("df5df5ca-33bc-4b9b-8659-011c4cc18a71",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("e42d12c4-7af0-4323-ad72-6d5461a85703",
+	"00000000-0000-0000-0000-000000000000",
+	'populate_domain',
+	'pragma soa_remote( "" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO S_SPARM
+	VALUES ("3ab4add2-0183-40d7-9445-71f52c277646",
+	"e42d12c4-7af0-4323-ad72-6d5461a85703",
+	'reload_config_files',
+	"b832afdb-38da-4162-8db4-04cfbf94b8ee",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("b832afdb-38da-4162-8db4-04cfbf94b8ee",
+	"00000000-0000-0000-0000-000000000000",
+	'boolean',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO PE_PE
+	VALUES ("e42d12c4-7af0-4323-ad72-6d5461a85703",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("b69299a9-855a-451a-80cb-cff6c3829441",
+	"00000000-0000-0000-0000-000000000000",
+	'resend_infos',
+	'pragma soa_remote( "transient" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES ("b69299a9-855a-451a-80cb-cff6c3829441",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("2bb3c96a-3df9-4acf-8539-0d3ad592c4c0",
+	"00000000-0000-0000-0000-000000000000",
+	'populate_domain_1',
+	'pragma scenario( 1 );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES ("2bb3c96a-3df9-4acf-8539-0d3ad592c4c0",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("02eb489a-f2ab-4f4c-bd07-cbbaf13d9cab",
+	"00000000-0000-0000-0000-000000000000",
+	'soa_subscribe_2',
+	'pragma scenario( 2 );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES ("02eb489a-f2ab-4f4c-bd07-cbbaf13d9cab",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("864ab72c-9985-498b-9d7e-d70d2b0c118b",
+	"00000000-0000-0000-0000-000000000000",
+	'resend_infos_3',
+	'pragma scenario( 3 );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES ("864ab72c-9985-498b-9d7e-d70d2b0c118b",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("bc6cc1cd-d5d4-40d1-8b07-ae7f3d6a78e0",
+	"00000000-0000-0000-0000-000000000000",
+	'test_SAC_1',
+	'pragma external( 1 );
+pragma test_only( "true" );
+',
+	'
+',
+	"fdf5431f-55ff-4e3c-902d-ed2d3d3c6ab9",
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES ("bc6cc1cd-d5d4-40d1-8b07-ae7f3d6a78e0",
+	1,
+	"549d277b-06a4-498a-bb58-533724e7e245",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("549d277b-06a4-498a-bb58-533724e7e245",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"96ab8b3d-262f-4d67-a627-829a6e0d5c7e",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("96ab8b3d-262f-4d67-a627-829a6e0d5c7e",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'SAC',
+	'pragma number( 59 );
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../SAC.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("d3624a78-c0af-4956-a558-163d6a0d08ff",
+	'Empty-xtUML-Project',
+	1,
+	'../../../Empty-xtUML-Project.xtuml');

@@ -1,0 +1,70 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("d9ef0107-6a4d-4310-b35d-b0a5ae671554",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'HeartRateMonitorInterfaces',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("b9a7034d-7aeb-4ed9-b36a-0d0651d47b1a",
+	112,
+	"d9ef0107-6a4d-4310-b35d-b0a5ae671554",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::HeartRateMonitorInterfaces');
+INSERT INTO GD_GE
+	VALUES ("340dd96f-1f60-4176-a8c8-2b79a66c0a62",
+	"b9a7034d-7aeb-4ed9-b36a-0d0651d47b1a",
+	"b98e2da0-6c96-45e9-b902-6cd102fa0d29",
+	96,
+	0,
+	'EmptyClassDiagramTest::HeartRateMonitorInterfaces::HeartRateProvider');
+INSERT INTO GD_SHP
+	VALUES ("340dd96f-1f60-4176-a8c8-2b79a66c0a62");
+INSERT INTO GD_NCS
+	VALUES ("340dd96f-1f60-4176-a8c8-2b79a66c0a62");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"340dd96f-1f60-4176-a8c8-2b79a66c0a62");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"340dd96f-1f60-4176-a8c8-2b79a66c0a62",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("340dd96f-1f60-4176-a8c8-2b79a66c0a62",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("b9a7034d-7aeb-4ed9-b36a-0d0651d47b1a",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("d9ef0107-6a4d-4310-b35d-b0a5ae671554",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../EmptyClassDiagramTest.xtuml');

@@ -64,7 +64,7 @@ INSERT INTO GD_GE
 	"6939c537-da3f-4ab7-86ac-d6cfc8b1758d",
 	93,
 	0,
-	'DeploymentDiagramOnly::Components::Component1::Port1::Unnamed Interface');
+	'DeploymentDiagramOnly::Components::Component1::Port1::SimpleInterface');
 INSERT INTO GD_CON
 	VALUES ("14357db9-9ff7-4c38-a267-3d95a183d247",
 	"00000000-0000-0000-0000-000000000000");
@@ -154,6 +154,11 @@ INSERT INTO DIM_ELE
 	VALUES ("14357db9-9ff7-4c38-a267-3d95a183d247",
 	0,
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_CON
+	VALUES ("bad5303a-061c-4e19-b1db-7403be091d2e",
+	0.000000,
+	1.000000,
+	"14357db9-9ff7-4c38-a267-3d95a183d247");
 INSERT INTO DIM_ED
 	VALUES ("e939c621-b1ab-43eb-a072-1dea6f5308f8",
 	"00000000-0000-0000-0000-000000000000",
@@ -173,15 +178,38 @@ INSERT INTO C_PO
 	0);
 INSERT INTO C_IR
 	VALUES ("6939c537-da3f-4ab7-86ac-d6cfc8b1758d",
-	"00000000-0000-0000-0000-000000000000",
+	"8cf0519d-a40c-49b5-83f0-52d452f705e0",
 	"00000000-0000-0000-0000-000000000000",
 	"2fcffa0a-431b-4d8b-9fdb-b11391424189");
 INSERT INTO C_R
 	VALUES ("6939c537-da3f-4ab7-86ac-d6cfc8b1758d",
-	'Unnamed Interface',
+	'SimpleInterface',
 	'',
 	'Unnamed Interface',
-	'Component1::Port1::Unnamed Interface');
+	'Component1::Port1::SimpleInterface');
+INSERT INTO SPR_REP
+	VALUES ("620eb5b5-7225-478d-a8c0-0a38c6f08931",
+	"233ab09a-e8eb-43bb-8b80-a4cb38dffb0c",
+	"6939c537-da3f-4ab7-86ac-d6cfc8b1758d");
+INSERT INTO SPR_RO
+	VALUES ("620eb5b5-7225-478d-a8c0-0a38c6f08931",
+	'operation',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("233ab09a-e8eb-43bb-8b80-a4cb38dffb0c",
+	"8cf0519d-a40c-49b5-83f0-52d452f705e0",
+	-1,
+	'operation',
+	'',
+	'../../Interfaces/SimpleInterface/SimpleInterface.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("8cf0519d-a40c-49b5-83f0-52d452f705e0",
+	"00000000-0000-0000-0000-000000000000",
+	'SimpleInterface',
+	'',
+	'../../Interfaces/SimpleInterface/SimpleInterface.xtuml');
 INSERT INTO PE_PE
 	VALUES ("f9f5b4b2-2152-46c2-85e2-e531bf6b2c18",
 	1,

@@ -1,0 +1,145 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("a250d42b-8174-4bd2-b13b-c29f92938988",
+	"00000000-0000-0000-0000-000000000000",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'UC03 - MultiLapWorkout',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("52f80b6f-3b7d-4512-926a-c4838fa5ab94",
+	112,
+	"a250d42b-8174-4bd2-b13b-c29f92938988",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	200,
+	150,
+	0,
+	'',
+	'EmptyClassDiagramTest::RequirementsClarification::UC03 - MultiLapWorkout');
+INSERT INTO GD_GE
+	VALUES ("ff6e273a-f8a9-407a-b06a-5b6a402041af",
+	"52f80b6f-3b7d-4512-926a-c4838fa5ab94",
+	"d7821ea9-fe3b-49cb-a59a-a8d465de2ba0",
+	85,
+	0,
+	'EmptyClassDiagramTest::RequirementsClarification::UC03 - MultiLapWorkout::UC03 - MultiLapWorkout');
+INSERT INTO GD_SHP
+	VALUES ("ff6e273a-f8a9-407a-b06a-5b6a402041af");
+INSERT INTO GD_NCS
+	VALUES ("ff6e273a-f8a9-407a-b06a-5b6a402041af");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"ff6e273a-f8a9-407a-b06a-5b6a402041af");
+INSERT INTO DIM_GE
+	VALUES (0.000000,
+	0.000000,
+	"ff6e273a-f8a9-407a-b06a-5b6a402041af",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("ff6e273a-f8a9-407a-b06a-5b6a402041af",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO GD_GE
+	VALUES ("d51b42a4-5bb7-4156-91cb-cf29fe4ebbc9",
+	"52f80b6f-3b7d-4512-926a-c4838fa5ab94",
+	"3e7f40ce-5608-4eaf-97fe-78cde7c271a6",
+	108,
+	0,
+	'EmptyClassDiagramTest::RequirementsClarification::UC03 - MultiLapWorkout::ActivityDiagram');
+INSERT INTO GD_SHP
+	VALUES ("d51b42a4-5bb7-4156-91cb-cf29fe4ebbc9");
+INSERT INTO GD_NCS
+	VALUES ("d51b42a4-5bb7-4156-91cb-cf29fe4ebbc9");
+INSERT INTO DIM_ND
+	VALUES (200.000000,
+	150.000000,
+	"d51b42a4-5bb7-4156-91cb-cf29fe4ebbc9");
+INSERT INTO DIM_GE
+	VALUES (220.000000,
+	0.000000,
+	"d51b42a4-5bb7-4156-91cb-cf29fe4ebbc9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("d51b42a4-5bb7-4156-91cb-cf29fe4ebbc9",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("52f80b6f-3b7d-4512-926a-c4838fa5ab94",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SQ_P
+	VALUES ("d7821ea9-fe3b-49cb-a59a-a8d465de2ba0",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO IA_UCP
+	VALUES ("d7821ea9-fe3b-49cb-a59a-a8d465de2ba0",
+	'UC03 - MultiLapWorkout',
+	'Pre-conditions
+	No track logs exist on the device.
+	Timer is stopped.
+	Elapsed time is zero.
+	Accumulated distance is zero.
+	Display shows elapsed time and accumulated distance.
+
+Post-conditions
+	A track log exists on the device.
+	A lap marker exists on the device.
+	Timer is stopped.
+	Display shows lap count of one.
+	
+Scenario
+	1.	User pushes the start/stop button and begins moving (walking, running, flying, cycling, etc.).
+	2.	The timer starts.
+	3.	The display shows:
+		a.	Accumulated distance
+		b.	Elapsed time
+	4.	Periodically throughout the workout the device stores, in the active track log, 
+	    the current location of the device.
+	5.  User pushes mode button
+	6.	Display shows lap count is zero.
+	5.  User pushes Lap button
+	6	A lap marker indicating the current location and time, is stored.
+	7.	Display shows lap count is one.
+	7.  User pushes the start/stop button.
+	8.	The elapsed time and distance stop accumulating.
+	9.	Display shows lap count is one.
+	
+	');
+INSERT INTO PE_PE
+	VALUES ("d7821ea9-fe3b-49cb-a59a-a8d465de2ba0",
+	1,
+	"a250d42b-8174-4bd2-b13b-c29f92938988",
+	"00000000-0000-0000-0000-000000000000",
+	14);
+INSERT INTO PE_PE
+	VALUES ("a250d42b-8174-4bd2-b13b-c29f92938988",
+	1,
+	"436c2c19-1cbb-45a0-9034-132556217a90",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("436c2c19-1cbb-45a0-9034-132556217a90",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	"efdd2203-0401-4fcb-8009-7a63fd421608",
+	'RequirementsClarification',
+	'',
+	0,
+	'../RequirementsClarification.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("efdd2203-0401-4fcb-8009-7a63fd421608",
+	'EmptyClassDiagramTest',
+	1,
+	'../../EmptyClassDiagramTest.xtuml');
