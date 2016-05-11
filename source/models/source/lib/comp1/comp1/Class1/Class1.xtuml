@@ -7,6 +7,27 @@ INSERT INTO O_OBJ
 	'Class1',
 	'',
 	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("cc28f1dd-a04c-4c6d-b724-7484a0b36312",
+	"e2767993-3077-4dfd-b3a9-001ba80e8b1d",
+	'checkcardinality',
+	'',
+	"bb82cd75-b8f6-4f6c-bedc-53de460782a5",
+	1,
+	'select many classes from instances of Class1;
+cardinalitycheck = 0;
+for each c in classes
+  test = c.a1;
+  cardinalitycheck = cardinalitycheck + 1;
+end for;
+if (cardinalitycheck == (cardinality classes));
+  return CardinalityKeywordTest::Pass;
+else
+  return CardinalityKeywordTest::Fail;
+end if;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
 	VALUES ("a4072aac-2cbe-4864-a73d-080f50a422f4",
 	"e2767993-3077-4dfd-b3a9-001ba80e8b1d");
@@ -40,11 +61,3 @@ INSERT INTO PE_PE
 	"545a9d86-8fcd-4bf8-bcdd-339bc3db8efa",
 	"00000000-0000-0000-0000-000000000000",
 	4);
-INSERT INTO EP_PKG_PROXY
-	VALUES ("545a9d86-8fcd-4bf8-bcdd-339bc3db8efa",
-	"00000000-0000-0000-0000-000000000000",
-	"4feb0656-605c-4745-a455-70584bd25185",
-	'comp1',
-	'',
-	0,
-	'../comp1.xtuml');
