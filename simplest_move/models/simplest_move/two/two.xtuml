@@ -1,0 +1,41 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("92f01dc6-fbdf-431f-bba7-374f4c25f7c0",
+	"363e31c9-9581-4218-8ba9-8373b4c101ef",
+	"363e31c9-9581-4218-8ba9-8373b4c101ef",
+	'two',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("51ad95e3-5990-4cc1-ac17-820ff281897d",
+	112,
+	"92f01dc6-fbdf-431f-bba7-374f4c25f7c0",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'simplest_move::two');
+INSERT INTO DIM_DIA
+	VALUES ("51ad95e3-5990-4cc1-ac17-820ff281897d",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("92f01dc6-fbdf-431f-bba7-374f4c25f7c0",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
