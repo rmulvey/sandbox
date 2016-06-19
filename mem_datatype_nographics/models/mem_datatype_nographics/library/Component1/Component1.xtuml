@@ -1,0 +1,26 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("3ee34a79-5a63-44f3-adb3-d3da6944e9ee",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Component1',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("3ee34a79-5a63-44f3-adb3-d3da6944e9ee",
+	1,
+	"c4aa7878-c7c5-46a2-b11a-803a84cee995",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c4aa7878-c7c5-46a2-b11a-803a84cee995",
+	"2e8b79e3-2a15-4f09-8568-d297460c5989",
+	"2e8b79e3-2a15-4f09-8568-d297460c5989",
+	'library',
+	'',
+	0,
+	'../library.xtuml');

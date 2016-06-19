@@ -1,0 +1,55 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("077b2278-92fc-4858-b485-d6ad66d954cc",
+	"00000000-0000-0000-0000-000000000000",
+	"2e8b79e3-2a15-4f09-8568-d297460c5989",
+	'CompPkg1',
+	'',
+	0);
+INSERT INTO S_SYNC
+	VALUES ("59eca148-c53f-41b9-81e2-f79c195dc196",
+	"00000000-0000-0000-0000-000000000000",
+	'function_testudt',
+	'',
+	'select any tc from instances of TestClass;
+return tc.attr_testudt;
+',
+	"dedd7e97-c594-4964-a135-bc432284018d",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("59eca148-c53f-41b9-81e2-f79c195dc196",
+	1,
+	"077b2278-92fc-4858-b485-d6ad66d954cc",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_DT_PROXY
+	VALUES ("dedd7e97-c594-4964-a135-bc432284018d",
+	"00000000-0000-0000-0000-000000000000",
+	'TestUDT',
+	'',
+	'0',
+	'../../../datatype/datatype.xtuml');
+INSERT INTO PE_PE
+	VALUES ("077b2278-92fc-4858-b485-d6ad66d954cc",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"3ee34a79-5a63-44f3-adb3-d3da6944e9ee",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("3ee34a79-5a63-44f3-adb3-d3da6944e9ee",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'Component1',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../Component1.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("2e8b79e3-2a15-4f09-8568-d297460c5989",
+	'mem_datatype_nographics',
+	1,
+	'../../../mem_datatype_nographics.xtuml');

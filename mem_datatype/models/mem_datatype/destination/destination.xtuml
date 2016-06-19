@@ -1,0 +1,46 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("98863dbc-fd7d-41ec-9740-137a8398c6bd",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'destination',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("d135c07f-14b6-4e77-89d5-941cee711d0c",
+	112,
+	"98863dbc-fd7d-41ec-9740-137a8398c6bd",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'mem_datatype::destination');
+INSERT INTO DIM_DIA
+	VALUES ("d135c07f-14b6-4e77-89d5-941cee711d0c",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("98863dbc-fd7d-41ec-9740-137a8398c6bd",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'mem_datatype',
+	1,
+	'../mem_datatype.xtuml');

@@ -1,14 +1,40 @@
 -- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO EP_PKG
-	VALUES ("dd2a4740-4590-4d3e-a247-9c957c0dfdb9",
+	VALUES ("a631db6b-2f94-4c0a-a4e7-e0f193caab58",
 	"00000000-0000-0000-0000-000000000000",
 	"97c7ddda-72f1-4d2c-98c4-6e031e655a6c",
-	'moveme',
+	'library',
 	'',
 	0);
+INSERT INTO GD_MD
+	VALUES ("92f1204d-5825-41f0-a2e4-b5f200da4c64",
+	112,
+	"a631db6b-2f94-4c0a-a4e7-e0f193caab58",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'mem_package_nographics::pkg1::library');
+INSERT INTO DIM_DIA
+	VALUES ("92f1204d-5825-41f0-a2e4-b5f200da4c64",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
-	VALUES ("dd2a4740-4590-4d3e-a247-9c957c0dfdb9",
+	VALUES ("a631db6b-2f94-4c0a-a4e7-e0f193caab58",
 	1,
 	"e8ebffc1-8a32-49d0-9f9f-017da3e77f27",
 	"00000000-0000-0000-0000-000000000000",
