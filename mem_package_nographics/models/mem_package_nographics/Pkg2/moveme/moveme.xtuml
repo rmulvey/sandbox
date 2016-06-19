@@ -1,0 +1,54 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("dd2a4740-4590-4d3e-a247-9c957c0dfdb9",
+	"00000000-0000-0000-0000-000000000000",
+	"97c7ddda-72f1-4d2c-98c4-6e031e655a6c",
+	'moveme',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("537d9cdd-e088-43a0-b9b5-556e14515ee1",
+	112,
+	"dd2a4740-4590-4d3e-a247-9c957c0dfdb9",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'mem_package_nographics::Pkg2::moveme');
+INSERT INTO DIM_DIA
+	VALUES ("537d9cdd-e088-43a0-b9b5-556e14515ee1",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("dd2a4740-4590-4d3e-a247-9c957c0dfdb9",
+	1,
+	"9067c716-85f4-4677-b405-361a43049ad5",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9067c716-85f4-4677-b405-361a43049ad5",
+	"97c7ddda-72f1-4d2c-98c4-6e031e655a6c",
+	"97c7ddda-72f1-4d2c-98c4-6e031e655a6c",
+	'Pkg2',
+	'',
+	0,
+	'../Pkg2.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("97c7ddda-72f1-4d2c-98c4-6e031e655a6c",
+	'mem_package_nographics',
+	1,
+	'../../mem_package_nographics.xtuml');
