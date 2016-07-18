@@ -23,7 +23,7 @@ INSERT INTO S_DT_PROXY
 	"00000000-0000-0000-0000-000000000000",
 	'TestUDT',
 	'',
-	'',
+	'0',
 	'../../../../datatype/datatype.xtuml');
 INSERT INTO O_NBATTR
 	VALUES ("69a8a23c-2de7-4b74-92bc-275a1ca0fa0d",

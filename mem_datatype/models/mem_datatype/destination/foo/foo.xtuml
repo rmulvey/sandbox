@@ -1,0 +1,54 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("cf1d6dbb-e9d5-4964-94a6-0e4af8b9366d",
+	"00000000-0000-0000-0000-000000000000",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'foo',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("9805e902-1c01-433d-aa57-76418c3f51eb",
+	112,
+	"cf1d6dbb-e9d5-4964-94a6-0e4af8b9366d",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'mem_datatype::destination::foo');
+INSERT INTO DIM_DIA
+	VALUES ("9805e902-1c01-433d-aa57-76418c3f51eb",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("cf1d6dbb-e9d5-4964-94a6-0e4af8b9366d",
+	1,
+	"98863dbc-fd7d-41ec-9740-137a8398c6bd",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("98863dbc-fd7d-41ec-9740-137a8398c6bd",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'destination',
+	'',
+	0,
+	'../destination.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'mem_datatype',
+	1,
+	'../../mem_datatype.xtuml');
