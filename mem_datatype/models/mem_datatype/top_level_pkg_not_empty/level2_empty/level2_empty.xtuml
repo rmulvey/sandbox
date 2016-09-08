@@ -1,0 +1,54 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("9655b3c9-386b-4d7a-9402-c698d72a96ec",
+	"00000000-0000-0000-0000-000000000000",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'level2_empty',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("a8f16833-2ae9-495b-8c38-95c02f14fca1",
+	112,
+	"9655b3c9-386b-4d7a-9402-c698d72a96ec",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'mem_datatype::top_level_pkg_not_empty::level2_empty');
+INSERT INTO DIM_DIA
+	VALUES ("a8f16833-2ae9-495b-8c38-95c02f14fca1",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("9655b3c9-386b-4d7a-9402-c698d72a96ec",
+	1,
+	"0973568c-cfe7-499a-92dc-aaaba9cab6ba",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("0973568c-cfe7-499a-92dc-aaaba9cab6ba",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	"679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'top_level_pkg_not_empty',
+	'',
+	0,
+	'../top_level_pkg_not_empty.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("679276ad-2c4f-4756-ad18-b48cadc860a8",
+	'mem_datatype',
+	1,
+	'../../mem_datatype.xtuml');
