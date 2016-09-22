@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>7_17_Data_Type_at_top_level</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.xtuml.bp.core.xtumlnature</nature>
+	</natures>
+</projectDescription>
