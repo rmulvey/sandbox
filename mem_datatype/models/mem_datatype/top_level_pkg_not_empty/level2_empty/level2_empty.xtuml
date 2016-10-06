@@ -1,16 +1,16 @@
 -- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO EP_PKG
-	VALUES ("9655b3c9-386b-4d7a-9402-c698d72a96ec",
+	VALUES ("5da44f42-ee1d-43d3-8721-fdd837112203",
 	"00000000-0000-0000-0000-000000000000",
 	"679276ad-2c4f-4756-ad18-b48cadc860a8",
 	'level2_empty',
 	'',
 	0);
 INSERT INTO GD_MD
-	VALUES ("a8f16833-2ae9-495b-8c38-95c02f14fca1",
+	VALUES ("b579b9e8-8b71-4ad9-8352-2bfb41279c6f",
 	112,
-	"9655b3c9-386b-4d7a-9402-c698d72a96ec",
+	"5da44f42-ee1d-43d3-8721-fdd837112203",
 	108,
 	0,
 	0,
@@ -27,14 +27,14 @@ INSERT INTO GD_MD
 	'',
 	'mem_datatype::top_level_pkg_not_empty::level2_empty');
 INSERT INTO DIM_DIA
-	VALUES ("a8f16833-2ae9-495b-8c38-95c02f14fca1",
+	VALUES ("b579b9e8-8b71-4ad9-8352-2bfb41279c6f",
 	'',
 	1.000000,
 	0.000000,
 	0.000000,
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO PE_PE
-	VALUES ("9655b3c9-386b-4d7a-9402-c698d72a96ec",
+	VALUES ("5da44f42-ee1d-43d3-8721-fdd837112203",
 	1,
 	"0973568c-cfe7-499a-92dc-aaaba9cab6ba",
 	"00000000-0000-0000-0000-000000000000",
