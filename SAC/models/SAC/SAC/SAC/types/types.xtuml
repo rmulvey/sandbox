@@ -1,0 +1,77 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("88f1ebf3-e6d2-4221-bbc5-08e085bf5490",
+	"00000000-0000-0000-0000-000000000000",
+	"abfccf0d-ad7b-4da6-8072-a30bc6d8006d",
+	'types',
+	'',
+	0);
+INSERT INTO S_DT
+	VALUES ("2fd093f0-e70b-4189-98a7-090cd9b3b4fe",
+	"00000000-0000-0000-0000-000000000000",
+	'logged_on_type',
+	'<definition>enum (logged_on,
+                                       suspect)</definition>
+',
+	'');
+INSERT INTO S_UDT
+	VALUES ("2fd093f0-e70b-4189-98a7-090cd9b3b4fe",
+	"3f57edbc-a771-408d-a172-25a3273e0a71",
+	0);
+INSERT INTO S_DT_PROXY
+	VALUES ("3f57edbc-a771-408d-a172-25a3273e0a71",
+	"00000000-0000-0000-0000-000000000000",
+	'MASLtype',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO PE_PE
+	VALUES ("2fd093f0-e70b-4189-98a7-090cd9b3b4fe",
+	1,
+	"88f1ebf3-e6d2-4221-bbc5-08e085bf5490",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("553d5228-016e-439f-b86b-384f56b4512f",
+	"00000000-0000-0000-0000-000000000000",
+	'group_type',
+	'<definition>structure
+    group_name      : string;
+    operation_names : sequence of string;
+  end structure</definition>
+',
+	'');
+INSERT INTO S_UDT
+	VALUES ("553d5228-016e-439f-b86b-384f56b4512f",
+	"3f57edbc-a771-408d-a172-25a3273e0a71",
+	0);
+INSERT INTO PE_PE
+	VALUES ("553d5228-016e-439f-b86b-384f56b4512f",
+	1,
+	"88f1ebf3-e6d2-4221-bbc5-08e085bf5490",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO PE_PE
+	VALUES ("88f1ebf3-e6d2-4221-bbc5-08e085bf5490",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'SAC',
+	'pragma number( 59 );
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../SAC.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("abfccf0d-ad7b-4da6-8072-a30bc6d8006d",
+	'SAC',
+	1,
+	'../../../SAC.xtuml');

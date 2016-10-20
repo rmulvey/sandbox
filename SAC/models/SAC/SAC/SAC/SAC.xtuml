@@ -1,0 +1,540 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'SAC',
+	'pragma number( 59 );
+',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO C_PO
+	VALUES ("e9b59250-fbbb-4f35-adef-01af72902d6e",
+	"7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	'SAC',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("03bb2ee0-776f-45f6-9894-f452a3dc7462",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	"00000000-0000-0000-0000-000000000000",
+	"e9b59250-fbbb-4f35-adef-01af72902d6e");
+INSERT INTO C_P
+	VALUES ("03bb2ee0-776f-45f6-9894-f452a3dc7462",
+	'SAC',
+	'Unnamed_Interface',
+	'',
+	'SAC::SAC::SAC');
+INSERT INTO SPR_PEP
+	VALUES ("0287909c-68d0-4797-8f4d-69cee1c61d78",
+	"694a5882-71f5-487f-a49d-02e83641f406",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("0287909c-68d0-4797-8f4d-69cee1c61d78",
+	'user_logon',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("694a5882-71f5-487f-a49d-02e83641f406",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'user_logon',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("a5de9cba-90e0-4f40-8842-275d4c3aeeb8",
+	"3d3934f0-58ad-4f92-a132-2bde27a4cd56",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("a5de9cba-90e0-4f40-8842-275d4c3aeeb8",
+	'user_logoff',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("3d3934f0-58ad-4f92-a132-2bde27a4cd56",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'user_logoff',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("4740f959-a65b-45ca-966f-d96ffa86001a",
+	"d4e4ce4c-7e60-4477-af8a-5867c40f69e8",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("4740f959-a65b-45ca-966f-d96ffa86001a",
+	'add_group',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("d4e4ce4c-7e60-4477-af8a-5867c40f69e8",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'add_group',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("dccc9a2e-2b44-455f-85c9-af7e13037b8a",
+	"2145353f-d454-4ced-acb4-0291215b1895",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("dccc9a2e-2b44-455f-85c9-af7e13037b8a",
+	'add_operation_to_group',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("2145353f-d454-4ced-acb4-0291215b1895",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'add_operation_to_group',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("b5ecbbf9-9dcf-4703-bcd6-0ec18272d099",
+	"0845c57c-418b-4599-b2aa-3c44245e5162",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("b5ecbbf9-9dcf-4703-bcd6-0ec18272d099",
+	'session_active',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("0845c57c-418b-4599-b2aa-3c44245e5162",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'session_active',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("c04b8b88-b47d-440b-b018-e44e95ed159f",
+	"568b9ffc-e9fb-4860-8a61-5313122d3c27",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("c04b8b88-b47d-440b-b018-e44e95ed159f",
+	'delete_group',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("568b9ffc-e9fb-4860-8a61-5313122d3c27",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'delete_group',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("60c3f154-37ea-4299-8214-f0f4873d58c6",
+	"6a2a1d98-a5a9-4fee-b6f7-680398ece17e",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("60c3f154-37ea-4299-8214-f0f4873d58c6",
+	'delete_group_operation',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("6a2a1d98-a5a9-4fee-b6f7-680398ece17e",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'delete_group_operation',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("43fe379d-6e2c-4db7-a4a0-3e311c6aa357",
+	"8c6200d0-283e-49f9-a961-7cddb5e9e290",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("43fe379d-6e2c-4db7-a4a0-3e311c6aa357",
+	'populate_domain',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("8c6200d0-283e-49f9-a961-7cddb5e9e290",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'populate_domain',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO SPR_PEP
+	VALUES ("a0109f11-187f-4a22-94b9-8c30bed9e5bf",
+	"6e6930c5-a575-4bf1-8711-04f73829cdc8",
+	"03bb2ee0-776f-45f6-9894-f452a3dc7462");
+INSERT INTO SPR_PO
+	VALUES ("a0109f11-187f-4a22-94b9-8c30bed9e5bf",
+	'resend_infos',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("6e6930c5-a575-4bf1-8711-04f73829cdc8",
+	"e49affa5-6efd-495d-a3d1-6e58f229277d",
+	0,
+	'resend_infos',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("e49affa5-6efd-495d-a3d1-6e58f229277d",
+	"00000000-0000-0000-0000-000000000000",
+	'SAC',
+	'',
+	'../Shared/SAC/SAC.xtuml');
+INSERT INTO C_PO
+	VALUES ("74e27df7-152d-41e7-91b4-60af667555b7",
+	"7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	'Operator',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("f6bd3bf7-7a19-444a-922c-aee8e220bf09",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	"00000000-0000-0000-0000-000000000000",
+	"74e27df7-152d-41e7-91b4-60af667555b7");
+INSERT INTO C_R
+	VALUES ("f6bd3bf7-7a19-444a-922c-aee8e220bf09",
+	'SACOperator',
+	'pragma key_letter( "OP" );
+',
+	'Unnamed_Interface',
+	'SAC::Operator::SACOperator');
+INSERT INTO SPR_REP
+	VALUES ("f0718bb2-23c8-4996-bdb4-e70f804a0aa7",
+	"b7eeb686-7814-4bcd-aac2-89b5250eed4f",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("f0718bb2-23c8-4996-bdb4-e70f804a0aa7",
+	'login_valid',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("b7eeb686-7814-4bcd-aac2-89b5250eed4f",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'login_valid',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("66b6f46a-576f-44ee-a5b9-de63361be1fa",
+	"c07d8500-7c3a-4ad0-b2c8-59b903036229",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("66b6f46a-576f-44ee-a5b9-de63361be1fa",
+	'report_user',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("c07d8500-7c3a-4ad0-b2c8-59b903036229",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'report_user',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("b5a701d6-50f5-4b48-9383-6e473db1852e",
+	"91cdd5fb-80c8-4a80-9ab2-8258d8c30339",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("b5a701d6-50f5-4b48-9383-6e473db1852e",
+	'user_removed',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("91cdd5fb-80c8-4a80-9ab2-8258d8c30339",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'user_removed',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("d08547d8-c9e7-4b63-bd51-ff9a8014a057",
+	"65143780-284b-4b45-b0a8-e29472a6d01d",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("d08547d8-c9e7-4b63-bd51-ff9a8014a057",
+	'report_user_session',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("65143780-284b-4b45-b0a8-e29472a6d01d",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'report_user_session',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("0fc102cf-c11b-43af-8b04-abf6e613a9b5",
+	"2d9689ae-893b-4db9-ab48-9c18c0b7407f",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("0fc102cf-c11b-43af-8b04-abf6e613a9b5",
+	'user_session_deleted',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("2d9689ae-893b-4db9-ab48-9c18c0b7407f",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'user_session_deleted',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("8a075582-83d7-4134-bcd4-124c74ee7d5e",
+	"34dbf98f-f7a4-42a4-b2ff-8ab07a2ec95a",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("8a075582-83d7-4134-bcd4-124c74ee7d5e",
+	'report_group',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("34dbf98f-f7a4-42a4-b2ff-8ab07a2ec95a",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'report_group',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("22ad5cdb-4812-49cc-9e9b-ce034031df26",
+	"c920339d-ecf4-4840-8cb8-f275a4183daa",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("22ad5cdb-4812-49cc-9e9b-ce034031df26",
+	'group_deleted',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("c920339d-ecf4-4840-8cb8-f275a4183daa",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'group_deleted',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("af12f152-edb3-40e1-825d-e7da764c93a2",
+	"1fb39118-e264-404c-a265-98342b89bcf9",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("af12f152-edb3-40e1-825d-e7da764c93a2",
+	'report_group_operation',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("1fb39118-e264-404c-a265-98342b89bcf9",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'report_group_operation',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("e0723708-9062-4265-a2c3-0c5348224851",
+	"b4431ebf-d4a3-416d-9510-fecde72e7638",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("e0723708-9062-4265-a2c3-0c5348224851",
+	'group_operation_removed',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("b4431ebf-d4a3-416d-9510-fecde72e7638",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'group_operation_removed',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("d0e7487d-e6e7-4e3a-8ed5-f081642f3082",
+	"79ffaeb1-74ed-4648-aba7-0699116b621f",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("d0e7487d-e6e7-4e3a-8ed5-f081642f3082",
+	'report_user_operation',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("79ffaeb1-74ed-4648-aba7-0699116b621f",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'report_user_operation',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("4df7fad9-c48f-412f-b5a1-d4e4d1faf949",
+	"3fbbccd0-a03a-4a5c-a4aa-05dc450c408b",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("4df7fad9-c48f-412f-b5a1-d4e4d1faf949",
+	'user_operation_removed',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("3fbbccd0-a03a-4a5c-a4aa-05dc450c408b",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'user_operation_removed',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("6c101739-bc59-4228-b520-02d7a24e3d67",
+	"8771ba84-b777-4a35-811f-13c435745a10",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("6c101739-bc59-4228-b520-02d7a24e3d67",
+	'report_user_group',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("8771ba84-b777-4a35-811f-13c435745a10",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'report_user_group',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("edfb1975-98ea-4147-8086-317e6187c0e3",
+	"73de47b3-c2c1-477b-aa8b-d29024c1d9a6",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("edfb1975-98ea-4147-8086-317e6187c0e3",
+	'user_group_removed',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("73de47b3-c2c1-477b-aa8b-d29024c1d9a6",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'user_group_removed',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("15d71e09-e4fe-4602-8a6c-fd60e9c2c8be",
+	"37d5fa36-12b9-4861-aaae-e9bc369e18d4",
+	"f6bd3bf7-7a19-444a-922c-aee8e220bf09");
+INSERT INTO SPR_RO
+	VALUES ("15d71e09-e4fe-4602-8a6c-fd60e9c2c8be",
+	'raise_notification',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("37d5fa36-12b9-4861-aaae-e9bc369e18d4",
+	"e6ef1248-7916-41ea-9325-8947778a40bc",
+	0,
+	'raise_notification',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("e6ef1248-7916-41ea-9325-8947778a40bc",
+	"00000000-0000-0000-0000-000000000000",
+	'SACOperator',
+	'',
+	'../Shared/SACOperator/SACOperator.xtuml');
+INSERT INTO C_PO
+	VALUES ("51ec3b46-2aff-4b1b-80ff-89937d0af084",
+	"7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	'System_Configuration',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("05e5ff11-8292-4358-bcc1-a8c1251be646",
+	"17675142-b0cf-4371-b029-2ef4f53ed354",
+	"00000000-0000-0000-0000-000000000000",
+	"51ec3b46-2aff-4b1b-80ff-89937d0af084");
+INSERT INTO C_R
+	VALUES ("05e5ff11-8292-4358-bcc1-a8c1251be646",
+	'SACSystem_Configuration',
+	'pragma key_letter( "SCON" );
+',
+	'Unnamed_Interface',
+	'SAC::System_Configuration::SACSystem_Configuration');
+INSERT INTO SPR_REP
+	VALUES ("0e5622af-f4c1-46f2-9342-4aaa0d68ce7b",
+	"cbe23ecc-fdcc-4876-b28e-9f04d4646cac",
+	"05e5ff11-8292-4358-bcc1-a8c1251be646");
+INSERT INTO SPR_RO
+	VALUES ("0e5622af-f4c1-46f2-9342-4aaa0d68ce7b",
+	'get_groups',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("cbe23ecc-fdcc-4876-b28e-9f04d4646cac",
+	"17675142-b0cf-4371-b029-2ef4f53ed354",
+	0,
+	'get_groups',
+	'',
+	'../Shared/SACSystem_Configuration/SACSystem_Configuration.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("3e3b3713-270c-4635-85cb-f4001cfed278",
+	"61041324-daac-4f4a-a680-ee922e0a0c94",
+	"05e5ff11-8292-4358-bcc1-a8c1251be646");
+INSERT INTO SPR_RO
+	VALUES ("3e3b3713-270c-4635-85cb-f4001cfed278",
+	'get_session_specification',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("61041324-daac-4f4a-a680-ee922e0a0c94",
+	"17675142-b0cf-4371-b029-2ef4f53ed354",
+	0,
+	'get_session_specification',
+	'',
+	'../Shared/SACSystem_Configuration/SACSystem_Configuration.xtuml');
+INSERT INTO SPR_REP
+	VALUES ("369c9059-19ad-404b-b88a-162aa438f294",
+	"8f55f963-6eb3-4311-85e3-ee79ea7d44d9",
+	"05e5ff11-8292-4358-bcc1-a8c1251be646");
+INSERT INTO SPR_RO
+	VALUES ("369c9059-19ad-404b-b88a-162aa438f294",
+	'reload_config_files',
+	'',
+	'',
+	3);
+INSERT INTO C_EP_PROXY
+	VALUES ("8f55f963-6eb3-4311-85e3-ee79ea7d44d9",
+	"17675142-b0cf-4371-b029-2ef4f53ed354",
+	0,
+	'reload_config_files',
+	'',
+	'../Shared/SACSystem_Configuration/SACSystem_Configuration.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("17675142-b0cf-4371-b029-2ef4f53ed354",
+	"00000000-0000-0000-0000-000000000000",
+	'SACSystem_Configuration',
+	'',
+	'../Shared/SACSystem_Configuration/SACSystem_Configuration.xtuml');
+INSERT INTO PE_PE
+	VALUES ("7f7c7ec8-b31d-4e28-b0eb-e6c872ceae62",
+	1,
+	"2971447e-a8e3-43ea-b1c6-5cf9d1c1ebcd",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("2971447e-a8e3-43ea-b1c6-5cf9d1c1ebcd",
+	"abfccf0d-ad7b-4da6-8072-a30bc6d8006d",
+	"abfccf0d-ad7b-4da6-8072-a30bc6d8006d",
+	'SAC',
+	'',
+	0,
+	'../SAC.xtuml');
