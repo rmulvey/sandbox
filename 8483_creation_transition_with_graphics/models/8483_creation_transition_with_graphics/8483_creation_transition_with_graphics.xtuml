@@ -1,0 +1,56 @@
+-- BP 7.1.6 content: SystemModel syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO S_SYS
+	VALUES ("65ae0c3f-0418-445f-ab9a-4344ff8a7310",
+	'8483_creation_transition_with_graphics',
+	1);
+INSERT INTO GD_MD
+	VALUES ("bd1db8b6-1eb9-4357-832e-e8e091e76e5f",
+	108,
+	"65ae0c3f-0418-445f-ab9a-4344ff8a7310",
+	92,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'4.1.17',
+	'8483_creation_transition_with_graphics');
+INSERT INTO GD_GE
+	VALUES ("e4e2eb0a-0498-4ef0-b0e8-356e95d2816c",
+	"bd1db8b6-1eb9-4357-832e-e8e091e76e5f",
+	"85a6bd9b-fcd7-483d-ab07-2d33ef478f97",
+	108,
+	0,
+	'8483_creation_transition_with_graphics::pkg1');
+INSERT INTO GD_SHP
+	VALUES ("e4e2eb0a-0498-4ef0-b0e8-356e95d2816c");
+INSERT INTO GD_NCS
+	VALUES ("e4e2eb0a-0498-4ef0-b0e8-356e95d2816c");
+INSERT INTO DIM_ND
+	VALUES (97.000000,
+	85.000000,
+	"e4e2eb0a-0498-4ef0-b0e8-356e95d2816c");
+INSERT INTO DIM_GE
+	VALUES (4068.000000,
+	3060.000000,
+	"e4e2eb0a-0498-4ef0-b0e8-356e95d2816c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("e4e2eb0a-0498-4ef0-b0e8-356e95d2816c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("bd1db8b6-1eb9-4357-832e-e8e091e76e5f",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
