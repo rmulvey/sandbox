@@ -1,0 +1,18 @@
+{{op1%%O_TFR%%9f7fa211-4381-4f66-bd29-87fd6aa9d479}}
+// instance operation activity
+// do nothing
+
+
+
+{{op2%%O_TFR%%ff98cb10-4b5e-4d66-a236-c24176167dc0}}
+// class operation activity
+// do nothing
+
+
+
+{{mda%%O_DBATTR%%9f2c1846-45c2-4ecd-822e-975deb410a37--9de19886-3627-4250-9772-b3c9999c52b9}}
+// MDA activity
+self.mda = 1;
+
+
+

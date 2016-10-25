@@ -1,0 +1,5 @@
+{{test_function%%S_SYNC%%8a44fba0-82e6-4eef-9a42-2b841fceaf7d}}
+// function activity
+select any xyz_to from instances of T_T;
+
+
