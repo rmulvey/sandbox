@@ -5,7 +5,7 @@ INSERT INTO EP_PKG
 	"f6e4171a-1727-4ceb-96e2-f84e769a5911",
 	"f6e4171a-1727-4ceb-96e2-f84e769a5911",
 	'Interface',
-	'',
+	'masl_project',
 	0);
 INSERT INTO GD_MD
 	VALUES ("e89958ed-b9ac-4d87-9cbc-5a4fc8f46acf",
