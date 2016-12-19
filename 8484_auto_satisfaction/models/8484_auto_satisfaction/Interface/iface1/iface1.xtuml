@@ -1,0 +1,35 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("7e245413-c10e-4acf-98e6-f04b870193cb",
+	"00000000-0000-0000-0000-000000000000",
+	'iface1',
+	'');
+INSERT INTO C_EP
+	VALUES ("aa153f8b-6749-4c61-91d8-a06c9562714c",
+	"7e245413-c10e-4acf-98e6-f04b870193cb",
+	-1,
+	'i1_op1',
+	'');
+INSERT INTO C_IO
+	VALUES ("aa153f8b-6749-4c61-91d8-a06c9562714c",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'i1_op1',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("7e245413-c10e-4acf-98e6-f04b870193cb",
+	1,
+	"dd5a9192-20b5-43a6-81ba-4eb6984b501f",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("dd5a9192-20b5-43a6-81ba-4eb6984b501f",
+	"f6e4171a-1727-4ceb-96e2-f84e769a5911",
+	"f6e4171a-1727-4ceb-96e2-f84e769a5911",
+	'Interface',
+	'',
+	0,
+	'../Interface.xtuml');
