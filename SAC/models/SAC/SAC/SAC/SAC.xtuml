@@ -37,7 +37,8 @@ INSERT INTO SPR_PO
 	'user_logon',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("694a5882-71f5-487f-a49d-02e83641f406",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -54,7 +55,8 @@ INSERT INTO SPR_PO
 	'user_logoff',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("3d3934f0-58ad-4f92-a132-2bde27a4cd56",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -71,7 +73,8 @@ INSERT INTO SPR_PO
 	'add_group',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("d4e4ce4c-7e60-4477-af8a-5867c40f69e8",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -88,7 +91,8 @@ INSERT INTO SPR_PO
 	'add_operation_to_group',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("2145353f-d454-4ced-acb4-0291215b1895",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -105,7 +109,8 @@ INSERT INTO SPR_PO
 	'session_active',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("0845c57c-418b-4599-b2aa-3c44245e5162",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -122,7 +127,8 @@ INSERT INTO SPR_PO
 	'delete_group',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("568b9ffc-e9fb-4860-8a61-5313122d3c27",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -139,7 +145,8 @@ INSERT INTO SPR_PO
 	'delete_group_operation',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("6a2a1d98-a5a9-4fee-b6f7-680398ece17e",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -156,7 +163,8 @@ INSERT INTO SPR_PO
 	'populate_domain',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("8c6200d0-283e-49f9-a961-7cddb5e9e290",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -173,7 +181,8 @@ INSERT INTO SPR_PO
 	'resend_infos',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("6e6930c5-a575-4bf1-8711-04f73829cdc8",
 	"e49affa5-6efd-495d-a3d1-6e58f229277d",
@@ -214,7 +223,8 @@ INSERT INTO SPR_RO
 	'login_valid',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b7eeb686-7814-4bcd-aac2-89b5250eed4f",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -231,7 +241,8 @@ INSERT INTO SPR_RO
 	'report_user',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("c07d8500-7c3a-4ad0-b2c8-59b903036229",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -248,7 +259,8 @@ INSERT INTO SPR_RO
 	'user_removed',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("91cdd5fb-80c8-4a80-9ab2-8258d8c30339",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -265,7 +277,8 @@ INSERT INTO SPR_RO
 	'report_user_session',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("65143780-284b-4b45-b0a8-e29472a6d01d",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -282,7 +295,8 @@ INSERT INTO SPR_RO
 	'user_session_deleted',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("2d9689ae-893b-4db9-ab48-9c18c0b7407f",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -299,7 +313,8 @@ INSERT INTO SPR_RO
 	'report_group',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("34dbf98f-f7a4-42a4-b2ff-8ab07a2ec95a",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -316,7 +331,8 @@ INSERT INTO SPR_RO
 	'group_deleted',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("c920339d-ecf4-4840-8cb8-f275a4183daa",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -333,7 +349,8 @@ INSERT INTO SPR_RO
 	'report_group_operation',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("1fb39118-e264-404c-a265-98342b89bcf9",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -350,7 +367,8 @@ INSERT INTO SPR_RO
 	'group_operation_removed',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("b4431ebf-d4a3-416d-9510-fecde72e7638",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -367,7 +385,8 @@ INSERT INTO SPR_RO
 	'report_user_operation',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("79ffaeb1-74ed-4648-aba7-0699116b621f",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -384,7 +403,8 @@ INSERT INTO SPR_RO
 	'user_operation_removed',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("3fbbccd0-a03a-4a5c-a4aa-05dc450c408b",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -401,7 +421,8 @@ INSERT INTO SPR_RO
 	'report_user_group',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("8771ba84-b777-4a35-811f-13c435745a10",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -418,7 +439,8 @@ INSERT INTO SPR_RO
 	'user_group_removed',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("73de47b3-c2c1-477b-aa8b-d29024c1d9a6",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -435,7 +457,8 @@ INSERT INTO SPR_RO
 	'raise_notification',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("37d5fa36-12b9-4861-aaae-e9bc369e18d4",
 	"e6ef1248-7916-41ea-9325-8947778a40bc",
@@ -476,7 +499,8 @@ INSERT INTO SPR_RO
 	'get_groups',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("cbe23ecc-fdcc-4876-b28e-9f04d4646cac",
 	"17675142-b0cf-4371-b029-2ef4f53ed354",
@@ -493,7 +517,8 @@ INSERT INTO SPR_RO
 	'get_session_specification',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("61041324-daac-4f4a-a680-ee922e0a0c94",
 	"17675142-b0cf-4371-b029-2ef4f53ed354",
@@ -510,7 +535,8 @@ INSERT INTO SPR_RO
 	'reload_config_files',
 	'',
 	'',
-	3);
+	3,
+	0);
 INSERT INTO C_EP_PROXY
 	VALUES ("8f55f963-6eb3-4311-85e3-ee79ea7d44d9",
 	"17675142-b0cf-4371-b029-2ef4f53ed354",
