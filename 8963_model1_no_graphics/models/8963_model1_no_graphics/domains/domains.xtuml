@@ -1,0 +1,20 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("edcb701d-de55-470a-9b63-d270954b51cb",
+	"bd434ce3-05f9-4b63-9de2-93b354807787",
+	"bd434ce3-05f9-4b63-9de2-93b354807787",
+	'domains',
+	'masl_project',
+	0);
+INSERT INTO PE_PE
+	VALUES ("edcb701d-de55-470a-9b63-d270954b51cb",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("bd434ce3-05f9-4b63-9de2-93b354807787",
+	'8963_model1_no_graphics',
+	1,
+	'../8963_model1_no_graphics.xtuml');

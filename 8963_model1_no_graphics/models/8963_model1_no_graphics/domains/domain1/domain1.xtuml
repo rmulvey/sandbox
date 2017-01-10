@@ -1,0 +1,67 @@
+-- BP 7.1.6 content: Component syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_C
+	VALUES ("34c270f1-3654-48e8-a684-9140b3fd0d99",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'domain1',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO C_PO
+	VALUES ("05c89ad0-93c6-477f-9044-8508b59c23f6",
+	"34c270f1-3654-48e8-a684-9140b3fd0d99",
+	'Port1',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("13ae13b5-b4a1-49f2-b2bd-49f757aebc07",
+	"e415272d-c16a-4f6c-a0d7-9b6f149f561e",
+	"00000000-0000-0000-0000-000000000000",
+	"05c89ad0-93c6-477f-9044-8508b59c23f6");
+INSERT INTO C_R
+	VALUES ("13ae13b5-b4a1-49f2-b2bd-49f757aebc07",
+	'iface1',
+	'',
+	'Unnamed Interface',
+	'domain1::Port1::iface1');
+INSERT INTO SPR_REP
+	VALUES ("a01b562f-ada5-43ee-a93a-678e6c701c3c",
+	"dfefb1f9-e6fb-466e-91c7-a35709c6181e",
+	"13ae13b5-b4a1-49f2-b2bd-49f757aebc07");
+INSERT INTO SPR_RO
+	VALUES ("a01b562f-ada5-43ee-a93a-678e6c701c3c",
+	'i1_op1',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_EP_PROXY
+	VALUES ("dfefb1f9-e6fb-466e-91c7-a35709c6181e",
+	"e415272d-c16a-4f6c-a0d7-9b6f149f561e",
+	-1,
+	'i1_op1',
+	'',
+	'../../Interface/iface1/iface1.xtuml');
+INSERT INTO C_I_PROXY
+	VALUES ("e415272d-c16a-4f6c-a0d7-9b6f149f561e",
+	"00000000-0000-0000-0000-000000000000",
+	'iface1',
+	'',
+	'../../Interface/iface1/iface1.xtuml');
+INSERT INTO PE_PE
+	VALUES ("34c270f1-3654-48e8-a684-9140b3fd0d99",
+	1,
+	"edcb701d-de55-470a-9b63-d270954b51cb",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("edcb701d-de55-470a-9b63-d270954b51cb",
+	"bd434ce3-05f9-4b63-9de2-93b354807787",
+	"bd434ce3-05f9-4b63-9de2-93b354807787",
+	'domains',
+	'masl_project',
+	0,
+	'../domains.xtuml');
