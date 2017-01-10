@@ -28,14 +28,14 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'8963_satisfied_components::pkg1::comp2');
+	'8484_satisfied_components::pkg1::comp2');
 INSERT INTO GD_GE
 	VALUES ("d80a8d43-8e42-46de-acc8-6147c37c335b",
 	"281d1391-a968-45e2-869f-1f8615a60e59",
 	"2654201e-ccc0-4a0c-8b75-87a435c7752e",
 	103,
 	0,
-	'8963_satisfied_components::pkg1::comp2');
+	'8484_satisfied_components::pkg1::comp2');
 INSERT INTO GD_SHP
 	VALUES ("d80a8d43-8e42-46de-acc8-6147c37c335b");
 INSERT INTO GD_CTR
@@ -64,7 +64,7 @@ INSERT INTO GD_GE
 	"24584f7c-527a-4485-8861-ffefb97d9f64",
 	93,
 	0,
-	'8963_satisfied_components::pkg1::comp2::Port1::iface1');
+	'8484_satisfied_components::pkg1::comp2::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("4df709bd-645f-4965-be79-1d25c088c4d0",
 	"00000000-0000-0000-0000-000000000000");

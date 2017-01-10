@@ -25,14 +25,14 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'4.1.17',
-	'8963_satisfied_components::pkg1');
+	'8484_satisfied_components::pkg1');
 INSERT INTO GD_GE
 	VALUES ("fdb4f749-c172-4626-8c04-c20313b8e10f",
 	"9fdf0fb3-f7e7-4eef-92c0-ed69e0ccf97c",
 	"9d7bdd9b-d5c4-4c90-8caf-bed9b1e19173",
 	98,
 	0,
-	'8963_satisfied_components::pkg1::comp1');
+	'8484_satisfied_components::pkg1::comp1');
 INSERT INTO GD_SHP
 	VALUES ("fdb4f749-c172-4626-8c04-c20313b8e10f");
 INSERT INTO GD_NCS
@@ -61,7 +61,7 @@ INSERT INTO GD_GE
 	"2654201e-ccc0-4a0c-8b75-87a435c7752e",
 	98,
 	0,
-	'8963_satisfied_components::pkg1::comp2');
+	'8484_satisfied_components::pkg1::comp2');
 INSERT INTO GD_SHP
 	VALUES ("6cd18c5d-403b-484a-9e6d-dea9ba62cd51");
 INSERT INTO GD_NCS
@@ -90,7 +90,7 @@ INSERT INTO GD_GE
 	"4b99290d-f26a-4882-a53a-24563598fd38",
 	96,
 	0,
-	'8963_satisfied_components::pkg1::iface1');
+	'8484_satisfied_components::pkg1::iface1');
 INSERT INTO GD_SHP
 	VALUES ("3148faa0-dc24-4ea1-b238-cbfc49e6abb9");
 INSERT INTO GD_NCS
@@ -114,7 +114,7 @@ INSERT INTO GD_GE
 	"b50f89b9-c70d-481b-84a6-50cdb390db13",
 	94,
 	0,
-	'8963_satisfied_components::pkg1::comp1::Port1::iface1');
+	'8484_satisfied_components::pkg1::comp1::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("49b01c3b-0408-410c-b250-ac11dbfabc14",
 	"00000000-0000-0000-0000-000000000000");
@@ -222,7 +222,7 @@ INSERT INTO GD_GE
 	"24584f7c-527a-4485-8861-ffefb97d9f64",
 	93,
 	0,
-	'8963_satisfied_components::pkg1::comp2::Port1::iface1');
+	'8484_satisfied_components::pkg1::comp2::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("977291d5-91f9-4ec3-acbb-1afda2925839",
 	"00000000-0000-0000-0000-000000000000");
@@ -357,6 +357,6 @@ INSERT INTO PE_PE
 	7);
 INSERT INTO S_SYS_PROXY
 	VALUES ("99d92d3d-7591-47a0-a580-42e2570a8dfe",
-	'8963_satisfied_components',
+	'8484_satisfied_components',
 	1,
-	'../8963_satisfied_components.xtuml');
+	'../8484_satisfied_components.xtuml');

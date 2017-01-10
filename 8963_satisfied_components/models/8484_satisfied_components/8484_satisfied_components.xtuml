@@ -2,7 +2,7 @@
 
 INSERT INTO S_SYS
 	VALUES ("99d92d3d-7591-47a0-a580-42e2570a8dfe",
-	'8963_satisfied_components',
+	'8484_satisfied_components',
 	1);
 INSERT INTO GD_MD
 	VALUES ("1108d2e9-56ec-4d80-8adc-e234ad300c2a",
@@ -22,14 +22,14 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'4.1.17',
-	'8963_satisfied_components');
+	'8484_satisfied_components');
 INSERT INTO GD_GE
 	VALUES ("c5ee2f26-2958-40a6-b87a-23430d9bff03",
 	"1108d2e9-56ec-4d80-8adc-e234ad300c2a",
 	"a08311f3-0523-4b4a-a657-7ceb01733b86",
 	108,
 	0,
-	'8963_satisfied_components::pkg1');
+	'8484_satisfied_components::pkg1');
 INSERT INTO GD_SHP
 	VALUES ("c5ee2f26-2958-40a6-b87a-23430d9bff03");
 INSERT INTO GD_NCS
