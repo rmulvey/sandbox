@@ -24,15 +24,15 @@ INSERT INTO GD_MD
 	200,
 	150,
 	0,
-	'',
-	'8484_simpest_masl_like_test::domains');
+	'4.1.17',
+	'8973__test3_masl_like_test::domains');
 INSERT INTO GD_GE
 	VALUES ("3daa8768-30ed-4e6e-8318-82d3f18d4af1",
 	"4d821b53-fcda-4fb8-8be3-66358c5bc74a",
 	"638d3a84-543c-42e8-ab74-b3691b30f360",
 	98,
 	0,
-	'8484_simpest_masl_like_test::domains::domain1');
+	'8973__test3_masl_like_test::domains::domain1');
 INSERT INTO GD_SHP
 	VALUES ("3daa8768-30ed-4e6e-8318-82d3f18d4af1");
 INSERT INTO GD_NCS
@@ -61,7 +61,7 @@ INSERT INTO GD_GE
 	"573321bd-a72a-4e44-9087-555c36059af8",
 	98,
 	0,
-	'8484_simpest_masl_like_test::domains::domain2');
+	'8973__test3_masl_like_test::domains::domain2');
 INSERT INTO GD_SHP
 	VALUES ("56c9156f-ce3f-4f9d-bd5d-64afa03a04a7");
 INSERT INTO GD_NCS
@@ -90,7 +90,7 @@ INSERT INTO GD_GE
 	"39580ca7-1c05-4fbd-acc4-427524b7f1af",
 	93,
 	0,
-	'8484_simpest_masl_like_test::domains::domain1::Port1::iface1');
+	'8973__test3_masl_like_test::domains::domain1::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("84c10e32-bc22-470e-8818-8bf6bffefd02",
 	"00000000-0000-0000-0000-000000000000");
@@ -124,8 +124,8 @@ INSERT INTO DIM_ND
 	0.000000,
 	"e4c8aeb6-6e03-4854-8e1e-795ba510ee90");
 INSERT INTO DIM_GE
-	VALUES (0.000000,
-	0.000000,
+	VALUES (231.000000,
+	-41.000000,
 	"e4c8aeb6-6e03-4854-8e1e-795ba510ee90",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -190,7 +190,7 @@ INSERT INTO GD_GE
 	"12fe1379-5e2b-4113-a053-6d3ce73d9524",
 	93,
 	0,
-	'8484_simpest_masl_like_test::domains::domain2::Port1::iface2');
+	'8973__test3_masl_like_test::domains::domain2::Port1::iface2');
 INSERT INTO GD_CON
 	VALUES ("6f3bb3e1-c222-48c2-b45c-0dd1250c3e73",
 	"00000000-0000-0000-0000-000000000000");
@@ -224,8 +224,8 @@ INSERT INTO DIM_ND
 	0.000000,
 	"4cad13c5-11a4-4370-b6e0-f4624e5f1f77");
 INSERT INTO DIM_GE
-	VALUES (0.000000,
-	0.000000,
+	VALUES (451.000000,
+	-41.000000,
 	"4cad13c5-11a4-4370-b6e0-f4624e5f1f77",
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO DIM_ELE
@@ -299,6 +299,6 @@ INSERT INTO PE_PE
 	7);
 INSERT INTO S_SYS_PROXY
 	VALUES ("a260e500-3b45-46c0-b0ec-fdebdb5d09dc",
-	'8484_simpest_masl_like_test',
+	'8973__test3_masl_like_test',
 	1,
-	'../8484_simpest_masl_like_test.xtuml');
+	'../8973__test3_masl_like_test.xtuml');
