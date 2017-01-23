@@ -25,14 +25,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'8978_reconcile_satisfaction::project');
+	'8978_test1::project');
 INSERT INTO GD_GE
 	VALUES ("f6dbdd99-bc78-4be0-95b6-6f4f1a6fd33e",
 	"df71ea7f-69f4-49b3-be91-c18e0e7baa3e",
 	"2df8249b-1424-4833-bb60-36fac7260668",
 	98,
 	0,
-	'8978_reconcile_satisfaction::project::comp1');
+	'8978_test1::project::comp1');
 INSERT INTO GD_SHP
 	VALUES ("f6dbdd99-bc78-4be0-95b6-6f4f1a6fd33e");
 INSERT INTO GD_NCS
@@ -61,7 +61,7 @@ INSERT INTO GD_GE
 	"ba100513-4d53-4989-8421-e07b95eceb4c",
 	98,
 	0,
-	'8978_reconcile_satisfaction::project::comp2');
+	'8978_test1::project::comp2');
 INSERT INTO GD_SHP
 	VALUES ("7d8936a7-113b-4fbd-83f3-c89a5de2153a");
 INSERT INTO GD_NCS
@@ -90,7 +90,7 @@ INSERT INTO GD_GE
 	"40fda9f6-44c7-453c-8cb8-aad61de84e48",
 	96,
 	0,
-	'8978_reconcile_satisfaction::project::iface1');
+	'8978_test1::project::iface1');
 INSERT INTO GD_SHP
 	VALUES ("2f23f1cd-00e2-4383-af95-bfbb89cc6339");
 INSERT INTO GD_NCS
@@ -114,7 +114,7 @@ INSERT INTO GD_GE
 	"193bc957-109e-4030-a034-2b9d3607360e",
 	94,
 	0,
-	'8978_reconcile_satisfaction::project::comp1::Port1::iface1');
+	'8978_test1::project::comp1::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("481090cc-86c0-4f0f-b9fb-a2ccb61a413e",
 	"00000000-0000-0000-0000-000000000000");
@@ -214,7 +214,7 @@ INSERT INTO GD_GE
 	"76375a70-a3b9-4520-a1cf-cb8cdab9d7cf",
 	93,
 	0,
-	'8978_reconcile_satisfaction::project::comp2::Port1::iface1');
+	'8978_test1::project::comp2::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("2d309e18-514d-47cf-a3a1-18953a9f1384",
 	"00000000-0000-0000-0000-000000000000");
@@ -349,6 +349,6 @@ INSERT INTO PE_PE
 	7);
 INSERT INTO S_SYS_PROXY
 	VALUES ("9fbb428b-c7bc-4265-8a1c-f0e9a50dfba1",
-	'8978_reconcile_satisfaction',
+	'8978_test1',
 	1,
-	'../8978_reconcile_satisfaction.xtuml');
+	'../8978_test1.xtuml');
