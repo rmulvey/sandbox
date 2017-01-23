@@ -2,7 +2,7 @@
 
 INSERT INTO S_SYS
 	VALUES ("9fbb428b-c7bc-4265-8a1c-f0e9a50dfba1",
-	'8978_reconcile_satisfaction',
+	'8978_test1',
 	1);
 INSERT INTO GD_MD
 	VALUES ("6d0379aa-0d18-4975-a704-a53c2a08a7e6",
@@ -22,7 +22,7 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'',
-	'8978_reconcile_satisfaction');
+	'8978_test1');
 INSERT INTO GD_GE
 	VALUES ("08399905-6eb6-4652-8474-a7c7fdca19e2",
 	"6d0379aa-0d18-4975-a704-a53c2a08a7e6",

@@ -25,14 +25,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'foo1::project');
+	'8978_test2::project');
 INSERT INTO GD_GE
 	VALUES ("f78bc854-528f-426f-bfac-e48f4fd3d2fb",
 	"5c464760-20aa-43bd-8659-7c342e7a78bc",
 	"4d789f53-de92-4f80-919a-61247b5ab318",
 	98,
 	0,
-	'foo1::project::comp1');
+	'8978_test2::project::comp1');
 INSERT INTO GD_SHP
 	VALUES ("f78bc854-528f-426f-bfac-e48f4fd3d2fb");
 INSERT INTO GD_NCS
@@ -61,7 +61,7 @@ INSERT INTO GD_GE
 	"cdd06858-3eeb-4d14-a53f-3107aa2c2cf1",
 	98,
 	0,
-	'foo1::project::comp2');
+	'8978_test2::project::comp2');
 INSERT INTO GD_SHP
 	VALUES ("5554f346-6987-4ace-b591-f740e8358554");
 INSERT INTO GD_NCS
@@ -90,7 +90,7 @@ INSERT INTO GD_GE
 	"e3555b21-c911-42a1-a3e8-a22023e4efa7",
 	96,
 	0,
-	'foo1::project::iface1');
+	'8978_test2::project::iface1');
 INSERT INTO GD_SHP
 	VALUES ("1381085a-0626-41b1-8da4-0435a8635b98");
 INSERT INTO GD_NCS
@@ -114,7 +114,7 @@ INSERT INTO GD_GE
 	"f7e34e39-e1bc-4c64-ba08-95b38ff23ed8",
 	94,
 	0,
-	'foo1::project::comp1::Port1::iface1');
+	'8978_test2::project::comp1::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("54e01ca8-5669-46bb-b853-0d9c523aefe9",
 	"00000000-0000-0000-0000-000000000000");
@@ -214,7 +214,7 @@ INSERT INTO GD_GE
 	"38347345-e675-444c-8f22-a7ba014c3bdc",
 	93,
 	0,
-	'foo1::project::comp2::Port1::iface1');
+	'8978_test2::project::comp2::Port1::iface1');
 INSERT INTO GD_CON
 	VALUES ("d45e9238-5e08-4fb7-9620-17df910b0654",
 	"00000000-0000-0000-0000-000000000000");
@@ -349,6 +349,6 @@ INSERT INTO PE_PE
 	7);
 INSERT INTO S_SYS_PROXY
 	VALUES ("e86575dd-1005-4836-9748-02185753b112",
-	'foo1',
+	'8978_test2',
 	1,
-	'../foo1.xtuml');
+	'../8978_test2.xtuml');
