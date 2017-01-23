@@ -28,14 +28,14 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'8973__test3_masl_like_test::domains::domain2');
+	'8973_test3_masl_like_test::domains::domain2');
 INSERT INTO GD_GE
 	VALUES ("b17c70de-bafb-4ed6-8671-f13311790c14",
 	"85ad54f0-fc7e-4d41-9c31-03403caab4e7",
 	"573321bd-a72a-4e44-9087-555c36059af8",
 	103,
 	0,
-	'8973__test3_masl_like_test::domains::domain2');
+	'8973_test3_masl_like_test::domains::domain2');
 INSERT INTO GD_SHP
 	VALUES ("b17c70de-bafb-4ed6-8671-f13311790c14");
 INSERT INTO GD_CTR
@@ -64,7 +64,7 @@ INSERT INTO GD_GE
 	"12fe1379-5e2b-4113-a053-6d3ce73d9524",
 	93,
 	0,
-	'8973__test3_masl_like_test::domains::domain2::Port1::iface2');
+	'8973_test3_masl_like_test::domains::domain2::Port1::iface2');
 INSERT INTO GD_CON
 	VALUES ("ba507a78-6287-4b79-b225-c916f16bd7ea",
 	"00000000-0000-0000-0000-000000000000");

@@ -2,7 +2,7 @@
 
 INSERT INTO S_SYS
 	VALUES ("a260e500-3b45-46c0-b0ec-fdebdb5d09dc",
-	'8973__test3_masl_like_test',
+	'8973_test3_masl_like_test',
 	1);
 INSERT INTO GD_MD
 	VALUES ("1cdbd787-e159-4b0e-8ad7-99d994ccbcec",
@@ -22,14 +22,14 @@ INSERT INTO GD_MD
 	150,
 	0,
 	'4.1.17',
-	'8973__test3_masl_like_test');
+	'8973_test3_masl_like_test');
 INSERT INTO GD_GE
 	VALUES ("30ab073b-fc4d-4ade-94a5-ceeefc55a5b9",
 	"1cdbd787-e159-4b0e-8ad7-99d994ccbcec",
 	"c9914891-d721-441d-822c-cf5160652f56",
 	108,
 	0,
-	'8973__test3_masl_like_test::domains');
+	'8973_test3_masl_like_test::domains');
 INSERT INTO GD_SHP
 	VALUES ("30ab073b-fc4d-4ade-94a5-ceeefc55a5b9");
 INSERT INTO GD_NCS
@@ -53,7 +53,7 @@ INSERT INTO GD_GE
 	"2cf4339e-db09-4ea3-b5fd-204b6efa977c",
 	108,
 	0,
-	'8973__test3_masl_like_test::Interface');
+	'8973_test3_masl_like_test::Interface');
 INSERT INTO GD_SHP
 	VALUES ("6190614b-049c-459f-b6b8-84f4d4c48bb9");
 INSERT INTO GD_NCS
@@ -77,7 +77,7 @@ INSERT INTO GD_GE
 	"5c7df527-b1a5-4e16-ad80-019b419e3966",
 	108,
 	0,
-	'8973__test3_masl_like_test::project');
+	'8973_test3_masl_like_test::project');
 INSERT INTO GD_SHP
 	VALUES ("e7e5e20b-a8ff-43b9-8640-22f01499fe41");
 INSERT INTO GD_NCS
