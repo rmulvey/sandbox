@@ -1,0 +1,5279 @@
+-- root-types-contained: SystemModel_c,PackageableElement_c,DataType_c,CoreDataType_c,UserDataType_c
+-- BP 7.1 content: StreamData syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO S_SYS
+	VALUES ("c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'SAC',
+	1);
+INSERT INTO EP_PKG
+	VALUES ("023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'types',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	"00000000-0000-0000-0000-000000000000",
+	'MASLtype',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("590cdff4-c5d5-4ed0-9f63-eafea84bf4e2",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("590cdff4-c5d5-4ed0-9f63-eafea84bf4e2",
+	"00000000-0000-0000-0000-000000000000",
+	'instance',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("590cdff4-c5d5-4ed0-9f63-eafea84bf4e2",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("7cc3a15c-045d-4829-bfb4-8a78d6825d76",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("7cc3a15c-045d-4829-bfb4-8a78d6825d76",
+	"00000000-0000-0000-0000-000000000000",
+	'structure',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("7cc3a15c-045d-4829-bfb4-8a78d6825d76",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("af8a3614-43b7-409f-97dc-551a7ff4f1ce",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("af8a3614-43b7-409f-97dc-551a7ff4f1ce",
+	"00000000-0000-0000-0000-000000000000",
+	'enum',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("af8a3614-43b7-409f-97dc-551a7ff4f1ce",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("616806e9-5449-48ef-b049-b4e230e14370",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("616806e9-5449-48ef-b049-b4e230e14370",
+	"00000000-0000-0000-0000-000000000000",
+	'device',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("616806e9-5449-48ef-b049-b4e230e14370",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("bc6db35f-aa9b-4dfa-a1a7-cd4648c04ba9",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("bc6db35f-aa9b-4dfa-a1a7-cd4648c04ba9",
+	"00000000-0000-0000-0000-000000000000",
+	'event',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("bc6db35f-aa9b-4dfa-a1a7-cd4648c04ba9",
+	"ba5eda7a-def5-0000-0000-00000000000a",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("e393c82e-a1f9-4130-8ec6-e524cedb0572",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("e393c82e-a1f9-4130-8ec6-e524cedb0572",
+	"00000000-0000-0000-0000-000000000000",
+	'timer',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("e393c82e-a1f9-4130-8ec6-e524cedb0572",
+	"ba5eda7a-def5-0000-0000-00000000000f",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("194346e6-cd5c-49d6-af21-6d59cbcc2b67",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("194346e6-cd5c-49d6-af21-6d59cbcc2b67",
+	"00000000-0000-0000-0000-000000000000",
+	'timestamp',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("194346e6-cd5c-49d6-af21-6d59cbcc2b67",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("b469f12e-eb68-48af-95bb-afdaf37096fa",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("b469f12e-eb68-48af-95bb-afdaf37096fa",
+	"00000000-0000-0000-0000-000000000000",
+	'duration',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("b469f12e-eb68-48af-95bb-afdaf37096fa",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("9c62fdc5-c937-4cef-899a-9d1e00014b26",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("9c62fdc5-c937-4cef-899a-9d1e00014b26",
+	"00000000-0000-0000-0000-000000000000",
+	'date',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("9c62fdc5-c937-4cef-899a-9d1e00014b26",
+	"ba5eda7a-def5-0000-0000-00000000000e",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("865655ec-2502-4015-98b0-5910700792e7",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("865655ec-2502-4015-98b0-5910700792e7",
+	"00000000-0000-0000-0000-000000000000",
+	'wstring',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("865655ec-2502-4015-98b0-5910700792e7",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("21c36119-c606-4c7d-bdd4-00312851af43",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("21c36119-c606-4c7d-bdd4-00312851af43",
+	"00000000-0000-0000-0000-000000000000",
+	'string',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("21c36119-c606-4c7d-bdd4-00312851af43",
+	"ba5eda7a-def5-0000-0000-000000000004",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("404ec144-13f9-480b-8b3e-49a28af5c92f",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("404ec144-13f9-480b-8b3e-49a28af5c92f",
+	"00000000-0000-0000-0000-000000000000",
+	'real',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("404ec144-13f9-480b-8b3e-49a28af5c92f",
+	"ba5eda7a-def5-0000-0000-000000000003",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("832953db-8ef1-48d8-ab47-daa36b8c795a",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("832953db-8ef1-48d8-ab47-daa36b8c795a",
+	"00000000-0000-0000-0000-000000000000",
+	'long_integer',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("832953db-8ef1-48d8-ab47-daa36b8c795a",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("268851be-4258-475f-8341-854a21a76054",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("268851be-4258-475f-8341-854a21a76054",
+	"00000000-0000-0000-0000-000000000000",
+	'byte',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("268851be-4258-475f-8341-854a21a76054",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("8acfed91-d701-4b91-8d96-41d937d2b1b1",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("8acfed91-d701-4b91-8d96-41d937d2b1b1",
+	"00000000-0000-0000-0000-000000000000",
+	'wcharacter',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("8acfed91-d701-4b91-8d96-41d937d2b1b1",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("fc06e0f9-878d-4aab-9bc2-2d2ff7c00644",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("fc06e0f9-878d-4aab-9bc2-2d2ff7c00644",
+	"00000000-0000-0000-0000-000000000000",
+	'character',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("fc06e0f9-878d-4aab-9bc2-2d2ff7c00644",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("916ca417-6255-4e0e-9586-0cef5593c2e4",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("916ca417-6255-4e0e-9586-0cef5593c2e4",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("916ca417-6255-4e0e-9586-0cef5593c2e4",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("f09069ff-840e-425c-be03-e88e4325e945",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("f09069ff-840e-425c-be03-e88e4325e945",
+	"00000000-0000-0000-0000-000000000000",
+	'boolean',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("f09069ff-840e-425c-be03-e88e4325e945",
+	"ba5eda7a-def5-0000-0000-000000000001",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("554108e7-d194-445e-a0bd-64db99440d79",
+	1,
+	"023a8adf-8860-47f1-ba50-c68efe0244ee",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("554108e7-d194-445e-a0bd-64db99440d79",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("554108e7-d194-445e-a0bd-64db99440d79",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO EP_PKG
+	VALUES ("e8c1686a-2a04-4709-b3cf-f8228d95523b",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'SAC',
+	'masl_domain',
+	0);
+INSERT INTO PE_PE
+	VALUES ("5c7c1478-794f-472a-8fac-9c63d1851d41",
+	1,
+	"e8c1686a-2a04-4709-b3cf-f8228d95523b",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG
+	VALUES ("5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'Shared',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("6af3559d-f3cf-45a3-a1a4-96772684f906",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO C_I
+	VALUES ("6af3559d-f3cf-45a3-a1a4-96772684f906",
+	"00000000-0000-0000-0000-000000000000",
+	'SAC',
+	'');
+INSERT INTO C_EP
+	VALUES ("5f95909e-9ba0-4a17-aec8-7b1a039c34fa",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'add_group',
+	'');
+INSERT INTO C_IO
+	VALUES ("5f95909e-9ba0-4a17-aec8-7b1a039c34fa",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'add_group',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("f0b2ac55-f2ce-4087-a282-3dab1357d51b",
+	"5f95909e-9ba0-4a17-aec8-7b1a039c34fa",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("a899b1d8-a59a-42b0-a48e-73bf2c38277d",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'add_operation_to_group',
+	'');
+INSERT INTO C_IO
+	VALUES ("a899b1d8-a59a-42b0-a48e-73bf2c38277d",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'add_operation_to_group',
+	'',
+	0,
+	'',
+	"5f95909e-9ba0-4a17-aec8-7b1a039c34fa");
+INSERT INTO C_PP
+	VALUES ("59a84b39-b0e7-4a54-b381-590feea7d4c8",
+	"a899b1d8-a59a-42b0-a48e-73bf2c38277d",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("4ff22941-086f-4665-bb5d-3b7f1aa8c054",
+	"a899b1d8-a59a-42b0-a48e-73bf2c38277d",
+	"2161dedb-c0d3-4609-84c1-fe16681d4052",
+	'operations',
+	'',
+	0,
+	'',
+	"59a84b39-b0e7-4a54-b381-590feea7d4c8");
+INSERT INTO C_EP
+	VALUES ("942ca003-c69c-4ed1-a3a9-4bf97f9ac7f7",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'delete_group',
+	'');
+INSERT INTO C_IO
+	VALUES ("942ca003-c69c-4ed1-a3a9-4bf97f9ac7f7",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'delete_group',
+	'',
+	0,
+	'',
+	"a899b1d8-a59a-42b0-a48e-73bf2c38277d");
+INSERT INTO C_PP
+	VALUES ("2a627a04-2d96-4f8f-9de1-706838c57a3d",
+	"942ca003-c69c-4ed1-a3a9-4bf97f9ac7f7",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("e5e043cb-e998-4d21-a585-cadf5493a9c7",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'delete_group_operation',
+	'');
+INSERT INTO C_IO
+	VALUES ("e5e043cb-e998-4d21-a585-cadf5493a9c7",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'delete_group_operation',
+	'',
+	0,
+	'',
+	"942ca003-c69c-4ed1-a3a9-4bf97f9ac7f7");
+INSERT INTO C_PP
+	VALUES ("b1d76127-ab53-4bd2-ad97-71e314dd706a",
+	"e5e043cb-e998-4d21-a585-cadf5493a9c7",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("320e32f9-9a40-4570-bd68-b4fab5540e11",
+	"e5e043cb-e998-4d21-a585-cadf5493a9c7",
+	"2161dedb-c0d3-4609-84c1-fe16681d4052",
+	'operations',
+	'',
+	0,
+	'',
+	"b1d76127-ab53-4bd2-ad97-71e314dd706a");
+INSERT INTO C_EP
+	VALUES ("19688c93-b192-46bc-8d16-5f4452e852c2",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'populate_domain',
+	'');
+INSERT INTO C_IO
+	VALUES ("19688c93-b192-46bc-8d16-5f4452e852c2",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'populate_domain',
+	'',
+	0,
+	'',
+	"e5e043cb-e998-4d21-a585-cadf5493a9c7");
+INSERT INTO C_PP
+	VALUES ("a5bcbd5a-4830-4ebd-8e4f-533d7ca4bce0",
+	"19688c93-b192-46bc-8d16-5f4452e852c2",
+	"f09069ff-840e-425c-be03-e88e4325e945",
+	'reload_config_files',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("f281aa8e-6ad7-45cb-9904-b3c9181b98e2",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'resend_infos',
+	'');
+INSERT INTO C_IO
+	VALUES ("f281aa8e-6ad7-45cb-9904-b3c9181b98e2",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'resend_infos',
+	'',
+	0,
+	'',
+	"19688c93-b192-46bc-8d16-5f4452e852c2");
+INSERT INTO C_EP
+	VALUES ("c55e8a45-aa4d-453f-a426-522758335458",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'session_active',
+	'');
+INSERT INTO C_IO
+	VALUES ("c55e8a45-aa4d-453f-a426-522758335458",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'session_active',
+	'',
+	0,
+	'',
+	"f281aa8e-6ad7-45cb-9904-b3c9181b98e2");
+INSERT INTO C_PP
+	VALUES ("1e59f4d6-f326-4090-9776-c1fc2bf34400",
+	"c55e8a45-aa4d-453f-a426-522758335458",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("99000091-42d4-4d53-87eb-b3edded01f3b",
+	"c55e8a45-aa4d-453f-a426-522758335458",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"1e59f4d6-f326-4090-9776-c1fc2bf34400");
+INSERT INTO C_PP
+	VALUES ("334f31b1-a7b9-44f5-9fdd-035e61d26cd2",
+	"c55e8a45-aa4d-453f-a426-522758335458",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"99000091-42d4-4d53-87eb-b3edded01f3b");
+INSERT INTO C_EP
+	VALUES ("a491829e-77a7-456d-ba45-0917efa5f7c9",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'user_logoff',
+	'');
+INSERT INTO C_IO
+	VALUES ("a491829e-77a7-456d-ba45-0917efa5f7c9",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'user_logoff',
+	'',
+	0,
+	'',
+	"c55e8a45-aa4d-453f-a426-522758335458");
+INSERT INTO C_PP
+	VALUES ("687a42fe-3ca1-4cfa-a5f0-c36a29abb9c0",
+	"a491829e-77a7-456d-ba45-0917efa5f7c9",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("9c1242c6-60aa-4037-b855-69539725490d",
+	"a491829e-77a7-456d-ba45-0917efa5f7c9",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"687a42fe-3ca1-4cfa-a5f0-c36a29abb9c0");
+INSERT INTO C_PP
+	VALUES ("b67e4a07-52fe-4e92-af34-15be63c3f7dc",
+	"a491829e-77a7-456d-ba45-0917efa5f7c9",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"9c1242c6-60aa-4037-b855-69539725490d");
+INSERT INTO C_EP
+	VALUES ("69e5ae55-e357-405e-b307-706bf98f217e",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	0,
+	'user_logon',
+	'');
+INSERT INTO C_IO
+	VALUES ("69e5ae55-e357-405e-b307-706bf98f217e",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'user_logon',
+	'',
+	0,
+	'',
+	"a491829e-77a7-456d-ba45-0917efa5f7c9");
+INSERT INTO C_PP
+	VALUES ("17590782-cf80-4200-98d8-1e6fc022b90b",
+	"69e5ae55-e357-405e-b307-706bf98f217e",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("9266abce-be80-44b0-81b5-046d54d7e5b6",
+	"69e5ae55-e357-405e-b307-706bf98f217e",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"17590782-cf80-4200-98d8-1e6fc022b90b");
+INSERT INTO C_PP
+	VALUES ("842d3c32-614b-4fc6-a0c1-7f073ea5e434",
+	"69e5ae55-e357-405e-b307-706bf98f217e",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'user_name',
+	'',
+	0,
+	'',
+	"9266abce-be80-44b0-81b5-046d54d7e5b6");
+INSERT INTO C_PP
+	VALUES ("1623ded1-c4be-4d14-ac22-3a5dbfdc4f3f",
+	"69e5ae55-e357-405e-b307-706bf98f217e",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'workstation_hostname',
+	'',
+	0,
+	'',
+	"842d3c32-614b-4fc6-a0c1-7f073ea5e434");
+INSERT INTO C_PP
+	VALUES ("dc204e4c-5eb6-45e7-ac6d-1c3b22db7281",
+	"69e5ae55-e357-405e-b307-706bf98f217e",
+	"2161dedb-c0d3-4609-84c1-fe16681d4052",
+	'groups',
+	'',
+	0,
+	'',
+	"1623ded1-c4be-4d14-ac22-3a5dbfdc4f3f");
+INSERT INTO PE_PE
+	VALUES ("2161dedb-c0d3-4609-84c1-fe16681d4052",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("2161dedb-c0d3-4609-84c1-fe16681d4052",
+	"00000000-0000-0000-0000-000000000000",
+	'sequence of string',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("2161dedb-c0d3-4609-84c1-fe16681d4052",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("6967ced8-080f-47cf-86e1-f12443d520ac",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO C_I
+	VALUES ("6967ced8-080f-47cf-86e1-f12443d520ac",
+	"00000000-0000-0000-0000-000000000000",
+	'SACOperator',
+	'');
+INSERT INTO C_EP
+	VALUES ("f3a97912-6530-437b-b073-71fc6356e91f",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'group_deleted',
+	'');
+INSERT INTO C_IO
+	VALUES ("f3a97912-6530-437b-b073-71fc6356e91f",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'group_deleted',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("04b11416-be71-4379-8e13-eb50aad28b8a",
+	"f3a97912-6530-437b-b073-71fc6356e91f",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("94201cd1-f814-4bd1-81f7-bf1a4484a905",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'group_operation_removed',
+	'');
+INSERT INTO C_IO
+	VALUES ("94201cd1-f814-4bd1-81f7-bf1a4484a905",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'group_operation_removed',
+	'',
+	0,
+	'',
+	"f3a97912-6530-437b-b073-71fc6356e91f");
+INSERT INTO C_PP
+	VALUES ("b3462c3a-c999-4ece-a07c-9977630edbf6",
+	"94201cd1-f814-4bd1-81f7-bf1a4484a905",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("fc977ec6-10ea-4e13-bd64-21b7e6db2af0",
+	"94201cd1-f814-4bd1-81f7-bf1a4484a905",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'operation_name',
+	'',
+	0,
+	'',
+	"b3462c3a-c999-4ece-a07c-9977630edbf6");
+INSERT INTO C_EP
+	VALUES ("f6040043-d92c-4086-bed6-085af04eec32",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'login_valid',
+	'');
+INSERT INTO C_IO
+	VALUES ("f6040043-d92c-4086-bed6-085af04eec32",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'login_valid',
+	'',
+	0,
+	'',
+	"94201cd1-f814-4bd1-81f7-bf1a4484a905");
+INSERT INTO C_PP
+	VALUES ("69352f03-4885-445d-b054-ab2d38c4d141",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("f9ce3d9a-a164-4160-a187-78dda4fafeff",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"69352f03-4885-445d-b054-ab2d38c4d141");
+INSERT INTO C_PP
+	VALUES ("f378932e-5edc-44bf-ade6-7c14fbfa7825",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"f09069ff-840e-425c-be03-e88e4325e945",
+	'is_valid',
+	'',
+	0,
+	'',
+	"f9ce3d9a-a164-4160-a187-78dda4fafeff");
+INSERT INTO C_PP
+	VALUES ("df87eac0-3fd1-458d-b56a-c9efc205265c",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'failure_reason',
+	'',
+	0,
+	'',
+	"f378932e-5edc-44bf-ade6-7c14fbfa7825");
+INSERT INTO C_PP
+	VALUES ("b398ebf6-8f4a-45e0-a967-71b2f7ac7f0d",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'workstation_hostname',
+	'',
+	0,
+	'',
+	"df87eac0-3fd1-458d-b56a-c9efc205265c");
+INSERT INTO C_PP
+	VALUES ("f1817e57-6ba0-4c81-b06c-1f2b0a806d08",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"b398ebf6-8f4a-45e0-a967-71b2f7ac7f0d");
+INSERT INTO C_EP
+	VALUES ("1ea147ab-6f70-4618-aed7-7b425ad0cd8d",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'raise_notification',
+	'');
+INSERT INTO C_IO
+	VALUES ("1ea147ab-6f70-4618-aed7-7b425ad0cd8d",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'raise_notification',
+	'',
+	0,
+	'',
+	"f6040043-d92c-4086-bed6-085af04eec32");
+INSERT INTO C_PP
+	VALUES ("ebd7e33b-16f6-45da-94a2-e1ff6a87fffb",
+	"1ea147ab-6f70-4618-aed7-7b425ad0cd8d",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'condition_description',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("dddbe72e-a49f-4557-8a60-9cafb14c6c1e",
+	"1ea147ab-6f70-4618-aed7-7b425ad0cd8d",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'condition_name',
+	'',
+	0,
+	'',
+	"ebd7e33b-16f6-45da-94a2-e1ff6a87fffb");
+INSERT INTO C_EP
+	VALUES ("ff2d8e48-ab6a-444c-afe3-3394caf18cf4",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'report_group',
+	'');
+INSERT INTO C_IO
+	VALUES ("ff2d8e48-ab6a-444c-afe3-3394caf18cf4",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'report_group',
+	'',
+	0,
+	'',
+	"1ea147ab-6f70-4618-aed7-7b425ad0cd8d");
+INSERT INTO C_PP
+	VALUES ("e3be9321-a169-4f83-b928-6099ccc7ff8a",
+	"ff2d8e48-ab6a-444c-afe3-3394caf18cf4",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("fef34531-8652-46a7-ae89-b1e6918b4be9",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'report_group_operation',
+	'');
+INSERT INTO C_IO
+	VALUES ("fef34531-8652-46a7-ae89-b1e6918b4be9",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'report_group_operation',
+	'',
+	0,
+	'',
+	"ff2d8e48-ab6a-444c-afe3-3394caf18cf4");
+INSERT INTO C_PP
+	VALUES ("68b54e9d-990d-48b5-95f1-b13b704ab204",
+	"fef34531-8652-46a7-ae89-b1e6918b4be9",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("62885022-b285-47c7-9e5a-d3a823ee28d2",
+	"fef34531-8652-46a7-ae89-b1e6918b4be9",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'operation_name',
+	'',
+	0,
+	'',
+	"68b54e9d-990d-48b5-95f1-b13b704ab204");
+INSERT INTO C_EP
+	VALUES ("25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'report_user',
+	'');
+INSERT INTO C_IO
+	VALUES ("25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'report_user',
+	'',
+	0,
+	'',
+	"fef34531-8652-46a7-ae89-b1e6918b4be9");
+INSERT INTO C_PP
+	VALUES ("e07cd3fb-4670-4bc3-a902-fd92469bf338",
+	"25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("b2603499-b491-44ea-8431-5310f87b1993",
+	"25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"e07cd3fb-4670-4bc3-a902-fd92469bf338");
+INSERT INTO C_PP
+	VALUES ("ecb83566-848b-4941-ad3f-df5ca0282f8d",
+	"25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'user_name',
+	'',
+	0,
+	'',
+	"b2603499-b491-44ea-8431-5310f87b1993");
+INSERT INTO C_PP
+	VALUES ("281b7c18-d37e-4e77-adc5-bede8d29817b",
+	"25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"2be426c3-58a1-483f-b14e-4fafe4389260",
+	'logged_on',
+	'',
+	0,
+	'',
+	"ecb83566-848b-4941-ad3f-df5ca0282f8d");
+INSERT INTO C_EP
+	VALUES ("91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'report_user_group',
+	'');
+INSERT INTO C_IO
+	VALUES ("91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'report_user_group',
+	'',
+	0,
+	'',
+	"25580a7a-b8ad-401f-ace8-8f25c1ec8f8c");
+INSERT INTO C_PP
+	VALUES ("56053bd7-61cc-4e82-9f44-9e77cdf82b30",
+	"91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'uid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("171cfa73-b4a2-40d5-846c-e1149bfcb691",
+	"91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"56053bd7-61cc-4e82-9f44-9e77cdf82b30");
+INSERT INTO C_PP
+	VALUES ("7cb1f02d-ac40-43c5-9866-fd3f1e92e9d1",
+	"91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"171cfa73-b4a2-40d5-846c-e1149bfcb691");
+INSERT INTO C_PP
+	VALUES ("0882003c-4c93-4b66-b446-375bc344c3a7",
+	"91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"7cb1f02d-ac40-43c5-9866-fd3f1e92e9d1");
+INSERT INTO C_EP
+	VALUES ("8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'report_user_operation',
+	'');
+INSERT INTO C_IO
+	VALUES ("8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'report_user_operation',
+	'',
+	0,
+	'',
+	"91a94bc8-cd94-485b-9663-b7f125b6379b");
+INSERT INTO C_PP
+	VALUES ("c02d2fe1-8135-4242-9a35-1a79a0dda030",
+	"8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("3c0f48c1-3548-4052-9ef9-f2f484c67b98",
+	"8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'operation_name',
+	'',
+	0,
+	'',
+	"c02d2fe1-8135-4242-9a35-1a79a0dda030");
+INSERT INTO C_PP
+	VALUES ("c6baf720-3d20-4d90-a2c0-5e50dacb9786",
+	"8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"3c0f48c1-3548-4052-9ef9-f2f484c67b98");
+INSERT INTO C_PP
+	VALUES ("5a48abb5-7a0b-48d9-98e3-a47789936f82",
+	"8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"c6baf720-3d20-4d90-a2c0-5e50dacb9786");
+INSERT INTO C_EP
+	VALUES ("47349995-a501-44e7-a65a-b7910bc5804e",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'report_user_session',
+	'');
+INSERT INTO C_IO
+	VALUES ("47349995-a501-44e7-a65a-b7910bc5804e",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'report_user_session',
+	'',
+	0,
+	'',
+	"8748b93b-2259-4b9b-9ea9-6245cff641a0");
+INSERT INTO C_PP
+	VALUES ("02a741b7-8099-4224-ae54-63926d221d96",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("304b1c4b-241d-417f-89e6-f900c3adb584",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"02a741b7-8099-4224-ae54-63926d221d96");
+INSERT INTO C_PP
+	VALUES ("9b93aa60-dadc-4a8b-ade3-e2b0232f4349",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"194346e6-cd5c-49d6-af21-6d59cbcc2b67",
+	'login_time',
+	'',
+	0,
+	'',
+	"304b1c4b-241d-417f-89e6-f900c3adb584");
+INSERT INTO C_PP
+	VALUES ("6ac60a86-801b-4b93-a0e9-af63d9658b08",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"f09069ff-840e-425c-be03-e88e4325e945",
+	'session_timed_out',
+	'',
+	0,
+	'',
+	"9b93aa60-dadc-4a8b-ade3-e2b0232f4349");
+INSERT INTO C_PP
+	VALUES ("d4406a55-bc09-43fb-b926-41109f066aa9",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'workstation_hostname',
+	'',
+	0,
+	'',
+	"6ac60a86-801b-4b93-a0e9-af63d9658b08");
+INSERT INTO C_PP
+	VALUES ("e486bbec-ab73-44d7-99d8-5cbc0349d0d6",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"d4406a55-bc09-43fb-b926-41109f066aa9");
+INSERT INTO C_EP
+	VALUES ("4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'user_group_removed',
+	'');
+INSERT INTO C_IO
+	VALUES ("4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'user_group_removed',
+	'',
+	0,
+	'',
+	"47349995-a501-44e7-a65a-b7910bc5804e");
+INSERT INTO C_PP
+	VALUES ("3f0fb3f4-1dd7-4781-b283-efb4e1e2b41c",
+	"4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'uid',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("81140c18-81ec-4889-9602-933315a5eee8",
+	"4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'group_name',
+	'',
+	0,
+	'',
+	"3f0fb3f4-1dd7-4781-b283-efb4e1e2b41c");
+INSERT INTO C_PP
+	VALUES ("750eed1f-46d4-467f-bf0f-75975d0dc997",
+	"4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"81140c18-81ec-4889-9602-933315a5eee8");
+INSERT INTO C_PP
+	VALUES ("16b7a34b-9915-4717-9a1f-f735861b13cb",
+	"4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"750eed1f-46d4-467f-bf0f-75975d0dc997");
+INSERT INTO C_EP
+	VALUES ("b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'user_operation_removed',
+	'');
+INSERT INTO C_IO
+	VALUES ("b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'user_operation_removed',
+	'',
+	0,
+	'',
+	"4bbb5aee-d0d6-4221-9923-f17fcbf23043");
+INSERT INTO C_PP
+	VALUES ("72cf6f3e-1ca6-4761-bfe9-b9a55eba7ff5",
+	"b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("6f76edcd-ad2e-48c0-aabd-1ab4949b0bc6",
+	"b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'operation_name',
+	'',
+	0,
+	'',
+	"72cf6f3e-1ca6-4761-bfe9-b9a55eba7ff5");
+INSERT INTO C_PP
+	VALUES ("3aa0a798-7cbb-4352-936a-690436f744eb",
+	"b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"6f76edcd-ad2e-48c0-aabd-1ab4949b0bc6");
+INSERT INTO C_PP
+	VALUES ("a41ae8ca-242e-4012-9167-25f65421ff35",
+	"b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"3aa0a798-7cbb-4352-936a-690436f744eb");
+INSERT INTO C_EP
+	VALUES ("1cfb6a7d-9879-47ee-a0b7-aab615bde49d",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'user_removed',
+	'');
+INSERT INTO C_IO
+	VALUES ("1cfb6a7d-9879-47ee-a0b7-aab615bde49d",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'user_removed',
+	'',
+	0,
+	'',
+	"b8fa791b-5952-491c-b49d-93f59b359e1c");
+INSERT INTO C_PP
+	VALUES ("c51b4b53-cf73-425d-8930-e469b9be8ec5",
+	"1cfb6a7d-9879-47ee-a0b7-aab615bde49d",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'user_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("ab734afe-ee13-4073-8610-82d6f3aaf8f5",
+	"1cfb6a7d-9879-47ee-a0b7-aab615bde49d",
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'login_name',
+	'',
+	0,
+	'',
+	"c51b4b53-cf73-425d-8930-e469b9be8ec5");
+INSERT INTO C_EP
+	VALUES ("419b5d5e-a154-45d3-b6bf-df6f6679af10",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	0,
+	'user_session_deleted',
+	'');
+INSERT INTO C_IO
+	VALUES ("419b5d5e-a154-45d3-b6bf-df6f6679af10",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'user_session_deleted',
+	'',
+	0,
+	'',
+	"1cfb6a7d-9879-47ee-a0b7-aab615bde49d");
+INSERT INTO C_PP
+	VALUES ("ea46710e-9033-4642-b340-aef743c7383e",
+	"419b5d5e-a154-45d3-b6bf-df6f6679af10",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'session_id',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("7231fcaa-b5ed-465e-91aa-4dea95200efe",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("7231fcaa-b5ed-465e-91aa-4dea95200efe",
+	"00000000-0000-0000-0000-000000000000",
+	'logged_on_type',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("7231fcaa-b5ed-465e-91aa-4dea95200efe",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("464d9cf2-5711-4300-8aa9-f10cf4af2b16",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO C_I
+	VALUES ("464d9cf2-5711-4300-8aa9-f10cf4af2b16",
+	"00000000-0000-0000-0000-000000000000",
+	'SACSystem_Configuration',
+	'');
+INSERT INTO C_EP
+	VALUES ("f95d7213-698f-4f1a-9665-44724af8240d",
+	"464d9cf2-5711-4300-8aa9-f10cf4af2b16",
+	0,
+	'get_groups',
+	'');
+INSERT INTO C_IO
+	VALUES ("f95d7213-698f-4f1a-9665-44724af8240d",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'get_groups',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("9481a754-d1d8-4f6e-8c24-6a85ed89e9c6",
+	"f95d7213-698f-4f1a-9665-44724af8240d",
+	"962e13ba-753d-4dee-883e-2b61d63bf964",
+	'groups',
+	'',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_EP
+	VALUES ("b0c4e3c7-2505-4d93-a877-7c020b0436b8",
+	"464d9cf2-5711-4300-8aa9-f10cf4af2b16",
+	0,
+	'get_session_specification',
+	'');
+INSERT INTO C_IO
+	VALUES ("b0c4e3c7-2505-4d93-a877-7c020b0436b8",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'get_session_specification',
+	'',
+	0,
+	'',
+	"f95d7213-698f-4f1a-9665-44724af8240d");
+INSERT INTO C_PP
+	VALUES ("65367ea4-798f-443e-bb26-2209d45378b9",
+	"b0c4e3c7-2505-4d93-a877-7c020b0436b8",
+	"b469f12e-eb68-48af-95bb-afdaf37096fa",
+	'heartbeat_time',
+	'',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("73c8696b-4e1c-4d70-b0dd-d22d15788449",
+	"b0c4e3c7-2505-4d93-a877-7c020b0436b8",
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'heartbeat_failure_threshold',
+	'',
+	1,
+	'',
+	"65367ea4-798f-443e-bb26-2209d45378b9");
+INSERT INTO C_EP
+	VALUES ("08d1a796-dacf-4b20-b294-59ca59014c54",
+	"464d9cf2-5711-4300-8aa9-f10cf4af2b16",
+	0,
+	'reload_config_files',
+	'');
+INSERT INTO C_IO
+	VALUES ("08d1a796-dacf-4b20-b294-59ca59014c54",
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	'reload_config_files',
+	'',
+	0,
+	'',
+	"b0c4e3c7-2505-4d93-a877-7c020b0436b8");
+INSERT INTO PE_PE
+	VALUES ("962e13ba-753d-4dee-883e-2b61d63bf964",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("962e13ba-753d-4dee-883e-2b61d63bf964",
+	"00000000-0000-0000-0000-000000000000",
+	'sequence of group_type',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("962e13ba-753d-4dee-883e-2b61d63bf964",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	1,
+	"5c7c1478-794f-472a-8fac-9c63d1851d41",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	"00000000-0000-0000-0000-000000000000",
+	'MASLunique',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'');
+INSERT INTO PE_PE
+	VALUES ("efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	1,
+	"e8c1686a-2a04-4709-b3cf-f8228d95523b",
+	"00000000-0000-0000-0000-000000000000",
+	2);
+INSERT INTO C_C
+	VALUES ("efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'SAC',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'');
+INSERT INTO C_PO
+	VALUES ("03f2a6dc-342d-4fd5-918a-e865d0f20fbf",
+	"efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	'SAC',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("78f396c3-c408-43c9-b29c-5a86a93f04f7",
+	"6af3559d-f3cf-45a3-a1a4-96772684f906",
+	"00000000-0000-0000-0000-000000000000",
+	"03f2a6dc-342d-4fd5-918a-e865d0f20fbf");
+INSERT INTO C_P
+	VALUES ("78f396c3-c408-43c9-b29c-5a86a93f04f7",
+	'SAC',
+	'Unnamed_Interface',
+	'',
+	'SAC::SAC::SAC');
+INSERT INTO SPR_PEP
+	VALUES ("4a8ef08d-683c-40d1-a127-d612421b71e6",
+	"5f95909e-9ba0-4a17-aec8-7b1a039c34fa",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("4a8ef08d-683c-40d1-a127-d612421b71e6",
+	'add_group',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("362755db-5ff1-4711-bef0-6a7919ae91b0",
+	"a899b1d8-a59a-42b0-a48e-73bf2c38277d",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("362755db-5ff1-4711-bef0-6a7919ae91b0",
+	'add_operation_to_group',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("ce686a27-a608-4d4e-848a-3155b729c4e7",
+	"942ca003-c69c-4ed1-a3a9-4bf97f9ac7f7",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("ce686a27-a608-4d4e-848a-3155b729c4e7",
+	'delete_group',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("4665f1cd-a47c-4a5b-b0b3-e3f58b5f6c5c",
+	"e5e043cb-e998-4d21-a585-cadf5493a9c7",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("4665f1cd-a47c-4a5b-b0b3-e3f58b5f6c5c",
+	'delete_group_operation',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("2fe6d421-7e75-4751-920f-201a3f4c4150",
+	"19688c93-b192-46bc-8d16-5f4452e852c2",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("2fe6d421-7e75-4751-920f-201a3f4c4150",
+	'populate_domain',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("ef0be2ba-5ad0-467e-b0cc-22decdb66aed",
+	"f281aa8e-6ad7-45cb-9904-b3c9181b98e2",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("ef0be2ba-5ad0-467e-b0cc-22decdb66aed",
+	'resend_infos',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("9259e8be-3a32-41b7-ae47-bf43ebded967",
+	"c55e8a45-aa4d-453f-a426-522758335458",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("9259e8be-3a32-41b7-ae47-bf43ebded967",
+	'session_active',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("663cddaf-00b8-4480-9afb-09ebce6345ec",
+	"a491829e-77a7-456d-ba45-0917efa5f7c9",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("663cddaf-00b8-4480-9afb-09ebce6345ec",
+	'user_logoff',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO SPR_PEP
+	VALUES ("dfa6b390-0677-4d11-b291-7b71f85b7f64",
+	"69e5ae55-e357-405e-b307-706bf98f217e",
+	"78f396c3-c408-43c9-b29c-5a86a93f04f7");
+INSERT INTO SPR_PO
+	VALUES ("dfa6b390-0677-4d11-b291-7b71f85b7f64",
+	'user_logon',
+	'',
+	'',
+	3,
+	0);
+INSERT INTO C_PO
+	VALUES ("3a97ce10-0c27-40e5-b580-45773ea7de8a",
+	"efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	'Operator',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("bcd350c4-d6db-459f-a1ac-9db934178516",
+	"6967ced8-080f-47cf-86e1-f12443d520ac",
+	"00000000-0000-0000-0000-000000000000",
+	"3a97ce10-0c27-40e5-b580-45773ea7de8a");
+INSERT INTO C_R
+	VALUES ("bcd350c4-d6db-459f-a1ac-9db934178516",
+	'SACOperator',
+	'',
+	'Unnamed_Interface',
+	'SAC::Operator::SACOperator');
+INSERT INTO SPR_REP
+	VALUES ("81fe0c84-9d0b-44c4-8ad9-a64ba1416bcd",
+	"f3a97912-6530-437b-b073-71fc6356e91f",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("81fe0c84-9d0b-44c4-8ad9-a64ba1416bcd",
+	'group_deleted',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("80d3b927-3e03-47c0-9440-2cb4f5e09742",
+	"94201cd1-f814-4bd1-81f7-bf1a4484a905",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("80d3b927-3e03-47c0-9440-2cb4f5e09742",
+	'group_operation_removed',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("a7bfeeed-5455-48b9-83dd-40896b3f60c6",
+	"f6040043-d92c-4086-bed6-085af04eec32",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("a7bfeeed-5455-48b9-83dd-40896b3f60c6",
+	'login_valid',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("0a6c5859-1158-44a8-8e1f-01e85698dc72",
+	"1ea147ab-6f70-4618-aed7-7b425ad0cd8d",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("0a6c5859-1158-44a8-8e1f-01e85698dc72",
+	'raise_notification',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("f67e2e6c-ad4d-4538-9668-1d260263cf42",
+	"ff2d8e48-ab6a-444c-afe3-3394caf18cf4",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("f67e2e6c-ad4d-4538-9668-1d260263cf42",
+	'report_group',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("017b8f87-2cdd-4e5a-8f64-8b1f12623c2e",
+	"fef34531-8652-46a7-ae89-b1e6918b4be9",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("017b8f87-2cdd-4e5a-8f64-8b1f12623c2e",
+	'report_group_operation',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("cf408fbe-8d06-4121-9f51-92e07cea5f16",
+	"25580a7a-b8ad-401f-ace8-8f25c1ec8f8c",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("cf408fbe-8d06-4121-9f51-92e07cea5f16",
+	'report_user',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("89975f48-e47e-4e49-8961-3d4c0268e631",
+	"91a94bc8-cd94-485b-9663-b7f125b6379b",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("89975f48-e47e-4e49-8961-3d4c0268e631",
+	'report_user_group',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("6316345e-d304-4be7-ac5a-8ee272addca3",
+	"8748b93b-2259-4b9b-9ea9-6245cff641a0",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("6316345e-d304-4be7-ac5a-8ee272addca3",
+	'report_user_operation',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("b38397d5-72bb-4dc2-9354-90a1463f7c01",
+	"47349995-a501-44e7-a65a-b7910bc5804e",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("b38397d5-72bb-4dc2-9354-90a1463f7c01",
+	'report_user_session',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("6f928128-2d71-45d6-abc6-a478e8632b94",
+	"4bbb5aee-d0d6-4221-9923-f17fcbf23043",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("6f928128-2d71-45d6-abc6-a478e8632b94",
+	'user_group_removed',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("63d727b8-3367-485b-9d06-a1a2280f77f9",
+	"b8fa791b-5952-491c-b49d-93f59b359e1c",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("63d727b8-3367-485b-9d06-a1a2280f77f9",
+	'user_operation_removed',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("f2c8f79a-f418-4604-a595-b574b129a55f",
+	"1cfb6a7d-9879-47ee-a0b7-aab615bde49d",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("f2c8f79a-f418-4604-a595-b574b129a55f",
+	'user_removed',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("168cd3f3-253a-42b4-b888-c2b805888d62",
+	"419b5d5e-a154-45d3-b6bf-df6f6679af10",
+	"bcd350c4-d6db-459f-a1ac-9db934178516");
+INSERT INTO SPR_RO
+	VALUES ("168cd3f3-253a-42b4-b888-c2b805888d62",
+	'user_session_deleted',
+	'',
+	'begin
+  null;
+end',
+	3,
+	1);
+INSERT INTO C_PO
+	VALUES ("9dea9a9b-2e72-4346-a73a-dbba9938f8f7",
+	"efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	'System_Configuration',
+	0,
+	0);
+INSERT INTO C_IR
+	VALUES ("c83bf1c6-e357-46e9-b281-36f68843bf96",
+	"464d9cf2-5711-4300-8aa9-f10cf4af2b16",
+	"00000000-0000-0000-0000-000000000000",
+	"9dea9a9b-2e72-4346-a73a-dbba9938f8f7");
+INSERT INTO C_R
+	VALUES ("c83bf1c6-e357-46e9-b281-36f68843bf96",
+	'SACSystem_Configuration',
+	'',
+	'Unnamed_Interface',
+	'SAC::System_Configuration::SACSystem_Configuration');
+INSERT INTO SPR_REP
+	VALUES ("2faff3c5-7135-48f1-a7d0-3ed89de96406",
+	"f95d7213-698f-4f1a-9665-44724af8240d",
+	"c83bf1c6-e357-46e9-b281-36f68843bf96");
+INSERT INTO SPR_RO
+	VALUES ("2faff3c5-7135-48f1-a7d0-3ed89de96406",
+	'get_groups',
+	'',
+	'the_data : sequence of INI::data_item_type;
+the_indexed_data : sequence of INI::data_item_type;
+empty_indexed_data : sequence of INI::data_item_type;
+the_group_name : string;
+operation_name : string;
+operation_names : sequence of string;
+empty_operation_names : sequence of string;
+
+begin
+   
+   INI::get_data("group", the_data);
+   for data in the_data''elements loop
+      for a_name_value in data.name_value''elements loop
+         if a_name_value.name = "group name" then
+            the_group_name := a_name_value.value;
+         end if;
+      end loop;
+      INI::get_indexed_data("group operation", data.index, data.index_dtr_name, data.index_config_file, the_indexed_data);
+      for an_indexed_data in the_indexed_data''elements loop
+         for a_name_value in an_indexed_data.name_value''elements loop
+            if a_name_value.name = "operation name" then
+               operation_name := a_name_value.value;
+            end if;
+            operation_names := operation_names & operation_name;
+         end loop;
+      end loop;
+      groups := groups & (the_group_name, operation_names);
+      operation_names := empty_operation_names;
+      the_indexed_data := empty_indexed_data;
+   end loop;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("fffb9731-a3dc-48c4-82bf-79eaf744067e",
+	"b0c4e3c7-2505-4d93-a877-7c020b0436b8",
+	"c83bf1c6-e357-46e9-b281-36f68843bf96");
+INSERT INTO SPR_RO
+	VALUES ("fffb9731-a3dc-48c4-82bf-79eaf744067e",
+	'get_session_specification',
+	'',
+	'the_data : sequence of INI::data_item_type;
+
+begin
+   
+   INI::get_data("session spec", the_data);
+   for data in the_data''elements loop
+      for a_name_value in data.name_value''elements loop
+         if a_name_value.name = "heartbeat time" then
+            heartbeat_time := duration''parse(a_name_value.value);
+         elsif a_name_value.name = "heartbeat failure threshold" then
+            heartbeat_failure_threshold := integer''parse(a_name_value.value);
+         end if;
+      end loop;
+   end loop;
+end',
+	3,
+	1);
+INSERT INTO SPR_REP
+	VALUES ("9e866240-8728-414e-8d1f-dbf967781feb",
+	"08d1a796-dacf-4b20-b294-59ca59014c54",
+	"c83bf1c6-e357-46e9-b281-36f68843bf96");
+INSERT INTO SPR_RO
+	VALUES ("9e866240-8728-414e-8d1f-dbf967781feb",
+	'reload_config_files',
+	'',
+	'begin
+   
+   INI::reload_ini_files();
+end',
+	3,
+	1);
+INSERT INTO PE_PE
+	VALUES ("b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	7);
+INSERT INTO EP_PKG
+	VALUES ("b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'SAC',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	'Group',
+	1,
+	'G',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO O_BATTR
+	VALUES ("4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO O_ATTR
+	VALUES ("4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"00000000-0000-0000-0000-000000000000",
+	'group_id',
+	'',
+	'',
+	'group_id',
+	0,
+	"d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("39c1ae17-14a7-4159-bdd2-f6d206fbe907",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO O_BATTR
+	VALUES ("39c1ae17-14a7-4159-bdd2-f6d206fbe907",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO O_ATTR
+	VALUES ("39c1ae17-14a7-4159-bdd2-f6d206fbe907",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	'group_name',
+	'',
+	'',
+	'group_name',
+	0,
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO O_OIDA
+	VALUES ("4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	'group_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO O_ID
+	VALUES (2,
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO PE_PE
+	VALUES ("a663d949-8686-4a9f-8df5-d9b4496aea03",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("a663d949-8686-4a9f-8df5-d9b4496aea03",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Group>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("a663d949-8686-4a9f-8df5-d9b4496aea03",
+	0,
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO PE_PE
+	VALUES ("d2c71fb0-bfba-4185-a63b-b317396933fa",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("d2c71fb0-bfba-4185-a63b-b317396933fa",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Group>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("d2c71fb0-bfba-4185-a63b-b317396933fa",
+	1,
+	"f043cdba-4746-43ef-b138-ab0b417a3d57");
+INSERT INTO PE_PE
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	'Group_For_Session',
+	2,
+	'GFS',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	"4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"88f0f223-ff6c-47fc-9bb3-9855a3e287da",
+	"56fe972d-4a24-463a-ae8c-e40ee5919f65",
+	"dd993be3-2ccf-4cfd-b4a4-49b3f6efe5d2",
+	"c5a262ee-9f59-4fb1-a2df-b6a1d937f8cd",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Group',
+	'group_id',
+	'R2.''is_member_of''');
+INSERT INTO O_RATTR
+	VALUES ("dd993be3-2ccf-4cfd-b4a4-49b3f6efe5d2",
+	"6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	'group_id');
+INSERT INTO O_ATTR
+	VALUES ("dd993be3-2ccf-4cfd-b4a4-49b3f6efe5d2",
+	"6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"00000000-0000-0000-0000-000000000000",
+	'group_id',
+	'',
+	'',
+	'group_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	"6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"88f0f223-ff6c-47fc-9bb3-9855a3e287da",
+	"8eaa0e3b-ec74-44c7-98a3-c220dd21c755",
+	"98c82aee-d7ea-42c7-9a9b-b5342816eb7a",
+	"b825a391-3a32-4d11-9f82-20bfdf8ce280",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Session',
+	'session_id',
+	'R2.''current_members_are''');
+INSERT INTO O_RATTR
+	VALUES ("98c82aee-d7ea-42c7-9a9b-b5342816eb7a",
+	"6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	'session_id');
+INSERT INTO O_ATTR
+	VALUES ("98c82aee-d7ea-42c7-9a9b-b5342816eb7a",
+	"6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"dd993be3-2ccf-4cfd-b4a4-49b3f6efe5d2",
+	'session_id',
+	'',
+	'',
+	'session_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"6590785c-be32-4a71-9f4a-a83553cadfd7");
+INSERT INTO O_OIDA
+	VALUES ("dd993be3-2ccf-4cfd-b4a4-49b3f6efe5d2",
+	"6590785c-be32-4a71-9f4a-a83553cadfd7",
+	0,
+	'group_id');
+INSERT INTO O_OIDA
+	VALUES ("98c82aee-d7ea-42c7-9a9b-b5342816eb7a",
+	"6590785c-be32-4a71-9f4a-a83553cadfd7",
+	0,
+	'session_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"6590785c-be32-4a71-9f4a-a83553cadfd7");
+INSERT INTO O_ID
+	VALUES (2,
+	"6590785c-be32-4a71-9f4a-a83553cadfd7");
+INSERT INTO PE_PE
+	VALUES ("482571f1-fcf5-44d7-8d74-ab4bd76438d5",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("482571f1-fcf5-44d7-8d74-ab4bd76438d5",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Group_For_Session>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("482571f1-fcf5-44d7-8d74-ab4bd76438d5",
+	0,
+	"6590785c-be32-4a71-9f4a-a83553cadfd7");
+INSERT INTO PE_PE
+	VALUES ("dedb7a63-da82-49c9-889c-1edeff77a369",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("dedb7a63-da82-49c9-889c-1edeff77a369",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Group_For_Session>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("dedb7a63-da82-49c9-889c-1edeff77a369",
+	1,
+	"6590785c-be32-4a71-9f4a-a83553cadfd7");
+INSERT INTO PE_PE
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	'Group_Operation',
+	3,
+	'GO',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	"4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"da90e5d3-6e12-433a-b89e-5affe07af6f2",
+	"a660a343-79a8-4426-ac8b-0b63272687d8",
+	"013a58ac-f2f0-42b7-bbfd-c252ffb54c45",
+	"b5ca9850-893a-4326-8e00-d74d5d898540",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Group',
+	'group_id',
+	'R1.''can_be_performed_by''');
+INSERT INTO O_RATTR
+	VALUES ("013a58ac-f2f0-42b7-bbfd-c252ffb54c45",
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	'group_id');
+INSERT INTO O_ATTR
+	VALUES ("013a58ac-f2f0-42b7-bbfd-c252ffb54c45",
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"00000000-0000-0000-0000-000000000000",
+	'group_id',
+	'',
+	'',
+	'group_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	"16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"da90e5d3-6e12-433a-b89e-5affe07af6f2",
+	"221626b4-348e-4c66-8fc7-343fdbcb7779",
+	"78254413-b982-4326-940f-cbbe34847dfa",
+	"1d35bb79-5d5b-4d66-a1d6-ccfb1ef930e7",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Operation',
+	'operation_id',
+	'R1.''can_perform''');
+INSERT INTO O_RATTR
+	VALUES ("78254413-b982-4326-940f-cbbe34847dfa",
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	'operation_id');
+INSERT INTO O_ATTR
+	VALUES ("78254413-b982-4326-940f-cbbe34847dfa",
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"013a58ac-f2f0-42b7-bbfd-c252ffb54c45",
+	'operation_id',
+	'',
+	'',
+	'operation_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9");
+INSERT INTO O_OIDA
+	VALUES ("013a58ac-f2f0-42b7-bbfd-c252ffb54c45",
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	0,
+	'group_id');
+INSERT INTO O_OIDA
+	VALUES ("78254413-b982-4326-940f-cbbe34847dfa",
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	0,
+	'operation_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9");
+INSERT INTO O_ID
+	VALUES (2,
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9");
+INSERT INTO PE_PE
+	VALUES ("b8984546-825b-4b15-b1a2-962412f4698b",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("b8984546-825b-4b15-b1a2-962412f4698b",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Group_Operation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("b8984546-825b-4b15-b1a2-962412f4698b",
+	0,
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9");
+INSERT INTO PE_PE
+	VALUES ("14028718-e43d-44e9-a391-f18d934446bd",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("14028718-e43d-44e9-a391-f18d934446bd",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Group_Operation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("14028718-e43d-44e9-a391-f18d934446bd",
+	1,
+	"2a351da4-f3ff-4add-ade7-5c4458debfe9");
+INSERT INTO PE_PE
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	'Operation',
+	4,
+	'O',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO O_BATTR
+	VALUES ("16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO O_ATTR
+	VALUES ("16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"00000000-0000-0000-0000-000000000000",
+	'operation_id',
+	'',
+	'',
+	'operation_id',
+	0,
+	"d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("591d87cf-7022-4cd9-82c7-f929395b7963",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO O_BATTR
+	VALUES ("591d87cf-7022-4cd9-82c7-f929395b7963",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO O_ATTR
+	VALUES ("591d87cf-7022-4cd9-82c7-f929395b7963",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	'operation_name',
+	'',
+	'',
+	'operation_name',
+	0,
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO O_OIDA
+	VALUES ("16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	'operation_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO O_ID
+	VALUES (2,
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO PE_PE
+	VALUES ("ec4156a1-946b-4c0c-9115-9c1ba1d6d6e1",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ec4156a1-946b-4c0c-9115-9c1ba1d6d6e1",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Operation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("ec4156a1-946b-4c0c-9115-9c1ba1d6d6e1",
+	0,
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO PE_PE
+	VALUES ("7f9e6271-535b-4f52-859b-ef292a2f895c",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("7f9e6271-535b-4f52-859b-ef292a2f895c",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Operation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("7f9e6271-535b-4f52-859b-ef292a2f895c",
+	1,
+	"b09d891e-e4ea-454c-84af-f142d8cb3561");
+INSERT INTO PE_PE
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	'Session',
+	5,
+	'S',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("e67d7c4c-2f59-4ff1-bd0b-c4e98078ce47",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	'delete_session',
+	'',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	1,
+	'the_user : instance of User;
+the_workstation : instance of Workstation;
+this_session_operations : sequence of instance of Operation;
+session_operation : instance of Session_Operation;
+operations_to_remove : sequence of instance of Operation;
+the_group : instance of Group;
+   
+begin
+   
+   the_user := this -> R3.User;
+   the_workstation := this -> R3.Workstation;
+   // inform the operator
+   Operator~>user_session_deleted(this.session_id);
+   
+   this_session_operations := this -> R5.Operation;
+   // remove the link to the groups
+   for a_group_session in (this -> R2.Group_For_Session)''elements loop
+      the_group := a_group_session->R2.Group;
+      Operator~>user_group_removed(the_user.user_id, the_group.group_name, the_user.login_name, this.session_id);
+      unlink this R2 (a_group_session->R2.Group) using a_group_session;
+      delete a_group_session;
+   end loop;
+   
+   // remove the operations that this user has that 
+   // do not apply to any other sessions for that user 
+   for a_session_operation in this_session_operations''elements loop
+      session_operation := a_session_operation with this -> R5.Session_Operation;
+      Operator~>user_operation_removed(this.user_id, a_session_operation.operation_name, the_user.login_name, this.session_id);
+      unlink a_session_operation R5 this using session_operation;
+      delete session_operation;
+      // check if the operation is no longer in use and if not then delete it
+      if (a_session_operation -> R5.Session)''length = 0 and (a_session_operation -> R1.Group)''length = 0 then
+         delete a_session_operation;
+      end if;
+   end loop;
+   
+   unlink the_workstation R3 the_user using this;
+   delete this;
+   
+   if (the_user -> R3.Session)''length = 0 then
+      Operator~>user_removed(the_user.user_id, the_user.login_name);
+      delete the_user;
+   else
+      // verify that the sessions have not timed out
+      if (find_one (the_user -> R3.Session)(has_timed_out = false)) = null then
+         // all sessions have timed out so report the user login as suspect
+         the_user.is_logged_on := suspect;
+         Operator~>report_user(the_user.user_id, the_user.login_name, 
+                                the_user.user_name, the_user.is_logged_on);
+      end if;
+   end if;
+end',
+	3,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO O_NBATTR
+	VALUES ("064bda51-a698-4150-8b16-cb13ea7b8bfc",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_BATTR
+	VALUES ("064bda51-a698-4150-8b16-cb13ea7b8bfc",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_ATTR
+	VALUES ("064bda51-a698-4150-8b16-cb13ea7b8bfc",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"00000000-0000-0000-0000-000000000000",
+	'has_timed_out',
+	'',
+	'',
+	'has_timed_out',
+	0,
+	"f09069ff-840e-425c-be03-e88e4325e945",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("23e3c238-430e-4932-a8e8-2cc8c4132afa",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_BATTR
+	VALUES ("23e3c238-430e-4932-a8e8-2cc8c4132afa",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_ATTR
+	VALUES ("23e3c238-430e-4932-a8e8-2cc8c4132afa",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"064bda51-a698-4150-8b16-cb13ea7b8bfc",
+	'logon_time',
+	'',
+	'',
+	'logon_time',
+	0,
+	"194346e6-cd5c-49d6-af21-6d59cbcc2b67",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("f76ad6c8-2e2a-46c8-be04-26c18845e946",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_BATTR
+	VALUES ("f76ad6c8-2e2a-46c8-be04-26c18845e946",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_ATTR
+	VALUES ("f76ad6c8-2e2a-46c8-be04-26c18845e946",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"23e3c238-430e-4932-a8e8-2cc8c4132afa",
+	'session_heartbeat_failure',
+	'',
+	'',
+	'session_heartbeat_failure',
+	0,
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("1e7b1b8b-e50c-487f-8af3-05bffc042bc0",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_BATTR
+	VALUES ("1e7b1b8b-e50c-487f-8af3-05bffc042bc0",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_ATTR
+	VALUES ("1e7b1b8b-e50c-487f-8af3-05bffc042bc0",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"f76ad6c8-2e2a-46c8-be04-26c18845e946",
+	'session_heartbeat_timer',
+	'',
+	'',
+	'session_heartbeat_timer',
+	0,
+	"e393c82e-a1f9-4130-8ec6-e524cedb0572",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_BATTR
+	VALUES ("6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_ATTR
+	VALUES ("6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"1e7b1b8b-e50c-487f-8af3-05bffc042bc0",
+	'session_id',
+	'',
+	'',
+	'session_id',
+	0,
+	"d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("22ca6c77-7313-48fc-88ba-bce48eb7a9b5",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_BATTR
+	VALUES ("22ca6c77-7313-48fc-88ba-bce48eb7a9b5",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_ATTR
+	VALUES ("22ca6c77-7313-48fc-88ba-bce48eb7a9b5",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	"ff786244-49cb-46c8-9eac-18875246c676",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"93154aa9-0171-41a7-b2f1-3dca971c0724",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94",
+	"14fc0534-72ac-4057-aa05-fe7eae4480aa",
+	"852eb517-ee2b-47cc-984c-133624f441e0",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'User',
+	'login_name',
+	'R3.''is_being_used_by''');
+INSERT INTO O_RATTR
+	VALUES ("14fc0534-72ac-4057-aa05-fe7eae4480aa",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"ff786244-49cb-46c8-9eac-18875246c676",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	'login_name');
+INSERT INTO O_ATTR
+	VALUES ("14fc0534-72ac-4057-aa05-fe7eae4480aa",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"22ca6c77-7313-48fc-88ba-bce48eb7a9b5",
+	'login_name',
+	'',
+	'',
+	'login_name',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	"60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"93154aa9-0171-41a7-b2f1-3dca971c0724",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94",
+	"32ae245e-0ff5-4161-893a-f2bd7771aba6",
+	"e5719255-fdf9-4697-9d3d-31d41118be3d",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'User',
+	'user_id',
+	'R3.''is_being_used_by''');
+INSERT INTO O_RATTR
+	VALUES ("32ae245e-0ff5-4161-893a-f2bd7771aba6",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	'user_id');
+INSERT INTO O_ATTR
+	VALUES ("32ae245e-0ff5-4161-893a-f2bd7771aba6",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"14fc0534-72ac-4057-aa05-fe7eae4480aa",
+	'user_id',
+	'',
+	'',
+	'user_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	0,
+	"0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"93154aa9-0171-41a7-b2f1-3dca971c0724",
+	"c3a9119c-4872-43bd-a967-08d553a7457b",
+	"9ee6b599-5c9b-4a74-82b3-e36cb8581f48",
+	"4b7a2668-cdfb-4ad6-b401-f95f80f52acc",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Workstation',
+	'workstation_id',
+	'R3.''is_logged_on_to''');
+INSERT INTO O_RATTR
+	VALUES ("9ee6b599-5c9b-4a74-82b3-e36cb8581f48",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	0,
+	'workstation_id');
+INSERT INTO O_ATTR
+	VALUES ("9ee6b599-5c9b-4a74-82b3-e36cb8581f48",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"32ae245e-0ff5-4161-893a-f2bd7771aba6",
+	'workstation_id',
+	'',
+	'',
+	'workstation_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	0,
+	"96154352-3dce-4be7-810f-0b2b252d8c48",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"719a6969-99d3-4bfd-a663-b72a821a25d3",
+	"0847ba7a-8b21-444c-956b-15c713dcdfab",
+	"54afd503-f270-4ce3-973e-40bf747ad5da",
+	"11a3f051-7d4b-43a5-a062-318a75503d62",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Session_Specification',
+	'access_specification_id',
+	'R4.''rules_are_defined_by''');
+INSERT INTO O_RATTR
+	VALUES ("54afd503-f270-4ce3-973e-40bf747ad5da",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"96154352-3dce-4be7-810f-0b2b252d8c48",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	0,
+	'access_specification_id');
+INSERT INTO O_ATTR
+	VALUES ("54afd503-f270-4ce3-973e-40bf747ad5da",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	"9ee6b599-5c9b-4a74-82b3-e36cb8581f48",
+	'access_specification_id',
+	'',
+	'',
+	'access_specification_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_OIDA
+	VALUES ("6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	'session_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO O_OIDA
+	VALUES ("9ee6b599-5c9b-4a74-82b3-e36cb8581f48",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	1,
+	'workstation_id');
+INSERT INTO O_ID
+	VALUES (2,
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO SM_ISM
+	VALUES ("437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO SM_SM
+	VALUES ("437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	'',
+	0);
+INSERT INTO SM_MOORE
+	VALUES ("437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_LEVT
+	VALUES ("e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	1,
+	'heartbeat_timeout_expired',
+	0,
+	'',
+	'S1',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	2,
+	'session_timeout_reached',
+	0,
+	'',
+	'S2',
+	'');
+INSERT INTO SM_LEVT
+	VALUES ("e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEVT
+	VALUES ("e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EVT
+	VALUES ("e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	3,
+	'user_logged_on',
+	0,
+	'',
+	'S3',
+	'');
+INSERT INTO SM_STATE
+	VALUES ("ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'Created',
+	1,
+	0);
+INSERT INTO SM_EIGN
+	VALUES ("ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("cd2be327-bca9-4898-ac8a-e80d20f86fb7",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"ad8c4b6f-6cf1-4862-8863-65c78d895596");
+INSERT INTO SM_AH
+	VALUES ("cd2be327-bca9-4898-ac8a-e80d20f86fb7",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("cd2be327-bca9-4898-ac8a-e80d20f86fb7",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'begin
+  null;
+end',
+	'',
+	1);
+INSERT INTO SM_STATE
+	VALUES ("b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'Session_Established',
+	2,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("574b7437-dfa1-411f-8abe-8ac7b79f0e74",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"b131aaab-5ac3-4ac5-8ff7-576bd81207cd");
+INSERT INTO SM_AH
+	VALUES ("574b7437-dfa1-411f-8abe-8ac7b79f0e74",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("574b7437-dfa1-411f-8abe-8ac7b79f0e74",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'the_session_spec : instance of Session_Specification;
+the_user : instance of User;
+
+begin
+   
+   // report the session details and setup the heartbeat timer
+   this.session_heartbeat_failure := 0;
+   the_user := this -> R3.User;
+   if the_user.is_logged_on = suspect then
+      the_user.is_logged_on := logged_on;
+      Operator~>report_user(the_user.user_id, the_user.login_name, the_user.user_name, the_user.is_logged_on);
+   end if;
+   if this.has_timed_out = true then
+      this.has_timed_out := false;
+      Operator~>report_user_session(this.session_id, this.user_id, this.logon_time,
+                                     this.has_timed_out, (this -> R3.Workstation).workstation_hostname, the_user.login_name);
+   end if;
+   the_session_spec := find_one Session_Specification();
+   schedule this.session_heartbeat_timer generate Session.heartbeat_timeout_expired() to this 
+                        delay the_session_spec.session_heartbeat_time;
+end',
+	'',
+	1);
+INSERT INTO SM_STATE
+	VALUES ("529963f4-f1d8-4dba-9695-b85405a5d660",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'Session_Heartbeat_Failed',
+	3,
+	0);
+INSERT INTO SM_SEME
+	VALUES ("529963f4-f1d8-4dba-9695-b85405a5d660",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("529963f4-f1d8-4dba-9695-b85405a5d660",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("529963f4-f1d8-4dba-9695-b85405a5d660",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("e1e2f747-d9ff-4c57-baad-b0fde474be29",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"529963f4-f1d8-4dba-9695-b85405a5d660");
+INSERT INTO SM_AH
+	VALUES ("e1e2f747-d9ff-4c57-baad-b0fde474be29",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("e1e2f747-d9ff-4c57-baad-b0fde474be29",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'the_session_spec : instance of Session_Specification;
+
+begin
+   
+   // increment the failure count and check if we have exceeded the threshold
+   the_session_spec := find_one Session_Specification();
+   this.session_heartbeat_failure := this.session_heartbeat_failure + 1;
+   if this.session_heartbeat_failure > the_session_spec.session_heartbeat_failure_threshold then
+      generate Session.session_timeout_reached() to this;
+   else
+      // reset the timer
+      schedule this.session_heartbeat_timer generate Session.heartbeat_timeout_expired() to this 
+                        delay the_session_spec.session_heartbeat_time;
+   end if;
+end',
+	'',
+	1);
+INSERT INTO SM_STATE
+	VALUES ("8596c62d-186e-459e-9b59-fbd10e308660",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'Session_Timed_Out',
+	4,
+	0);
+INSERT INTO SM_EIGN
+	VALUES ("8596c62d-186e-459e-9b59-fbd10e308660",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("8596c62d-186e-459e-9b59-fbd10e308660",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_EIGN
+	VALUES ("8596c62d-186e-459e-9b59-fbd10e308660",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO SM_SEME
+	VALUES ("8596c62d-186e-459e-9b59-fbd10e308660",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_SEME
+	VALUES ("8596c62d-186e-459e-9b59-fbd10e308660",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_MOAH
+	VALUES ("d771cef8-faa1-4a43-8546-898d1c6671f1",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"8596c62d-186e-459e-9b59-fbd10e308660");
+INSERT INTO SM_AH
+	VALUES ("d771cef8-faa1-4a43-8546-898d1c6671f1",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("d771cef8-faa1-4a43-8546-898d1c6671f1",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'the_user : instance of User;
+
+begin
+   
+   // report that the session has timed out
+   cancel this.session_heartbeat_timer;
+   this.has_timed_out := true;
+   Operator~>report_user_session(this.session_id, this.user_id, this.logon_time,
+                                  this.has_timed_out, (this -> R3.Workstation).workstation_hostname, this.login_name);
+   
+   // check if all the users session are timedout and 
+   // if they are mark the user logon as suspect
+   the_user := this -> R3.User;
+   if (find_one (the_user -> R3.Session)(has_timed_out = false)) = null then
+      // report the user login as suspect
+      the_user.is_logged_on := suspect;
+      Operator~>report_user(the_user.user_id, the_user.login_name, 
+                            the_user.user_name, the_user.is_logged_on);
+   end if;
+end',
+	'',
+	1);
+INSERT INTO SM_NSTXN
+	VALUES ("a0a8991e-32b0-4d3a-a22b-fabf71928b45",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"ad8c4b6f-6cf1-4862-8863-65c78d895596",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("9aa6ba28-2bf1-4c29-b858-91f3ac5a9a6c",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"a0a8991e-32b0-4d3a-a22b-fabf71928b45");
+INSERT INTO SM_AH
+	VALUES ("9aa6ba28-2bf1-4c29-b858-91f3ac5a9a6c",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("9aa6ba28-2bf1-4c29-b858-91f3ac5a9a6c",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'',
+	'',
+	-1);
+INSERT INTO SM_TXN
+	VALUES ("a0a8991e-32b0-4d3a-a22b-fabf71928b45",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("a0212293-8951-4a9d-920f-80a5c694ea06",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("6bfc0f96-380f-4a5c-90e9-6c76cc9168d3",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"a0212293-8951-4a9d-920f-80a5c694ea06");
+INSERT INTO SM_AH
+	VALUES ("6bfc0f96-380f-4a5c-90e9-6c76cc9168d3",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("6bfc0f96-380f-4a5c-90e9-6c76cc9168d3",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'',
+	'',
+	-1);
+INSERT INTO SM_TXN
+	VALUES ("a0212293-8951-4a9d-920f-80a5c694ea06",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"529963f4-f1d8-4dba-9695-b85405a5d660",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("9a4497f1-a9fd-4d42-a837-22850a5f2c2b",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"529963f4-f1d8-4dba-9695-b85405a5d660",
+	"e771c484-ebba-4151-9f47-8dd9ff065db8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("6518746b-a5a0-4cc0-9cfc-6f5d1b2e56e1",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"9a4497f1-a9fd-4d42-a837-22850a5f2c2b");
+INSERT INTO SM_AH
+	VALUES ("6518746b-a5a0-4cc0-9cfc-6f5d1b2e56e1",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("6518746b-a5a0-4cc0-9cfc-6f5d1b2e56e1",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'',
+	'',
+	-1);
+INSERT INTO SM_TXN
+	VALUES ("9a4497f1-a9fd-4d42-a837-22850a5f2c2b",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"529963f4-f1d8-4dba-9695-b85405a5d660",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("d8fee1f8-2831-4704-b217-75f6f319c756",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"529963f4-f1d8-4dba-9695-b85405a5d660",
+	"9809d219-0804-40d3-8a36-170485481340",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("f9d570eb-81c7-4ac0-ac67-c60ccd0b6585",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"d8fee1f8-2831-4704-b217-75f6f319c756");
+INSERT INTO SM_AH
+	VALUES ("f9d570eb-81c7-4ac0-ac67-c60ccd0b6585",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("f9d570eb-81c7-4ac0-ac67-c60ccd0b6585",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'',
+	'',
+	-1);
+INSERT INTO SM_TXN
+	VALUES ("d8fee1f8-2831-4704-b217-75f6f319c756",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"8596c62d-186e-459e-9b59-fbd10e308660",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("afbca132-e737-4ad6-bd14-bc0e6ed3cb43",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"529963f4-f1d8-4dba-9695-b85405a5d660",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("fdb26fab-8b7a-4b64-80d7-db4d8822cc10",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"afbca132-e737-4ad6-bd14-bc0e6ed3cb43");
+INSERT INTO SM_AH
+	VALUES ("fdb26fab-8b7a-4b64-80d7-db4d8822cc10",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("fdb26fab-8b7a-4b64-80d7-db4d8822cc10",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'',
+	'',
+	-1);
+INSERT INTO SM_TXN
+	VALUES ("afbca132-e737-4ad6-bd14-bc0e6ed3cb43",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_NSTXN
+	VALUES ("125c1686-8c62-4324-a609-4cf3a5dfccba",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"8596c62d-186e-459e-9b59-fbd10e308660",
+	"e2b34283-dfac-413c-bae4-d4a64d9fd5d5",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO SM_TAH
+	VALUES ("15267ff8-719c-43e0-9ba0-e81a06e0fabf",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"125c1686-8c62-4324-a609-4cf3a5dfccba");
+INSERT INTO SM_AH
+	VALUES ("15267ff8-719c-43e0-9ba0-e81a06e0fabf",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f");
+INSERT INTO SM_ACT
+	VALUES ("15267ff8-719c-43e0-9ba0-e81a06e0fabf",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	3,
+	'',
+	'',
+	-1);
+INSERT INTO SM_TXN
+	VALUES ("125c1686-8c62-4324-a609-4cf3a5dfccba",
+	"437a0e3f-cab6-432d-8c71-489bf12fe15f",
+	"b131aaab-5ac3-4ac5-8ff7-576bd81207cd",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("40abf224-7074-450a-9671-2d2162bf422f",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("40abf224-7074-450a-9671-2d2162bf422f",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Session>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("40abf224-7074-450a-9671-2d2162bf422f",
+	0,
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO PE_PE
+	VALUES ("de861f5b-5ac4-43c7-84a2-a223c0804624",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("de861f5b-5ac4-43c7-84a2-a223c0804624",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Session>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("de861f5b-5ac4-43c7-84a2-a223c0804624",
+	1,
+	"eae36908-87cd-43ba-8331-733a31f3fa00");
+INSERT INTO PE_PE
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	'Session_Operation',
+	6,
+	'SO',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	"16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"217d2ec5-9122-413f-91af-c1e4a1743245",
+	"96bd9a92-f786-40aa-832b-37d9461f8576",
+	"864f17cb-bc66-473d-9e31-b0d7e616c2ea",
+	"fe5df6f2-fe65-4b51-89d0-ab08cce4b701",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Operation',
+	'operation_id',
+	'R5.''has_allowed''');
+INSERT INTO O_RATTR
+	VALUES ("864f17cb-bc66-473d-9e31-b0d7e616c2ea",
+	"91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	'operation_id');
+INSERT INTO O_ATTR
+	VALUES ("864f17cb-bc66-473d-9e31-b0d7e616c2ea",
+	"91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"00000000-0000-0000-0000-000000000000",
+	'operation_id',
+	'',
+	'',
+	'operation_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_REF
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	"6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"217d2ec5-9122-413f-91af-c1e4a1743245",
+	"55849a4e-bfef-4b68-b763-1e28bf223dc9",
+	"6b6bdfb1-0bb7-4bb4-9946-17699119276e",
+	"aa97929b-30b7-4b5f-a04b-a47bdd143149",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'Session',
+	'session_id',
+	'R5.''has_been_allowed_for''');
+INSERT INTO O_RATTR
+	VALUES ("6b6bdfb1-0bb7-4bb4-9946-17699119276e",
+	"91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	'session_id');
+INSERT INTO O_ATTR
+	VALUES ("6b6bdfb1-0bb7-4bb4-9946-17699119276e",
+	"91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"864f17cb-bc66-473d-9e31-b0d7e616c2ea",
+	'session_id',
+	'',
+	'',
+	'session_id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"91627ddd-ea6c-47df-a17d-9264d6f67740");
+INSERT INTO O_OIDA
+	VALUES ("864f17cb-bc66-473d-9e31-b0d7e616c2ea",
+	"91627ddd-ea6c-47df-a17d-9264d6f67740",
+	0,
+	'operation_id');
+INSERT INTO O_OIDA
+	VALUES ("6b6bdfb1-0bb7-4bb4-9946-17699119276e",
+	"91627ddd-ea6c-47df-a17d-9264d6f67740",
+	0,
+	'session_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"91627ddd-ea6c-47df-a17d-9264d6f67740");
+INSERT INTO O_ID
+	VALUES (2,
+	"91627ddd-ea6c-47df-a17d-9264d6f67740");
+INSERT INTO PE_PE
+	VALUES ("573feddf-b7c7-48c8-94a0-400e4bb50d4e",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("573feddf-b7c7-48c8-94a0-400e4bb50d4e",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Session_Operation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("573feddf-b7c7-48c8-94a0-400e4bb50d4e",
+	0,
+	"91627ddd-ea6c-47df-a17d-9264d6f67740");
+INSERT INTO PE_PE
+	VALUES ("5d8277bd-822f-464c-9a18-d9509ca5e764",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("5d8277bd-822f-464c-9a18-d9509ca5e764",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Session_Operation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("5d8277bd-822f-464c-9a18-d9509ca5e764",
+	1,
+	"91627ddd-ea6c-47df-a17d-9264d6f67740");
+INSERT INTO PE_PE
+	VALUES ("6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	'Session_Specification',
+	7,
+	'SS',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("96154352-3dce-4be7-810f-0b2b252d8c48",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_BATTR
+	VALUES ("96154352-3dce-4be7-810f-0b2b252d8c48",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_ATTR
+	VALUES ("96154352-3dce-4be7-810f-0b2b252d8c48",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	"00000000-0000-0000-0000-000000000000",
+	'access_specification_id',
+	'',
+	'',
+	'access_specification_id',
+	0,
+	"d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("5215aaad-ffb1-4010-81a3-7fda884c114d",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_BATTR
+	VALUES ("5215aaad-ffb1-4010-81a3-7fda884c114d",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_ATTR
+	VALUES ("5215aaad-ffb1-4010-81a3-7fda884c114d",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	"96154352-3dce-4be7-810f-0b2b252d8c48",
+	'session_heartbeat_failure_threshold',
+	'',
+	'',
+	'session_heartbeat_failure_threshold',
+	0,
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("9df98ff9-7072-4a8c-a4db-7b4087764236",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_BATTR
+	VALUES ("9df98ff9-7072-4a8c-a4db-7b4087764236",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_ATTR
+	VALUES ("9df98ff9-7072-4a8c-a4db-7b4087764236",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	"5215aaad-ffb1-4010-81a3-7fda884c114d",
+	'session_heartbeat_time',
+	'',
+	'',
+	'session_heartbeat_time',
+	0,
+	"b469f12e-eb68-48af-95bb-afdaf37096fa",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_OIDA
+	VALUES ("96154352-3dce-4be7-810f-0b2b252d8c48",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	0,
+	'access_specification_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO O_ID
+	VALUES (2,
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO PE_PE
+	VALUES ("df01a83c-d0ee-4129-a377-bd3bce024b32",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("df01a83c-d0ee-4129-a377-bd3bce024b32",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Session_Specification>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("df01a83c-d0ee-4129-a377-bd3bce024b32",
+	0,
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO PE_PE
+	VALUES ("3e12b24a-e3fc-456f-8961-e931df9a8f48",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("3e12b24a-e3fc-456f-8961-e931df9a8f48",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Session_Specification>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("3e12b24a-e3fc-456f-8961-e931df9a8f48",
+	1,
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d");
+INSERT INTO PE_PE
+	VALUES ("50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	'User',
+	8,
+	'U',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("797b4b6e-e234-4cc3-86f2-561e05bdb6f4",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_BATTR
+	VALUES ("797b4b6e-e234-4cc3-86f2-561e05bdb6f4",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_ATTR
+	VALUES ("797b4b6e-e234-4cc3-86f2-561e05bdb6f4",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"00000000-0000-0000-0000-000000000000",
+	'is_logged_on',
+	'',
+	'',
+	'is_logged_on',
+	0,
+	"2be426c3-58a1-483f-b14e-4fafe4389260",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("ff786244-49cb-46c8-9eac-18875246c676",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_BATTR
+	VALUES ("ff786244-49cb-46c8-9eac-18875246c676",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_ATTR
+	VALUES ("ff786244-49cb-46c8-9eac-18875246c676",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"797b4b6e-e234-4cc3-86f2-561e05bdb6f4",
+	'login_name',
+	'',
+	'',
+	'login_name',
+	0,
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_BATTR
+	VALUES ("60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_ATTR
+	VALUES ("60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"ff786244-49cb-46c8-9eac-18875246c676",
+	'user_id',
+	'',
+	'',
+	'user_id',
+	0,
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("edb95168-1266-4253-a9d7-441edcf0fe2f",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_BATTR
+	VALUES ("edb95168-1266-4253-a9d7-441edcf0fe2f",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_ATTR
+	VALUES ("edb95168-1266-4253-a9d7-441edcf0fe2f",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	'user_name',
+	'',
+	'',
+	'user_name',
+	0,
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_OIDA
+	VALUES ("ff786244-49cb-46c8-9eac-18875246c676",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	'login_name');
+INSERT INTO O_OIDA
+	VALUES ("60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	'user_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO O_ID
+	VALUES (2,
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO PE_PE
+	VALUES ("d4306a19-d748-4bd6-a590-ebd44813dec0",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("d4306a19-d748-4bd6-a590-ebd44813dec0",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<User>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("d4306a19-d748-4bd6-a590-ebd44813dec0",
+	0,
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO PE_PE
+	VALUES ("d779b00a-8a46-40cd-b57f-da0cb72a2f4f",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("d779b00a-8a46-40cd-b57f-da0cb72a2f4f",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<User>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("d779b00a-8a46-40cd-b57f-da0cb72a2f4f",
+	1,
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc");
+INSERT INTO PE_PE
+	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO O_OBJ
+	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	'Workstation',
+	9,
+	'W',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("2768d632-131d-4c3b-b193-f5e789384f2e",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO O_BATTR
+	VALUES ("2768d632-131d-4c3b-b193-f5e789384f2e",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO O_ATTR
+	VALUES ("2768d632-131d-4c3b-b193-f5e789384f2e",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	"00000000-0000-0000-0000-000000000000",
+	'workstation_hostname',
+	'',
+	'',
+	'workstation_hostname',
+	0,
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	'',
+	'');
+INSERT INTO O_NBATTR
+	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO O_BATTR
+	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO O_ATTR
+	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	"2768d632-131d-4c3b-b193-f5e789384f2e",
+	'workstation_id',
+	'',
+	'',
+	'workstation_id',
+	0,
+	"d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO O_OIDA
+	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	0,
+	'workstation_id');
+INSERT INTO O_ID
+	VALUES (1,
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO O_ID
+	VALUES (2,
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO PE_PE
+	VALUES ("5fd271fc-ba7a-49ba-9172-91c859d74e21",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("5fd271fc-ba7a-49ba-9172-91c859d74e21",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Workstation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("5fd271fc-ba7a-49ba-9172-91c859d74e21",
+	0,
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO PE_PE
+	VALUES ("9d8a732b-79ed-4307-84d1-095f9ef4d8e5",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("9d8a732b-79ed-4307-84d1-095f9ef4d8e5",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Workstation>',
+	'',
+	'');
+INSERT INTO S_IRDT
+	VALUES ("9d8a732b-79ed-4307-84d1-095f9ef4d8e5",
+	1,
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+INSERT INTO PE_PE
+	VALUES ("bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	9);
+INSERT INTO R_REL
+	VALUES ("bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSOC
+	VALUES ("bf2f30e0-0e24-4ebf-bd14-79b962cf101a");
+INSERT INTO R_AONE
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"a660a343-79a8-4426-ac8b-0b63272687d8",
+	1,
+	1,
+	'can_be_performed_by');
+INSERT INTO O_RTIDA
+	VALUES ("4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"a660a343-79a8-4426-ac8b-0b63272687d8");
+INSERT INTO R_RTO
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"a660a343-79a8-4426-ac8b-0b63272687d8",
+	0);
+INSERT INTO R_OIR
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"a660a343-79a8-4426-ac8b-0b63272687d8",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_AOTH
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"221626b4-348e-4c66-8fc7-343fdbcb7779",
+	1,
+	1,
+	'can_perform');
+INSERT INTO O_RTIDA
+	VALUES ("16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"221626b4-348e-4c66-8fc7-343fdbcb7779");
+INSERT INTO R_RTO
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"221626b4-348e-4c66-8fc7-343fdbcb7779",
+	0);
+INSERT INTO R_OIR
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"221626b4-348e-4c66-8fc7-343fdbcb7779",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSR
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"da90e5d3-6e12-433a-b89e-5affe07af6f2",
+	0);
+INSERT INTO R_RGO
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"da90e5d3-6e12-433a-b89e-5affe07af6f2");
+INSERT INTO R_OIR
+	VALUES ("2a351da4-f3ff-4add-ade7-5c4458debfe9",
+	"bf2f30e0-0e24-4ebf-bd14-79b962cf101a",
+	"da90e5d3-6e12-433a-b89e-5affe07af6f2",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("f1a38bcf-a566-4476-948c-d830e8b3d719",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	9);
+INSERT INTO R_REL
+	VALUES ("f1a38bcf-a566-4476-948c-d830e8b3d719",
+	2,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSOC
+	VALUES ("f1a38bcf-a566-4476-948c-d830e8b3d719");
+INSERT INTO R_AONE
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"56fe972d-4a24-463a-ae8c-e40ee5919f65",
+	1,
+	0,
+	'is_member_of');
+INSERT INTO O_RTIDA
+	VALUES ("4e6116d8-00f2-4a61-9b4d-3eba6a16bf27",
+	"f043cdba-4746-43ef-b138-ab0b417a3d57",
+	0,
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"56fe972d-4a24-463a-ae8c-e40ee5919f65");
+INSERT INTO R_RTO
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"56fe972d-4a24-463a-ae8c-e40ee5919f65",
+	0);
+INSERT INTO R_OIR
+	VALUES ("f043cdba-4746-43ef-b138-ab0b417a3d57",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"56fe972d-4a24-463a-ae8c-e40ee5919f65",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_AOTH
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"8eaa0e3b-ec74-44c7-98a3-c220dd21c755",
+	1,
+	0,
+	'current_members_are');
+INSERT INTO O_RTIDA
+	VALUES ("6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"8eaa0e3b-ec74-44c7-98a3-c220dd21c755");
+INSERT INTO R_RTO
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"8eaa0e3b-ec74-44c7-98a3-c220dd21c755",
+	0);
+INSERT INTO R_OIR
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"8eaa0e3b-ec74-44c7-98a3-c220dd21c755",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSR
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"88f0f223-ff6c-47fc-9bb3-9855a3e287da",
+	0);
+INSERT INTO R_RGO
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"88f0f223-ff6c-47fc-9bb3-9855a3e287da");
+INSERT INTO R_OIR
+	VALUES ("6590785c-be32-4a71-9f4a-a83553cadfd7",
+	"f1a38bcf-a566-4476-948c-d830e8b3d719",
+	"88f0f223-ff6c-47fc-9bb3-9855a3e287da",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	9);
+INSERT INTO R_REL
+	VALUES ("4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	3,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSOC
+	VALUES ("4fe0ac1a-e6a6-49a0-8f8e-b715981f230a");
+INSERT INTO R_AONE
+	VALUES ("50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94",
+	0,
+	0,
+	'is_being_used_by');
+INSERT INTO O_RTIDA
+	VALUES ("ff786244-49cb-46c8-9eac-18875246c676",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94");
+INSERT INTO O_RTIDA
+	VALUES ("60b1a761-5c3a-4f01-b74c-a89aaba9d3d2",
+	"50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	0,
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94");
+INSERT INTO R_RTO
+	VALUES ("50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94",
+	0);
+INSERT INTO R_OIR
+	VALUES ("50fcb811-bfb4-4429-9615-0c3b0df42edc",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"eb0ad030-9c70-4b2d-9440-3cc8ddf50b94",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_AOTH
+	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"c3a9119c-4872-43bd-a967-08d553a7457b",
+	1,
+	1,
+	'is_logged_on_to');
+INSERT INTO O_RTIDA
+	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
+	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	0,
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"c3a9119c-4872-43bd-a967-08d553a7457b");
+INSERT INTO R_RTO
+	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"c3a9119c-4872-43bd-a967-08d553a7457b",
+	0);
+INSERT INTO R_OIR
+	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"c3a9119c-4872-43bd-a967-08d553a7457b",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSR
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"93154aa9-0171-41a7-b2f1-3dca971c0724",
+	0);
+INSERT INTO R_RGO
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"93154aa9-0171-41a7-b2f1-3dca971c0724");
+INSERT INTO R_OIR
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"4fe0ac1a-e6a6-49a0-8f8e-b715981f230a",
+	"93154aa9-0171-41a7-b2f1-3dca971c0724",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	9);
+INSERT INTO R_REL
+	VALUES ("8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	4,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_SIMP
+	VALUES ("8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4");
+INSERT INTO R_FORM
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"719a6969-99d3-4bfd-a663-b72a821a25d3",
+	1,
+	1,
+	'defines_rules_for');
+INSERT INTO R_RGO
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"719a6969-99d3-4bfd-a663-b72a821a25d3");
+INSERT INTO R_OIR
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"719a6969-99d3-4bfd-a663-b72a821a25d3",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_PART
+	VALUES ("6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"0847ba7a-8b21-444c-956b-15c713dcdfab",
+	0,
+	0,
+	'rules_are_defined_by');
+INSERT INTO O_RTIDA
+	VALUES ("96154352-3dce-4be7-810f-0b2b252d8c48",
+	"6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	0,
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"0847ba7a-8b21-444c-956b-15c713dcdfab");
+INSERT INTO R_RTO
+	VALUES ("6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"0847ba7a-8b21-444c-956b-15c713dcdfab",
+	0);
+INSERT INTO R_OIR
+	VALUES ("6e6ca727-e171-4605-a2c5-446aaf7e257d",
+	"8d9252cd-b1c6-4d03-b38f-dbb4480ec1f4",
+	"0847ba7a-8b21-444c-956b-15c713dcdfab",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("23649dbd-f07b-4939-988e-2e0ce0a59824",
+	1,
+	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"00000000-0000-0000-0000-000000000000",
+	9);
+INSERT INTO R_REL
+	VALUES ("23649dbd-f07b-4939-988e-2e0ce0a59824",
+	5,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSOC
+	VALUES ("23649dbd-f07b-4939-988e-2e0ce0a59824");
+INSERT INTO R_AONE
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"96bd9a92-f786-40aa-832b-37d9461f8576",
+	1,
+	0,
+	'has_allowed');
+INSERT INTO O_RTIDA
+	VALUES ("16c80a65-09f2-4c4f-ba72-19306d9b64a0",
+	"b09d891e-e4ea-454c-84af-f142d8cb3561",
+	0,
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"96bd9a92-f786-40aa-832b-37d9461f8576");
+INSERT INTO R_RTO
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"96bd9a92-f786-40aa-832b-37d9461f8576",
+	0);
+INSERT INTO R_OIR
+	VALUES ("b09d891e-e4ea-454c-84af-f142d8cb3561",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"96bd9a92-f786-40aa-832b-37d9461f8576",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_AOTH
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"55849a4e-bfef-4b68-b763-1e28bf223dc9",
+	1,
+	0,
+	'has_been_allowed_for');
+INSERT INTO O_RTIDA
+	VALUES ("6e8dc41a-487a-49fd-8cb6-cc71c73d7ab8",
+	"eae36908-87cd-43ba-8331-733a31f3fa00",
+	0,
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"55849a4e-bfef-4b68-b763-1e28bf223dc9");
+INSERT INTO R_RTO
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"55849a4e-bfef-4b68-b763-1e28bf223dc9",
+	0);
+INSERT INTO R_OIR
+	VALUES ("eae36908-87cd-43ba-8331-733a31f3fa00",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"55849a4e-bfef-4b68-b763-1e28bf223dc9",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO R_ASSR
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"217d2ec5-9122-413f-91af-c1e4a1743245",
+	0);
+INSERT INTO R_RGO
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"217d2ec5-9122-413f-91af-c1e4a1743245");
+INSERT INTO R_OIR
+	VALUES ("91627ddd-ea6c-47df-a17d-9264d6f67740",
+	"23649dbd-f07b-4939-988e-2e0ce0a59824",
+	"217d2ec5-9122-413f-91af-c1e4a1743245",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("87f47cb6-b3e9-49f5-8c07-ceefa7825c70",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	7);
+INSERT INTO EP_PKG
+	VALUES ("87f47cb6-b3e9-49f5-8c07-ceefa7825c70",
+	"00000000-0000-0000-0000-000000000000",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'types',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("b6c05418-4930-4779-b690-c3d37e30f5c9",
+	1,
+	"87f47cb6-b3e9-49f5-8c07-ceefa7825c70",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("b6c05418-4930-4779-b690-c3d37e30f5c9",
+	"00000000-0000-0000-0000-000000000000",
+	'group_type',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("b6c05418-4930-4779-b690-c3d37e30f5c9",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'structure
+    group_name: string;     
+    operation_names: sequence of string;     
+  end structure');
+INSERT INTO PE_PE
+	VALUES ("2be426c3-58a1-483f-b14e-4fafe4389260",
+	1,
+	"87f47cb6-b3e9-49f5-8c07-ceefa7825c70",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("2be426c3-58a1-483f-b14e-4fafe4389260",
+	"00000000-0000-0000-0000-000000000000",
+	'logged_on_type',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("2be426c3-58a1-483f-b14e-4fafe4389260",
+	"d55e4af6-37ff-4bcb-9b83-96881a3abb8c",
+	0,
+	'enum ( logged_on, suspect )');
+INSERT INTO PE_PE
+	VALUES ("0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"efe450fe-0af8-4a28-8df6-3c9e6dd9b04b",
+	7);
+INSERT INTO EP_PKG
+	VALUES ("0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
+	'functions',
+	'',
+	0);
+INSERT INTO PE_PE
+	VALUES ("30fa813f-1705-4622-b733-b658d74c1d2e",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("30fa813f-1705-4622-b733-b658d74c1d2e",
+	"00000000-0000-0000-0000-000000000000",
+	'populate_domain_1',
+	'',
+	'begin
+   
+   SAC::populate_domain(false);
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("e10787bf-610d-4145-ae83-c002722361c5",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("e10787bf-610d-4145-ae83-c002722361c5",
+	"00000000-0000-0000-0000-000000000000",
+	'resend_infos_3',
+	'',
+	'begin
+   
+   SAC::resend_infos();
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("5f16f48d-e814-465d-9f7a-aba0b5b84d99",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("5f16f48d-e814-465d-9f7a-aba0b5b84d99",
+	"00000000-0000-0000-0000-000000000000",
+	'soa_subscribe_2',
+	'',
+	'soa_messages : sequence of string;
+empty_soa_messages : sequence of string;
+
+begin
+
+  SOA::subscribe("SAC_user_logon");
+  SOA::subscribe("SAC_user_logoff");
+  SOA::subscribe("SAC_add_group");
+  SOA::subscribe("SAC_add_operation_to_group");
+  SOA::subscribe("SAC_session_active");
+  SOA::subscribe("SAC_delete_group");
+  SOA::subscribe("SAC_delete_group_operation");
+  SOA::subscribe("SAC_populate_domain");
+  soa_messages := empty_soa_messages & "I_DCP_resend_infos";
+  SOA::subscribe("SAC_resend_infos", soa_messages);
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("f6e68f69-c41e-4ba0-a39e-1d4037c7f521",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("f6e68f69-c41e-4ba0-a39e-1d4037c7f521",
+	"00000000-0000-0000-0000-000000000000",
+	'test_SAC_1',
+	'',
+	'the_groups : sequence of string;
+empty_groups : sequence of string;
+the_session : instance of Session;
+
+begin
+   
+   // check that the groups and operations have been added
+   Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_group())''length), 4 );
+   Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_group_operation())''length), 8 );
+   
+   // login user 1 on workstation 1 with group 1
+   the_groups := empty_groups & "group1";
+   SAC::user_logon(1, "user1", "User One", "Workstation1", the_groups);
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 1 and logged_on = logged_on))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_operation(), 2 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_operation(
+                                                          (user_id = 1 and operation_name = "operation1") or 
+                                                           (user_id = 1 and operation_name = "operation2")))''length), 2 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 1 and 
+                                                                                    workstation_hostname = "Workstation1" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_operation();
+   delete find _TEST_Operator_report_user_session();
+      
+   // login user 1 on workstation 2 with group 1 + 2
+   the_groups := empty_groups & "group1" & "group2";
+   SAC::user_logon(1, "user1", "User One", "Workstation2", the_groups);
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 1 and logged_on = logged_on))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_operation(), 4 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_operation(
+                                                          (user_id = 1 and operation_name = "operation1") or 
+                                                           (user_id = 1 and operation_name = "operation2") or
+                                                           (user_id = 1 and operation_name = "operation3") or
+                                                           (user_id = 1 and operation_name = "operation4")))''length), 4 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 1 and 
+                                                                                    workstation_hostname = "Workstation2" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_operation();
+   delete find _TEST_Operator_report_user_session();
+   
+   // login user 2 on workstation 3 with group 3
+   the_groups := empty_groups & "group3";
+   SAC::user_logon(2, "user2", "User Two", "Workstation3", the_groups);
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 2 and logged_on = logged_on))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_operation(), 2 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_operation(
+                                                          (user_id = 2 and operation_name = "operation1") or 
+                                                           (user_id = 2 and operation_name = "operation3")))''length), 2 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 2 and 
+                                                                                    workstation_hostname = "Workstation3" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_operation();
+   delete find _TEST_Operator_report_user_session();
+   
+   // login user 2 on workstation 4 with group 3 + 4
+   the_groups := empty_groups & "group3" & "group4";
+   SAC::user_logon(2, "user2", "User Two", "Workstation4", the_groups);
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 2 and logged_on = logged_on))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_operation(), 4 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_operation(
+                                                          (user_id = 2 and operation_name = "operation1") or 
+                                                           (user_id = 2 and operation_name = "operation2") or
+                                                           (user_id = 2 and operation_name = "operation3") or
+                                                           (user_id = 2 and operation_name = "operation4")))''length), 4 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 2 and 
+                                                                                    workstation_hostname = "Workstation4" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_operation();
+   delete find _TEST_Operator_report_user_session();
+   
+   // fail the heartbeat 4 times on workstation 1 and get the session to become timed out
+   the_session:= find_one Session(user_id = 1 and workstation_id = 0);
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 1 and 
+                                                                                    workstation_hostname = "Workstation1" and
+                                                                                    session_timed_out = true))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user_session();
+   
+   // fail the heartbeat 4 times on workstation 2 and get the session to become 
+   // timed out and the user marked as suspect
+   the_session:= find_one Session(user_id = 1 and workstation_id = 1);
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   generate Session.heartbeat_timeout_expired() to the_session;
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 1 and 
+                                                                                    workstation_hostname = "Workstation2" and
+                                                                                    session_timed_out = true))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 1 and logged_on = suspect))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_session();
+   
+   // start the heartbeat for workstation 1 and check that the session 
+   // is no longer timed out and the user becomes logged on
+   SAC::session_active(0, 1, "");
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 1 and 
+                                                                                    workstation_hostname = "Workstation1" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 1 and logged_on = logged_on))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_session();
+   
+   // login user 3 on workstation 3 with group 4 check user 2 is logged off the workstation and that 2 
+   // operations added for the new user 
+   the_groups := empty_groups & "group3";
+   SAC::user_logon(3, "user3", "User Three", "Workstation3", the_groups);
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_session_deleted(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_session_deleted(session_id = 2))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 3 and logged_on = logged_on))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_operation(), 2 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_operation(
+                                                          (user_id = 3 and operation_name = "operation1") or 
+                                                           (user_id = 3 and operation_name = "operation3")))''length), 2 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 3 and 
+                                                                                    workstation_hostname = "Workstation3" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   delete find _TEST_Operator_user_session_deleted();
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_operation();
+   delete find _TEST_Operator_report_user_session();
+   delete find _TEST_Operator_user_operation_removed();
+   
+   // log off workstation 4 user 2
+   SAC::user_logoff(3, 2, "");
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_session_deleted(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_session_deleted(session_id = 3))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_operation_removed(), 4 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_operation_removed(
+                                                          (user_id = 2 and operation_name = "operation1") or 
+                                                          (user_id = 2 and operation_name = "operation2") or 
+                                                          (user_id = 2 and operation_name = "operation3") or 
+                                                           (user_id = 2 and operation_name = "operation4")))''length), 4 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_removed(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_removed(user_id = 2))''length), 1 );
+   end if;
+   delete find _TEST_Operator_user_session_deleted();
+   delete find _TEST_Operator_user_operation_removed();
+   delete find _TEST_Operator_user_removed();
+   
+   // log off workstation 3 user 3
+   SAC::user_logoff(4, 3, "");
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_session_deleted(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_session_deleted(session_id = 4))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_operation_removed(), 2 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_operation_removed(
+                                                          (user_id = 3 and operation_name = "operation1") or 
+                                                           (user_id = 3 and operation_name = "operation3")))''length), 2 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_removed(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_removed(user_id = 3))''length), 1 );
+   end if;
+   delete find _TEST_Operator_user_session_deleted();
+   delete find _TEST_Operator_user_operation_removed();
+   delete find _TEST_Operator_user_removed();
+   
+   // log off workstation 1 user 1 check that the user becomes suspect
+   SAC::user_logoff(0, 1, "");
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_session_deleted(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_session_deleted(session_id = 0))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 1 and logged_on = suspect))''length), 1 );
+   end if;
+   delete find _TEST_Operator_user_session_deleted();
+   delete find _TEST_Operator_report_user();
+   
+   // start the heartbeat for workstation 2 and check that the session 
+   // is no longer timed out and the user becomes logged on
+   SAC::session_active(1, 1, "");
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user_session(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user_session(user_id = 1 and 
+                                                                                    workstation_hostname = "Workstation2" and
+                                                                                    session_timed_out = false))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_report_user(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_report_user(user_id = 1 and logged_on = logged_on))''length), 1 );
+   end if;
+   delete find _TEST_Operator_report_user();
+   delete find _TEST_Operator_report_user_session();
+   
+   // log off workstation 2 user 1 
+   SAC::user_logoff(1, 1, "");
+   Test::service_event_queue();
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_session_deleted(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_session_deleted(session_id = 1))''length), 1 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_operation_removed(), 4 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_operation_removed(
+                                                          (user_id = 1 and operation_name = "operation1") or 
+                                                          (user_id = 1 and operation_name = "operation2") or 
+                                                          (user_id = 1 and operation_name = "operation3") or 
+                                                          (user_id = 1 and operation_name = "operation4")))''length), 4 );
+   end if;
+   if Test::check_size ( #FILE#, #LINE#, find _TEST_Operator_user_removed(), 1 ) then
+      Test::check_equal ( #FILE#, #LINE#, ((find _TEST_Operator_user_removed(user_id = 1))''length), 1 );
+   end if;
+   delete find _TEST_Operator_user_session_deleted();
+   delete find _TEST_Operator_report_user();
+   
+   Test::print_results();
+   Process::requestShutdown();
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("f07121c8-1926-4bed-b19c-652a20f66ade",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("f07121c8-1926-4bed-b19c-652a20f66ade",
+	"00000000-0000-0000-0000-000000000000",
+	'add_group',
+	'',
+	'the_group : instance of Group;
+
+begin
+   
+   the_group := find_one Group(group_name = group_name);
+   if the_group = null then
+      the_group := create unique Group(group_name => group_name);
+      Operator~>report_group(group_name);
+   end if;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("3b2f95e4-b572-46ac-929c-c4dcd7754bc9",
+	"f07121c8-1926-4bed-b19c-652a20f66ade",
+	'group_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("3b70ba83-1b40-4f8f-b2a1-691863ee179d",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("3b70ba83-1b40-4f8f-b2a1-691863ee179d",
+	"00000000-0000-0000-0000-000000000000",
+	'add_operation_to_group',
+	'',
+	'the_group : instance of Group;
+the_operation : instance of Operation;
+group_operation : instance of Group_Operation;
+
+begin
+   
+   the_group := find_one Group(group_name = group_name);
+   if the_group = null then
+      the_group := create unique Group(group_name => group_name);
+      Operator~>report_group(group_name);
+   end if;
+   
+   for an_operation in operations''elements loop
+      the_operation := find_one Operation(operation_name = an_operation);
+      if the_operation = null then
+         the_operation := create unique Operation(operation_name => an_operation);
+      end if;
+      group_operation := the_group with the_operation -> R1.Group_Operation;
+      if group_operation = null then
+         group_operation := create Group_Operation(group_id => the_group.group_id, 
+                                                         operation_id => the_operation.operation_id);
+         link the_group R1 the_operation using group_operation;
+         Operator~>report_group_operation(group_name, an_operation);
+      end if;
+   end loop;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("f7c3b626-1b7d-40b5-8650-0a5b1571bcbe",
+	"3b70ba83-1b40-4f8f-b2a1-691863ee179d",
+	'group_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("93b906c2-20c8-4de4-9314-e8138bd342f4",
+	"3b70ba83-1b40-4f8f-b2a1-691863ee179d",
+	'operations',
+	"2161dedb-c0d3-4609-84c1-fe16681d4052",
+	0,
+	'',
+	"f7c3b626-1b7d-40b5-8650-0a5b1571bcbe",
+	'');
+INSERT INTO PE_PE
+	VALUES ("eb850631-a4db-49a5-bd7d-66c86ba4c0e3",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("eb850631-a4db-49a5-bd7d-66c86ba4c0e3",
+	"00000000-0000-0000-0000-000000000000",
+	'delete_group',
+	'',
+	'the_group : instance of Group;
+the_operations : sequence of instance of Operation;
+the_group_operation : instance of Group_Operation;
+begin
+   
+   the_group := find_one Group(group_name = group_name);
+   if the_group /= null then
+      the_operations := the_group -> R1.Operation;
+      for an_operation in the_operations''elements loop
+         the_group_operation := the_group with an_operation -> R1.Group_Operation;
+         Operator~>group_operation_removed(group_name, an_operation.operation_name);
+         unlink the_group R1 an_operation using the_group_operation;
+         delete the_group_operation;
+      end loop;
+   end if;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("9e2dfa38-b25b-4f30-84a2-6dc14842b87f",
+	"eb850631-a4db-49a5-bd7d-66c86ba4c0e3",
+	'group_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("bcdd90c8-a9fe-4f78-ab19-6dde38f623e9",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("bcdd90c8-a9fe-4f78-ab19-6dde38f623e9",
+	"00000000-0000-0000-0000-000000000000",
+	'delete_group_operation',
+	'',
+	'the_group : instance of Group;
+the_operations : sequence of instance of Operation;
+the_operation : instance of Operation;
+the_group_operation : instance of Group_Operation;
+begin
+   
+   the_group := find_one Group(group_name = group_name);
+   if the_group /= null then
+      the_operations := the_group -> R1.Operation;
+      for an_operation in operations''elements loop
+         the_operation := find_one the_operations(operation_name = an_operation);
+         if the_operation /= null then
+            the_group_operation := the_group with the_operation -> R1.Group_Operation;
+            Operator~>group_operation_removed(group_name, the_operation.operation_name);
+            unlink the_group R1 the_operation using the_group_operation;
+            delete the_group_operation;
+         end if;
+         if (the_operation -> R1.Group)''length = 0 then
+            delete the_operation;
+         end if;
+      end loop;
+   end if;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("38726246-0f04-4d0a-b51a-22c0623f1e82",
+	"bcdd90c8-a9fe-4f78-ab19-6dde38f623e9",
+	'group_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("4362d7e3-0124-4a00-a686-058f3564c9c4",
+	"bcdd90c8-a9fe-4f78-ab19-6dde38f623e9",
+	'operations',
+	"2161dedb-c0d3-4609-84c1-fe16681d4052",
+	0,
+	'',
+	"38726246-0f04-4d0a-b51a-22c0623f1e82",
+	'');
+INSERT INTO PE_PE
+	VALUES ("59a25e7a-522e-4abe-b5b2-446c4a3bee42",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("59a25e7a-522e-4abe-b5b2-446c4a3bee42",
+	"00000000-0000-0000-0000-000000000000",
+	'populate_domain',
+	'',
+	'the_groups : sequence of group_type;
+current_groups : sequence of instance of Group;
+the_group : instance of Group;
+required_groups : sequence of instance of Group;
+current_group_operations : sequence of instance of Group_Operation;
+the_operation : instance of Operation;
+the_group_operation : instance of Group_Operation;
+required_group_operations : sequence of instance of Group_Operation;
+unwanted_group_operations : sequence of instance of Group_Operation;
+the_unwanted_op : instance of Operation;
+unwanted_groups : sequence of instance of Group;   
+the_group_sessions : sequence of instance of Group_For_Session;
+session_heartbeat_time : duration;
+session_heartbeat_failure_threshold : integer;
+the_session_spec : instance of Session_Specification;
+the_user : instance of User;
+the_user_groups : sequence of instance of Group;
+
+begin
+   
+   if reload_config_files = true then
+      System_Configuration~>reload_config_files();
+   end if;
+   
+   // get the session spec data
+   System_Configuration~>get_session_specification(session_heartbeat_time, session_heartbeat_failure_threshold);
+   the_session_spec := find_one Session_Specification();
+   if the_session_spec = null then
+      the_session_spec := create unique Session_Specification(session_heartbeat_time => session_heartbeat_time,
+                                             session_heartbeat_failure_threshold => session_heartbeat_failure_threshold);
+   else
+      the_session_spec.session_heartbeat_time := session_heartbeat_time;
+      the_session_spec.session_heartbeat_failure_threshold := session_heartbeat_failure_threshold;
+   end if;
+   
+   // determine the set of current groups so that they 
+   // can be deleted if they are no longer valid
+   current_groups := find_all Group();
+   
+   // read in the configuration data
+   System_Configuration~>get_groups(the_groups);
+   for a_group in the_groups''elements loop
+      
+      // locate the group and if it does not exist create it
+      the_group := find_one Group(group_name = a_group.group_name);
+      if the_group = null then
+         the_group := create unique Group(group_name => a_group.group_name);
+         Operator~>report_group(a_group.group_name);
+      end if;
+      required_groups := required_groups & the_group;
+      
+      // add in the operations for the group
+      current_group_operations := the_group -> R1.Group_Operation;
+      for a_group_operation in a_group.operation_names''elements loop
+         the_operation := find_one Operation(operation_name = a_group_operation);
+         if the_operation = null then
+            the_operation := create unique Operation(operation_name => a_group_operation);
+         end if;
+         the_group_operation := the_group with the_operation -> R1.Group_Operation;
+         if the_group_operation = null then
+            the_group_operation := create Group_Operation(operation_id => the_operation.operation_id,
+                                                            group_id => the_group.group_id);
+            link the_group R1 the_operation using the_group_operation;
+            Operator~>report_group_operation(a_group.group_name, a_group_operation);
+         end if;
+         required_group_operations := required_group_operations & the_group_operation;
+      end loop;
+      
+      // remove any unwanted group operations
+      unwanted_group_operations := current_group_operations not_in required_group_operations;
+      for an_unwanted_group_op in unwanted_group_operations''elements loop
+         the_unwanted_op := an_unwanted_group_op -> R1.Operation;
+         Operator~>group_operation_removed((an_unwanted_group_op -> R1.Group).group_name, 
+                                           the_unwanted_op.operation_name);
+         unlink (an_unwanted_group_op -> R1.Group) R1 the_unwanted_op using an_unwanted_group_op;
+         delete an_unwanted_group_op;
+         
+         // if the op is not in use then remove it
+         if (the_unwanted_op -> R1.Group)''length = 0 and (the_unwanted_op -> R5.Session)''length = 0 then
+            delete the_unwanted_op;
+         end if;
+      end loop;
+      
+   end loop;
+   
+   // remove any unwanted groups
+   unwanted_groups := current_groups not_in required_groups;   
+   for an_unwanted_group in unwanted_groups''elements loop
+      Operator~>group_deleted(an_unwanted_group.group_name);
+      the_group_sessions := the_group -> R2.Group_For_Session;
+      for a_group_session in the_group_sessions''elements loop
+         the_user := a_group_session -> R2.Session -> R3.User;
+         unlink the_group R2 (a_group_session -> R2.Session) using a_group_session;
+         delete a_group_session;
+         the_user_groups := the_user -> R3.Session -> R2.Group;
+         if (find the_user_groups(group_name = an_unwanted_group.group_name))''length = 0 then
+            Operator~>user_group_removed(the_user.user_id, an_unwanted_group.group_name, the_user.login_name, a_group_session.session_id);
+         end if;
+      end loop;
+   end loop;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("137f0d13-e896-4c96-89d9-997b9c8be099",
+	"59a25e7a-522e-4abe-b5b2-446c4a3bee42",
+	'reload_config_files',
+	"f09069ff-840e-425c-be03-e88e4325e945",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("f5e7b0b6-3793-4d82-9267-79c3d8c7d06f",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("f5e7b0b6-3793-4d82-9267-79c3d8c7d06f",
+	"00000000-0000-0000-0000-000000000000",
+	'resend_infos',
+	'',
+	'all_groups : sequence of instance of Group;
+the_operations : sequence of instance of Operation;
+all_users : sequence of instance of User;
+the_sessions : sequence of instance of Session;
+the_groups : sequence of instance of Group;
+
+begin
+   
+   // report all groups
+   all_groups := find_all Group();
+   for a_group in all_groups''elements loop
+      Operator~>report_group(a_group.group_name);
+      // report all group operations
+      the_operations := a_group -> R1.Operation;
+      for an_operation in the_operations''elements loop
+         Operator~>report_group_operation(a_group.group_name, an_operation.operation_name);
+      end loop;
+   end loop;   
+   
+   // report all users
+   all_users := find_all User();
+   for a_user in all_users''elements loop
+      Operator~>report_user(a_user.user_id, a_user.login_name, a_user.user_name, a_user.is_logged_on);
+      
+      // report all sessions
+      the_sessions := a_user -> R3.Session;
+      for a_session in the_sessions''elements loop
+         
+         Operator~>report_user_session(a_session.session_id, a_user.user_id, a_session.logon_time,
+                                       a_session.has_timed_out, (a_session -> R3.Workstation).workstation_hostname, 
+                                       a_user.login_name);
+         
+         // report all user groups
+         the_groups := a_session -> R2.Group;
+         for a_group in the_groups''elements loop
+            Operator~>report_user_operation(a_user.user_id, a_group.group_name, a_user.login_name, a_session.session_id);
+         end loop;
+      
+         // report all user operations
+         the_operations := a_session -> R2.Group -> R1.Operation;
+         for an_operation in the_operations''elements loop
+            Operator~>report_user_operation(a_user.user_id, an_operation.operation_name, a_user.login_name, a_session.session_id);
+         end loop;
+         
+      end loop;
+   
+   end loop;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO PE_PE
+	VALUES ("a0469a95-4024-4e7a-8d0d-4ffcb6566f30",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("a0469a95-4024-4e7a-8d0d-4ffcb6566f30",
+	"00000000-0000-0000-0000-000000000000",
+	'session_active',
+	'',
+	'the_session : instance of Session;
+
+begin
+   
+   // locate the session
+   the_session := find_one Session(session_id = session_id and user_id = user_id and login_name = login_name);
+   if the_session /= null then
+      generate Session.user_logged_on() to the_session;
+   else
+      // log an error as this is an invalid logoff request
+      console << "SAC::session-active - Invalid session active received, session_id = " << session_id''image  << 
+                 ", uid = " << user_id''image << ", sid = " << login_name << endl << flush;
+   end if;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("30e2df5e-a732-4abd-a33a-d73e85e7a28d",
+	"a0469a95-4024-4e7a-8d0d-4ffcb6566f30",
+	'session_id',
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("ac1a9ddd-abce-412c-8754-c92d0c755fc1",
+	"a0469a95-4024-4e7a-8d0d-4ffcb6566f30",
+	'user_id',
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	0,
+	'',
+	"30e2df5e-a732-4abd-a33a-d73e85e7a28d",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("e598f059-021b-479c-9f44-fd50e2e58701",
+	"a0469a95-4024-4e7a-8d0d-4ffcb6566f30",
+	'login_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"ac1a9ddd-abce-412c-8754-c92d0c755fc1",
+	'');
+INSERT INTO PE_PE
+	VALUES ("9a4ff8ae-31fd-4a65-8f9e-1a16eedd8e5b",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("9a4ff8ae-31fd-4a65-8f9e-1a16eedd8e5b",
+	"00000000-0000-0000-0000-000000000000",
+	'user_logoff',
+	'',
+	'the_session : instance of Session;
+the_workstation : instance of Workstation;
+
+begin
+   
+   // locate the session for the user
+   the_session := find_one Session(session_id = session_id and user_id = user_id and login_name = login_name);
+   if the_session /= null then
+      the_workstation := the_session -> R3.Workstation;
+      the_session.delete_session();
+      // remove the workstation if it is no longer in use
+      if (the_workstation -> R3.Session) = null then
+         delete the_workstation;
+      end if;
+   else
+      // log an error as this is an invalid logoff request
+      console << "SAC::user_logoff - Invalid logoff received, session_id = " << session_id''image  << 
+                 ", uid = " << user_id''image << ", sid = " << login_name << endl << flush;
+   end if;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("26d3a9a8-5428-421a-bc45-12bfe17058e1",
+	"9a4ff8ae-31fd-4a65-8f9e-1a16eedd8e5b",
+	'session_id',
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("e40c97f6-e846-40ac-8f38-8586e84a8e09",
+	"9a4ff8ae-31fd-4a65-8f9e-1a16eedd8e5b",
+	'user_id',
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	0,
+	'',
+	"26d3a9a8-5428-421a-bc45-12bfe17058e1",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("551d550a-1e4e-406e-8d5c-56d3e590f967",
+	"9a4ff8ae-31fd-4a65-8f9e-1a16eedd8e5b",
+	'login_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"e40c97f6-e846-40ac-8f38-8586e84a8e09",
+	'');
+INSERT INTO PE_PE
+	VALUES ("17ee5bb9-3555-4132-ac52-7206e9330752",
+	1,
+	"0f285431-82e1-44b4-bcfd-155aa67ba13e",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_SYNC
+	VALUES ("17ee5bb9-3555-4132-ac52-7206e9330752",
+	"00000000-0000-0000-0000-000000000000",
+	'user_logon',
+	'',
+	'login_allowed : boolean := false;
+the_user : instance of User;
+the_workstation : instance of Workstation;
+the_session : instance of Session;
+the_group : instance of Group;
+the_group_for_session : instance of Group_For_Session;
+session_operations : sequence of instance of Operation;
+the_session_operation : instance of Session_Operation;
+message : string;
+
+begin
+   
+   // validate that at least one of the specified 
+   // groups is allowed on the system before proceeding
+   for a_group in groups''elements loop
+      if (find_one Group(group_name = a_group)) /= null then
+         login_allowed := true;
+         exit;
+      end if;
+   end loop;
+   
+   if login_allowed = true then
+      // locate the workstation and if it does not exist create it
+      the_workstation := find_one Workstation(workstation_hostname = workstation_hostname);
+      if the_workstation = null then
+         the_workstation := create unique Workstation(workstation_hostname => workstation_hostname);
+      end if;
+      the_session := the_workstation -> R3.Session;
+      if the_session /= null then
+         // log an error as this was unexpected due to the workstation still having a session
+         console << "Forced logout on workstation. Workstation = " << the_workstation.workstation_hostname
+                 << " User = " << (the_session -> R3.User).user_name << endl << flush;
+         // end the current session on this workstation
+         the_session.delete_session();
+      end if;
+      
+      // locate the user and if the user does not exist create it
+      the_user := find_one User(user_id = user_id and login_name = login_name);
+      if the_user = null then
+         the_user := create User(user_id => user_id, 
+                                   login_name => login_name, 
+                                   user_name => user_name,
+                                   is_logged_on => logged_on);
+      end if;
+      Operator~>report_user(the_user.user_id, the_user.login_name, the_user.user_name, the_user.is_logged_on);
+      // create the session
+      the_session := create unique Session(logon_time => timestamp''now, session_heartbeat_failure => 0,
+                                               has_timed_out => false, workstation_id => the_workstation.workstation_id,
+                                               Current_State => Created);
+      link the_user R3 the_workstation using the_session;
+      Operator~>report_user_session(the_session.session_id, the_session.user_id, the_session.logon_time,
+                                     the_session.has_timed_out, (the_session -> R3.Workstation).workstation_hostname,
+                                     the_session.login_name);
+      
+      // set up the groups for the session and 
+      // report the operations that are available to the user
+      for a_group in groups''elements loop
+         the_group := find_one Group(group_name = a_group);
+         if the_group /= null then
+            the_group_for_session := create Group_For_Session(group_id => the_group.group_id, 
+                                                                session_id => the_session.session_id);
+            link the_group R2 the_session using the_group_for_session;
+            Operator~>report_user_group(the_user.user_id, a_group, the_user.login_name, the_session.session_id);      
+         end if;
+      end loop;
+      session_operations := the_session -> R2.Group -> R1.Operation;
+      for a_session_operation in session_operations''elements loop
+         the_session_operation := the_session with a_session_operation -> R5.Session_Operation;
+         if the_session_operation = null then
+            the_session_operation := create Session_Operation(session_id => the_session.session_id, 
+                                                                operation_id => a_session_operation.operation_id);
+            link the_session R5 a_session_operation using the_session_operation;
+            Operator~>report_user_operation(the_user.user_id, a_session_operation.operation_name, the_user.login_name, the_session.session_id);
+         end if;
+      end loop;
+      
+      generate Session.user_logged_on() to the_session;      
+      Operator~>login_valid(the_session.session_id, user_id, true, "", workstation_hostname, login_name);
+   else
+      message := "Login failure due to invalid group specified, user = " & user_name & 
+                  " workstation = " & workstation_hostname & ".";
+      Operator~>raise_notification(message, "Info");
+      Operator~>login_valid(-1, user_id, false, "Invalid group specified", workstation_hostname, login_name);
+   end if;
+end',
+	"554108e7-d194-445e-a0bd-64db99440d79",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("6edefc0c-a18d-4ad8-a42d-b75a9f878872",
+	"17ee5bb9-3555-4132-ac52-7206e9330752",
+	'user_id',
+	"916ca417-6255-4e0e-9586-0cef5593c2e4",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("1fd36dca-9b59-42f9-af7c-52da38be06df",
+	"17ee5bb9-3555-4132-ac52-7206e9330752",
+	'login_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"6edefc0c-a18d-4ad8-a42d-b75a9f878872",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("9b79e17b-29a2-418f-9bec-b8d34ac006bb",
+	"17ee5bb9-3555-4132-ac52-7206e9330752",
+	'user_name',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"1fd36dca-9b59-42f9-af7c-52da38be06df",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("b1f8dfad-eeb6-4e86-8865-421ae46d6a17",
+	"17ee5bb9-3555-4132-ac52-7206e9330752",
+	'workstation_hostname',
+	"21c36119-c606-4c7d-bdd4-00312851af43",
+	0,
+	'',
+	"9b79e17b-29a2-418f-9bec-b8d34ac006bb",
+	'');
+INSERT INTO S_SPARM
+	VALUES ("28b6cbbf-c151-4aef-bc83-8a7af36239bd",
+	"17ee5bb9-3555-4132-ac52-7206e9330752",
+	'groups',
+	"2161dedb-c0d3-4609-84c1-fe16681d4052",
+	0,
+	'',
+	"b1f8dfad-eeb6-4e86-8865-421ae46d6a17",
+	'');
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000000",
+	0);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000001",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000001",
+	"00000000-0000-0000-0000-000000000000",
+	'boolean',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000001",
+	1);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000002",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000002",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000002",
+	2);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000003",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000003",
+	"00000000-0000-0000-0000-000000000000",
+	'real',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000003",
+	3);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000004",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000004",
+	"00000000-0000-0000-0000-000000000000",
+	'string',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000004",
+	4);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000005",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000005",
+	"00000000-0000-0000-0000-000000000000",
+	'unique_id',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000005",
+	5);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000006",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000006",
+	"00000000-0000-0000-0000-000000000000",
+	'state<State_Model>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000006",
+	6);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000007",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000007",
+	"00000000-0000-0000-0000-000000000000",
+	'same_as<Base_Attribute>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000007",
+	7);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000008",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000008",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Object>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000008",
+	8);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000009",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000009",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref_set<Object>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000009",
+	9);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000a",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000a",
+	"00000000-0000-0000-0000-000000000000",
+	'inst<Event>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000a",
+	10);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000b",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000b",
+	"00000000-0000-0000-0000-000000000000",
+	'inst<Mapping>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000b",
+	11);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000c",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000c",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Mapping>',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000c",
+	12);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000d",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000d",
+	"00000000-0000-0000-0000-000000000000",
+	'component_ref',
+	'',
+	'');
+INSERT INTO S_CDT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000d",
+	13);
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000e",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000e",
+	"00000000-0000-0000-0000-000000000000",
+	'date',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000e",
+	"ba5eda7a-def5-0000-0000-00000000000b",
+	1,
+	'');
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000f",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000f",
+	"00000000-0000-0000-0000-000000000000",
+	'inst_ref<Timer>',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("ba5eda7a-def5-0000-0000-00000000000f",
+	"ba5eda7a-def5-0000-0000-00000000000c",
+	3,
+	'');
+INSERT INTO PE_PE
+	VALUES ("ba5eda7a-def5-0000-0000-000000000010",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO S_DT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000010",
+	"00000000-0000-0000-0000-000000000000",
+	'timestamp',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("ba5eda7a-def5-0000-0000-000000000010",
+	"ba5eda7a-def5-0000-0000-00000000000b",
+	2,
+	'');

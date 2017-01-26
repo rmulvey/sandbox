@@ -1,0 +1,7 @@
+Initializing MASL export...
+cat /home/developer/xtuml/bp6.0/workspace/SAC_PROC/gen/code_generation/a.xtuml | ./x2m -i/home/developer/xtuml/bp6.0/workspace/SAC_PROC  -pSAC_PROC -k | ./masl  -i/home/developer/xtuml/bp6.0/workspace/SAC_PROC  -pSAC_PROC -o/home/developer/xtuml/bp6.0/workspace/SAC_PROC/masl/
+103 ___ info ___ Loading marking data.
+101 ___ info ___ Starting Project
+102 ___ info ___ Done
+java -cp /home/developer/xtuml/bp6.0//tools/mc/bin//antlr-3.5.2-complete.jar:/home/developer/xtuml/bp6.0//tools/mc/bin//MASLParser.jar MaslFormatter -r -i /home/developer/xtuml/bp6.0/workspace/SAC_PROC/masl//SAC_PROC.orig -o /home/developer/xtuml/bp6.0/workspace/SAC_PROC/masl//SAC_PROC
+Done.

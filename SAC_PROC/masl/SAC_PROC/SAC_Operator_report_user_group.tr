@@ -1,0 +1,8 @@
+private service SAC::Operator~>report_user_group ( uid: in integer,
+                                                   group_name: in string,
+                                                   login_name: in string,
+                                                   session_id: in integer ) is
+begin
+   
+   I_DC::info_User_Group(group_name, login_name, session_id);
+end service;
