@@ -1,57 +1,57 @@
 -- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
 
 INSERT INTO O_OBJ
-	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	VALUES ("6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed",
 	'Workstation',
 	9,
 	'W',
 	'',
 	"00000000-0000-0000-0000-000000000000");
 INSERT INTO O_NBATTR
-	VALUES ("2768d632-131d-4c3b-b193-f5e789384f2e",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	VALUES ("398f2dcc-46fb-4d90-9dfb-202c7bfe544f",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO O_BATTR
-	VALUES ("2768d632-131d-4c3b-b193-f5e789384f2e",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	VALUES ("398f2dcc-46fb-4d90-9dfb-202c7bfe544f",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO O_ATTR
-	VALUES ("2768d632-131d-4c3b-b193-f5e789384f2e",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	VALUES ("398f2dcc-46fb-4d90-9dfb-202c7bfe544f",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed",
 	"00000000-0000-0000-0000-000000000000",
 	'workstation_hostname',
 	'',
 	'',
 	'workstation_hostname',
 	0,
-	"21c36119-c606-4c7d-bdd4-00312851af43",
+	"e5d5370c-cdbb-4e58-a5fa-d0a13dac0dcb",
 	'',
 	'');
 INSERT INTO S_DT_PROXY
-	VALUES ("21c36119-c606-4c7d-bdd4-00312851af43",
+	VALUES ("e5d5370c-cdbb-4e58-a5fa-d0a13dac0dcb",
 	"00000000-0000-0000-0000-000000000000",
 	'string',
 	'',
 	'',
 	'../../../../types/types.xtuml');
 INSERT INTO O_NBATTR
-	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	VALUES ("f6854ea1-0987-4144-ab0a-fec6e62880a9",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO O_BATTR
-	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	VALUES ("f6854ea1-0987-4144-ab0a-fec6e62880a9",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO O_ATTR
-	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
-	"2768d632-131d-4c3b-b193-f5e789384f2e",
+	VALUES ("f6854ea1-0987-4144-ab0a-fec6e62880a9",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed",
+	"398f2dcc-46fb-4d90-9dfb-202c7bfe544f",
 	'workstation_id',
 	'',
 	'',
 	'workstation_id',
 	0,
-	"d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	"69a4d75a-6bdc-4dd9-a43e-10ec2ae4feed",
 	'',
 	'');
 INSERT INTO S_DT_PROXY
-	VALUES ("d6d6f007-85d8-4d66-b8ad-f33f17d6df2d",
+	VALUES ("69a4d75a-6bdc-4dd9-a43e-10ec2ae4feed",
 	"00000000-0000-0000-0000-000000000000",
 	'MASLunique',
 	'',
@@ -59,26 +59,26 @@ INSERT INTO S_DT_PROXY
 	'../../../Shared/Shared.xtuml');
 INSERT INTO O_ID
 	VALUES (0,
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO O_OIDA
-	VALUES ("0b582dec-d3ee-44ab-8796-dea3fc0888d5",
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	VALUES ("f6854ea1-0987-4144-ab0a-fec6e62880a9",
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed",
 	0,
 	'workstation_id');
 INSERT INTO O_ID
 	VALUES (1,
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO O_ID
 	VALUES (2,
-	"0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e");
+	"6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed");
 INSERT INTO PE_PE
-	VALUES ("0a8d25b4-dbe9-4881-80ca-fbcf372f2c9e",
+	VALUES ("6fc5e35b-0ac1-4b74-9a07-8c5fa48ab2ed",
 	1,
-	"b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	"4526039e-dcf9-4291-b6f7-9b4ad2632a21",
 	"00000000-0000-0000-0000-000000000000",
 	4);
 INSERT INTO EP_PKG_PROXY
-	VALUES ("b84b17de-c559-4742-9d0d-520dbf97b2a2",
+	VALUES ("4526039e-dcf9-4291-b6f7-9b4ad2632a21",
 	"00000000-0000-0000-0000-000000000000",
 	"c6e4a128-88db-4ed5-bda1-0e586db1c5ff",
 	'SAC',
