@@ -2,7 +2,7 @@
 
 INSERT INTO S_SYS
 	VALUES ("6747d5df-3932-420b-951e-bc0211ecebbb",
-	'9190_reconcile_reflexive_assoc',
+	'9208_reconcile_reflexive_assoc',
 	1);
 INSERT INTO GD_MD
 	VALUES ("7f49312e-8cc0-484f-b89f-16c7db7c0afd",
@@ -22,7 +22,7 @@ INSERT INTO GD_MD
 	0,
 	0,
 	'',
-	'9190_reconcile_reflexive_assoc');
+	'9208_reconcile_reflexive_assoc');
 INSERT INTO DIM_DIA
 	VALUES ("7f49312e-8cc0-484f-b89f-16c7db7c0afd",
 	'',
