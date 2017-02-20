@@ -1,0 +1,32 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("9d6e72fd-5ae3-4315-ae54-8481f51c364d",
+	'Assoc',
+	1,
+	'Assoc',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_ID
+	VALUES (0,
+	"9d6e72fd-5ae3-4315-ae54-8481f51c364d");
+INSERT INTO O_ID
+	VALUES (1,
+	"9d6e72fd-5ae3-4315-ae54-8481f51c364d");
+INSERT INTO O_ID
+	VALUES (2,
+	"9d6e72fd-5ae3-4315-ae54-8481f51c364d");
+INSERT INTO PE_PE
+	VALUES ("9d6e72fd-5ae3-4315-ae54-8481f51c364d",
+	1,
+	"ff28cb45-34be-496a-b688-056c38258bdb",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("ff28cb45-34be-496a-b688-056c38258bdb",
+	"00000000-0000-0000-0000-000000000000",
+	"6747d5df-3932-420b-951e-bc0211ecebbb",
+	'ReflexiveAssoc',
+	'',
+	0,
+	'../ReflexiveAssoc.xtuml');
