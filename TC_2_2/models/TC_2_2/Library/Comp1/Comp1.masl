@@ -1,0 +1,5 @@
+public service Comp1::Port1~>op1 () is
+begin
+  null;
+end service;
+
