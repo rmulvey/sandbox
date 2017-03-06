@@ -1,0 +1,6 @@
+-- BP 7.1.6 content: SystemModel syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO S_SYS
+	VALUES ("434a0470-294c-4566-b56f-0edb53cd3344",
+	'TC_2_5',
+	0);

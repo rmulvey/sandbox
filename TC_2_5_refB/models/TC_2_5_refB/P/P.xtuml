@@ -1,0 +1,46 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("5f5228c9-d07f-4ebc-a1e0-1e45511f1cf1",
+	"5d451ad2-b71d-4fcd-b507-5ccfc758418d",
+	"5d451ad2-b71d-4fcd-b507-5ccfc758418d",
+	'P',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("3b1c2f21-e6da-48d7-883d-d12c46e8ef74",
+	112,
+	"5f5228c9-d07f-4ebc-a1e0-1e45511f1cf1",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'TC_2_5_refB::P');
+INSERT INTO DIM_DIA
+	VALUES ("3b1c2f21-e6da-48d7-883d-d12c46e8ef74",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("5f5228c9-d07f-4ebc-a1e0-1e45511f1cf1",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO S_SYS_PROXY
+	VALUES ("5d451ad2-b71d-4fcd-b507-5ccfc758418d",
+	'TC_2_5_refB',
+	1,
+	'../TC_2_5_refB.xtuml');

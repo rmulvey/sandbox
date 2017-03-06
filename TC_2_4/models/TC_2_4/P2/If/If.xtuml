@@ -1,0 +1,61 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("18f781c6-933f-4e91-8ad7-dd3dbd451116",
+	"00000000-0000-0000-0000-000000000000",
+	'If',
+	'');
+INSERT INTO C_EP
+	VALUES ("50da9671-8c6e-417d-a46e-12326402c898",
+	"18f781c6-933f-4e91-8ad7-dd3dbd451116",
+	-1,
+	'SigA',
+	'');
+INSERT INTO C_AS
+	VALUES ("50da9671-8c6e-417d-a46e-12326402c898",
+	'SigA',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("fc3603dc-0a31-4b34-8fbb-c6a70f56b4c2",
+	"50da9671-8c6e-417d-a46e-12326402c898",
+	"bed0dc7f-3b03-4255-b54d-5e41a465f4b3",
+	'PAr',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("bed0dc7f-3b03-4255-b54d-5e41a465f4b3",
+	"00000000-0000-0000-0000-000000000000",
+	'Sig_Type',
+	'',
+	'',
+	'../P2.xtuml');
+INSERT INTO C_EP
+	VALUES ("9143cf7b-ecc7-442f-b5d0-54c04f957d0a",
+	"18f781c6-933f-4e91-8ad7-dd3dbd451116",
+	-1,
+	'SigB',
+	'');
+INSERT INTO C_AS
+	VALUES ("9143cf7b-ecc7-442f-b5d0-54c04f957d0a",
+	'SigB',
+	'',
+	0,
+	"50da9671-8c6e-417d-a46e-12326402c898");
+INSERT INTO PE_PE
+	VALUES ("18f781c6-933f-4e91-8ad7-dd3dbd451116",
+	1,
+	"5e3305a4-2879-493c-a2be-e10fa9d8e22d",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("5e3305a4-2879-493c-a2be-e10fa9d8e22d",
+	"ba8368dd-e926-4547-ab67-b6b5262ddcc7",
+	"ba8368dd-e926-4547-ab67-b6b5262ddcc7",
+	'P2',
+	'',
+	0,
+	'../P2.xtuml');

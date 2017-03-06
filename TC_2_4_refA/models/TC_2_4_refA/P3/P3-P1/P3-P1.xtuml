@@ -1,0 +1,54 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("99055605-1130-4645-99c1-e86079eefc01",
+	"00000000-0000-0000-0000-000000000000",
+	"885c104b-6864-4000-ac1f-bed08f383a57",
+	'P3-P1',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("f578da24-36f7-425d-8a93-3e7bc1a86aa9",
+	112,
+	"99055605-1130-4645-99c1-e86079eefc01",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'4.1.17',
+	'TC_2_4_refA::P3::P3-P1');
+INSERT INTO DIM_DIA
+	VALUES ("f578da24-36f7-425d-8a93-3e7bc1a86aa9",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("99055605-1130-4645-99c1-e86079eefc01",
+	1,
+	"625c72c7-9f6c-4ef8-994b-ee4e84d0e48a",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("625c72c7-9f6c-4ef8-994b-ee4e84d0e48a",
+	"885c104b-6864-4000-ac1f-bed08f383a57",
+	"885c104b-6864-4000-ac1f-bed08f383a57",
+	'P3',
+	'',
+	0,
+	'../P3.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("885c104b-6864-4000-ac1f-bed08f383a57",
+	'TC_2_4_refA',
+	1,
+	'../../TC_2_4_refA.xtuml');

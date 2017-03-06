@@ -1,0 +1,102 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("952c110a-38b1-4441-ab45-be79d74f70f3",
+	"00000000-0000-0000-0000-000000000000",
+	'If',
+	'');
+INSERT INTO C_EP
+	VALUES ("926d2ea1-ab9d-4977-878d-77faeff88d30",
+	"952c110a-38b1-4441-ab45-be79d74f70f3",
+	-1,
+	'Op',
+	'');
+INSERT INTO C_IO
+	VALUES ("926d2ea1-ab9d-4977-878d-77faeff88d30",
+	"ba5eda7a-def5-0000-0000-000000000000",
+	'Op',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("bc690dcc-7701-4187-b817-34b45f3299d2",
+	"926d2ea1-ab9d-4977-878d-77faeff88d30",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Par',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("97337ea8-7e53-4c88-9617-19eb768be401",
+	"926d2ea1-ab9d-4977-878d-77faeff88d30",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Par2',
+	'',
+	0,
+	'',
+	"bc690dcc-7701-4187-b817-34b45f3299d2");
+INSERT INTO C_EP
+	VALUES ("8c24bf54-af42-480e-a9ab-793cb07f643d",
+	"952c110a-38b1-4441-ab45-be79d74f70f3",
+	-1,
+	'Sig',
+	'');
+INSERT INTO C_AS
+	VALUES ("8c24bf54-af42-480e-a9ab-793cb07f643d",
+	'Sig',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO C_PP
+	VALUES ("ec79d2de-710a-4703-bec7-575429c4b237",
+	"8c24bf54-af42-480e-a9ab-793cb07f643d",
+	"86d0c3ba-6ecd-46cd-801b-23a5532b9d1c",
+	'Par',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("86d0c3ba-6ecd-46cd-801b-23a5532b9d1c",
+	"00000000-0000-0000-0000-000000000000",
+	'My_IF_DT',
+	'',
+	'',
+	'../../P2/P2.xtuml');
+INSERT INTO C_EP
+	VALUES ("7b53a8c8-beda-465f-bb38-38bfd09c0d16",
+	"952c110a-38b1-4441-ab45-be79d74f70f3",
+	-1,
+	'Sig_Added',
+	'');
+INSERT INTO C_AS
+	VALUES ("7b53a8c8-beda-465f-bb38-38bfd09c0d16",
+	'Sig_Added',
+	'',
+	0,
+	"8c24bf54-af42-480e-a9ab-793cb07f643d");
+INSERT INTO C_PP
+	VALUES ("d5597a8b-243f-4cae-9a61-dc03bcfb29b4",
+	"7b53a8c8-beda-465f-bb38-38bfd09c0d16",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	'Par',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("952c110a-38b1-4441-ab45-be79d74f70f3",
+	1,
+	"ab3c3395-f78d-4707-b590-9ec1ac8217c3",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("ab3c3395-f78d-4707-b590-9ec1ac8217c3",
+	"895f8a2e-a1fc-4416-b3e2-7f072b0a1ead",
+	"895f8a2e-a1fc-4416-b3e2-7f072b0a1ead",
+	'P5',
+	'',
+	0,
+	'../P5.xtuml');

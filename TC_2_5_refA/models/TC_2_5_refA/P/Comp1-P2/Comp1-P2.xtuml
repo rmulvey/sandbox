@@ -1,0 +1,94 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("cf3dbeba-5dea-42a8-99de-232fdb8d89f4",
+	"00000000-0000-0000-0000-000000000000",
+	"bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	'Comp1-P2',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("9eae2c60-ad9b-46a8-9e83-3a1893ad8e36",
+	112,
+	"cf3dbeba-5dea-42a8-99de-232fdb8d89f4",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'4.1.17',
+	'TC_2_5_refA::P::Comp1-P2');
+INSERT INTO GD_GE
+	VALUES ("655df3e2-7f9b-4327-acd3-61acb7f51b0c",
+	"9eae2c60-ad9b-46a8-9e83-3a1893ad8e36",
+	"b1ad0bfc-fab0-4726-9952-a402baa5e7b4",
+	51,
+	0,
+	'TC_2_5_refA::P::Comp1-P2::attr_type');
+INSERT INTO GD_SHP
+	VALUES ("655df3e2-7f9b-4327-acd3-61acb7f51b0c");
+INSERT INTO GD_NCS
+	VALUES ("655df3e2-7f9b-4327-acd3-61acb7f51b0c");
+INSERT INTO DIM_ND
+	VALUES (204.000000,
+	144.000000,
+	"655df3e2-7f9b-4327-acd3-61acb7f51b0c");
+INSERT INTO DIM_GE
+	VALUES (4452.000000,
+	3168.000000,
+	"655df3e2-7f9b-4327-acd3-61acb7f51b0c",
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_ELE
+	VALUES ("655df3e2-7f9b-4327-acd3-61acb7f51b0c",
+	0,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO DIM_DIA
+	VALUES ("9eae2c60-ad9b-46a8-9e83-3a1893ad8e36",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT
+	VALUES ("b1ad0bfc-fab0-4726-9952-a402baa5e7b4",
+	"00000000-0000-0000-0000-000000000000",
+	'attr_type',
+	'',
+	'');
+INSERT INTO S_UDT
+	VALUES ("b1ad0bfc-fab0-4726-9952-a402baa5e7b4",
+	"ba5eda7a-def5-0000-0000-000000000002",
+	0);
+INSERT INTO PE_PE
+	VALUES ("b1ad0bfc-fab0-4726-9952-a402baa5e7b4",
+	1,
+	"cf3dbeba-5dea-42a8-99de-232fdb8d89f4",
+	"00000000-0000-0000-0000-000000000000",
+	3);
+INSERT INTO PE_PE
+	VALUES ("cf3dbeba-5dea-42a8-99de-232fdb8d89f4",
+	1,
+	"683b1443-93dc-45ea-b82c-a06e0176d3b4",
+	"00000000-0000-0000-0000-000000000000",
+	7);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("683b1443-93dc-45ea-b82c-a06e0176d3b4",
+	"bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	"bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	'P',
+	'',
+	0,
+	'../P.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	'TC_2_5_refA',
+	1,
+	'../../TC_2_5_refA.xtuml');

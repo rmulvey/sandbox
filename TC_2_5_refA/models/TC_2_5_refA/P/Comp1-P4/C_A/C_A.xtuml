@@ -1,0 +1,75 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae",
+	'C_A',
+	1,
+	'C_A',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("307c88f4-d8f8-4b14-b382-1104a41da95c",
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO O_BATTR
+	VALUES ("307c88f4-d8f8-4b14-b382-1104a41da95c",
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO O_ATTR
+	VALUES ("307c88f4-d8f8-4b14-b382-1104a41da95c",
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae",
+	"00000000-0000-0000-0000-000000000000",
+	'Attr',
+	'',
+	'',
+	'Attr',
+	0,
+	"b1ad0bfc-fab0-4726-9952-a402baa5e7b4",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("b1ad0bfc-fab0-4726-9952-a402baa5e7b4",
+	"00000000-0000-0000-0000-000000000000",
+	'attr_type',
+	'',
+	'',
+	'../../Comp1-P2/Comp1-P2.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("fa83fd44-8409-468f-b7a3-cbea394a4d56",
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO O_BATTR
+	VALUES ("fa83fd44-8409-468f-b7a3-cbea394a4d56",
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO O_ATTR
+	VALUES ("fa83fd44-8409-468f-b7a3-cbea394a4d56",
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae",
+	"307c88f4-d8f8-4b14-b382-1104a41da95c",
+	'current_state',
+	'',
+	'',
+	'current_state',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000006",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO O_ID
+	VALUES (1,
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO O_ID
+	VALUES (2,
+	"b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae");
+INSERT INTO PE_PE
+	VALUES ("b6ca9ef1-30fa-4cdc-816a-e1c9a3bd06ae",
+	1,
+	"075b86a3-4bf0-416c-b0b1-f0688f9a7682",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("075b86a3-4bf0-416c-b0b1-f0688f9a7682",
+	"00000000-0000-0000-0000-000000000000",
+	"bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	'Comp1-P4',
+	'',
+	0,
+	'../Comp1-P4.xtuml');

@@ -1,0 +1,88 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	'C_E',
+	5,
+	'C_E',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_REF
+	VALUES ("56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	"9ce2b0d1-f77e-4959-8919-f9658758fe10",
+	0,
+	"d8eb8ce8-d5ab-4e4b-a7a1-96ff284faaef",
+	"35cfd0bd-403b-40a7-b13c-d0b7797617e0",
+	"7481278a-cf04-4639-8525-572fea58cd83",
+	"d01f7de9-5684-48e4-925e-51518d908af1",
+	"41d70310-80aa-4fcd-a3a9-1b9f49b8e256",
+	"4bc739f1-0c5c-4bef-8a8e-8f7327315f29",
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'C_C',
+	'Id',
+	'R3');
+INSERT INTO R_RGO_PROXY
+	VALUES ("56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	"35cfd0bd-403b-40a7-b13c-d0b7797617e0",
+	"7481278a-cf04-4639-8525-572fea58cd83",
+	'../Comp1-P5-P1.xtuml');
+INSERT INTO O_RTIDA_PROXY
+	VALUES ("d8eb8ce8-d5ab-4e4b-a7a1-96ff284faaef",
+	"9ce2b0d1-f77e-4959-8919-f9658758fe10",
+	0,
+	"35cfd0bd-403b-40a7-b13c-d0b7797617e0",
+	"d01f7de9-5684-48e4-925e-51518d908af1",
+	'../Comp1-P5-P1.xtuml');
+INSERT INTO O_RATTR
+	VALUES ("41d70310-80aa-4fcd-a3a9-1b9f49b8e256",
+	"56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	"d8eb8ce8-d5ab-4e4b-a7a1-96ff284faaef",
+	"9ce2b0d1-f77e-4959-8919-f9658758fe10",
+	1,
+	'Id');
+INSERT INTO O_BATTR_PROXY
+	VALUES ("d8eb8ce8-d5ab-4e4b-a7a1-96ff284faaef",
+	"9ce2b0d1-f77e-4959-8919-f9658758fe10",
+	'../C_C/C_C.xtuml');
+INSERT INTO O_ATTR
+	VALUES ("41d70310-80aa-4fcd-a3a9-1b9f49b8e256",
+	"56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	"00000000-0000-0000-0000-000000000000",
+	'Id',
+	'',
+	'',
+	'Id',
+	0,
+	"ba5eda7a-def5-0000-0000-000000000007",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"56a37c61-6db1-4761-a628-a4f79bd5bc56");
+INSERT INTO O_OIDA
+	VALUES ("41d70310-80aa-4fcd-a3a9-1b9f49b8e256",
+	"56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	0,
+	'Id');
+INSERT INTO O_ID
+	VALUES (1,
+	"56a37c61-6db1-4761-a628-a4f79bd5bc56");
+INSERT INTO O_ID
+	VALUES (2,
+	"56a37c61-6db1-4761-a628-a4f79bd5bc56");
+INSERT INTO PE_PE
+	VALUES ("56a37c61-6db1-4761-a628-a4f79bd5bc56",
+	1,
+	"e0907917-6ee2-4e87-a883-e29fc2764ba3",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("e0907917-6ee2-4e87-a883-e29fc2764ba3",
+	"00000000-0000-0000-0000-000000000000",
+	"bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	'Comp1-P5-P1',
+	'',
+	0,
+	'../Comp1-P5-P1.xtuml');

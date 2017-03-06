@@ -1,0 +1,43 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("aaf7f148-7744-4adf-94e6-de206571ed94",
+	'C_F',
+	6,
+	'C_F',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_TFR
+	VALUES ("ac371f17-37d2-4ef4-bb1b-edebd9787d93",
+	"aaf7f148-7744-4adf-94e6-de206571ed94",
+	'Op',
+	'',
+	"ba5eda7a-def5-0000-0000-000000000000",
+	1,
+	'select any The_A from instances of C_A;',
+	1,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_ID
+	VALUES (0,
+	"aaf7f148-7744-4adf-94e6-de206571ed94");
+INSERT INTO O_ID
+	VALUES (1,
+	"aaf7f148-7744-4adf-94e6-de206571ed94");
+INSERT INTO O_ID
+	VALUES (2,
+	"aaf7f148-7744-4adf-94e6-de206571ed94");
+INSERT INTO PE_PE
+	VALUES ("aaf7f148-7744-4adf-94e6-de206571ed94",
+	1,
+	"a5bb7ad9-7e9c-4582-8163-afbdbfd9c02c",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("a5bb7ad9-7e9c-4582-8163-afbdbfd9c02c",
+	"00000000-0000-0000-0000-000000000000",
+	"bf31cd62-987d-4cc4-980e-5dfbfd697156",
+	'Comp1-P1',
+	'',
+	0,
+	'../Comp1-P1.xtuml');
