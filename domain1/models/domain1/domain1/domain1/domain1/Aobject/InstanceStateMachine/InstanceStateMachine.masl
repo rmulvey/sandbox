@@ -1,0 +1,10 @@
+state domain1::Aobject.Cstate () is
+begin
+  null;
+end state;
+
+state domain1::Aobject.Dstate () is
+begin
+  null;
+end state;
+

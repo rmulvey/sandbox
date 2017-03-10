@@ -1,0 +1,56 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("7c0b8407-0fee-449e-9d08-45794eb3bbb6",
+	"00000000-0000-0000-0000-000000000000",
+	'domain1Bterm',
+	'masl_temporary');
+INSERT INTO C_EP
+	VALUES ("4cd07309-672c-4edd-9f9b-364ec12bd551",
+	"7c0b8407-0fee-449e-9d08-45794eb3bbb6",
+	0,
+	'term_foo',
+	'');
+INSERT INTO C_IO
+	VALUES ("4cd07309-672c-4edd-9f9b-364ec12bd551",
+	"e368f0e4-3fb0-403f-b61c-21419436b074",
+	'term_foo',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("e368f0e4-3fb0-403f-b61c-21419436b074",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO C_EP
+	VALUES ("39dfe484-388a-4ac9-a412-4c158287b5f9",
+	"7c0b8407-0fee-449e-9d08-45794eb3bbb6",
+	0,
+	'term_bar',
+	'');
+INSERT INTO C_IO
+	VALUES ("39dfe484-388a-4ac9-a412-4c158287b5f9",
+	"e368f0e4-3fb0-403f-b61c-21419436b074",
+	'term_bar',
+	'',
+	0,
+	'',
+	"4cd07309-672c-4edd-9f9b-364ec12bd551");
+INSERT INTO PE_PE
+	VALUES ("7c0b8407-0fee-449e-9d08-45794eb3bbb6",
+	1,
+	"cb079868-9767-41a4-b85d-5848a0061732",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("cb079868-9767-41a4-b85d-5848a0061732",
+	"00000000-0000-0000-0000-000000000000",
+	"c21ce0fb-34e9-4d24-8b20-ce3ad1cb62be",
+	'Shared',
+	'',
+	0,
+	'../Shared.xtuml');

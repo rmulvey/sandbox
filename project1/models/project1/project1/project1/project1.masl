@@ -1,0 +1,10 @@
+public service project1::domain1Bterm~>term_foo () is
+begin
+  null;
+end service;
+
+public service project1::domain1Bterm~>term_bar () is
+begin
+  null;
+end service;
+

@@ -1,0 +1,10 @@
+public service domain1::Bterm~>term_foo () is
+begin
+  null;
+end service;
+
+public service domain1::Bterm~>term_bar () is
+begin
+  null;
+end service;
+
