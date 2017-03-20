@@ -1,0 +1,57 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("bb152108-5c56-4e1c-894e-8d347a273d9c",
+	"00000000-0000-0000-0000-000000000000",
+	"c7b29bfc-56f3-4960-8e44-8584a7b258a1",
+	'DomainWithTerminator',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("946e4237-13ee-44c9-b8c9-bf31895417fe",
+	112,
+	"bb152108-5c56-4e1c-894e-8d347a273d9c",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'9316_dom::DomainWithTerminator::DomainWithTerminator::DomainWithTerminator');
+INSERT INTO DIM_DIA
+	VALUES ("946e4237-13ee-44c9-b8c9-bf31895417fe",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("bb152108-5c56-4e1c-894e-8d347a273d9c",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"065d2e61-b0fe-48d9-8fa3-3132898e4df3",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("065d2e61-b0fe-48d9-8fa3-3132898e4df3",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'DomainWithTerminator',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../DomainWithTerminator.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("c7b29bfc-56f3-4960-8e44-8584a7b258a1",
+	'9316_dom',
+	1,
+	'../../../9316_dom.xtuml');
