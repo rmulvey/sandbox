@@ -1,0 +1,81 @@
+-- BP 7.1.6 content: Interface syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO C_I
+	VALUES ("32f3cd14-449b-49e0-8428-5e02ef40c1bd",
+	"00000000-0000-0000-0000-000000000000",
+	'mydomT',
+	'');
+INSERT INTO C_EP
+	VALUES ("5c38dda9-fad4-4e8e-8abe-5a5a8766f889",
+	"32f3cd14-449b-49e0-8428-5e02ef40c1bd",
+	0,
+	'actualtermservice',
+	'');
+INSERT INTO C_IO
+	VALUES ("5c38dda9-fad4-4e8e-8abe-5a5a8766f889",
+	"f8de1de7-10f4-4cd3-b6c8-e5267dd961b9",
+	'actualtermservice',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("f8de1de7-10f4-4cd3-b6c8-e5267dd961b9",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO C_PP
+	VALUES ("dcebf662-4472-47a2-8ff4-ac7239187e73",
+	"5c38dda9-fad4-4e8e-8abe-5a5a8766f889",
+	"3cda8510-7131-48ad-b92b-3f53db2522d7",
+	'p2',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_DT_PROXY
+	VALUES ("3cda8510-7131-48ad-b92b-3f53db2522d7",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO C_EP
+	VALUES ("a3f2bb4b-5343-45f4-a421-54e0e0d9cb4a",
+	"32f3cd14-449b-49e0-8428-5e02ef40c1bd",
+	0,
+	'cservice',
+	'');
+INSERT INTO C_IO
+	VALUES ("a3f2bb4b-5343-45f4-a421-54e0e0d9cb4a",
+	"f8de1de7-10f4-4cd3-b6c8-e5267dd961b9",
+	'cservice',
+	'',
+	0,
+	'',
+	"5c38dda9-fad4-4e8e-8abe-5a5a8766f889");
+INSERT INTO C_PP
+	VALUES ("aee6ca32-9d40-4597-8b24-a7ce017523f3",
+	"a3f2bb4b-5343-45f4-a421-54e0e0d9cb4a",
+	"3cda8510-7131-48ad-b92b-3f53db2522d7",
+	'p2',
+	'',
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO PE_PE
+	VALUES ("32f3cd14-449b-49e0-8428-5e02ef40c1bd",
+	1,
+	"c4076231-7676-49a0-9d31-e42844de93a0",
+	"00000000-0000-0000-0000-000000000000",
+	6);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("c4076231-7676-49a0-9d31-e42844de93a0",
+	"00000000-0000-0000-0000-000000000000",
+	"ba8c8cdd-0cac-467f-94f5-b552553d91d4",
+	'Shared',
+	'',
+	0,
+	'../Shared.xtuml');

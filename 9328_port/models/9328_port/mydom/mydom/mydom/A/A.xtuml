@@ -1,0 +1,80 @@
+-- BP 7.1.6 content: ModelClass syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO O_OBJ
+	VALUES ("36a65f6f-9f26-456e-9aea-5c065db387b2",
+	'A',
+	1,
+	'A',
+	'',
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO O_NBATTR
+	VALUES ("9c56f7ee-1694-4351-82b6-7ae6693ec076",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO O_BATTR
+	VALUES ("9c56f7ee-1694-4351-82b6-7ae6693ec076",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO O_ATTR
+	VALUES ("9c56f7ee-1694-4351-82b6-7ae6693ec076",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2",
+	"00000000-0000-0000-0000-000000000000",
+	'id',
+	'',
+	'',
+	'id',
+	0,
+	"3cda8510-7131-48ad-b92b-3f53db2522d7",
+	'',
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("3cda8510-7131-48ad-b92b-3f53db2522d7",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../../../types/types.xtuml');
+INSERT INTO O_NBATTR
+	VALUES ("6c06b28f-2909-4dae-ab60-2c324893eeab",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO O_BATTR
+	VALUES ("6c06b28f-2909-4dae-ab60-2c324893eeab",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO O_ATTR
+	VALUES ("6c06b28f-2909-4dae-ab60-2c324893eeab",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2",
+	"9c56f7ee-1694-4351-82b6-7ae6693ec076",
+	'i',
+	'',
+	'',
+	'i',
+	0,
+	"3cda8510-7131-48ad-b92b-3f53db2522d7",
+	'',
+	'');
+INSERT INTO O_ID
+	VALUES (0,
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO O_OIDA
+	VALUES ("9c56f7ee-1694-4351-82b6-7ae6693ec076",
+	"36a65f6f-9f26-456e-9aea-5c065db387b2",
+	0,
+	'id');
+INSERT INTO O_ID
+	VALUES (1,
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO O_ID
+	VALUES (2,
+	"36a65f6f-9f26-456e-9aea-5c065db387b2");
+INSERT INTO PE_PE
+	VALUES ("36a65f6f-9f26-456e-9aea-5c065db387b2",
+	1,
+	"9c50ffbc-c03f-4a2e-9f4c-e0f08ef89653",
+	"00000000-0000-0000-0000-000000000000",
+	4);
+INSERT INTO EP_PKG_PROXY
+	VALUES ("9c50ffbc-c03f-4a2e-9f4c-e0f08ef89653",
+	"00000000-0000-0000-0000-000000000000",
+	"ba8c8cdd-0cac-467f-94f5-b552553d91d4",
+	'mydom',
+	'',
+	0,
+	'../mydom.xtuml');

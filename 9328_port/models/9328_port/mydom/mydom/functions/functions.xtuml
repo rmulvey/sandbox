@@ -1,0 +1,121 @@
+-- BP 7.1.6 content: Package syschar: 3 persistence-version: 7.1.6
+
+INSERT INTO EP_PKG
+	VALUES ("d784ff3b-27c6-4636-b95e-b34c944e8de6",
+	"00000000-0000-0000-0000-000000000000",
+	"ba8c8cdd-0cac-467f-94f5-b552553d91d4",
+	'functions',
+	'',
+	0);
+INSERT INTO GD_MD
+	VALUES ("e3f7ab8b-652f-405a-9bab-dfd546b5a8df",
+	112,
+	"d784ff3b-27c6-4636-b95e-b34c944e8de6",
+	108,
+	0,
+	0,
+	1,
+	1,
+	1,
+	12,
+	1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	'',
+	'9328_port::mydom::mydom::functions');
+INSERT INTO DIM_DIA
+	VALUES ("e3f7ab8b-652f-405a-9bab-dfd546b5a8df",
+	'',
+	1.000000,
+	0.000000,
+	0.000000,
+	"00000000-0000-0000-0000-000000000000");
+INSERT INTO S_SYNC
+	VALUES ("64d3a863-4423-4fb2-8108-bc920ad71189",
+	"00000000-0000-0000-0000-000000000000",
+	'actualmaslroutine',
+	'',
+	'',
+	"f8de1de7-10f4-4cd3-b6c8-e5267dd961b9",
+	3,
+	'',
+	1);
+INSERT INTO S_SPARM
+	VALUES ("549a12ec-dacf-4410-a063-7844327eacc7",
+	"64d3a863-4423-4fb2-8108-bc920ad71189",
+	'p1',
+	"3cda8510-7131-48ad-b92b-3f53db2522d7",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO S_DT_PROXY
+	VALUES ("3cda8510-7131-48ad-b92b-3f53db2522d7",
+	"00000000-0000-0000-0000-000000000000",
+	'integer',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO PE_PE
+	VALUES ("64d3a863-4423-4fb2-8108-bc920ad71189",
+	1,
+	"d784ff3b-27c6-4636-b95e-b34c944e8de6",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO S_DT_PROXY
+	VALUES ("f8de1de7-10f4-4cd3-b6c8-e5267dd961b9",
+	"00000000-0000-0000-0000-000000000000",
+	'void',
+	'',
+	'',
+	'../../../types/types.xtuml');
+INSERT INTO S_SYNC
+	VALUES ("b7aecfa3-fe14-46c9-ab2d-be06603efcff",
+	"00000000-0000-0000-0000-000000000000",
+	'cwrapper',
+	'',
+	'',
+	"f8de1de7-10f4-4cd3-b6c8-e5267dd961b9",
+	3,
+	'',
+	4);
+INSERT INTO S_SPARM
+	VALUES ("697a8d9a-045a-4990-8134-d0ee4e91e5ec",
+	"b7aecfa3-fe14-46c9-ab2d-be06603efcff",
+	'p1',
+	"3cda8510-7131-48ad-b92b-3f53db2522d7",
+	0,
+	'',
+	"00000000-0000-0000-0000-000000000000",
+	'');
+INSERT INTO PE_PE
+	VALUES ("b7aecfa3-fe14-46c9-ab2d-be06603efcff",
+	1,
+	"d784ff3b-27c6-4636-b95e-b34c944e8de6",
+	"00000000-0000-0000-0000-000000000000",
+	1);
+INSERT INTO PE_PE
+	VALUES ("d784ff3b-27c6-4636-b95e-b34c944e8de6",
+	1,
+	"00000000-0000-0000-0000-000000000000",
+	"fac703ee-5ec4-4b50-9e69-083d208ce0f8",
+	7);
+INSERT INTO C_C_PROXY
+	VALUES ("fac703ee-5ec4-4b50-9e69-083d208ce0f8",
+	"00000000-0000-0000-0000-000000000000",
+	"00000000-0000-0000-0000-000000000000",
+	'mydom',
+	'',
+	0,
+	"00000000-0000-0000-0000-000000000000",
+	0,
+	'',
+	'../mydom.xtuml');
+INSERT INTO S_SYS_PROXY
+	VALUES ("ba8c8cdd-0cac-467f-94f5-b552553d91d4",
+	'9328_port',
+	1,
+	'../../../9328_port.xtuml');
